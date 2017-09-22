@@ -14,7 +14,7 @@
     }
   ],
   "git-version": "package_version",
-  "main": "bin/Test",
-  "output": "test.phar",
+  "main": "bin/Stati.php",
+  "output": "stati.phar",
   "stub": true
 }
