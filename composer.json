@@ -1,0 +1,16 @@
+{
+    "name": "jonathan/static",
+    "description": "Static site generator",
+    "authors": [
+        {
+            "name": "jfoucher",
+            "email": "jfoucher@6px.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Stati\\": "src/"}
+    },
+    "require": {
+        "symfony/console": "^3.3"
+    }
+}
