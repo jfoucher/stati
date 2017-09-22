@@ -64,6 +64,7 @@ class TestCommand extends Command
             if (isset($frontMatter) && isset($frontMatter['layout'])) {
                 //Use layout as the thing to parse, and pass content as variable.
                 $config['content'] = $content;
+                $config['page'] = $frontMatter;
                 $content = file_get_contents('./_layouts/'.$frontMatter['layout'].'.html');
 
             }
