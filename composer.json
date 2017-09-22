@@ -11,6 +11,9 @@
         "psr-4": {"Stati\\": "src/"}
     },
     "require": {
-        "symfony/console": "^3.3"
+        "symfony/console": "^3.3",
+        "symfony/yaml": "^3.3",
+        "symfony/finder": "^3.3",
+        "liquid/liquid": "^1.3"
     }
 }
