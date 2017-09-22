@@ -11,6 +11,12 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Liquid\Template;
 use Liquid\Liquid;
+use Michelf\MarkdownExtra;
+use Stati\Link\Generator;
+use Stati\LiquidBlock\Highlight;
+use Symfony\Component\Finder\SplFileInfo;
+use Stati\Parser\FrontMatterParser;
+use Stati\Parser\ContentParser;
 
 class TestCommand extends Command
 {
@@ -35,49 +41,81 @@ class TestCommand extends Command
             return;
         }
 
+
+
         // Get top level files and parse
         $finder = new Finder();
-        $finder->depth(' == 0')
+        $finder->depth(' == 1')
             ->files()
             ->in('./')
-//            ->name('/(\.html|contact\.md|\.markdown)$/');
-            ->name('/contact\.md$/');
+//            ->name('/(\.html|\.md|\.markdown)$/');
+            ->name('/\.md$/');
 
+        // Create _site directory
+
+        if (!is_dir('./_site')) {
+            mkdir('./_site');
+        }
+        $linkGenerator = new Generator($config);
         foreach ($finder as $file) {
-            $style->text($file->getRealPath());
             $fileContents = $file->getContents();
-            // Remove whitespace at top and bottom of file
             $fileContents = trim($fileContents);
-            $split = preg_split("/[\n]*[-]{3}[\n]/", $fileContents, 3, PREG_SPLIT_NO_EMPTY);
-            try {
-                // Using symfony's YAML parser
-                // we can use trim here because we only remove white space
-                // at the beginning (first should not have any) and at the end (insignificant)
-                $frontMatter = Yaml::parse(trim($split[0]));
 
-            } catch(InvalidArgumentException $e) {
-                // This is not YAML
-                $style->error($e->getMessage());
+            $rendered = $this->render($fileContents, $style, $config, $file);
+
+            //Put rendered file in _site directory, in it's right place
+            $path = $linkGenerator->getPathForFile($file);
+            $dir = str_replace('//', '/', './_site/'.pathinfo($path,PATHINFO_DIRNAME));
+            if (!is_dir($dir)) {
+                mkdir($dir, 0775, true);
             }
-            $content = trim($split[1]);
-            //If we have a layout
-            if (isset($frontMatter) && isset($frontMatter['layout'])) {
-                //Use layout as the thing to parse, and pass content as variable.
-                $config['content'] = $content;
-                $config['page'] = $frontMatter;
-                $content = file_get_contents('./_layouts/'.$frontMatter['layout'].'.html');
-
-            }
-
-            Liquid::set('INCLUDE_ALLOW_EXT', true);
-            Liquid::set('INCLUDE_PREFIX', './_includes/');
-            $template = new Template('./_includes/');
-            $template->parse($content);
-            echo $template->render($config);
-
+            file_put_contents('./_site'.$path, $rendered);
         }
 
 
 
     }
+
+
+    private function render($content, SymfonyStyle $style, $config, SplFileInfo $file = null)
+    {
+        var_dump($config);
+        Liquid::set('INCLUDE_ALLOW_EXT', true);
+        Liquid::set('INCLUDE_PREFIX', './_includes/');
+        $linkGenerator = new Generator($config);
+        $frontMatter = FrontMatterParser::parse($content);
+        $content = ContentParser::parse($content);
+
+        //If we have a layout
+        if (isset($frontMatter['layout'])) {
+            $newConfig = $config;
+            //If file is markdown, parse it first before passing it to liquid
+            if ($file && ($file->getExtension() === 'md' || $file->getExtension() === 'mkd' || $file->getExtension() === 'markdown')) {
+                $content = MarkdownExtra::defaultTransform($content);
+                $newConfig =  [
+                    'url' => $linkGenerator->getUrlForFile($file),
+                    'site' => $config,
+                    'page' => $frontMatter
+                ];
+            }
+
+            //Parse content with liquid also
+            $template = new Template('./_includes/');
+            $template->registerTag('highlight', Highlight::class);
+            $template->parse($content);
+            $rendered = $template->render(array_merge($newConfig, $config));
+
+            //Use layout as the thing to parse, and pass content as variable.
+            $newConfig['content'] = $rendered;
+            //Pass frontmatter as page variable
+            $content = file_get_contents('./_layouts/'.$frontMatter['layout'].'.html');
+            return $this->render($content, $style, $newConfig);
+        }
+
+        $template = new Template('./_includes/');
+        $template->parse($content);
+        return $template->render($config);
+    }
+
+
 }

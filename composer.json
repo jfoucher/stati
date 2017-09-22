@@ -14,6 +14,7 @@
         "symfony/console": "^3.3",
         "symfony/yaml": "^3.3",
         "symfony/finder": "^3.3",
-        "liquid/liquid": "^1.3"
+        "liquid/liquid": "^1.3",
+        "michelf/php-markdown": "^1.7"
     }
 }
