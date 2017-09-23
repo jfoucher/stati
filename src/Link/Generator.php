@@ -24,6 +24,12 @@ class Generator
     public function getPathForFile(SplFileInfo $file)
     {
         $link = $this->config['permalink'];
+        if (strpos($file->getRelativePath(), '_posts') === false) {
+            // This is not a post
+            var_dump($file->getRelativePath());
+            var_dump($file->getRelativePathname());
+            return '/'.$file->getRelativePath().pathinfo($file->getBasename(), PATHINFO_FILENAME).'.html';
+        }
         $frontMatter = FrontMatterParser::parse($file->getContents());
         if(isset($frontMatter['date'])) {
             $date = new \DateTime($frontMatter['date']);
@@ -57,7 +63,7 @@ class Generator
         try {
             return new \DateTime(substr($filename, 0, 10));
         } catch (\Exception $err) {
-            echo $err->getMessage();
+//            echo $err->getMessage();
             return false;
         }
     }
@@ -69,7 +75,7 @@ class Generator
             $date = new \DateTime(substr($filename, 0, 10));
             return substr($filename, 11);
         } catch (\Exception $err) {
-            echo $err->getMessage();
+//            echo $err->getMessage();
             return $filename;
         }
 
