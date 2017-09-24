@@ -21,14 +21,16 @@ class Generator
         $this->config = $config;
     }
 
-    public function getPathForFile(SplFileInfo $file, $type = 'post')
+    public function getPathForFile(SplFileInfo $file, $type = null)
     {
 
         $link = isset($this->config['permalink']) ? $this->config['permalink'] : $this->config['site']['permalink'];
         if ($type !== 'post') {
             // This is not a post
-
-            return '/'.$file->getRelativePath().pathinfo($file->getBasename(), PATHINFO_FILENAME).'.html';
+            if (!$type) {
+                $type = 'html';
+            }
+            return str_replace('//', '/','/'.$file->getRelativePath().'/'.pathinfo($file->getBasename(), PATHINFO_FILENAME).'.'.$type);
         }
         $frontMatter = FrontMatterParser::parse($file->getContents());
         if(isset($frontMatter['date'])) {
@@ -52,7 +54,7 @@ class Generator
         return $link;
     }
 
-    public function getUrlForFile(SplFileInfo $file, $type)
+    public function getUrlForFile(SplFileInfo $file, $type = null)
     {
         $url = $this->config['url'];
         $baseUrl = $this->config['baseurl'];

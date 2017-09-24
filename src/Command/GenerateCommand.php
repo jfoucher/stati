@@ -3,6 +3,7 @@
 namespace Stati\Command;
 
 
+use Stati\Renderer\FilesRenderer;
 use Stati\Renderer\PostsRenderer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -39,8 +40,10 @@ class GenerateCommand extends Command
         }
 
         $postsRenderer = new PostsRenderer($config);
-        $numPosts = $postsRenderer->render();
-        $style->title($numPosts.' post'.($numPosts > 1 ? 's' : '').' rendered and saved');
+        $posts = $postsRenderer->render();
+        $style->title(count($posts).' post'.(count($posts) > 1 ? 's' : '').' rendered and saved');
+        $filesRenderer = new FilesRenderer($config);
+        $filesRenderer->render();
     }
 
 }

@@ -9,6 +9,7 @@
 
 namespace Stati\Renderer;
 
+use Stati\Entity\Post;
 use Symfony\Component\Finder\Finder;
 use Liquid\Template;
 use Liquid\Liquid;
@@ -45,72 +46,64 @@ class PostsRenderer
         //            ->name('/\.md$/');
 
         $linkGenerator = new Generator($this->config);
+        $posts = [];
         foreach ($finder as $file) {
-            $fileContents = $file->getContents();
-            $fileContents = trim($fileContents);
 
-            $rendered = $this->renderPost($fileContents, $this->config, $file);
-
+            $post = new Post($file, $this->config);
+            $posts[] = $post;
             //Put rendered file in _site directory, in it's right place
-            $path = $linkGenerator->getPathForFile($file);
-            $dir = str_replace('//', '/', './_site/'.pathinfo($path,PATHINFO_DIRNAME));
+            var_dump($post->getPath());
+            $dir = './_site'.pathinfo($post->getPath(),PATHINFO_DIRNAME);
             if (!is_dir($dir)) {
                 mkdir($dir, 0775, true);
             }
-            file_put_contents('./_site'.$path, $rendered);
+            file_put_contents('./_site'.$post->getPath(), $this->renderPage($post));
         }
-        return count($finder);
+        return $posts;
     }
 
 
-    private function renderPost($content, $config, SplFileInfo $file = null)
+    private function renderPage(Post $post)
     {
-        if($file) {
-            var_dump($file->getRelativePathname());
-        }
-
         Liquid::set('INCLUDE_ALLOW_EXT', true);
         Liquid::set('INCLUDE_PREFIX', './_includes/');
-        $linkGenerator = new Generator($config);
-        $frontMatter = FrontMatterParser::parse($content);
-        $content = ContentParser::parse($content);
+        Liquid::set('HAS_PROPERTY_METHOD', 'get');
+        $frontMatter = $post->getFrontMatter();
+        $content = $post->getContent();
 
         //If we have a layout
         if (isset($frontMatter['layout'])) {
-            $newConfig = $config;
-            //If file is markdown, parse it first before passing it to liquid
-            if ($file && ($file->getExtension() === 'md' || $file->getExtension() === 'mkd' || $file->getExtension() === 'markdown')) {
-    //                $parsedown = new Parsedown();
-    //                $content = $parsedown->text($content);
-                $newConfig =  [
-                    'url' => $linkGenerator->getUrlForFile($file, 'post'),
-                    'site' => $config,
-                    'page' => $frontMatter
-                ];
-            } else {
-                $newConfig['page'] = $config['page'];
-                $newConfig['site'] = $config['site'];
-                $newConfig['url'] = $config['url'];
-            }
+            $config = [
+                'content' => $content,
+                'page' => $post,
+                'post' => $post,
+                'site' => $this->config
+            ];
+            return $this->renderWithLayout($frontMatter['layout'], $config);
+        }
 
-            //Parse content with liquid also
+        return $content;
+    }
+
+    private function renderWithLayout($layout, $config)
+    {
+        $layout = file_get_contents('./_layouts/'.$layout.'.html');
+        $layoutFrontMatter = FrontMatterParser::parse($layout);
+        $layoutContent = ContentParser::parse($layout);
+
+        if (isset($layoutFrontMatter['layout'])) {
             $template = new Template('./_includes/');
             $template->registerTag('highlight', Highlight::class);
             $template->registerTag('post_url', PostUrl::class);
-            $template->parse($content);
-            $rendered = $template->render($newConfig);
-            //Use layout as the thing to parse, and pass content as variable.
-            $parsedown = new MarkdownParser();
-            $newConfig['content'] = $parsedown->text($rendered);
-            //Pass frontmatter as page variable
-            $content = file_get_contents('./_layouts/'.$frontMatter['layout'].'.html');
-            return $this->renderPost($content, $newConfig);
+            $template->parse($layoutContent);
+            $config['content'] = $template->render($config);
+            return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
         $template = new Template('./_includes/');
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
-        $template->parse($content);
+        $template->parse($layoutContent);
         return $template->render($config);
     }
 
