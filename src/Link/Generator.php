@@ -21,18 +21,19 @@ class Generator
         $this->config = $config;
     }
 
-    public function getPathForFile(SplFileInfo $file)
+    public function getPathForFile(SplFileInfo $file, $type = 'post')
     {
-        $link = $this->config['permalink'];
-        if (strpos($file->getRelativePath(), '_posts') === false) {
+
+        $link = isset($this->config['permalink']) ? $this->config['permalink'] : $this->config['site']['permalink'];
+        if ($type !== 'post') {
             // This is not a post
-            var_dump($file->getRelativePath());
-            var_dump($file->getRelativePathname());
+
             return '/'.$file->getRelativePath().pathinfo($file->getBasename(), PATHINFO_FILENAME).'.html';
         }
         $frontMatter = FrontMatterParser::parse($file->getContents());
         if(isset($frontMatter['date'])) {
-            $date = new \DateTime($frontMatter['date']);
+            $date = new \DateTime();
+            $date->setTimestamp(strtotime($frontMatter['date']));
         } else {
             $date = $this->parseDateFromFileName($file->getBasename());
         }
@@ -51,11 +52,11 @@ class Generator
         return $link;
     }
 
-    public function getUrlForFile(SplFileInfo $file)
+    public function getUrlForFile(SplFileInfo $file, $type)
     {
-        $url = @$this->config['url'];
-        $baseUrl = @$this->config['baseurl'];
-        return $url.$baseUrl.$this->getPathForFile($file);
+        $url = $this->config['url'];
+        $baseUrl = $this->config['baseurl'];
+        return $url.$baseUrl.$this->getPathForFile($file, $type);
     }
 
     private function parseDateFromFileName($filename)

@@ -19,9 +19,13 @@ class ContentParser
     {
         $split = preg_split("/[\n]*[-]{3}[\n]/", $text, 3, PREG_SPLIT_NO_EMPTY);
 
-        if (count($split) > 1) {
+        if (is_array($split) && count($split) > 1) {
             return $split[1];
         }
-        return $split[0];
+        if (is_array($split) && count($split)) {
+            return $split[0];
+        }
+        return '';
+
     }
 }

@@ -31,5 +31,6 @@ class FrontMatterParser
                 return [];
             }
         }
+        return [];
     }
 }

@@ -3,9 +3,9 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use Stati\Command\TestCommand;
+use Stati\Command\GenerateCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application('Stati', '@package_version@');
-$application->add(new TestCommand());
+$application->add(new GenerateCommand());
 $application->run();

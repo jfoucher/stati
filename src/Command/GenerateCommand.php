@@ -2,23 +2,24 @@
 
 namespace Stati\Command;
 
+use Liquid\Cache\File;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Liquid\Template;
 use Liquid\Liquid;
-use Michelf\MarkdownExtra;
+use Stati\Parser\MarkdownParser;
 use Stati\Link\Generator;
 use Stati\LiquidBlock\Highlight;
 use Symfony\Component\Finder\SplFileInfo;
 use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
+use Stati\LiquidTag\PostUrl;
 
-class TestCommand extends Command
+class GenerateCommand extends Command
 {
     protected function configure()
     {
@@ -41,27 +42,29 @@ class TestCommand extends Command
             return;
         }
 
+        if (!is_dir('./_site')) {
+            mkdir('./_site');
+        }
 
 
         // Get top level files and parse
         $finder = new Finder();
-        $finder->depth(' == 1')
+        $finder->depth(' <= 1')
             ->files()
-            ->in('./')
-//            ->name('/(\.html|\.md|\.markdown)$/');
-            ->name('/\.md$/');
+            ->in('./_posts/')
+            ->contains('post_url')
+            ->name('/(\.mkd|\.md|\.markdown)$/');
+//            ->name('/\.md$/');
 
         // Create _site directory
 
-        if (!is_dir('./_site')) {
-            mkdir('./_site');
-        }
+
         $linkGenerator = new Generator($config);
         foreach ($finder as $file) {
             $fileContents = $file->getContents();
             $fileContents = trim($fileContents);
 
-            $rendered = $this->render($fileContents, $style, $config, $file);
+            $rendered = $this->renderPost($fileContents, $style, $config, $file);
 
             //Put rendered file in _site directory, in it's right place
             $path = $linkGenerator->getPathForFile($file);
@@ -71,15 +74,15 @@ class TestCommand extends Command
             }
             file_put_contents('./_site'.$path, $rendered);
         }
-
-
-
     }
 
 
-    private function render($content, SymfonyStyle $style, $config, SplFileInfo $file = null)
+    private function renderPost($content, SymfonyStyle $style, $config, SplFileInfo $file = null)
     {
-        var_dump($config);
+        if($file) {
+            var_dump($file->getRelativePathname());
+        }
+
         Liquid::set('INCLUDE_ALLOW_EXT', true);
         Liquid::set('INCLUDE_PREFIX', './_includes/');
         $linkGenerator = new Generator($config);
@@ -91,28 +94,36 @@ class TestCommand extends Command
             $newConfig = $config;
             //If file is markdown, parse it first before passing it to liquid
             if ($file && ($file->getExtension() === 'md' || $file->getExtension() === 'mkd' || $file->getExtension() === 'markdown')) {
-                $content = MarkdownExtra::defaultTransform($content);
+//                $parsedown = new Parsedown();
+//                $content = $parsedown->text($content);
                 $newConfig =  [
-                    'url' => $linkGenerator->getUrlForFile($file),
+                    'url' => $linkGenerator->getUrlForFile($file, 'post'),
                     'site' => $config,
                     'page' => $frontMatter
                 ];
+            } else {
+                $newConfig['page'] = $config['page'];
+                $newConfig['site'] = $config['site'];
+                $newConfig['url'] = $config['url'];
             }
 
             //Parse content with liquid also
             $template = new Template('./_includes/');
             $template->registerTag('highlight', Highlight::class);
+            $template->registerTag('post_url', PostUrl::class);
             $template->parse($content);
-            $rendered = $template->render(array_merge($newConfig, $config));
-
+            $rendered = $template->render($newConfig);
             //Use layout as the thing to parse, and pass content as variable.
-            $newConfig['content'] = $rendered;
+            $parsedown = new MarkdownParser();
+            $newConfig['content'] = $parsedown->text($rendered);
             //Pass frontmatter as page variable
             $content = file_get_contents('./_layouts/'.$frontMatter['layout'].'.html');
-            return $this->render($content, $style, $newConfig);
+            return $this->renderPost($content, $style, $newConfig);
         }
 
         $template = new Template('./_includes/');
+        $template->registerTag('highlight', Highlight::class);
+        $template->registerTag('post_url', PostUrl::class);
         $template->parse($content);
         return $template->render($config);
     }
