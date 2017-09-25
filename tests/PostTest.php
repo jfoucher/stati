@@ -15,9 +15,16 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class PostTest extends TestCase
 {
+    public function setUp() {
+        chdir(dirname(__FILE__).'/postTest/');
+    }
+    public function tearDown() {
+        chdir(dirname(__FILE__));
+    }
+
     public function testSimplePost()
     {
-        $file = new SplFileInfo('./tests/postTest/2017-08-10-simple-post.markdown', './tests/postTest/', '2017-08-10-simple-post.markdown');
+        $file = new SplFileInfo('2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
         $post = new Post($file, [
             'permalink' => '/:year/:month/:day/:title.html',
             'url' => 'https://test.com',

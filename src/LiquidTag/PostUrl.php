@@ -20,9 +20,8 @@ class PostUrl extends AbstractTag
     public function render(Context $context)
     {
         $post = trim($this->markup);
-        var_dump($post);
         $pattern = '*'.$post.'.*';
-        var_dump($pattern);
+
         if (!pathinfo($post, PATHINFO_EXTENSION)) {
             $finder = new Finder();
             $finder->depth(' <= 1')
@@ -33,18 +32,14 @@ class PostUrl extends AbstractTag
             foreach ($finder as $f) {
                 $file = $f;
             }
-
         } else {
             $file = new SplFileInfo('./_posts/'.$post, '_posts/', $post);
         }
+
         if (!$file) {
             return '';
         }
-        var_dump($context->get('site'));
         $linkGenerator = new Generator($context->get('site'));
-        //TODO pass config here somehow
-        echo 'URL IS '.$linkGenerator->getUrlForFile($file, 'post');
         return $linkGenerator->getUrlForFile($file, 'post');
     }
-
 }

@@ -10,6 +10,7 @@
 namespace Stati\Renderer;
 
 use Stati\Entity\Post;
+use Stati\Exception\FileNotFoundException;
 use Symfony\Component\Finder\Finder;
 use Liquid\Template;
 use Liquid\Liquid;
@@ -41,7 +42,6 @@ class PostsRenderer
         $finder->depth(' <= 1')
         ->files()
         ->in('./_posts/')
-        ->contains('post_url')
         ->name('/(\.mkd|\.md|\.markdown)$/');
         //            ->name('/\.md$/');
 
@@ -52,12 +52,13 @@ class PostsRenderer
             $post = new Post($file, $this->config);
             $posts[] = $post;
             //Put rendered file in _site directory, in it's right place
-            var_dump($post->getPath());
             $dir = './_site'.pathinfo($post->getPath(),PATHINFO_DIRNAME);
             if (!is_dir($dir)) {
                 mkdir($dir, 0775, true);
             }
-            file_put_contents('./_site'.$post->getPath(), $this->renderPage($post));
+            $content = $this->renderPage($post);
+
+            file_put_contents('./_site'.$post->getPath(), $content);
         }
         return $posts;
     }
@@ -79,15 +80,24 @@ class PostsRenderer
                 'post' => $post,
                 'site' => $this->config
             ];
-            return $this->renderWithLayout($frontMatter['layout'], $config);
+
+            try {
+                return $this->renderWithLayout($frontMatter['layout'], $config);
+            } catch (FileNotFoundException $err) {
+                throw new FileNotFoundException($err->getMessage(). ' for post "'.$post->getTitle().'"');
+            }
         }
 
         return $content;
     }
 
-    private function renderWithLayout($layout, $config)
+    private function renderWithLayout($layoutFile, $config)
     {
-        $layout = file_get_contents('./_layouts/'.$layout.'.html');
+
+        $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
+        if (!$layout) {
+            throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder');
+        }
         $layoutFrontMatter = FrontMatterParser::parse($layout);
         $layoutContent = ContentParser::parse($layout);
 

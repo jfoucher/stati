@@ -3,6 +3,7 @@
 namespace Stati\Command;
 
 
+use Stati\Exception\FileNotFoundException;
 use Stati\Renderer\FilesRenderer;
 use Stati\Renderer\PostsRenderer;
 use Symfony\Component\Console\Command\Command;
@@ -32,7 +33,7 @@ class GenerateCommand extends Command
             $config = Yaml::parse(file_get_contents($configFile));
         } else {
             $style->error('No config file present. Are you in a jekyll directory ?');
-            return;
+            return 1;
         }
         // Create _site directory
         if (!is_dir('./_site')) {
@@ -40,8 +41,14 @@ class GenerateCommand extends Command
         }
 
         $postsRenderer = new PostsRenderer($config);
-        $posts = $postsRenderer->render();
-        $style->title(count($posts).' post'.(count($posts) > 1 ? 's' : '').' rendered and saved');
+        try {
+            $posts = $postsRenderer->render();
+        } catch (FileNotFoundException $err) {
+            $posts = [];
+            $style->error($err->getMessage());
+        }
+
+        $style->title(count($posts).' post'.((count($posts) > 1 || count($posts) === 0) ? 's' : '').' rendered and saved');
         $filesRenderer = new FilesRenderer($config);
         $filesRenderer->render();
     }

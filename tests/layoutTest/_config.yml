@@ -1,0 +1,43 @@
+title: Test Site
+description: Jonathan Foucher's blog <span class="amp">&amp;</span> web development notebook
+clean_desc: Jonathan Foucher's blog & web development notebook
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+url: https://jfoucher.com
+baseurl: ""
+paginate_path: "blog/page:num/"
+permalink: /:year/:month/:title.html
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+markdown: kramdown
+highlighter: rouge
+gems: [jekyll-paginate, compass, normalize-scss, rouge, kramdown]
+paginate: 6
+
+navigation:
+ - title: Home
+   url: /
+ - title: About
+   url: /about
+ - title: Contact
+   url: /contact
+ - title: Projects
+   url: /projects
+
+social:
+   github: jfoucher
+   twitter: jfoucher
+   facebook: jfoucher
+   email: jfoucher@gmail.com
+
+collections:
+  projects:
+    permalink: /projects/:path
+
+google_analytics: "UA-8465441-2"
