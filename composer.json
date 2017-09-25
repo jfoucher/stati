@@ -8,7 +8,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Stati\\": "src/"}
+        "psr-4": {"Stati\\": "src/", "Stati\\Tests\\": "tests/"}
     },
     "require": {
         "symfony/console": "^3.3",

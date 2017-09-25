@@ -184,6 +184,7 @@ class Post
         }
 
         $this->url = str_replace('//','/', $this->getPath());
+        return $this->url;
 
     }
 
@@ -334,22 +335,15 @@ class Post
 
     public function __get($item)
     {
-        var_dump('TRYING TO GET '.$item);
         if ($item === 'date') {
-            var_dump($this->getDate()->format(DATE_RFC3339));
             return $this->getDate()->format(DATE_RFC3339);
         }
         if (method_exists(Post::class,'get'.ucfirst($item))) {
-            var_dump('Calling getter for '.$item);
-            var_dump($this->{'get'.ucfirst($item)}());
             return $this->{'get'.ucfirst($item)}();
         }
         if (isset($this->getFrontMatter()[$item])) {
-            var_dump('Getting '.$item.' from frontmatter');
-            var_dump($this->getFrontMatter()[$item]);
             return $this->getFrontMatter()[$item];
         }
-        var_dump('FAILED TO GET '.$item);
         return null;
     }
 }
