@@ -94,6 +94,10 @@ class PostsRenderer
                 'site' => $this->config,
             ];
 
+            if (isset($this->config['paginator'])) {
+                $config['paginator'] = $this->config['paginator'];
+            }
+
             try {
                 return $this->renderWithLayout($frontMatter['layout'], $config);
             } catch (FileNotFoundException $err) {
@@ -106,7 +110,6 @@ class PostsRenderer
 
     protected function renderWithLayout($layoutFile, $config)
     {
-
         $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
         if (!$layout) {
             throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder');

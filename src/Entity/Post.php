@@ -88,7 +88,7 @@ class Post
         $this->siteConfig = $siteConfig;
     }
 
-    private function getDate()
+    public function getDate()
     {
         if ($this->date !== null) {
             return $this->date;
@@ -117,9 +117,10 @@ class Post
 
         $parser = new ContentParser();
         $markdownParser = new MarkdownParser();
-        $contentPart = $parser::parse($this->file->getContents());
-        if (is_file($cacheDir.md5($contentPart))) {
-            return file_get_contents($cacheDir.md5($contentPart));
+        $content = $this->file->getContents();
+        $contentPart = $parser::parse($content);
+        if (is_file($cacheDir.md5($content))) {
+            return file_get_contents($cacheDir.md5($content));
         }
         $template = new Template('./_includes/', new File(['cache_dir' => '/tmp/']));
         $template->registerTag('highlight', Highlight::class);
@@ -130,6 +131,11 @@ class Post
             'post' => $this,
             'site' => $this->siteConfig,
         ];
+        if (isset($this->siteConfig['paginate']) && isset($this->siteConfig['paginator'])) {
+            var_dump('PAGINATOR');
+            var_dump(count($this->siteConfig['paginator']->posts));
+            $config['paginator'] = $this->siteConfig['paginator'];
+        }
         $liquidParsed = $template->render($config);
         $this->content = $markdownParser->text($liquidParsed);
         file_put_contents($cacheDir.md5($contentPart), $this->content);
@@ -152,7 +158,14 @@ class Post
      */
     public function getTitle()
     {
-        return $this->getFrontMatter()['title'];
+        if (isset($this->getFrontMatter()['title'])) {
+            return $this->getFrontMatter()['title'];
+        }
+        if (isset($this->siteConfig['title'])) {
+            return $this->siteConfig['title'];
+        }
+        return '';
+
     }
 
     /**

@@ -18,8 +18,14 @@ class Highlight extends AbstractBlock
     public function render(Context $context)
     {
         $pygments = $context->environments[1]['pygments'];
-        $language = trim($this->markup);
+        $markup = explode(' ', trim($this->markup));
+        $language = $markup[0];
+        $options = [];
+        foreach (array_slice($markup, 1) as $item) {
+            $r = explode('=', $item);
+            $options[trim($r[0])] = trim($r[1]);
+        }
         $nodes = $this->getNodelist();
-        return $pygments->highlight(implode('', $nodes), $language, 'html');
+        return $pygments->highlight(implode('', $nodes), $language, 'html', $options);
     }
 }

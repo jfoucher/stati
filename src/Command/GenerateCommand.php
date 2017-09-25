@@ -45,6 +45,9 @@ class GenerateCommand extends Command
         $postsRenderer = new PostsRenderer($config, $style);
         try {
             $posts = $postsRenderer->render();
+            usort($posts, function($a, $b) {
+                return $a->getDate() < $b->getDate();
+            });
         } catch (FileNotFoundException $err) {
             $posts = [];
             $style->error($err->getMessage());
@@ -53,7 +56,7 @@ class GenerateCommand extends Command
         $style->text('');
         $style->section('Generating files');
         $paginator = new Paginator($posts, $config);
-        $filesRenderer = new FilesRenderer($config, $style);
+        $filesRenderer = new FilesRenderer(array_merge($config, ['paginator' => $paginator]), $style);
         $filesRenderer->render();
         $elapsed = microtime(true) - $time;
 

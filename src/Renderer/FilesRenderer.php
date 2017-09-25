@@ -37,6 +37,7 @@ class FilesRenderer extends PostsRenderer
             ->in('./')
             ->notPath('/^_/')
             ->files()
+            ->name('index.html')
             ->notName('/^_/')
             ->notName('*.css')
             ->notName('*.scss')
@@ -48,7 +49,7 @@ class FilesRenderer extends PostsRenderer
         foreach ($finder as $file) {
             $page = new Page($file, $this->config);
 
-            $rendered = @$this->renderPage($page);
+            $rendered = $this->renderPage($page);
 
             $dir = str_replace('//', '/', './_site/'.pathinfo($page->getPath(),PATHINFO_DIRNAME));
             if (!is_dir($dir)) {
