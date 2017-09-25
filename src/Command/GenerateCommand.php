@@ -45,6 +45,7 @@ class GenerateCommand extends Command
         $postsRenderer = new PostsRenderer($config, $style);
         try {
             $posts = $postsRenderer->render();
+
             usort($posts, function($a, $b) {
                 return $a->getDate() < $b->getDate();
             });

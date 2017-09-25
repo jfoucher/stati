@@ -132,13 +132,11 @@ class Post
             'site' => $this->siteConfig,
         ];
         if (isset($this->siteConfig['paginate']) && isset($this->siteConfig['paginator'])) {
-            var_dump('PAGINATOR');
-            var_dump(count($this->siteConfig['paginator']->posts));
             $config['paginator'] = $this->siteConfig['paginator'];
         }
         $liquidParsed = $template->render($config);
         $this->content = $markdownParser->text($liquidParsed);
-        file_put_contents($cacheDir.md5($contentPart), $this->content);
+        file_put_contents($cacheDir.md5($content), $this->content);
         return $this->content;
     }
 
