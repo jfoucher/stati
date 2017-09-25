@@ -4,6 +4,7 @@ namespace Stati\Command;
 
 
 use Stati\Exception\FileNotFoundException;
+use Stati\Paginator\Paginator;
 use Stati\Renderer\FilesRenderer;
 use Stati\Renderer\PostsRenderer;
 use Symfony\Component\Console\Command\Command;
@@ -39,18 +40,25 @@ class GenerateCommand extends Command
         if (!is_dir('./_site')) {
             mkdir('./_site');
         }
-
-        $postsRenderer = new PostsRenderer($config);
+        $time = microtime(true);
+        $style->section('Generating posts');
+        $postsRenderer = new PostsRenderer($config, $style);
         try {
             $posts = $postsRenderer->render();
         } catch (FileNotFoundException $err) {
             $posts = [];
             $style->error($err->getMessage());
         }
-
-        $style->title(count($posts).' post'.((count($posts) > 1 || count($posts) === 0) ? 's' : '').' rendered and saved');
-        $filesRenderer = new FilesRenderer($config);
+        $style->text('');
+        $style->text('');
+        $style->section('Generating files');
+        $paginator = new Paginator($posts, $config);
+        $filesRenderer = new FilesRenderer($config, $style);
         $filesRenderer->render();
+        $elapsed = microtime(true) - $time;
+
+        $style->text('');
+        $style->title('Generated in '.number_format($elapsed, 2).'s');
     }
 
 }

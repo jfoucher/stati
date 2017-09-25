@@ -15,8 +15,9 @@ use Stati\Parser\ContentParser;
 use Stati\Parser\MarkdownParser;
 use Liquid\Template;
 use Liquid\Liquid;
-use Stati\LiquidBlock\Highlight;
-use Stati\LiquidTag\PostUrl;
+use Stati\Liquid\Block\Highlight;
+use Stati\Liquid\Tag\PostUrl;
+use Liquid\Cache\File;
 
 class Post
 {
@@ -109,21 +110,29 @@ class Post
             return $this->content;
         }
 
+        $cacheDir = '/tmp/post_cache/';
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir);
+        }
+
         $parser = new ContentParser();
         $markdownParser = new MarkdownParser();
         $contentPart = $parser::parse($this->file->getContents());
-        $template = new Template('./_includes/');
+        if (is_file($cacheDir.md5($contentPart))) {
+            return file_get_contents($cacheDir.md5($contentPart));
+        }
+        $template = new Template('./_includes/', new File(['cache_dir' => '/tmp/']));
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->parse($contentPart);
         $config = [
             'page' => $this,
             'post' => $this,
-            'site' => $this->siteConfig
+            'site' => $this->siteConfig,
         ];
         $liquidParsed = $template->render($config);
         $this->content = $markdownParser->text($liquidParsed);
-
+        file_put_contents($cacheDir.md5($contentPart), $this->content);
         return $this->content;
     }
 
@@ -338,7 +347,7 @@ class Post
         if ($item === 'date') {
             return $this->getDate()->format(DATE_RFC3339);
         }
-        if (method_exists(Post::class,'get'.ucfirst($item))) {
+        if (method_exists(self::class,'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
         if (isset($this->getFrontMatter()[$item])) {

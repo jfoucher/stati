@@ -9,19 +9,18 @@
 
 namespace Stati\Renderer;
 
+use Liquid\Cache\File;
+use Stati\Pygments\Pygments;
 use Stati\Entity\Post;
 use Stati\Exception\FileNotFoundException;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Liquid\Template;
 use Liquid\Liquid;
-use Stati\Parser\MarkdownParser;
-use Stati\Link\Generator;
-use Stati\LiquidBlock\Highlight;
-use Symfony\Component\Finder\SplFileInfo;
+use Stati\Liquid\Block\Highlight;
 use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
-use Stati\LiquidTag\PostUrl;
-use Liquid\Cache\File;
+use Stati\Liquid\Tag\PostUrl;
 
 class PostsRenderer
 {
@@ -30,9 +29,18 @@ class PostsRenderer
      */
     protected $config;
 
-    public function __construct(array $config)
+    /**
+     * @var SymfonyStyle
+     */
+    protected $style;
+
+    protected $pygments;
+
+    public function __construct(array $config, SymfonyStyle $style = null)
     {
         $this->config = $config;
+        $this->style = $style;
+        $this->pygments = new Pygments();
     }
 
     public function render()
@@ -45,10 +53,12 @@ class PostsRenderer
         ->name('/(\.mkd|\.md|\.markdown)$/');
         //            ->name('/\.md$/');
 
-        $linkGenerator = new Generator($this->config);
         $posts = [];
-        foreach ($finder as $file) {
+        $pb = $this->style->createProgressBar($finder->count());
 
+        foreach ($finder as $file) {
+            $time = microtime(true);
+            $_SERVER['pygments'] = $this->pygments;
             $post = new Post($file, $this->config);
             $posts[] = $post;
             //Put rendered file in _site directory, in it's right place
@@ -59,12 +69,15 @@ class PostsRenderer
             $content = $this->renderPage($post);
 
             file_put_contents('./_site'.$post->getPath(), $content);
+//            $this->style->text($post->getSlug().' generated in '.number_format(microtime(true) - $time, 2).'s');
+            $pb->advance();
         }
+        $pb->finish();
         return $posts;
     }
 
 
-    private function renderPage(Post $post)
+    protected function renderPage(Post $post)
     {
         Liquid::set('INCLUDE_ALLOW_EXT', true);
         Liquid::set('INCLUDE_PREFIX', './_includes/');
@@ -78,7 +91,7 @@ class PostsRenderer
                 'content' => $content,
                 'page' => $post,
                 'post' => $post,
-                'site' => $this->config
+                'site' => $this->config,
             ];
 
             try {
@@ -91,7 +104,7 @@ class PostsRenderer
         return $content;
     }
 
-    private function renderWithLayout($layoutFile, $config)
+    protected function renderWithLayout($layoutFile, $config)
     {
 
         $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
@@ -102,7 +115,7 @@ class PostsRenderer
         $layoutContent = ContentParser::parse($layout);
 
         if (isset($layoutFrontMatter['layout'])) {
-            $template = new Template('./_includes/');
+            $template = new Template('./_includes/', new File(['cache_dir' => '/tmp/']));
             $template->registerTag('highlight', Highlight::class);
             $template->registerTag('post_url', PostUrl::class);
             $template->parse($layoutContent);
@@ -110,7 +123,7 @@ class PostsRenderer
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
-        $template = new Template('./_includes/');
+        $template = new Template('./_includes/', new File(['cache_dir' => '/tmp/']));
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->parse($layoutContent);

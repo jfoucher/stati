@@ -7,13 +7,15 @@
  * Time: 00:02
  */
 
-namespace Stati\LiquidTag;
+namespace Stati\Liquid\Tag;
 
 use Liquid\AbstractTag;
 use Liquid\Context;
+use Stati\Exception\FileNotFoundException;
 use Stati\Link\Generator;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Finder\Finder;
+use Stati\Entity\Post;
 
 class PostUrl extends AbstractTag
 {
@@ -29,6 +31,9 @@ class PostUrl extends AbstractTag
                 ->in('./_posts/')
                 ->name($pattern)
                 ;
+            if ($finder->count() === 0) {
+                throw new FileNotFoundException('Could not find the post to link to');
+            }
             foreach ($finder as $f) {
                 $file = $f;
             }
@@ -36,10 +41,10 @@ class PostUrl extends AbstractTag
             $file = new SplFileInfo('./_posts/'.$post, '_posts/', $post);
         }
 
-        if (!$file) {
+        if (!isset($file) || $file === null) {
             return '';
         }
-        $linkGenerator = new Generator($context->get('site'));
-        return $linkGenerator->getUrlForFile($file, 'post');
+        $post = new Post($file, $context->get('site'));
+        return $post->getUrl();
     }
 }
