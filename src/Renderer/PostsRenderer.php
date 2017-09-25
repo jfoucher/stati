@@ -21,6 +21,7 @@ use Stati\Liquid\Block\Highlight;
 use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
 use Stati\Liquid\Tag\PostUrl;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class PostsRenderer
 {
@@ -54,7 +55,9 @@ class PostsRenderer
         //            ->name('/\.md$/');
 
         $posts = [];
-        $pb = $this->style->createProgressBar($finder->count());
+        if ($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+            $pb = $this->style->createProgressBar($finder->count());
+        }
 
         foreach ($finder as $file) {
             $time = microtime(true);
@@ -69,10 +72,16 @@ class PostsRenderer
             $content = $this->renderPage($post);
 
             file_put_contents('./_site'.$post->getPath(), $content);
-//            $this->style->text($post->getSlug().' generated in '.number_format(microtime(true) - $time, 2).'s');
-            $pb->advance();
+            if ($this->style->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
+                $this->style->text($post->getSlug().' generated in '.number_format(microtime(true) - $time, 2).'s');
+            }
+            if ($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+                $pb->advance();
+            }
         }
-        $pb->finish();
+        if ($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+            $pb->finish();
+        }
         return $posts;
     }
 

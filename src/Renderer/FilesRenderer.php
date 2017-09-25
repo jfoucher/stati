@@ -10,6 +10,7 @@
 namespace Stati\Renderer;
 
 use Stati\Entity\Page;
+use Stati\Entity\Sass;
 use Symfony\Component\Finder\Finder;
 use Stati\Liquid\Template;
 use Liquid\Liquid;
@@ -21,7 +22,7 @@ use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
 use Stati\Liquid\Tag\PostUrl;
 use Liquid\Cache\File;
-
+use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Copies files and folders that do not start with _ and do not have frontmatter
  * Class FilesRenderer
@@ -37,17 +38,21 @@ class FilesRenderer extends PostsRenderer
             ->in('./')
             ->notPath('/^_/')
             ->files()
-            ->name('index.html')
             ->notName('/^_/')
-            ->notName('*.css')
-            ->notName('*.scss')
-            ->notName('*.less')
             ->contains('/---\s+(.*)\s+---\s+/s');
-
-        $pb = $this->style->createProgressBar($finder->count());
+        if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+            $pb = $this->style->createProgressBar($finder->count());
+        }
 
         foreach ($finder as $file) {
-            $page = new Page($file, $this->config);
+            if($this->style->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
+                $this->style->text($file->getRelativePathname());
+            }
+            if ($file->getExtension() === "scss" || $file->getExtension() === "sass") {
+                $page = new Sass($file, $this->config);
+            } else {
+                $page = new Page($file, $this->config);
+            }
 
             $rendered = $this->renderPage($page);
 
@@ -56,9 +61,13 @@ class FilesRenderer extends PostsRenderer
                 mkdir($dir, 0775, true);
             }
             file_put_contents(str_replace('//', '/', './_site/'.$page->getPath()), $rendered);
-            $pb->advance();
+            if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+                $pb->advance();
+            }
         }
-        $pb->finish();
+        if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
+            $pb->finish();
+        }
         return count($finder);
     }
 }
