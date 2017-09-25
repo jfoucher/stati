@@ -5,6 +5,7 @@ namespace Stati\Command;
 
 use Stati\Exception\FileNotFoundException;
 use Stati\Paginator\Paginator;
+use Stati\Renderer\DirectoryRenderer;
 use Stati\Renderer\FilesRenderer;
 use Stati\Renderer\PostsRenderer;
 use Symfony\Component\Console\Command\Command;
@@ -59,6 +60,9 @@ class GenerateCommand extends Command
         $paginator = new Paginator($posts, $config);
         $filesRenderer = new FilesRenderer(array_merge($config, ['paginator' => $paginator]), $style);
         $filesRenderer->render();
+        $style->section('Generating Directories');
+        $dirRenderer = new DirectoryRenderer($config, $style);
+        $dirRenderer->render();
         $elapsed = microtime(true) - $time;
 
         $style->text('');

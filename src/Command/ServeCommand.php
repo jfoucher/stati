@@ -31,8 +31,10 @@ class ServeCommand extends Command
     {
         $input = new ArrayInput([]);
         $output = new ConsoleOutput();
+
         $application = new Application('Stati', '@package_version@');
         $application->add(new GenerateCommand());
+
         $command = $application->find('generate');
         $returnCode = $command->run($input, $output);
         if ($returnCode === 0) {

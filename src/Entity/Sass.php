@@ -32,9 +32,6 @@ class Sass extends Page
         $sassDir = (isset($this->siteConfig['sass']) && isset($this->siteConfig['sass']['sass_dir'])) ? $this->siteConfig['sass']['sass_dir'] : './_sass/';
         $sassStyle = (isset($this->siteConfig['sass']) && isset($this->siteConfig['sass']['style'])) ? $this->siteConfig['sass']['style'] : './_sass/';
 
-//        $compiler = new Compiler();
-//        $compiler->setImportPaths(['./_sass/']);
-//        $compiler->setIgnoreErrors(true);
         $parser = new ContentParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);

@@ -102,7 +102,7 @@ class Paginator
             if ($this->previous_page === null) {
                 return null;
             }
-            return str_replace(':num', $this->previous_page, $this->config['paginate_path']);
+            return str_replace('//', '/', '/'.str_replace(':num', $this->previous_page, $this->config['paginate_path']));
         }
 
         if ($item === 'next_page') {
@@ -115,15 +115,20 @@ class Paginator
             if ($this->next_page === null) {
                 return null;
             }
-            return str_replace(':num', $this->next_page, $this->config['paginate_path']);
+            return str_replace('//', '/', '/'.str_replace(':num', $this->next_page, $this->config['paginate_path']));
         }
 
         return null;
     }
+//
+//    public function __toString()
+//    {
+//        return (string)count($this->posts);
+//    }
 
-    public function __toString()
+    public function get($item)
     {
-        return (string)count($this->posts);
+        return $this->__get($item);
     }
 
     /**

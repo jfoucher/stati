@@ -48,10 +48,11 @@ class PostsRenderer
     {
         // Get top level files and parse
         $finder = new Finder();
-        $finder->depth(' <= 1')
-        ->files()
-        ->in('./_posts/')
-        ->name('/(\.mkd|\.md|\.markdown)$/');
+        $finder
+//            ->depth(' <= 1')
+            ->files()
+            ->in('./_posts/')
+            ->name('/(\.mkd|\.md|\.markdown)$/');
         //            ->name('/\.md$/');
 
         $posts = [];
