@@ -192,7 +192,12 @@ class Post
             return $this->url;
         }
 
-        $this->url = str_replace('//','/', $this->getPath());
+        $path = $this->getPath();
+        $this->url = str_replace('//','/', $path);
+        if (substr($path, -10) === 'index.html') {
+            $path = substr($path, 0, -10);
+        }
+        $this->url = $path;
         return $this->url;
 
     }
@@ -259,6 +264,12 @@ class Post
 
                 $link = str_replace($token, $replace, $link);
             }
+        }
+
+        // if link ends with / we should put an index.html file in that directory
+
+        if (substr($link, -1) === '/') {
+            $link .= '/index.html';
         }
 
         $this->setPath($link);
