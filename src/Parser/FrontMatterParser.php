@@ -28,8 +28,6 @@ class FrontMatterParser
 
             } catch(InvalidArgumentException $e) {
                 // This is not YAML
-                var_dump('ERROR PARSING YAML');
-                var_dump($e->getMessage());
                 return [];
             }
         }

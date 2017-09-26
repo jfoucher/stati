@@ -29,19 +29,18 @@ class ServeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $application = new Application('Stati', '@package_version@');
         $application->add(new GenerateCommand());
 
         $command = $application->find('generate');
         $returnCode = $command->run(new ArrayInput([]), new ConsoleOutput($output->getVerbosity()));
+        $style = new SymfonyStyle($input, $output);
         if ($returnCode === 0) {
-            $output->writeln('');
-            $output->writeln('');
-            $output->writeln('');
-            $output->writeln('Stati is now serving your website');
-            $output->writeln('Open http://localhost:4000 to view it');
-            $output->writeln('Press Ctrl-C to quit.');
+            $style->success([
+                'Stati is now serving your website',
+                'Open http://localhost:4000 to view it',
+                'Press Ctrl-C to quit.'
+            ]);
             shell_exec('cd _site && php -S localhost:4000 &');
 
         }

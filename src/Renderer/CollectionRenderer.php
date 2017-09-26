@@ -35,7 +35,6 @@ class CollectionRenderer extends Renderer
                  * @var Page $doc
                  */
                 $doc->setSite($this->site);
-                var_dump($doc->getPath());
                 $docs[] = $this->render($doc);
             }
             $collection->setDocs($docs);

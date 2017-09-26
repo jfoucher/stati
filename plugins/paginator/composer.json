@@ -1,0 +1,14 @@
+{
+    "name": "stati/paginator",
+    "description": "A paginator plugin for Stati",
+    "authors": [
+        {
+            "name": "jfoucher",
+            "email": "jfoucher@6px.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Stati\\Plugin\\Paginator": "src/", "Stati\\Plugin\\Paginator\\Tests\\": "tests/"}
+    },
+    "require": {}
+}

@@ -50,7 +50,6 @@ class Generator
         ];
 
         $link = $this->pathFromFrontMatter($link, $linkConfig);
-        var_dump($link);
         return $link;
     }
 

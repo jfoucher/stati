@@ -29,7 +29,6 @@ class PageRenderer extends Renderer
              * @var Page $page
              */
             $page->setSite($this->site);
-            var_dump($page->getPath());
             $pages[] = $this->render($page);
         }
         return $pages;

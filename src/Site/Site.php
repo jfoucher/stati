@@ -53,6 +53,11 @@ class Site
     /**
      * @var array
      */
+    private $plugins = [];
+
+    /**
+     * @var array
+     */
     protected $collections;
 
     public function __construct(array $config){
@@ -70,13 +75,11 @@ class Site
 
     public function reset() {
         $fs = new Filesystem();
-        var_dump($this->getDestination());
         $fs->remove($this->getDestination());
         $fs->mkdir($this->getDestination());
     }
 
     public function generate() {
-        echo 'DO GENERATE HERE'."\r\n";
     }
 
     public function write() {
@@ -122,8 +125,7 @@ class Site
     }
 
     public function render() {
-        echo 'DO RENDER HERE'."\r\n";
-        //Render PAges
+        //Render Pages
         $pageRenderer = new PageRenderer($this);
         $this->setPages($pageRenderer->renderAll());
 
@@ -140,48 +142,27 @@ class Site
      */
     public function __get($item)
     {
-        if($item === 'projects') {
-            var_dump('GETTING FROM SITE '.$item);
-        }
-
         $getter = implode('', array_map(function($part){
             return ucfirst($part);
         }, explode('_', $item)));
         $field = lcfirst($getter);
-        if($item === 'projects') {
-            var_dump('FIELD IS '.$field);
-        }
+
         //If the property exists, return it
         if (property_exists(self::class, $field)) {
-            if($item === 'projects') {
-                var_dump('FROM FIELD '.$field);
-                var_dump($this->{$field});
-            }
+
             return $this->{$field};
         }
         //If the method exists, return it
         if (method_exists(self::class, 'get'.$getter)) {
-            if($item === 'projects') {
-                var_dump('FROM GETTER get'.$getter);
-                var_dump($this->{'get'.$getter}());
-            }
             return $this->{'get'.$getter}();
         }
         // If this is a config item, return it;
         if (isset($this->config[$item])) {
-            if($item === 'projects') {
-                var_dump('FROM CONFIG '.$item);
-                var_dump($this->config[$item]);
-            }
             return $this->config[$item];
         }
 
         // If it's a collection, return the corresponding one
         if (isset($this->collections[$item])) {
-            if($item === 'projects') {
-                var_dump('FROM Collections '.$item);
-                var_dump($this->collections[$item]);
-            }
             return $this->collections[$item]->getDocs();
         }
 
@@ -299,5 +280,9 @@ class Site
         $this->collections = $collections;
     }
 
+    public function addPlugin($plugin)
+    {
+        $this->plugins[] = $plugin;
+    }
 
 }

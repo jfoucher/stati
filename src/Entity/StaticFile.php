@@ -21,8 +21,6 @@ class StaticFile extends SplFileInfo
             return $this->getMTime();
         }
         if ($item === 'name') {
-            var_dump('GETTING NAME');
-            var_dump($this->getBasename());
             return $this->getBasename();
         }
         if ($item === 'basename') {
