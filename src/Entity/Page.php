@@ -25,6 +25,10 @@ class Page extends Post
         if ($extension === 'md' || $extension === 'markdown' || $extension == 'mkd') {
             $extension = 'html';
         }
-        return str_replace('//', '/','/'.$this->file->getRelativePath().'/'.pathinfo($this->file->getBasename(), PATHINFO_FILENAME).'.'.$extension);
+        $fname = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
+        if(substr($fname, -5) === '.html') {
+            $fname = pathinfo($fname, PATHINFO_FILENAME);
+        }
+        return str_replace('//', '/','/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
     }
 }
