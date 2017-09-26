@@ -33,12 +33,14 @@ class GenerateCommand extends Command
         $style = new SymfonyStyle($input, $output);
         // Read config file
         $configFile = './_config.yml';
+
         if (is_file($configFile)) {
             $config = Yaml::parse(file_get_contents($configFile));
         } else {
             $style->error('No config file present. Are you in a jekyll directory ?');
             return 1;
         }
+
         $finder = new Finder();
         $finder
             ->in('./')
@@ -52,13 +54,16 @@ class GenerateCommand extends Command
         foreach ($finder as $file) {
             $config['static_files'][] = new StaticFile($file->getPathname(), $file->getRelativePath(), $file->getRelativePathname());
         }
+
         // Create _site directory
         if (!is_dir('./_site')) {
             mkdir('./_site');
         }
+
         $time = microtime(true);
         $style->section('Generating posts');
         $postsRenderer = new PostsRenderer($config, $style);
+
         try {
             $posts = $postsRenderer->render();
 
@@ -69,6 +74,7 @@ class GenerateCommand extends Command
             $posts = [];
             $style->error($err->getMessage());
         }
+        $config['posts'] = $posts;
         if (isset($config['paginate']) && count($posts) > 0) {
             $paginator = new Paginator($posts, $config);
             $config = array_merge($config, ['paginator' => $paginator]);
