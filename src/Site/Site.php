@@ -16,6 +16,10 @@ use Stati\Reader\StaticFileReader;
 use Stati\Reader\PageReader;
 use Stati\Renderer\CollectionRenderer;
 use Stati\Renderer\PageRenderer;
+use Stati\Writer\CollectionWriter;
+use Stati\Writer\StaticFileWriter;
+use Stati\Writer\PageWriter;
+use Symfony\Component\Filesystem\Filesystem;
 
 class Site
 {
@@ -65,7 +69,10 @@ class Site
     }
 
     public function reset() {
-        echo 'DO SITE RESET HERE'."\r\n";
+        $fs = new Filesystem();
+        var_dump($this->getDestination());
+        $fs->remove($this->getDestination());
+        $fs->mkdir($this->getDestination());
     }
 
     public function generate() {
@@ -73,7 +80,17 @@ class Site
     }
 
     public function write() {
-        echo 'DO WRITE HERE'."\r\n";
+        // Write static files
+        $staticFileWriter = new StaticFileWriter($this);
+        $staticFileWriter->writeAll();
+
+        // Write Collection files
+        $collectionWriter = new CollectionWriter($this);
+        $collectionWriter->writeAll();
+
+        // Write Page files
+        $pageWriter = new PageWriter($this);
+        $pageWriter->writeAll();
     }
 
     public function read() {
@@ -87,6 +104,12 @@ class Site
                 'permalink' => $this->permalink
             ]
         ];
+
+        /*
+         * TODO make sure each item in the collection config is an array
+         * because jekyll supports the collections_dir: my_collections
+         * configuration option
+         */
         if (isset($this->config['collections'])) {
             $collections = array_merge($collections, $this->config['collections']);
         }
@@ -121,9 +144,10 @@ class Site
             var_dump('GETTING FROM SITE '.$item);
         }
 
-        $field = lcfirst(implode('', array_map(function($part){
+        $getter = implode('', array_map(function($part){
             return ucfirst($part);
-        }, explode('_', $item))));
+        }, explode('_', $item)));
+        $field = lcfirst($getter);
         if($item === 'projects') {
             var_dump('FIELD IS '.$field);
         }
@@ -134,6 +158,14 @@ class Site
                 var_dump($this->{$field});
             }
             return $this->{$field};
+        }
+        //If the method exists, return it
+        if (method_exists(self::class, 'get'.$getter)) {
+            if($item === 'projects') {
+                var_dump('FROM GETTER get'.$getter);
+                var_dump($this->{'get'.$getter}());
+            }
+            return $this->{'get'.$getter}();
         }
         // If this is a config item, return it;
         if (isset($this->config[$item])) {
@@ -159,6 +191,13 @@ class Site
     public function get($item)
     {
         return $this->__get($item);
+    }
+
+    public function getDestination() {
+        if (isset($this->config['destination'])) {
+            return $this->config['destination'];
+        }
+        return './_site/';
     }
 
     /**

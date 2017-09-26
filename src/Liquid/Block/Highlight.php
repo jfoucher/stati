@@ -17,7 +17,7 @@ class Highlight extends AbstractBlock
 {
     public function render(Context $context)
     {
-        $pygments = $context->environments[1]['pygments'];
+        $pygments = new Pygments();
         $markup = explode(' ', trim($this->markup));
         $language = $markup[0];
         $options = [];

@@ -103,16 +103,22 @@ class Doc
         // Try to get date from filename
         try {
             $this->date = new \DateTime(substr($this->file->getBasename(), 0, 10));
+            return $this->date;
         } catch (\Exception $err) {
             // echo $err->getMessage()."\r\n";
         }
         //try to get date from frontMatter
-        $dateString = $this->getFrontMatter()['date'];
-        try {
-            $this->date = new \DateTime($dateString);
-        } catch (\Exception $err) {
-            // echo $err->getMessage()."\r\n";
+        $fr = $this->getFrontMatter();
+        if (isset($fr['date'])) {
+            $dateString = $fr['date'];
+            try {
+                $this->date = new \DateTime($dateString);
+                return $this->date;
+            } catch (\Exception $err) {
+                // echo $err->getMessage()."\r\n";
+            }
         }
+
         return $this->date;
     }
 
