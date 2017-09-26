@@ -39,6 +39,7 @@ class FilesRenderer extends PostsRenderer
             ->notPath('/^_/')
             ->files()
             ->notName('/^_/')
+            ->notPath('node_modules')
 //            ->notName('index.html')
             ->contains('/---\s+(.*)\s+---\s+/s');
         if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {

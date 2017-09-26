@@ -24,6 +24,7 @@ class DirectoryRenderer extends PostsRenderer
             ->in('./')
             ->depth('== 0')
             ->notPath('/^_/')
+            ->notPath('node_modules')
             ->directories()
             ->notName('/^_/');
         if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {

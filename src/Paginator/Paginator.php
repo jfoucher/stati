@@ -51,7 +51,6 @@ class Paginator
      */
     public function __construct(array $posts, array $config)
     {
-
         $this->posts = $posts;
         $this->config = $config;
         $this->per_page = $config['paginate'];

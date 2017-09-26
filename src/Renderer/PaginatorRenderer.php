@@ -35,6 +35,7 @@ class PaginatorRenderer extends PostsRenderer
         $finder
             ->in('./')
             ->files()
+            ->notPath('node_modules')
             ->notPath('/^_/')
             ->name('index.html')
 //            ->contains('/\{(\{|%){1}\s*paginator([^}])*(\}|%){1}\}/')

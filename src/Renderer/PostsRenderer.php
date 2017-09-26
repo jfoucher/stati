@@ -46,6 +46,9 @@ class PostsRenderer
 
     public function render()
     {
+        if (!is_dir('./_posts')) {
+            return [];
+        }
         // Get top level files and parse
         $finder = new Finder();
         $finder
