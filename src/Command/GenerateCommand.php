@@ -12,9 +12,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Stati\Entity\StaticFile;
 use Symfony\Component\Yaml\Yaml;
 use Stati\Renderer\PaginatorRenderer;
-
+use Symfony\Component\Finder\Finder;
 
 class GenerateCommand extends Command
 {
@@ -38,6 +39,19 @@ class GenerateCommand extends Command
             $style->error('No config file present. Are you in a jekyll directory ?');
             return 1;
         }
+        $finder = new Finder();
+        $finder
+            ->in('./')
+            ->files()
+            ->notPath('/^_/')
+            ->notPath('node_modules')
+            ->notContains('/---\s+(.*)\s+---\s+/s')
+            ->notName('/^_/');
+
+        $config['static_files'] = [];
+        foreach ($finder as $file) {
+            $config['static_files'][] = new StaticFile($file->getPathname(), $file->getRelativePath(), $file->getRelativePathname());
+        }
         // Create _site directory
         if (!is_dir('./_site')) {
             mkdir('./_site');
@@ -55,14 +69,20 @@ class GenerateCommand extends Command
             $posts = [];
             $style->error($err->getMessage());
         }
+        if (isset($config['paginate']) && count($posts) > 0) {
+            $paginator = new Paginator($posts, $config);
+            $config = array_merge($config, ['paginator' => $paginator]);
+        }
         $style->text('');
         $style->text('');
         $style->section('Generating files');
-        $paginator = new Paginator($posts, $config);
-        $filesRenderer = new FilesRenderer(array_merge($config, ['paginator' => $paginator]), $style);
+
+        $filesRenderer = new FilesRenderer($config, $style);
         $filesRenderer->render();
+        $style->text('');
+        $style->text('');
         $style->section('Generating files with paginator');
-        $paginatorRenderer = new PaginatorRenderer(array_merge($config, ['paginator' => $paginator]), $style);
+        $paginatorRenderer = new PaginatorRenderer($config, $style);
         $paginatorRenderer->render();
         $style->text('');
         $style->text('');
