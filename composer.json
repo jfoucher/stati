@@ -1,6 +1,6 @@
 {
-    "name": "jonathan/static",
-    "description": "Static site generator",
+    "name": "stati/stati",
+    "description": "Static site generator compatible with any jekyll site",
     "authors": [
         {
             "name": "jfoucher",
