@@ -10,7 +10,6 @@
 namespace Stati\Entity;
 
 use Stati\Entity\Page;
-use Leafo\ScssPhp\Compiler;
 use Stati\Parser\ContentParser;
 
 class Sass extends Page
@@ -29,14 +28,14 @@ class Sass extends Page
             mkdir($cacheDir);
         }
 
-        $sassDir = (isset($this->siteConfig['sass']) && isset($this->siteConfig['sass']['sass_dir'])) ? $this->siteConfig['sass']['sass_dir'] : './_sass/';
-        $sassStyle = (isset($this->siteConfig['sass']) && isset($this->siteConfig['sass']['style'])) ? $this->siteConfig['sass']['style'] : './_sass/';
+        $sassDir = ($this->site->sass && isset($this->site->sass['sass_dir'])) ? $this->site->sass['sass_dir'] : './_sass/';
+        $sassStyle = ($this->site->sass && isset($this->site->sass['style'])) ? $this->site->sass['style'] : 'nested';
 
         $parser = new ContentParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
         if (is_file($cacheDir.md5($content.$sassDir.$sassStyle))) {
-//            return file_get_contents($cacheDir.md5($content));
+            return file_get_contents($cacheDir.md5($content.$sassDir.$sassStyle));
         }
         $this->content = shell_exec('echo \''.$contentPart.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
         file_put_contents($cacheDir.md5($content.$sassDir.$sassStyle), $this->content);

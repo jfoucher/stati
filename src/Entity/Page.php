@@ -16,9 +16,8 @@ use Stati\Parser\MarkdownParser;
 use Liquid\Template;
 use Liquid\Liquid;
 
-class Page extends Post
+class Page extends Doc
 {
-
     public function getPath()
     {
         $extension = $this->file->getExtension();

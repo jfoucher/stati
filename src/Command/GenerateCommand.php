@@ -5,9 +5,11 @@ namespace Stati\Command;
 
 use Stati\Exception\FileNotFoundException;
 use Stati\Paginator\Paginator;
+use Stati\Renderer\CollectionReader;
 use Stati\Renderer\DirectoryRenderer;
-use Stati\Renderer\FilesRenderer;
-use Stati\Renderer\PostsRenderer;
+use Stati\Renderer\PageRenderer;
+use Stati\Renderer\PostRenderer;
+use Stati\Site\Site;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,6 +32,7 @@ class GenerateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $time = microtime(true);
         $style = new SymfonyStyle($input, $output);
         // Read config file
         $configFile = './_config.yml';
@@ -41,65 +44,14 @@ class GenerateCommand extends Command
             return 1;
         }
 
-        $finder = new Finder();
-        $finder
-            ->in('./')
-            ->files()
-            ->notPath('/^_/')
-            ->notPath('node_modules')
-            ->notContains('/---\s+(.*)\s+---\s+/s')
-            ->notName('/^_/');
+        $site = new Site($config);
+        $site->process();
 
-        $config['static_files'] = [];
-        foreach ($finder as $file) {
-            $config['static_files'][] = new StaticFile($file->getPathname(), $file->getRelativePath(), $file->getRelativePathname());
-        }
-
-        // Create _site directory
-        if (!is_dir('./_site')) {
-            mkdir('./_site');
-        }
-
-        $time = microtime(true);
-        $style->section('Generating posts');
-        $postsRenderer = new PostsRenderer($config, $style);
-
-        try {
-            $posts = $postsRenderer->render();
-
-            usort($posts, function($a, $b) {
-                return $a->getDate() < $b->getDate();
-            });
-        } catch (FileNotFoundException $err) {
-            $posts = [];
-            $style->error($err->getMessage());
-        }
-        $config['posts'] = $posts;
-        if (isset($config['paginate']) && count($posts) > 0) {
-            $paginator = new Paginator($posts, $config);
-            $config = array_merge($config, ['paginator' => $paginator]);
-        }
-        $style->text('');
-        $style->text('');
-        $style->section('Generating files');
-
-        $filesRenderer = new FilesRenderer($config, $style);
-        $pages = $filesRenderer->render();
-        $config['pages'] = $pages;
-        $style->text('');
-        $style->text('');
-        $style->section('Generating files with paginator');
-        $paginatorRenderer = new PaginatorRenderer($config, $style);
-        $paginatorRenderer->render();
-        $style->text('');
-        $style->text('');
-        $style->section('Generating Directories');
-        $dirRenderer = new DirectoryRenderer($config, $style);
-        $dirRenderer->render();
         $elapsed = microtime(true) - $time;
 
         $style->text('');
         $style->title('Generated in '.number_format($elapsed, 2).'s');
+        return 0;
     }
 
 }

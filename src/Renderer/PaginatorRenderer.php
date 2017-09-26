@@ -26,7 +26,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class FilesRenderer
  * @package Stati\Renderer
  */
-class PaginatorRenderer extends PostsRenderer
+class PaginatorRenderer extends PostRenderer
 {
     public function render()
     {
