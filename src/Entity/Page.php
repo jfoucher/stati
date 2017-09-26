@@ -15,8 +15,6 @@ use Stati\Parser\ContentParser;
 use Stati\Parser\MarkdownParser;
 use Liquid\Template;
 use Liquid\Liquid;
-use Stati\LiquidBlock\Highlight;
-use Stati\LiquidTag\PostUrl;
 
 class Page extends Post
 {

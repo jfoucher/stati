@@ -98,6 +98,10 @@ class Paginator
             return null;
         }
 
+        if ($item === 'paginate_path') {
+            return $this->config['paginate_path'];
+        }
+
         if ($item === 'previous_page_path') {
             if ($this->previous_page === null) {
                 return null;
@@ -116,6 +120,13 @@ class Paginator
                 return null;
             }
             return str_replace('//', '/', '/'.str_replace(':num', $this->next_page, $this->config['paginate_path']));
+        }
+
+        if ($item === 'current_page_path') {
+            if ($this->page === null) {
+                return null;
+            }
+            return str_replace('//', '/', '/'.str_replace(':num', $this->page, $this->config['paginate_path']));
         }
 
         return null;

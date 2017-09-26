@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
+use Stati\Renderer\PaginatorRenderer;
 
 
 class GenerateCommand extends Command
@@ -60,6 +61,11 @@ class GenerateCommand extends Command
         $paginator = new Paginator($posts, $config);
         $filesRenderer = new FilesRenderer(array_merge($config, ['paginator' => $paginator]), $style);
         $filesRenderer->render();
+        $style->section('Generating files with paginator');
+        $paginatorRenderer = new PaginatorRenderer(array_merge($config, ['paginator' => $paginator]), $style);
+        $paginatorRenderer->render();
+        $style->text('');
+        $style->text('');
         $style->section('Generating Directories');
         $dirRenderer = new DirectoryRenderer($config, $style);
         $dirRenderer->render();

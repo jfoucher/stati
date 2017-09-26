@@ -38,8 +38,8 @@ class FilesRenderer extends PostsRenderer
             ->in('./')
             ->notPath('/^_/')
             ->files()
-            ->name('index.html')
             ->notName('/^_/')
+//            ->notName('index.html')
             ->contains('/---\s+(.*)\s+---\s+/s');
         if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
             $pb = $this->style->createProgressBar($finder->count());

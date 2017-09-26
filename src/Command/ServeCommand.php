@@ -29,14 +29,12 @@ class ServeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $input = new ArrayInput([]);
-        $output = new ConsoleOutput();
 
         $application = new Application('Stati', '@package_version@');
         $application->add(new GenerateCommand());
 
         $command = $application->find('generate');
-        $returnCode = $command->run($input, $output);
+        $returnCode = $command->run(new ArrayInput([]), new ConsoleOutput($output->getVerbosity()));
         if ($returnCode === 0) {
             $output->writeln('');
             $output->writeln('');
