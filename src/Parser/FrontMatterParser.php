@@ -17,7 +17,7 @@ class FrontMatterParser
 {
     public static function parse($text)
     {
-        $split = preg_split("/[\n]*[-]{3}[\n]/", $text, 3, PREG_SPLIT_NO_EMPTY);
+        $split = preg_split("/[\n]*[-]{3}/", $text, 2, PREG_SPLIT_NO_EMPTY);
 
         if (count($split) > 1) {
             try {
@@ -28,6 +28,8 @@ class FrontMatterParser
 
             } catch(InvalidArgumentException $e) {
                 // This is not YAML
+                var_dump('ERROR PARSING YAML');
+                var_dump($e->getMessage());
                 return [];
             }
         }

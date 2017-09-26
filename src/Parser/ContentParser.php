@@ -17,7 +17,7 @@ class ContentParser
 {
     public static function parse($text)
     {
-        $split = preg_split("/[\n]*[-]{3}[\n]/", $text, 3, PREG_SPLIT_NO_EMPTY);
+        $split = preg_split("/[\n]*[-]{3}/", $text, 2, PREG_SPLIT_NO_EMPTY);
 
         if (is_array($split) && count($split) > 1) {
             return $split[1];
