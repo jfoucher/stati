@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "789a428ff45562153035a11f3afaa72c",
+    "content-hash": "4281a4f2500b5c646ac07d38b596d983",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -94,23 +94,25 @@
         },
         {
             "name": "liquid/liquid",
-            "version": "1.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kalimatas/php-liquid.git",
-                "reference": "61d47e74b4ddaaa1605950e8d2f2480aa394835f"
+                "url": "https://github.com/jfoucher/php-liquid.git",
+                "reference": "98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kalimatas/php-liquid/zipball/61d47e74b4ddaaa1605950e8d2f2480aa394835f",
-                "reference": "61d47e74b4ddaaa1605950e8d2f2480aa394835f",
+                "url": "https://api.github.com/repos/jfoucher/php-liquid/zipball/98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e",
+                "reference": "98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 5.3"
+                "php": ">= 5.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "friendsofphp/php-cs-fixer": "^2.6",
+                "phpunit/phpunit": "<6",
+                "satooshi/php-coveralls": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -118,7 +120,11 @@
                     "Liquid\\": "src/Liquid"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Liquid\\": "tests/Liquid"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -133,6 +139,11 @@
                 },
                 {
                     "name": "Mateo Murphy"
+                },
+                {
+                    "name": "Alexey Kopytko",
+                    "email": "alexey@kopytko.com",
+                    "homepage": "https://www.alexeykopytko.com/"
                 }
             ],
             "description": "Liquid template engine for PHP",
@@ -141,7 +152,10 @@
                 "liquid",
                 "template"
             ],
-            "time": "2017-07-17T08:03:27+00:00"
+            "support": {
+                "source": "https://github.com/jfoucher/php-liquid/tree/master"
+            },
+            "time": "2017-09-26 17:25:57"
         },
         {
             "name": "psr/log",
@@ -685,7 +699,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "liquid/liquid": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
