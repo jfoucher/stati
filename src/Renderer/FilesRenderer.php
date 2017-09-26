@@ -46,6 +46,7 @@ class FilesRenderer extends PostsRenderer
             $pb = $this->style->createProgressBar($finder->count());
         }
 
+        $files = [];
         foreach ($finder as $file) {
             if($this->style->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                 $this->style->text($file->getRelativePathname());
@@ -66,10 +67,11 @@ class FilesRenderer extends PostsRenderer
             if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
                 $pb->advance();
             }
+            $files[] = $page;
         }
         if($this->style->getVerbosity() == OutputInterface::VERBOSITY_NORMAL) {
             $pb->finish();
         }
-        return count($finder);
+        return $files;
     }
 }

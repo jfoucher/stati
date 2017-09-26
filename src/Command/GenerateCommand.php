@@ -84,7 +84,8 @@ class GenerateCommand extends Command
         $style->section('Generating files');
 
         $filesRenderer = new FilesRenderer($config, $style);
-        $filesRenderer->render();
+        $pages = $filesRenderer->render();
+        $config['pages'] = $pages;
         $style->text('');
         $style->text('');
         $style->section('Generating files with paginator');
