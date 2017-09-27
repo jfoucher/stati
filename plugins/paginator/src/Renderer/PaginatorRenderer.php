@@ -38,14 +38,14 @@ class PaginatorRenderer extends Renderer
         $file = $files['./index.html'];
 
         while ($paginator->next_page) {
-            // This is here to avoid rendering first page, which is already rendered in the site index
-            $paginator->setPage($paginator->getPage() + 1);
             // $file is index.html
             $currentPage = $paginator->getPage();
             $currentPagePath = $paginator->current_page_path;
             $page = new PaginatorPage($file, $this->site, $currentPage, $currentPagePath);
             $rendered = $this->render($page);
             $pages[] = $rendered;
+            // We now render the first page in /index.html, so this moves here
+            $paginator->setPage($paginator->getPage() + 1);
         }
         $paginator->setPage(1);
 

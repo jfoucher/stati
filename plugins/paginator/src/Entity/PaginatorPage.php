@@ -33,6 +33,11 @@ class PaginatorPage extends Doc
 
     public function getPath()
     {
+        // This overwrites the original index page
+        // TODO find a better way to do this
+        if ($this->currentPage === 1) {
+            return '/index.html';
+        }
         $extension = $this->file->getExtension();
         if ($extension !== 'html' || !$this->currentPagePath) {
             return '';
