@@ -35,12 +35,15 @@ class CollectionReader extends Reader
                 ->path(sprintf('/^_%s/', $collectionName))
                 ->files()
                 ->contains('/---\s+(.*)\s+---\s+/s');
-
+            $posts = [];
             foreach ($finder as $file) {
-                $post = new Post($file, $collectionData);
+                $posts[] = new Post($file, $collectionData);
 
-                $collection->addDoc($post);
             }
+            usort($posts, function($a, $b) {
+                return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
+            });
+            $collection->setDocs($posts);
             $collections[$collectionName] = $collection;
         }
 

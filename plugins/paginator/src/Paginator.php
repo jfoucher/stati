@@ -36,7 +36,7 @@ class Paginator extends Plugin
         if (!$site->paginate) {
             return;
         }
-        $docs = $site->getPosts()->getDocs();
+        $docs = $site->getPosts();
         usort($docs, function($a, $b) {
             return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
         });

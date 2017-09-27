@@ -64,7 +64,6 @@ class GenerateCommand extends Command
                 ->name('*.phar')
                 ->depth(' == 0')
             ;
-            var_dump(dirname($dir).'/plugins/');
             foreach ($finder as $file) {
                 //Include plugin autoloader
                 include('phar://'.dirname($dir).'/plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
@@ -87,7 +86,6 @@ class GenerateCommand extends Command
                 ->directories()
                 ->depth(' == 0')
             ;
-            var_dump($dir.'/../../plugins/');
             foreach ($finder as $file) {
                 //Include plugin autoloader
                 include($dir.'/../../plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
