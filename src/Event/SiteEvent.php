@@ -23,4 +23,13 @@ class SiteEvent extends Event
     {
         $this->site = $site;
     }
+
+    /**
+     * @return Site
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
 }
