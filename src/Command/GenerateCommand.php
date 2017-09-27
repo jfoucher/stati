@@ -53,7 +53,10 @@ class GenerateCommand extends Command
         }
 
         $this->site = new Site($config);
-        $this->getPlugins();
+        $this->registerPlugins();
+
+
+        // TODO set allowed setters for each plugin
 
         $this->site->process();
 
@@ -62,15 +65,33 @@ class GenerateCommand extends Command
         return 0;
     }
 
-    private function getPlugins()
+    private function registerPlugins()
     {
+        $plugins = [];
+
         $finder = new Finder();
         if ($dir = Phar::running(false)) {
             $finder->in(dirname($dir).'/plugins/')
-                ->directories()
+                ->name('*.phar')
                 ->depth(' == 0')
             ;
             var_dump(dirname($dir).'/plugins/');
+            foreach ($finder as $file) {
+                //Include plugin autoloader
+                include('phar://'.dirname($dir).'/plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
+
+                // Get plugin class and namespace
+                $pluginClass = ucfirst(str_replace('.phar', '', $file->getRelativePathname()));
+                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
+
+                // Create plugin class
+                $pluginFQN = $pluginNamespace.$pluginClass;
+                $plugin = new $pluginFQN();
+
+                // Register with event dispatcher
+                $this->site->getDispatcher()->addSubscriber($plugin);
+                $plugins[] = $plugin;
+            }
         } else {
             $dir = __DIR__;
             $finder->in($dir.'/../../plugins/')
@@ -78,19 +99,24 @@ class GenerateCommand extends Command
                 ->depth(' == 0')
             ;
             var_dump($dir.'/../../plugins/');
+            foreach ($finder as $file) {
+                //Include plugin autoloader
+                include($dir.'/../../plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
+
+                // Get plugin class and namespace
+                $pluginClass = ucfirst($file->getRelativePathname());
+                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
+
+                // Create plugin class
+                $pluginFQN = $pluginNamespace.$pluginClass;
+                $plugin = new $pluginFQN();
+
+                // Register with event dispatcher
+                $this->site->getDispatcher()->addSubscriber($plugin);
+                $plugins[] = $plugin;
+            }
         }
 
-
-
-
-        $plugins = [];
-        foreach ($finder as $file) {
-            $subscriber = new StoreSubscriber();
-            $this->site->getDispatcher()->addSubscriber($subscriber);
-
-            var_dump('PLUGIN FOLDER FOUND');
-            var_dump($file->getRelativePathname());
-        }
 
         return $plugins;
     }
