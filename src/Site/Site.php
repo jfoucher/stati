@@ -175,14 +175,16 @@ class Site
         }, explode('_', $item)));
         $field = lcfirst($getter);
 
-        //If the property exists, return it
-        if (property_exists(self::class, $field)) {
-            return $this->{$field};
-        }
         //If the method exists, return it
         if (method_exists(self::class, 'get'.$getter)) {
             return $this->{'get'.$getter}();
         }
+
+        //If the property exists, return it
+        if (property_exists(self::class, $field)) {
+            return $this->{$field};
+        }
+
         // If this is a config item, return it;
         if (isset($this->config[$item])) {
             return $this->config[$item];
@@ -234,14 +236,15 @@ class Site
     }
 
     /**
-     * @return Collection
+     * @return array
      */
     public function getPosts()
     {
         if (isset($this->collections['posts'])) {
-            return $this->collections['posts'];
+            return $this->collections['posts']->getDocs();
         }
-        return new Collection('posts');
+        $col = new Collection('posts');
+        return $col->getDocs();
     }
 
     /**
