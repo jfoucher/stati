@@ -13,16 +13,7 @@ use Stati\Entity\Doc;
 use Stati\Plugin\Paginator\Entity\PaginatorPage;
 use Stati\Renderer\Renderer;
 use Symfony\Component\Finder\Finder;
-use Liquid\Liquid;
-use Stati\Parser\MarkdownParser;
-use Stati\Link\Generator;
-use Stati\Liquid\Block\Highlight;
-use Symfony\Component\Finder\SplFileInfo;
-use Stati\Parser\FrontMatterParser;
-use Stati\Parser\ContentParser;
-use Stati\Liquid\Tag\PostUrl;
-use Liquid\Cache\File;
-use Symfony\Component\Console\Output\OutputInterface;
+
 /**
  * Copies files and folders that do not start with _ and do not have frontmatter
  * Class FilesRenderer
@@ -37,17 +28,27 @@ class PaginatorRenderer extends Renderer
          */
         $paginator = $this->site->paginator;
 
-        $posts = [];
+        $pages = [];
 
-        foreach ($paginator->getAllPosts() as $post) {
-            /**
-             * @var Doc $post
-             */
-            $post->setSite($this->site);
-            $posts[] = $this->render($post);
+        $finder = new Finder();
+        $fileIterator = $finder->in('./')
+            ->name('/^index.html$/')
+            ->depth('== 0')->getIterator();
+        $files = iterator_to_array($fileIterator);
+        $file = $files['./index.html'];
+
+        while ($paginator->next_page) {
+            // This is here to avoid rendering first page, which is already rendered in the site index
+            $paginator->setPage($paginator->getPage() + 1);
+            // $file is index.html
+            $currentPage = $paginator->getPage();
+            $currentPagePath = $paginator->current_page_path;
+            $page = new PaginatorPage($file, $this->site, $currentPage, $currentPagePath);
+            $rendered = $this->render($page);
+            $pages[] = $rendered;
         }
+        $paginator->setPage(1);
 
-        $paginator->setPosts($posts);
-        return $paginator;
+        return $pages;
     }
 }

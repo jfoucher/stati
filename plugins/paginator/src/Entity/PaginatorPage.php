@@ -20,13 +20,24 @@ use Stati\Entity\Doc;
 
 class PaginatorPage extends Doc
 {
+
+    protected $currentPage;
+    protected $currentPagePath;
+
+    public function __construct(SplFileInfo $file, $site = null, $page = 1, $currentPagePath = '')
+    {
+        parent::__construct($file, $site);
+        $this->currentPage = $page;
+        $this->currentPagePath = $currentPagePath;
+    }
+
     public function getPath()
     {
         $extension = $this->file->getExtension();
-        if ($extension !== 'html' || !isset($this->site->paginator)) {
+        if ($extension !== 'html' || !$this->currentPagePath) {
             return '';
         }
-        $path = $this->site->paginator->current_page_path;
+        $path = $this->currentPagePath;
         if(substr($path, -1) === '/') {
             $path = $path.'index.html';
         }
@@ -38,9 +49,6 @@ class PaginatorPage extends Doc
      */
     public function getContent()
     {
-        if (!isset($this->site->paginator)) {
-            return '';
-        }
         if ($this->content !== null) {
             return $this->content;
         }
@@ -53,8 +61,8 @@ class PaginatorPage extends Doc
         $parser = new ContentParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
-        if (is_file($cacheDir.md5($content.$this->site->paginator->page))) {
-            return file_get_contents($cacheDir.md5($content.$this->site->paginator->page));
+        if (is_file($cacheDir.md5($content.$this->currentPage))) {
+            return file_get_contents($cacheDir.md5($content.$this->currentPage));
         }
         $template = new Template('./_includes/');
         $template->registerTag('highlight', Highlight::class);
@@ -63,12 +71,11 @@ class PaginatorPage extends Doc
             'page' => $this,
             'post' => $this,
             'site' => $this->site,
+            'paginator' => $this->site->paginator
         ];
-        if (isset($this->site->paginate) && isset($this->site->paginator)) {
-            $config['paginator'] = $this->site->paginator;
-        }
+
         $this->content = $template->render($config);
-        file_put_contents($cacheDir.md5($content.$this->site->paginator->page), $this->content);
+        file_put_contents($cacheDir.md5($content.$this->currentPage), $this->content);
         return $this->content;
     }
 }

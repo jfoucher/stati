@@ -15,7 +15,7 @@ use Stati\Plugin\Plugin;
 use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Stati\Plugin\Paginator\Entity\Paginator as PaginatorEntity;
-use Stati\Plugin\Paginator\Entity\PaginatorPage;
+use Stati\Plugin\Paginator\Writer\PaginatorWriter;
 
 class Paginator extends Plugin
 {
@@ -26,34 +26,35 @@ class Paginator extends Plugin
         return array(
             SiteEvents::DID_READ_SITE => 'onAfterSiteRead',
             SiteEvents::DID_RENDER_SITE => 'onAfterSiteRender',
-            SiteEvents::DID_WRITE_SITE => 'onAfterSiteWrite',
         );
     }
 
     public function onAfterSiteRead(SiteEvent $event)
     {
         $site = $event->getSite();
-        if ($site->paginate) {
+        if (!$site->paginate) {
             return;
         }
-        $paginator = new PaginatorEntity($site->getPosts()->getDocs(), $site->getConfig());
+        $docs = $site->getPosts()->getDocs();
+        usort($docs, function($a, $b) {
+            return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
+        });
+        $paginator = new PaginatorEntity($docs, $site->getConfig());
         $site->paginator = $paginator;
     }
 
     public function onAfterSiteRender(SiteEvent $event)
     {
         $site = $event->getSite();
-        $paginatorRenderer = new PaginatorRenderer($site);
-        $renderedPaginator = $paginatorRenderer->renderAll();
-        $site->paginator = $renderedPaginator;
-    }
 
-    public function onAfterSiteWrite(SiteEvent $event)
-    {
-        $site = $event->getSite();
+        if (!$site->paginate) {
+            return;
+        }
         $paginatorRenderer = new PaginatorRenderer($site);
-        $renderedPaginator = $paginatorRenderer->renderAll();
-        $site->paginator = $renderedPaginator;
+        $renderedPages = $paginatorRenderer->renderAll();
+        foreach ($renderedPages as $page) {
+            $site->addPage($page);
+        }
     }
 
     /**

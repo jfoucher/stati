@@ -34,7 +34,7 @@ class Paginator
     /**
      * The current page
      *
-     * @var array
+     * @var int
      */
     protected $page = 1;
 
@@ -148,7 +148,7 @@ class Paginator
     }
 
     /**
-     * @return array
+     * @return int
      */
     public function getPage()
     {
@@ -156,7 +156,7 @@ class Paginator
     }
 
     /**
-     * @param array $page
+     * @param int $page
      * @return Paginator
      */
     public function setPage($page)
