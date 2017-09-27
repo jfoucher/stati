@@ -11,6 +11,7 @@ namespace Stati\Site;
 
 use Iterator;
 use Stati\Entity\Collection;
+use Stati\Entity\Doc;
 use Stati\Event\WillResetSiteEvent;
 use Stati\Reader\CollectionReader;
 use Stati\Reader\StaticFileReader;
@@ -80,12 +81,13 @@ class Site
 
     public function process()
     {
-
+        $this->dispatcher->dispatch(SiteEvents::WILL_PROCESS_SITE, new SiteEvent($this));
         $this->reset();
         $this->read();
         $this->generate();
         $this->render();
         $this->write();
+        $this->dispatcher->dispatch(SiteEvents::DID_PROCESS_SITE, new SiteEvent($this));
     }
 
     public function reset() {
@@ -94,11 +96,6 @@ class Site
         $fs->remove($this->getDestination());
         $fs->mkdir($this->getDestination());
         $this->dispatcher->dispatch(SiteEvents::DID_RESET_SITE, new DidResetSiteEvent($this, $fs));
-    }
-
-    public function generate() {
-        $this->dispatcher->dispatch(SiteEvents::WILL_GENERATE_SITE, new SiteEvent($this));
-        $this->dispatcher->dispatch(SiteEvents::DID_GENERATE_SITE, new SiteEvent($this));
     }
 
     public function read() {
@@ -132,22 +129,27 @@ class Site
         $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));
     }
 
+    public function generate() {
+        $this->dispatcher->dispatch(SiteEvents::WILL_GENERATE_SITE, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::DID_GENERATE_SITE, new SiteEvent($this));
+    }
+
     public function render() {
         $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_SITE, new SiteEvent($this));
-        //Render Pages
-        $pageRenderer = new PageRenderer($this);
-        $this->setPages($pageRenderer->renderAll());
 
         //Render Collections
         $collectionRenderer = new CollectionRenderer($this);
         $this->setCollections($collectionRenderer->renderAll());
+        //Render Pages
+        $pageRenderer = new PageRenderer($this);
+        $this->setPages($pageRenderer->renderAll());
 
         $this->dispatcher->dispatch(SiteEvents::DID_RENDER_SITE, new SiteEvent($this));
 
     }
 
     public function write() {
-
+        $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_SITE, new SiteEvent($this));
         // Write static files
         $staticFileWriter = new StaticFileWriter($this);
         $staticFileWriter->writeAll();
@@ -175,7 +177,6 @@ class Site
 
         //If the property exists, return it
         if (property_exists(self::class, $field)) {
-
             return $this->{$field};
         }
         //If the method exists, return it
@@ -190,6 +191,10 @@ class Site
         // If it's a collection, return the corresponding one
         if (isset($this->collections[$item])) {
             return $this->collections[$item]->getDocs();
+        }
+
+        if ($item === 'time') {
+            return date_create()->format(DATE_RFC3339);
         }
 
         return null;
@@ -261,6 +266,14 @@ class Site
     public function setPages($pages)
     {
         $this->pages = $pages;
+    }
+
+    /**
+     * @param Doc $page
+     */
+    public function addPage($page)
+    {
+        $this->pages[] = $page;
     }
 
     /**
