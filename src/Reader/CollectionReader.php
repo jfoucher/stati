@@ -36,13 +36,18 @@ class CollectionReader extends Reader
                 ->files()
                 ->contains('/---\s+(.*)\s+---\s+/s');
             $posts = [];
+
             foreach ($finder as $file) {
                 $posts[] = new Post($file, $collectionData);
-
             }
+
             usort($posts, function($a, $b) {
+                if (!$a->getDate() || !$b->getDate()) {
+                    return 0;
+                }
                 return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
             });
+
             $collection->setDocs($posts);
             $collections[$collectionName] = $collection;
         }
