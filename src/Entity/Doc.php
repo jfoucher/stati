@@ -147,7 +147,7 @@ class Doc
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->parse($contentPart);
-        $liquidParsed = $template->render(['site' => $this->site]);
+        $liquidParsed = $template->render(['site' => $this->site, 'paginator' => $this->site->paginator]);
         $this->content = $markdownParser->text($liquidParsed);
         file_put_contents($cacheDir.md5($content), $this->content);
         return $this->content;
