@@ -38,7 +38,7 @@ class CollectionRenderer extends Renderer
                 $docs[] = $this->render($doc);
             }
             $collection->setDocs($docs);
-            $collections[] = $collection;
+            $collections[$collection->getLabel()] = $collection;
         }
         return $collections;
     }
