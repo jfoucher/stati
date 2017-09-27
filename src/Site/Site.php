@@ -24,6 +24,9 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Stati\Site\SiteEvents;
+use Stati\Event\DidResetSiteEvent;
+use Stati\Event\WillReadSiteEvent;
+use Stati\Event\SiteEvent;
 
 
 class Site
@@ -77,7 +80,7 @@ class Site
 
     public function process()
     {
-        $this->dispatcher->dispatch(SiteEvents::WILL_RESET_SITE, new WillResetSiteEvent($site));
+
         $this->reset();
         $this->read();
         $this->generate();
@@ -87,29 +90,20 @@ class Site
 
     public function reset() {
         $fs = new Filesystem();
+        $this->dispatcher->dispatch(SiteEvents::WILL_RESET_SITE, new WillResetSiteEvent($this, $fs));
         $fs->remove($this->getDestination());
         $fs->mkdir($this->getDestination());
+        $this->dispatcher->dispatch(SiteEvents::DID_RESET_SITE, new DidResetSiteEvent($this, $fs));
     }
 
     public function generate() {
-    }
-
-    public function write() {
-        // Write static files
-        $staticFileWriter = new StaticFileWriter($this);
-        $staticFileWriter->writeAll();
-
-        // Write Collection files
-        $collectionWriter = new CollectionWriter($this);
-        $collectionWriter->writeAll();
-
-        // Write Page files
-        $pageWriter = new PageWriter($this);
-        $pageWriter->writeAll();
+        $this->dispatcher->dispatch(SiteEvents::WILL_GENERATE_SITE, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::DID_GENERATE_SITE, new SiteEvent($this));
     }
 
     public function read() {
         //Read static files
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_SITE, new WillReadSiteEvent($this));
         $staticFileReader = new StaticFileReader();
         $this->setStaticFiles($staticFileReader->read());
 
@@ -134,9 +128,12 @@ class Site
         //Read pages
         $pageReader = new PageReader($this->config);
         $this->setPages($pageReader->read());
+
+        $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));
     }
 
     public function render() {
+        $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_SITE, new SiteEvent($this));
         //Render Pages
         $pageRenderer = new PageRenderer($this);
         $this->setPages($pageRenderer->renderAll());
@@ -145,7 +142,24 @@ class Site
         $collectionRenderer = new CollectionRenderer($this);
         $this->setCollections($collectionRenderer->renderAll());
 
-//        var_dump($this->pages);
+        $this->dispatcher->dispatch(SiteEvents::DID_RENDER_SITE, new SiteEvent($this));
+
+    }
+
+    public function write() {
+
+        // Write static files
+        $staticFileWriter = new StaticFileWriter($this);
+        $staticFileWriter->writeAll();
+
+        // Write Collection files
+        $collectionWriter = new CollectionWriter($this);
+        $collectionWriter->writeAll();
+
+        // Write Page files
+        $pageWriter = new PageWriter($this);
+        $pageWriter->writeAll();
+        $this->dispatcher->dispatch(SiteEvents::DID_WRITE_SITE, new SiteEvent($this));
     }
 
     /**

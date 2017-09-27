@@ -14,13 +14,13 @@ use Stati\Event\SiteEvent;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Class WillResetSiteEvent
- * Event triggered before site is reset
+ * Class DidResetSiteEvent
+ * Event triggered after site is reset
  *
  * @package Stati\Event
  *
  */
-class WillResetSiteEvent extends SiteEvent
+class DidResetSiteEvent extends SiteEvent
 {
     /**
      * The filesystem used to clear the destination directory
