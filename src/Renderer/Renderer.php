@@ -21,6 +21,8 @@ use Liquid\Template;
 use Liquid\Cache\File;
 use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
+use Stati\Liquid\TemplateEvents;
+use Stati\Event\SettingTemplateVarsEvent;
 
 class Renderer
 {
@@ -45,19 +47,17 @@ class Renderer
 
         //If we have a layout
         if (isset($frontMatter['layout'])) {
-            $config = [
+            $vars = [
                 'content' => $content,
                 'page' => $doc,
                 'post' => $doc,
                 'site' => $this->site,
             ];
 
-            if (isset($this->site->paginator)) {
-                $config['paginator'] = $this->site->paginator;
-            }
+            $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars));
 
             try {
-                $content = $this->renderWithLayout($frontMatter['layout'], $config);
+                $content = $this->renderWithLayout($frontMatter['layout'], $vars);
             } catch (FileNotFoundException $err) {
                 throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
             }

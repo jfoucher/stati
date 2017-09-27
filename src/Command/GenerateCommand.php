@@ -2,23 +2,12 @@
 
 namespace Stati\Command;
 
-
-use function Composer\Autoload\includeFile;
-use Stati\Exception\FileNotFoundException;
-use Stati\Paginator\Paginator;
-use Stati\Renderer\CollectionReader;
-use Stati\Renderer\DirectoryRenderer;
-use Stati\Renderer\PageRenderer;
-use Stati\Renderer\PostRenderer;
 use Stati\Site\Site;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Stati\Entity\StaticFile;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
-use Stati\Renderer\PaginatorRenderer;
 use Symfony\Component\Finder\Finder;
 use Phar;
 

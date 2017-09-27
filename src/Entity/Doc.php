@@ -9,6 +9,8 @@
 
 namespace Stati\Entity;
 
+use Stati\Event\SettingTemplateVarsEvent;
+use Stati\Liquid\TemplateEvents;
 use Stati\Site\Site;
 use Symfony\Component\Finder\SplFileInfo;
 use Stati\Parser\FrontMatterParser;
@@ -147,7 +149,14 @@ class Doc
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->parse($contentPart);
-        $liquidParsed = $template->render(['site' => $this->site, 'paginator' => $this->site->paginator]);
+
+        $vars = [
+            'site' => $this->site
+        ];
+
+        $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars));
+
+        $liquidParsed = $template->render($vars);
         $this->content = $markdownParser->text($liquidParsed);
         file_put_contents($cacheDir.md5($content), $this->content);
         return $this->content;

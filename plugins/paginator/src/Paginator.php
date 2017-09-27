@@ -10,13 +10,13 @@
 namespace Stati\Plugin\Paginator;
 
 use Stati\Event\SiteEvent;
+use Stati\Event\SettingTemplateVarsEvent;
 use Stati\Plugin\Paginator\Renderer\PaginatorRenderer;
 use Stati\Plugin\Plugin;
 use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Stati\Plugin\Paginator\Entity\Paginator as PaginatorEntity;
-use Stati\Plugin\Paginator\Writer\PaginatorWriter;
-
+use Stati\Liquid\TemplateEvents;
 class Paginator extends Plugin
 {
     protected $name = 'paginator';
@@ -26,6 +26,7 @@ class Paginator extends Plugin
         return array(
             SiteEvents::DID_READ_SITE => 'onAfterSiteRead',
             SiteEvents::DID_RENDER_SITE => 'onAfterSiteRender',
+            TemplateEvents::SETTING_TEMPLATE_VARS => 'onSettingTemplateVars',
         );
     }
 
@@ -55,6 +56,12 @@ class Paginator extends Plugin
         foreach ($renderedPages as $page) {
             $site->addPage($page);
         }
+    }
+
+    public function onSettingTemplateVars(SettingTemplateVarsEvent $event) {
+        $vars = $event->getVars();
+        $site = $event->getSite();
+        $vars['paginator'] = $site->paginator;
     }
 
     /**
