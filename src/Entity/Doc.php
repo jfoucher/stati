@@ -157,7 +157,12 @@ class Doc
         $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars));
 
         $liquidParsed = $template->render($vars);
-        $this->content = $markdownParser->text($liquidParsed);
+        if ($this->file->getExtension() === 'md' || $this->file->getExtension() === 'mkd' || $this->file->getExtension() === 'markdown') {
+            $this->content = $markdownParser->text($liquidParsed);
+        } else {
+            $this->content = $liquidParsed;
+        }
+
         file_put_contents($cacheDir.md5($content), $this->content);
         return $this->content;
     }
