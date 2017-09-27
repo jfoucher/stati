@@ -195,6 +195,11 @@ class Site
         return null;
     }
 
+    public function __set($name, $value)
+    {
+        $this->{$name} = $value;
+    }
+
     public function get($item)
     {
         return $this->__get($item);
@@ -309,6 +314,10 @@ class Site
     public function addPlugin($plugin)
     {
         $this->plugins[] = $plugin;
+    }
+
+    public function setPlugins($plugins) {
+        $this->plugins = $plugins;
     }
 
     /**
