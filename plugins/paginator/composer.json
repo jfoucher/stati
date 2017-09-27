@@ -8,7 +8,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Stati\\Plugin\\Paginator": "src/", "Stati\\Plugin\\Paginator\\Tests\\": "tests/"}
+        "psr-4": {"Stati\\Plugin\\Paginator\\": "src/", "Stati\\Plugin\\Paginator\\Tests\\": "tests/"}
     },
     "require": {}
 }

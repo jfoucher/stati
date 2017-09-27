@@ -24,6 +24,11 @@ use Phar;
 
 class GenerateCommand extends Command
 {
+    /**
+     * @var Site
+     */
+    protected $site;
+
     protected function configure()
     {
         $this
@@ -47,10 +52,10 @@ class GenerateCommand extends Command
             return 1;
         }
 
-        $site = new Site($config);
+        $this->site = new Site($config);
         $this->getPlugins();
 
-        $site->process();
+        $this->site->process();
 
         $elapsed = microtime(true) - $time;
         $style->title('Generated in '.number_format($elapsed, 2).'s');
@@ -62,13 +67,15 @@ class GenerateCommand extends Command
         $finder = new Finder();
         if ($dir = Phar::running(false)) {
             $finder->in(dirname($dir).'/plugins/')
-                ->name('*.phar')
+                ->directories()
+                ->depth(' == 0')
             ;
             var_dump(dirname($dir).'/plugins/');
         } else {
             $dir = __DIR__;
             $finder->in($dir.'/../../plugins/')
-                ->name('autoload.php')
+                ->directories()
+                ->depth(' == 0')
             ;
             var_dump($dir.'/../../plugins/');
         }
@@ -78,7 +85,11 @@ class GenerateCommand extends Command
 
         $plugins = [];
         foreach ($finder as $file) {
+            $subscriber = new StoreSubscriber();
+            $this->site->getDispatcher()->addSubscriber($subscriber);
 
+            var_dump('PLUGIN FOLDER FOUND');
+            var_dump($file->getRelativePathname());
         }
 
         return $plugins;

@@ -26,6 +26,7 @@
         "erusev/parsedown-extra": "^0.7.1",
         "ramsey/pygments": "^1.0",
         "yosymfony/resource-watcher": "^1.2",
-        "symfony/filesystem": "^3.3"
+        "symfony/filesystem": "^3.3",
+        "symfony/event-dispatcher": "^3.3"
     }
 }

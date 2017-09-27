@@ -11,6 +11,7 @@ namespace Stati\Site;
 
 use Iterator;
 use Stati\Entity\Collection;
+use Stati\Event\WillResetSiteEvent;
 use Stati\Reader\CollectionReader;
 use Stati\Reader\StaticFileReader;
 use Stati\Reader\PageReader;
@@ -19,7 +20,11 @@ use Stati\Renderer\PageRenderer;
 use Stati\Writer\CollectionWriter;
 use Stati\Writer\StaticFileWriter;
 use Stati\Writer\PageWriter;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Stati\Site\SiteEvents;
+
 
 class Site
 {
@@ -60,12 +65,19 @@ class Site
      */
     protected $collections;
 
+    /**
+     * @var EventDispatcherInterface
+     */
+    protected $dispatcher;
+
     public function __construct(array $config){
         $this->config = $config;
+        $this->dispatcher = new EventDispatcher();
     }
 
     public function process()
     {
+        $this->dispatcher->dispatch(SiteEvents::WILL_RESET_SITE, new WillResetSiteEvent($site));
         $this->reset();
         $this->read();
         $this->generate();
@@ -283,6 +295,22 @@ class Site
     public function addPlugin($plugin)
     {
         $this->plugins[] = $plugin;
+    }
+
+    /**
+     * @return EventDispatcherInterface
+     */
+    public function getDispatcher()
+    {
+        return $this->dispatcher;
+    }
+
+    /**
+     * @param EventDispatcherInterface $dispatcher
+     */
+    public function setDispatcher($dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
     }
 
 }
