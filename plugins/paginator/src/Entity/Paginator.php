@@ -71,6 +71,11 @@ class Paginator
         return $this;
     }
 
+    public function getAllPosts()
+    {
+        return $this->posts;
+    }
+
     public function addPost(Post $post)
     {
         $this->posts[] = $post;

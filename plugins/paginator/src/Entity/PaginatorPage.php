@@ -7,7 +7,7 @@
  * Time: 23:05
  */
 
-namespace Stati\Entity;
+namespace Stati\Plugin\Paginator\Entity;
 
 use Symfony\Component\Finder\SplFileInfo;
 use Stati\Parser\FrontMatterParser;
@@ -16,17 +16,17 @@ use Liquid\Template;
 use Liquid\Liquid;
 use Liquid\Cache\File;
 use Stati\Liquid\Block\Highlight;
+use Stati\Entity\Doc;
 
-class PaginatorPage extends Post
+class PaginatorPage extends Doc
 {
-
     public function getPath()
     {
         $extension = $this->file->getExtension();
-        if ($extension !== 'html' || !isset($this->siteConfig['paginator'])) {
+        if ($extension !== 'html' || !isset($this->site->paginator)) {
             return '';
         }
-        $path = $this->siteConfig['paginator']->current_page_path;
+        $path = $this->site->paginator->current_page_path;
         if(substr($path, -1) === '/') {
             $path = $path.'index.html';
         }
@@ -38,7 +38,7 @@ class PaginatorPage extends Post
      */
     public function getContent()
     {
-        if (!isset($this->siteConfig['paginator'])) {
+        if (!isset($this->site->paginator)) {
             return '';
         }
         if ($this->content !== null) {
@@ -53,8 +53,8 @@ class PaginatorPage extends Post
         $parser = new ContentParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
-        if (is_file($cacheDir.md5($content.$this->siteConfig['paginator']->page))) {
-            return file_get_contents($cacheDir.md5($content.$this->siteConfig['paginator']->page));
+        if (is_file($cacheDir.md5($content.$this->site->paginator->page))) {
+            return file_get_contents($cacheDir.md5($content.$this->site->paginator->page));
         }
         $template = new Template('./_includes/');
         $template->registerTag('highlight', Highlight::class);
@@ -62,13 +62,13 @@ class PaginatorPage extends Post
         $config = [
             'page' => $this,
             'post' => $this,
-            'site' => $this->siteConfig,
+            'site' => $this->site,
         ];
-        if (isset($this->siteConfig['paginate']) && isset($this->siteConfig['paginator'])) {
-            $config['paginator'] = $this->siteConfig['paginator'];
+        if (isset($this->site->paginate) && isset($this->site->paginator)) {
+            $config['paginator'] = $this->site->paginator;
         }
         $this->content = $template->render($config);
-        file_put_contents($cacheDir.md5($content.$this->siteConfig['paginator']->page), $this->content);
+        file_put_contents($cacheDir.md5($content.$this->site->paginator->page), $this->content);
         return $this->content;
     }
 }
