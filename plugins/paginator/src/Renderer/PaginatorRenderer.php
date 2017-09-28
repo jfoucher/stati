@@ -33,7 +33,7 @@ class PaginatorRenderer extends Renderer
         $finder = new Finder();
         $fileIterator = $finder->in('./')
             ->name('/^index.html$/')
-            ->depth('== 0')->getIterator();
+            ->getIterator();
         $files = iterator_to_array($fileIterator);
         $file = $files['./index.html'];
 
