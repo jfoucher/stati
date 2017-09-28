@@ -2,7 +2,9 @@
 
 namespace Stati\Command;
 
+use Stati\Event\ConsoleOutputEvent;
 use Stati\Site\Site;
+use Stati\Site\SiteEvents;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -18,6 +20,11 @@ class GenerateCommand extends Command
      */
     protected $site;
 
+    /**
+     * @var SymfonyStyle
+     */
+    protected $style;
+
     protected function configure()
     {
         $this
@@ -29,29 +36,39 @@ class GenerateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $time = microtime(true);
-        $style = new SymfonyStyle($input, $output);
+        $timer = microtime(true);
+        $this->style->title('Generating site...');
+        $this->style = new SymfonyStyle($input, $output);
         // Read config file
         $configFile = './_config.yml';
 
         if (is_file($configFile)) {
             $config = Yaml::parse(file_get_contents($configFile));
         } else {
-            $style->error('No config file present. Are you in a jekyll directory ?');
+            $this->style->error('No config file present. Are you in a jekyll directory ?');
             return 1;
         }
 
         $this->site = new Site($config);
         $this->registerPlugins();
 
+        $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
 
         // TODO set allowed setters for each plugin
 
         $this->site->process();
 
-        $elapsed = microtime(true) - $time;
-        $style->title('Generated in '.number_format($elapsed, 2).'s');
+        $elapsed = microtime(true) - $timer;
+        $this->style->title('Generated in '.number_format($elapsed, 2).'s');
         return 0;
+    }
+
+    public function consoleOutput(ConsoleOutputEvent $event)
+    {
+        $method = $event->getMethod();
+        $args = $event->getArgs();
+
+        call_user_func_array([$this->style, $method], $args);
     }
 
     private function registerPlugins()
@@ -103,7 +120,6 @@ class GenerateCommand extends Command
                 $plugins[] = $plugin;
             }
         }
-
 
         return $plugins;
     }
