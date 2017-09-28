@@ -27,6 +27,7 @@ class Paginator extends Plugin
             SiteEvents::DID_READ_SITE => 'onAfterSiteRead',
             SiteEvents::DID_RENDER_SITE => 'onAfterSiteRender',
             TemplateEvents::SETTING_TEMPLATE_VARS => 'onSettingTemplateVars',
+            TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS => 'onSettingTemplateVars',
         );
     }
 

@@ -54,9 +54,8 @@ class Renderer
                 'post' => $doc,
                 'site' => $this->site,
             ];
-
-            $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars));
-
+            //TODO PASS POST HERE
+            $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $doc));
             try {
                 $content = $this->renderWithLayout($frontMatter['layout'], $vars);
             } catch (FileNotFoundException $err) {

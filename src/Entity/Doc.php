@@ -163,7 +163,7 @@ class Doc
             'site' => $this->site
         ];
 
-        $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars));
+        $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $this));
 
         $liquidParsed = $template->render($vars);
         if ($this->file->getExtension() === 'md' || $this->file->getExtension() === 'mkd' || $this->file->getExtension() === 'markdown') {

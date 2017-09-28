@@ -176,7 +176,7 @@ class Site
         $field = lcfirst($getter);
 
         //If the method exists, return it
-        if (method_exists(self::class, 'get'.$getter)) {
+        if (method_exists($this, 'get'.$getter)) {
             return $this->{'get'.$getter}();
         }
 

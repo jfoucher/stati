@@ -9,6 +9,7 @@
 
 namespace Stati\Event;
 
+use Stati\Entity\Doc;
 use Symfony\Component\EventDispatcher\Event;
 use Stati\Site\Site;
 
@@ -24,10 +25,16 @@ class SettingTemplateVarsEvent extends Event
      */
     protected $site;
 
-    public function __construct(Site $site, $vars)
+    /**
+     * @var Doc
+     */
+    protected $doc;
+
+    public function __construct(Site $site, $vars, Doc $doc)
     {
         $this->site = $site;
         $this->vars = $vars;
+        $this->doc = $doc;
     }
 
     /**
@@ -44,6 +51,14 @@ class SettingTemplateVarsEvent extends Event
     public function getVars()
     {
         return $this->vars;
+    }
+
+    /**
+     * @return Doc
+     */
+    public function getDoc()
+    {
+        return $this->doc;
     }
 
 }
