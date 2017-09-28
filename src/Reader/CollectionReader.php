@@ -40,7 +40,9 @@ class CollectionReader extends Reader
             foreach ($finder as $file) {
                 $post = new Post($file, $collectionData);
                 $post->setSite($this->site);
-                $posts[] = $post;
+                if ($post->getDate()->getTimestamp() <= date_create()->getTimestamp()) {
+                    $posts[] = $post;
+                }
             }
 
             if ($collection->getLabel() === 'posts') {
