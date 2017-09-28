@@ -17,6 +17,7 @@ use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Stati\Plugin\Paginator\Entity\Paginator as PaginatorEntity;
 use Stati\Liquid\TemplateEvents;
+
 class Paginator extends Plugin
 {
     protected $name = 'paginator';
@@ -58,7 +59,8 @@ class Paginator extends Plugin
         }
     }
 
-    public function onSettingTemplateVars(SettingTemplateVarsEvent $event) {
+    public function onSettingTemplateVars(SettingTemplateVarsEvent $event)
+    {
         $vars = $event->getVars();
         $site = $event->getSite();
         $vars['paginator'] = $site->paginator;
@@ -71,5 +73,4 @@ class Paginator extends Plugin
     {
         return $this->name;
     }
-
 }

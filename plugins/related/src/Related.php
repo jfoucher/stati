@@ -29,7 +29,8 @@ class Related extends Plugin
         );
     }
 
-    public function onSettingTemplateVars(SettingTemplateVarsEvent $event) {
+    public function onSettingTemplateVars(SettingTemplateVarsEvent $event)
+    {
         $vars = $event->getVars();
         $site = $event->getSite();
         $doc = $event->getDoc();
@@ -39,16 +40,15 @@ class Related extends Plugin
         if (get_class($doc) === 'Stati\Entity\Post') {
             //Is a post, generate related_posts
             $title = $doc->getTitle();
-            $allPosts = array_filter($site->getPosts(), function($p) use ($title){
+            $allPosts = array_filter($site->getPosts(), function ($p) use ($title) {
                 return $p->getTitle() !== $title;
             });
-            usort($allPosts, function($a, $b) use($title) {
+            usort($allPosts, function ($a, $b) use ($title) {
                 return levenshtein($a->getTitle(), $title) > levenshtein($b->getTitle(), $title) ? 1 : -1;
             });
             $relatedPosts = array_slice($allPosts, 0, 10);
             $site->setRelatedPosts($relatedPosts);
         }
-
     }
 
     /**
@@ -58,5 +58,4 @@ class Related extends Plugin
     {
         return $this->name;
     }
-
 }

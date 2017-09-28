@@ -20,7 +20,6 @@ use Stati\Entity\Doc;
 
 class PaginatorPage extends Doc
 {
-
     protected $currentPage;
     protected $currentPagePath;
 
@@ -46,7 +45,7 @@ class PaginatorPage extends Doc
             return '';
         }
 
-        if(substr($path, -5) !== '.html') {
+        if (substr($path, -5) !== '.html') {
             $path = str_replace('//', '/', $path.'/index.html');
         }
         return $path;

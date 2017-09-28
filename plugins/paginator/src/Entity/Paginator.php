@@ -83,7 +83,7 @@ class Paginator
 
     public function __get($item)
     {
-        if (method_exists($this,'get'.ucfirst($item))) {
+        if (method_exists($this, 'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
 
@@ -134,7 +134,6 @@ class Paginator
                 return dirname(str_replace('//', '/', '/'.str_replace(':num', $this->page, $this->config['paginate_path'].'/'))).'/';
             }
             return str_replace('//', '/', '/'.str_replace(':num', $this->page, $this->config['paginate_path']));
-
         }
 
         return null;
@@ -167,5 +166,4 @@ class Paginator
         $this->page = $page;
         return $this;
     }
-
 }
