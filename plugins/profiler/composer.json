@@ -1,0 +1,16 @@
+{
+    "name": "stati/profiler",
+    "description": "A profiler for Stati",
+    "authors": [
+        {
+            "name": "jfoucher",
+            "email": "jfoucher@6px.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Stati\\Plugin\\Profiler\\": "src/", "Stati\\Plugin\\Profiler\\Tests\\": "tests/"}
+    },
+    "require": {
+        "symfony/stopwatch": "^3.3"
+    }
+}
