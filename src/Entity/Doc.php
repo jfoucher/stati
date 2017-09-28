@@ -110,13 +110,7 @@ class Doc
         if ($this->date !== null) {
             return $this->date;
         }
-        // Try to get date from filename
-        try {
-            $this->date = new \DateTime(substr($this->file->getBasename(), 0, 10));
-            return $this->date;
-        } catch (\Exception $err) {
-            // echo $err->getMessage()."\r\n";
-        }
+
         //try to get date from frontMatter
         $fr = $this->getFrontMatter();
         if (isset($fr['date'])) {
@@ -127,6 +121,14 @@ class Doc
             } catch (\Exception $err) {
                 // echo $err->getMessage()."\r\n";
             }
+        }
+
+        // Try to get date from filename
+        try {
+            $this->date = new \DateTime(substr($this->file->getBasename(), 0, 10));
+            return $this->date;
+        } catch (\Exception $err) {
+            // echo $err->getMessage()."\r\n";
         }
 
         return $this->date;
