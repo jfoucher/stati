@@ -36,9 +36,9 @@ class GenerateCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $timer = microtime(true);
-        $this->style->title('Generating site...');
         $this->style = new SymfonyStyle($input, $output);
+        $this->style->title('Generating site...');
+        $timer = microtime(true);
         // Read config file
         $configFile = './_config.yml';
 
