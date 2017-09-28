@@ -21,6 +21,7 @@ use Liquid\Liquid;
 use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
 use Liquid\Cache\File;
+use Stati\Liquid\Filter\SiteFilter;
 
 class Doc
 {
@@ -155,6 +156,7 @@ class Doc
         $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
+        $template->registerFilter(new SiteFilter());
         $template->parse($contentPart);
 
         $vars = [

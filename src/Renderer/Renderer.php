@@ -23,6 +23,7 @@ use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
 use Stati\Liquid\TemplateEvents;
 use Stati\Event\SettingTemplateVarsEvent;
+use Stati\Liquid\Filter\SiteFilter;
 
 class Renderer
 {
@@ -80,6 +81,7 @@ class Renderer
             $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
             $template->registerTag('highlight', Highlight::class);
             $template->registerTag('post_url', PostUrl::class);
+            $template->registerFilter(new SiteFilter());
             $template->parse($layoutContent);
             $config['content'] = $template->render($config);
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
@@ -88,6 +90,7 @@ class Renderer
         $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
+        $template->registerFilter(new SiteFilter());
         $template->parse($layoutContent);
         return $template->render($config);
     }
