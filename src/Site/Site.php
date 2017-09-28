@@ -12,6 +12,7 @@ namespace Stati\Site;
 use Iterator;
 use Stati\Entity\Collection;
 use Stati\Entity\Doc;
+use Stati\Event\ConsoleOutputEvent;
 use Stati\Event\WillResetSiteEvent;
 use Stati\Reader\CollectionReader;
 use Stati\Reader\StaticFileReader;
@@ -82,11 +83,17 @@ class Site
     public function process()
     {
         $this->dispatcher->dispatch(SiteEvents::WILL_PROCESS_SITE, new SiteEvent($this));
+
         $this->reset();
+
         $this->read();
+
         $this->generate();
+
         $this->render();
+
         $this->write();
+
         $this->dispatcher->dispatch(SiteEvents::DID_PROCESS_SITE, new SiteEvent($this));
     }
 
@@ -101,9 +108,11 @@ class Site
     public function read() {
         //Read static files
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_SITE, new WillReadSiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_STATIC_FILES, new SiteEvent($this));
         $staticFileReader = new StaticFileReader($this);
         $this->setStaticFiles($staticFileReader->read());
-
+        $this->dispatcher->dispatch(SiteEvents::DID_READ_STATIC_FILES, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_COLLECTIONS, new SiteEvent($this));
         //Read collections
         $collections = [
             'posts' => [
@@ -121,11 +130,12 @@ class Site
         }
         $collectionReader = new CollectionReader($this, ['collections' => $collections]);
         $this->setCollections($collectionReader->read());
-
+        $this->dispatcher->dispatch(SiteEvents::DID_READ_COLLECTIONS, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_PAGES, new SiteEvent($this));
         //Read pages
         $pageReader = new PageReader($this, $this->config);
         $this->setPages($pageReader->read());
-
+        $this->dispatcher->dispatch(SiteEvents::DID_READ_PAGES, new SiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));
     }
 
@@ -136,31 +146,42 @@ class Site
 
     public function render() {
         $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_SITE, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_COLLECTIONS, new SiteEvent($this));
 
         //Render Collections
         $collectionRenderer = new CollectionRenderer($this);
         $this->setCollections($collectionRenderer->renderAll());
+        $this->dispatcher->dispatch(SiteEvents::DID_RENDER_COLLECTIONS, new SiteEvent($this));
+
         //Render Pages
+        $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_PAGES, new SiteEvent($this));
         $pageRenderer = new PageRenderer($this);
         $this->setPages($pageRenderer->renderAll());
+        $this->dispatcher->dispatch(SiteEvents::DID_RENDER_PAGES, new SiteEvent($this));
 
         $this->dispatcher->dispatch(SiteEvents::DID_RENDER_SITE, new SiteEvent($this));
-
     }
 
     public function write() {
         $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_SITE, new SiteEvent($this));
         // Write static files
+        $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_STATIC_FILES, new SiteEvent($this));
+
         $staticFileWriter = new StaticFileWriter($this);
         $staticFileWriter->writeAll();
+        $this->dispatcher->dispatch(SiteEvents::DID_WRITE_STATIC_FILES, new SiteEvent($this));
 
         // Write Collection files
+        $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_COLLECTIONS, new SiteEvent($this));
         $collectionWriter = new CollectionWriter($this);
         $collectionWriter->writeAll();
+        $this->dispatcher->dispatch(SiteEvents::DID_WRITE_COLLECTIONS, new SiteEvent($this));
 
         // Write Page files
+        $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_PAGES, new SiteEvent($this));
         $pageWriter = new PageWriter($this);
         $pageWriter->writeAll();
+        $this->dispatcher->dispatch(SiteEvents::DID_WRITE_PAGES, new SiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::DID_WRITE_SITE, new SiteEvent($this));
     }
 
@@ -350,6 +371,14 @@ class Site
     public function setDispatcher($dispatcher)
     {
         $this->dispatcher = $dispatcher;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimer()
+    {
+        return $this->timer;
     }
 
 }
