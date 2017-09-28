@@ -27,8 +27,10 @@ class CollectionWriter extends Writer
                 /**
                  * @var Doc $doc
                  */
-                $dest = str_replace('//', '/', $destDir.'/'.$doc->getPath());
-                $fs->dumpFile($dest, $doc->getOutput());
+                if ($doc->getPath()) {
+                    $dest = str_replace('//', '/', $destDir.'/'.$doc->getPath());
+                    $fs->dumpFile($dest, $doc->getOutput());
+                }
             }
         }
     }

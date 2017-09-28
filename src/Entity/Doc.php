@@ -264,6 +264,10 @@ class Doc
         if ($this->path !== null) {
             return $this->path;
         }
+        if (!$this->getContent()) {
+            $this->path = null;
+            return $this->path;
+        }
 
         $link = $this->site->permalink;
 
