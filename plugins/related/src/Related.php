@@ -34,9 +34,9 @@ class Related extends Plugin
         $vars = $event->getVars();
         $site = $event->getSite();
         $doc = $event->getDoc();
-        $vars['related_posts'] = 'TEST';
         $relatedPosts = [];
         $site->setRelatedPosts($relatedPosts);
+
         if (get_class($doc) === 'Stati\Entity\Post') {
             //Is a post, generate related_posts
             $title = $doc->getTitle();
