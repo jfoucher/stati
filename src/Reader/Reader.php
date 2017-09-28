@@ -10,13 +10,18 @@
 namespace Stati\Reader;
 
 
+use Stati\Site\Site;
+
 class Reader
 {
 
+    protected $site;
+
     protected $config;
 
-    public function __construct($config = [])
+    public function __construct(Site $site, $config = [])
     {
+        $this->site = $site;
         $this->config = $config;
     }
 }

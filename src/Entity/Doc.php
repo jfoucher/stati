@@ -91,6 +91,13 @@ class Doc
      */
     protected $site;
 
+
+    /**
+     * Doc constructor.
+     * @param SplFileInfo $file
+     * @param null $site
+     */
+
     public function __construct(SplFileInfo $file, $site = null)
     {
         $this->file = $file;
@@ -255,7 +262,7 @@ class Doc
             return $this->path;
         }
 
-        $link = $this->getPermalink();
+        $link = $this->site->permalink;
 
         if ($this->getDate() && preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
 
@@ -371,7 +378,7 @@ class Doc
      */
     public function getPermalink()
     {
-        return $this->site->permalink;
+        return $this->getUrl();
     }
 
     /**
@@ -407,7 +414,6 @@ class Doc
     }
 
 
-
     public function get($item)
     {
         return $this->__get($item);
@@ -418,7 +424,8 @@ class Doc
         if ($item === 'date') {
             return $this->getDate()->format(DATE_RFC3339);
         }
-        if (method_exists(self::class,'get'.ucfirst($item))) {
+
+        if (method_exists($this,'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
         if (isset($this->getFrontMatter()[$item])) {
@@ -427,5 +434,8 @@ class Doc
         return null;
     }
 
-
+    public function __toString()
+    {
+        return $this->getSlug();
+    }
 }

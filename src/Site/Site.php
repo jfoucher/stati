@@ -101,7 +101,7 @@ class Site
     public function read() {
         //Read static files
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_SITE, new WillReadSiteEvent($this));
-        $staticFileReader = new StaticFileReader();
+        $staticFileReader = new StaticFileReader($this);
         $this->setStaticFiles($staticFileReader->read());
 
         //Read collections
@@ -119,11 +119,11 @@ class Site
         if (isset($this->config['collections'])) {
             $collections = array_merge($collections, $this->config['collections']);
         }
-        $collectionReader = new CollectionReader(['collections' => $collections]);
+        $collectionReader = new CollectionReader($this, ['collections' => $collections]);
         $this->setCollections($collectionReader->read());
 
         //Read pages
-        $pageReader = new PageReader($this->config);
+        $pageReader = new PageReader($this, $this->config);
         $this->setPages($pageReader->read());
 
         $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));

@@ -23,6 +23,49 @@ use Stati\Entity\Doc;
 
 class Post extends Doc
 {
+    /**
+     * Next post
+     * @var Doc
+     */
+    protected $next;
+
+    /**
+     *  Previous post
+     * @var Doc
+     */
+    protected $previous;
+
+    /**
+     * @return \Stati\Entity\Doc
+     */
+    public function getNext()
+    {
+        return $this->next;
+    }
+
+    /**
+     * @param \Stati\Entity\Doc $next
+     */
+    public function setNext($next)
+    {
+        $this->next = $next;
+    }
+
+    /**
+     * @return \Stati\Entity\Doc
+     */
+    public function getPrevious()
+    {
+        return $this->previous;
+    }
+
+    /**
+     * @param \Stati\Entity\Doc $previous
+     */
+    public function setPrevious($previous)
+    {
+        $this->previous = $previous;
+    }
 
 
 }

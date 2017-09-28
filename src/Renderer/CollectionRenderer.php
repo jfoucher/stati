@@ -11,6 +11,7 @@ namespace Stati\Renderer;
 
 use Stati\Entity\Collection;
 use Stati\Entity\Page;
+use Stati\Entity\Post;
 use Stati\Entity\Sass;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,14 +31,27 @@ class CollectionRenderer extends Renderer
              * @var Collection $collection
              */
             $docs = [];
-            foreach ($collection->getDocs() as $doc) {
+            $collectionDocs = $collection->getDocs();
+
+            foreach ($collectionDocs as $k => $doc) {
                 /**
-                 * @var Page $doc
+                 * @var Post $doc
                  */
                 $doc->setSite($this->site);
+
+                if ($collection->getLabel() === 'posts') {
+                    if ($k > 0) {
+                        $doc->setNext($collectionDocs[$k - 1]);
+                    }
+                    if ($k < count($collectionDocs) -1) {
+                        $doc->setPrevious($collectionDocs[$k + 1]);
+                    }
+                }
                 $docs[] = $this->render($doc);
             }
+
             $collection->setDocs($docs);
+
             $collections[$collection->getLabel()] = $collection;
         }
         return $collections;
