@@ -45,15 +45,13 @@ class CollectionReader extends Reader
                 }
             }
 
-            if ($collection->getLabel() === 'posts') {
-                // Set next and previous posts
-                usort($posts, function ($a, $b) {
-                    if (!$a->getDate() || !$b->getDate()) {
-                        return 0;
-                    }
-                    return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
-                });
-            }
+            usort($posts, function ($a, $b) {
+                if (!$a->getDate() || !$b->getDate()) {
+                    return 0;
+                }
+                return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
+            });
+
 
             $collection->setDocs($posts);
             $collections[$collectionName] = $collection;
