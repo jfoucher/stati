@@ -23,9 +23,9 @@ That is the end goal anyway.
 
 ### Install
 
-[Get the phar archive](https://github.com/jfoucher/stati/blob/master/build/stati.phar), and put it in your path (somewhere like `/usr/local/bin` for example)
+Download stati.zip from the [latest release](https://github.com/jfoucher/stati/releases/latest), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
 
-If you use the paginator in your jekyll site, [get the plugins](https://github.com/jfoucher/stati/tree/master/build/plugins) and put them in a `plugins/` directory next to your `stati.phar`
+You can then change to your website directory and run `stati.phar generate` to generate your site, or run `stati.phar serve` to serve it locally.
 
 ### Contributing
 
