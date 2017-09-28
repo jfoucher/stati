@@ -52,7 +52,9 @@ class GenerateCommand extends Command
         $this->site = new Site($config);
         $this->registerPlugins();
 
-        $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
+        if( $this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
+            $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
+        }
 
         // TODO set allowed setters for each plugin
 
