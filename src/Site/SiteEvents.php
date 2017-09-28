@@ -24,4 +24,5 @@ class SiteEvents
     const DID_RENDER_SITE = 'site.did_render';
     const WILL_WRITE_SITE = 'site.will_write';
     const DID_WRITE_SITE = 'site.did_write';
+    const CONSOLE_OUTPUT = 'console.output';
 }
