@@ -37,6 +37,10 @@ class PaginatorPage extends Doc
         // TODO find a better way to do this
         $path = $this->currentPagePath;
 
+        //First page and  root index file
+        if ($this->currentPage === 1 && $this->file->getRelativePathname() === 'index.html') {
+            return '/index.html';
+        }
         $extension = $this->file->getExtension();
         if ($extension !== 'html' || !$this->currentPagePath) {
             return '';
