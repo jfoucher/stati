@@ -22,4 +22,16 @@ class SiteFilter
     {
         return htmlentities($input);
     }
+
+    /**
+     * Counts the number of words in a string
+     *
+     * @param string $input
+     *
+     * @return string
+     */
+    public static function number_of_words($input)
+    {
+        return str_word_count($input);
+    }
 }
