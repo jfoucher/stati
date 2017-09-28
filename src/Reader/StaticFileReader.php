@@ -11,7 +11,6 @@ namespace Stati\Reader;
 
 use Symfony\Component\Finder\Finder;
 use Stati\Entity\StaticFile;
-use Iterator;
 
 class StaticFileReader extends Reader
 {
