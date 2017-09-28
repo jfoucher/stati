@@ -31,25 +31,26 @@ class PaginatorRenderer extends Renderer
         $pages = [];
 
         $finder = new Finder();
-        $fileIterator = $finder->in('./')
-            ->name('/^index.html$/')
-            ->contains('/\{\{[\s]*paginator')
+        $finder->in('./')
+            ->name('index.html')
+            ->depth(' >=0')
+//            ->contains('/\{\{[\s]*paginator')
             ->contains('/---\s+(.*)\s+---\s+/s')
-            ->getIterator();
-        $files = iterator_to_array($fileIterator);
-        $file = $files['./index.html'];
+            ;
 
-        while ($paginator->next_page) {
-            // $file is index.html
-            $currentPage = $paginator->getPage();
-            $currentPagePath = $paginator->current_page_path;
-            $page = new PaginatorPage($file, $this->site, $currentPage, $currentPagePath);
-            $rendered = $this->render($page);
-            $pages[] = $rendered;
-            // We now render the first page in /index.html, so this moves here
-            $paginator->setPage($paginator->getPage() + 1);
+        foreach ($finder as $file) {
+            while (count($paginator->getPosts()) > 0) {
+                // $file is index.html
+                $currentPage = $paginator->getPage();
+                $currentPagePath = $paginator->current_page_path;
+                $page = new PaginatorPage($file, $this->site, $currentPage, $currentPagePath);
+                $rendered = $this->render($page);
+                $pages[] = $rendered;
+                // We now render the first page in /index.html, so this moves here
+                $paginator->setPage($paginator->getPage() + 1);
+            }
+            $paginator->setPage(1);
         }
-        $paginator->setPage(1);
 
         return $pages;
     }

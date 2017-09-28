@@ -35,16 +35,15 @@ class PaginatorPage extends Doc
     {
         // This overwrites the original index page
         // TODO find a better way to do this
-        if ($this->currentPage === 1) {
-            return '/index.html';
-        }
+        $path = $this->currentPagePath;
+
         $extension = $this->file->getExtension();
         if ($extension !== 'html' || !$this->currentPagePath) {
             return '';
         }
-        $path = $this->currentPagePath;
-        if(substr($path, -1) === '/') {
-            $path = $path.'index.html';
+
+        if(substr($path, -5) !== '.html') {
+            $path = str_replace('//', '/', $path.'/index.html');
         }
         return $path;
     }
@@ -78,6 +77,7 @@ class PaginatorPage extends Doc
             'site' => $this->site,
             'paginator' => $this->site->paginator
         ];
+
 
         $this->content = $template->render($config);
         file_put_contents($cacheDir.md5($content.$this->currentPage), $this->content);

@@ -51,6 +51,7 @@ class Paginator extends Plugin
         }
         $paginatorRenderer = new PaginatorRenderer($site);
         $renderedPages = $paginatorRenderer->renderAll();
+
         foreach ($renderedPages as $page) {
             $site->addPage($page);
         }

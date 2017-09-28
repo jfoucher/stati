@@ -61,7 +61,6 @@ class Paginator
     {
         $start = isset($this->per_page) ? ($this->page - 1) * $this->per_page : 0;
         $length = isset($this->per_page) ? $this->per_page : count($this->posts);
-
         return array_slice($this->posts, $start, $length);
     }
 
@@ -84,7 +83,7 @@ class Paginator
 
     public function __get($item)
     {
-        if (method_exists(self::class,'get'.ucfirst($item))) {
+        if (method_exists($this,'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
 
@@ -131,7 +130,11 @@ class Paginator
             if ($this->page === null) {
                 return null;
             }
+            if ($this->page === 1) {
+                return dirname(str_replace('//', '/', '/'.str_replace(':num', $this->page, $this->config['paginate_path'].'/'))).'/';
+            }
             return str_replace('//', '/', '/'.str_replace(':num', $this->page, $this->config['paginate_path']));
+
         }
 
         return null;
