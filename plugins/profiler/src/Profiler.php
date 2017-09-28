@@ -53,12 +53,14 @@ class Profiler extends Plugin
         );
     }
 
-    public function onProcessStart(SiteEvent $event, $eventName){
+    public function onProcessStart(SiteEvent $event, $eventName)
+    {
         $this->stopwatch = new Stopwatch();
         $this->stopwatch->start('process');
     }
 
-    public function onSiteEvent(SiteEvent $event, $eventName) {
+    public function onSiteEvent(SiteEvent $event, $eventName)
+    {
         $site = $event->getSite();
         $eventName = explode('.', $eventName)[1];
 
@@ -74,7 +76,7 @@ class Profiler extends Plugin
         }
 
         if (isset($stop) && isset($name)) {
-            if($stop->getDuration() > 1) {
+            if ($stop->getDuration() > 1) {
                 $time = number_format($stop->getDuration()/1000, 3);
                 $site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('text', ['Site '.$name.' took '.$time.'s']));
             }
@@ -88,5 +90,4 @@ class Profiler extends Plugin
     {
         return $this->name;
     }
-
 }

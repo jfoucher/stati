@@ -52,7 +52,7 @@ class GenerateCommand extends Command
         $this->site = new Site($config);
         $this->registerPlugins();
 
-        if( $this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
+        if ($this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
             $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
         }
 
@@ -125,5 +125,4 @@ class GenerateCommand extends Command
 
         return $plugins;
     }
-
 }
