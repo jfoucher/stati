@@ -9,12 +9,10 @@
 
 namespace Stati\Reader;
 
-
 use Stati\Site\Site;
 
 class Reader
 {
-
     protected $site;
 
     protected $config;

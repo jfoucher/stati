@@ -25,8 +25,7 @@ class FrontMatterParser
                 // we can use trim here because we only remove white space
                 // at the beginning (first should not have any) and at the end (insignificant)
                 return Yaml::parse(trim($split[0]));
-
-            } catch(InvalidArgumentException $e) {
+            } catch (InvalidArgumentException $e) {
                 // This is not YAML
                 return [];
             }

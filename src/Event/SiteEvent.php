@@ -31,5 +31,4 @@ class SiteEvent extends Event
     {
         return $this->site;
     }
-
 }

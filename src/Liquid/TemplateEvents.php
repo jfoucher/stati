@@ -9,7 +9,6 @@
 
 namespace Stati\Liquid;
 
-
 class TemplateEvents
 {
     const SETTING_TEMPLATE_VARS = 'template.setting_vars';

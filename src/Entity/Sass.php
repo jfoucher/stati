@@ -48,6 +48,6 @@ class Sass extends Page
         if ($extension === 'scss' || $extension === 'sass') {
             $extension = 'css';
         }
-        return str_replace('//', '/','/'.$this->file->getRelativePath().'/'.pathinfo($this->file->getBasename(), PATHINFO_FILENAME).'.'.$extension);
+        return str_replace('//', '/', '/'.$this->file->getRelativePath().'/'.pathinfo($this->file->getBasename(), PATHINFO_FILENAME).'.'.$extension);
     }
 }

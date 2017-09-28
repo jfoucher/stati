@@ -2,7 +2,6 @@
 
 namespace Stati\Command;
 
-
 use Stati\Exception\FileNotFoundException;
 use Stati\Renderer\PageRenderer;
 use Stati\Renderer\PostRenderer;
@@ -14,7 +13,6 @@ use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application;
-
 
 class ServeCommand extends Command
 {
@@ -42,8 +40,6 @@ class ServeCommand extends Command
                 'Press Ctrl-C to quit.'
             ]);
             shell_exec('cd _site && php -S localhost:4000 &');
-
         }
     }
-
 }

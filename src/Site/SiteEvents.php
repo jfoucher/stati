@@ -9,7 +9,6 @@
 
 namespace Stati\Site;
 
-
 class SiteEvents
 {
     const WILL_PROCESS_SITE = 'site.will_process';

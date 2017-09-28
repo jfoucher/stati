@@ -26,6 +26,5 @@ class ContentParser
             return trim($split[0]);
         }
         return '';
-
     }
 }

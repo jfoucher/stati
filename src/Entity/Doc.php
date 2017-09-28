@@ -236,13 +236,12 @@ class Doc
         }
 
         $path = $this->getPath();
-        $this->url = str_replace('//','/', $path);
+        $this->url = str_replace('//', '/', $path);
         if (substr($path, -10) === 'index.html') {
             $path = substr($path, 0, -10);
         }
         $this->url = $path;
         return $this->url;
-
     }
 
     /**
@@ -267,7 +266,6 @@ class Doc
         $link = $this->site->permalink;
 
         if ($this->getDate() && preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
-
             foreach ($matches[1] as $token) {
                 $format = '';
                 switch ($token) {
@@ -318,7 +316,6 @@ class Doc
         $this->setPath($link);
 
         return $this->path;
-
     }
 
     /**
@@ -343,7 +340,6 @@ class Doc
         $parser = new FrontMatterParser();
         $this->setFrontMatter($parser::parse($this->file->getContents()));
         return $this->frontMatter;
-
     }
 
     /**
@@ -427,7 +423,7 @@ class Doc
             return $this->getDate()->format(DATE_RFC3339);
         }
 
-        if (method_exists($this,'get'.ucfirst($item))) {
+        if (method_exists($this, 'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
         if (isset($this->getFrontMatter()[$item])) {

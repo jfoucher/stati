@@ -23,17 +23,16 @@ class Generator
 
     public function getPathForFile(SplFileInfo $file, $type = null)
     {
-
         $link = isset($this->config['permalink']) ? $this->config['permalink'] : $this->config['site']['permalink'];
         if ($type !== 'post') {
             // This is not a post
             if (!$type) {
                 $type = 'html';
             }
-            return str_replace('//', '/','/'.$file->getRelativePath().'/'.pathinfo($file->getBasename(), PATHINFO_FILENAME).'.'.$type);
+            return str_replace('//', '/', '/'.$file->getRelativePath().'/'.pathinfo($file->getBasename(), PATHINFO_FILENAME).'.'.$type);
         }
         $frontMatter = FrontMatterParser::parse($file->getContents());
-        if(isset($frontMatter['date'])) {
+        if (isset($frontMatter['date'])) {
             $date = new \DateTime();
             $date->setTimestamp(strtotime($frontMatter['date']));
         } else {
@@ -80,7 +79,6 @@ class Generator
 //            echo $err->getMessage();
             return $filename;
         }
-
     }
 
     private function pathFromDate($link, \DateTime $date)
@@ -132,5 +130,4 @@ class Generator
         }
         return $link;
     }
-
 }

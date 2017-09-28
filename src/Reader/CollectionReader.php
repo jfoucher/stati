@@ -47,7 +47,7 @@ class CollectionReader extends Reader
 
             if ($collection->getLabel() === 'posts') {
                 // Set next and previous posts
-                usort($posts, function($a, $b) {
+                usort($posts, function ($a, $b) {
                     if (!$a->getDate() || !$b->getDate()) {
                         return 0;
                     }

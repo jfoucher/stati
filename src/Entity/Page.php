@@ -25,9 +25,9 @@ class Page extends Doc
             $extension = 'html';
         }
         $fname = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
-        if(substr($fname, -5) === '.html') {
+        if (substr($fname, -5) === '.html') {
             $fname = pathinfo($fname, PATHINFO_FILENAME);
         }
-        return str_replace('//', '/','/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
+        return str_replace('//', '/', '/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
     }
 }

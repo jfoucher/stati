@@ -26,7 +26,7 @@ class MarkdownParser extends ParsedownExtra
 
         if (preg_match('/^\{\:(.+)\}/', $Line['text'], $matches)) {
             $item = trim($matches[1]);
-            if(strpos($item, '.') === 0) {
+            if (strpos($item, '.') === 0) {
                 //Is a class
                 $Block['element']['attributes'] = ['class' => substr($item, 1)];
                 $Block['element']['text'] = '';

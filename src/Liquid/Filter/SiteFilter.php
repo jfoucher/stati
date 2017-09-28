@@ -45,5 +45,4 @@ class SiteFilter
     {
         return json_encode($input);
     }
-
 }

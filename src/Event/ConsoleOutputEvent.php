@@ -9,7 +9,6 @@
 
 namespace Stati\Event;
 
-
 use Symfony\Component\EventDispatcher\Event;
 
 class ConsoleOutputEvent extends Event
@@ -48,6 +47,4 @@ class ConsoleOutputEvent extends Event
     {
         return $this->args;
     }
-
-
 }

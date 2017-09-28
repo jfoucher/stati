@@ -13,7 +13,8 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class StaticFile extends SplFileInfo
 {
-    public function get($item) {
+    public function get($item)
+    {
         if ($item === 'path') {
             return $this->getRelativePathname();
         }
@@ -32,7 +33,8 @@ class StaticFile extends SplFileInfo
         return null;
     }
 
-    public function __get($item) {
+    public function __get($item)
+    {
         return $this->get($item);
     }
 }

@@ -66,6 +66,4 @@ class Post extends Doc
     {
         $this->previous = $previous;
     }
-
-
 }

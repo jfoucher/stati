@@ -9,7 +9,6 @@
 
 namespace Stati\Renderer;
 
-
 use Stati\Entity\Doc;
 use Stati\Site\Site;
 use Stati\Entity\Post;
@@ -93,5 +92,4 @@ class Renderer
         $template->parse($layoutContent);
         return $template->render($config);
     }
-
 }

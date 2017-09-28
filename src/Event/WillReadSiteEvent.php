@@ -22,5 +22,4 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class WillReadSiteEvent extends SiteEvent
 {
-
 }

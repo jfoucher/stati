@@ -30,7 +30,6 @@ use Stati\Event\DidResetSiteEvent;
 use Stati\Event\WillReadSiteEvent;
 use Stati\Event\SiteEvent;
 
-
 class Site
 {
     /**
@@ -75,7 +74,8 @@ class Site
      */
     protected $dispatcher;
 
-    public function __construct(array $config){
+    public function __construct(array $config)
+    {
         $this->config = $config;
         $this->dispatcher = new EventDispatcher();
     }
@@ -97,7 +97,8 @@ class Site
         $this->dispatcher->dispatch(SiteEvents::DID_PROCESS_SITE, new SiteEvent($this));
     }
 
-    public function reset() {
+    public function reset()
+    {
         $fs = new Filesystem();
         $this->dispatcher->dispatch(SiteEvents::WILL_RESET_SITE, new WillResetSiteEvent($this, $fs));
         $fs->remove($this->getDestination());
@@ -105,7 +106,8 @@ class Site
         $this->dispatcher->dispatch(SiteEvents::DID_RESET_SITE, new DidResetSiteEvent($this, $fs));
     }
 
-    public function read() {
+    public function read()
+    {
         //Read static files
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_SITE, new WillReadSiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_STATIC_FILES, new SiteEvent($this));
@@ -139,12 +141,14 @@ class Site
         $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));
     }
 
-    public function generate() {
+    public function generate()
+    {
         $this->dispatcher->dispatch(SiteEvents::WILL_GENERATE_SITE, new SiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::DID_GENERATE_SITE, new SiteEvent($this));
     }
 
-    public function render() {
+    public function render()
+    {
         $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_SITE, new SiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::WILL_RENDER_COLLECTIONS, new SiteEvent($this));
 
@@ -162,7 +166,8 @@ class Site
         $this->dispatcher->dispatch(SiteEvents::DID_RENDER_SITE, new SiteEvent($this));
     }
 
-    public function write() {
+    public function write()
+    {
         $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_SITE, new SiteEvent($this));
         // Write static files
         $this->dispatcher->dispatch(SiteEvents::WILL_WRITE_STATIC_FILES, new SiteEvent($this));
@@ -191,7 +196,7 @@ class Site
      */
     public function __get($item)
     {
-        $getter = implode('', array_map(function($part){
+        $getter = implode('', array_map(function ($part) {
             return ucfirst($part);
         }, explode('_', $item)));
         $field = lcfirst($getter);
@@ -233,7 +238,8 @@ class Site
         return $this->__get($item);
     }
 
-    public function getDestination() {
+    public function getDestination()
+    {
         if (isset($this->config['destination'])) {
             return $this->config['destination'];
         }
@@ -353,7 +359,8 @@ class Site
         $this->plugins[] = $plugin;
     }
 
-    public function setPlugins($plugins) {
+    public function setPlugins($plugins)
+    {
         $this->plugins = $plugins;
     }
 
@@ -380,5 +387,4 @@ class Site
     {
         return $this->timer;
     }
-
 }

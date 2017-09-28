@@ -9,7 +9,6 @@
 
 namespace Stati\Entity;
 
-
 class Collection
 {
     /**
@@ -90,6 +89,4 @@ class Collection
     {
         $this->label = $label;
     }
-
-
 }

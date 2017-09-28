@@ -60,5 +60,4 @@ class SettingTemplateVarsEvent extends Event
     {
         return $this->doc;
     }
-
 }
