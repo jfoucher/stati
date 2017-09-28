@@ -30,8 +30,20 @@ class SiteFilter
      *
      * @return string
      */
+
     public static function number_of_words($input)
     {
-        return str_word_count($input);
+        return str_word_count(strip_tags($input), 0);
     }
+
+    public static function tojson($input)
+    {
+        return json_encode($input);
+    }
+
+    public static function jsonify($input)
+    {
+        return json_encode($input);
+    }
+
 }
