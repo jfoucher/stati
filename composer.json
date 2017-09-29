@@ -29,8 +29,8 @@
         "yosymfony/resource-watcher": "^1.2",
         "symfony/filesystem": "^3.3",
         "symfony/event-dispatcher": "^3.3",
-        "stati/stati-paginate-plugin": "dev-master",
-        "stati/stati-related-plugin": "dev-master"
+        "stati/paginate": "dev-master",
+        "stati/related": "dev-master"
     },
     "suggest": {
         "stati/stati-profiler-plugin": "A profiler plugin for stati"
