@@ -7,23 +7,32 @@ An extensible static site generator in PHP that can work with any existing jekyl
 ## Install
 
 ### Option 1
-The easiest way to install Stati is to simply run the following command:
 
-{% highlight sh %}
+If you already have composer installed, the easiest way to install stati is to just run this command: 
+
+{% highlight shell %}
+composer global require stati/stati
+{% endhighlight %}
+
+### Option 2
+
+The second easiest way to install Stati is to use our installer:
+
+{% highlight shell %}
 curl -LSs https://stati.jfoucher.com/installer.php | php
 {% endhighlight %}
 
 This will download and install Stati to your current directory.
 
-You can then move it (don't forget the `plugins` folder) to a folder that is in your `$PATH` such as `/usr/local/bin/
+You can then move it (and the plugins) to a folder that is in your `$PATH` such as `/usr/local/bin/`
 
-### Option 2
+### Option 3
 
 Alternatively, you can [download the latest release]({{ site.github.latest_release.assets[0].browser_download_url }}), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
 
 ## Running
 
-Once the install is complete, change to your website directory and run `stati.phar generate` to generate your site, or run `stati.phar serve` to serve it locally.
+Once the install is complete, change to your website directory and run `stati generate` to generate your site, or run `stati serve` to serve it locally.
 
 ## Requirements
 
