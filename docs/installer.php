@@ -141,7 +141,7 @@ namespace
     mkdir ('plugins', 0775);
     foreach ($item->plugins as $plugin) {
         echo " - Downloading plugin {$plugin->name} ...$n";
-        file_put_contents('./plugins/'.$plugin->name.'.phar', file_get_contents($plugin->url));
+        file_put_contents('./'.$plugin->name.'.phar', file_get_contents($plugin->url));
     }
 
     echo " - Plugins installed...$n";
