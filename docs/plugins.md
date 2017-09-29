@@ -1,7 +1,4 @@
----
-title: Stati plugins
-description: Learn how you can extend Stati functionality in PHP.
----
+
 
 # Stati plugins
 
