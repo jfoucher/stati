@@ -24,11 +24,11 @@ $manifest[] = [
     "plugins" => [
         [
             "name" => "paginator",
-            "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/plugins/paginator.phar"
+            "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/paginator.phar"
         ],
         [
             "name" => "related",
-            "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/plugins/related.phar"
+            "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/related.phar"
         ]
     ]
 ];
