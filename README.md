@@ -5,6 +5,10 @@ A static site generator in PHP that can work with any existing jekyll site and g
 
 That is the end goal anyway.
 
+### Documentation
+
+We now have a website for all [Stati documentation](https://stati.jfoucher.com) including [how to make plugins](https://stati.jfoucher.com/plugins.html)
+
 ### Status
 
 - Generates all defined collections, including custom defined collections in _config.yml
