@@ -23,7 +23,7 @@ $manifest[] = [
     "version" => $tag,
     "plugins" => [
         [
-            "name" => "paginator",
+            "name" => "paginate",
             "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/paginate.phar"
         ],
         [
