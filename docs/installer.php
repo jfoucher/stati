@@ -140,8 +140,8 @@ namespace
     echo "{$n}Installing plugins$n";
     mkdir ('plugins', 0775);
     foreach ($item->plugins as $plugin) {
-        echo "{$n}Downloading plugin {$plugin->name} ...$n";
-        file_put_contents('./plugins/'.$plugin->name, file_get_contents($plugin->url));
+        echo " - Downloading plugin {$plugin->name} ...$n";
+        file_put_contents('./plugins/'.$plugin->name.'.phar', file_get_contents($plugin->url));
     }
 
     echo " - Plugins installed...$n";
