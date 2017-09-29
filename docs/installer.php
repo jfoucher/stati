@@ -132,6 +132,7 @@ namespace
     foreach ($item->plugins as $plugin) {
         echo " - Downloading plugin {$plugin->name} ...$n";
         file_put_contents('./'.$plugin->name.'.phar', file_get_contents($plugin->url));
+        @symlink('/usr/local/bin/'.$plugin->name.'.phar', $plugin->name.'.phar');
     }
 
     echo " - Plugins installed...$n";
