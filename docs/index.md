@@ -12,6 +12,7 @@ You can then change to your website directory and run `stati.phar generate` to g
 
 ### Requirements
 
+If your highlight your code with `{% raw  %}{% highlight %} {% endhighlight %}{% endraw  %}` blocks, you must have `pygmentize` in your path, i.e. install pygments globally
 
 If you use sass or scss, the `sass` or `scss` commands must be available.
 
