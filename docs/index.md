@@ -12,7 +12,6 @@ You can then change to your website directory and run `stati.phar generate` to g
 
 ### Requirements
 
-If your highlight your code with `\{% highlight %\} \{% endhighlight %\}` blocks, you must have `pygmentize` in your path, i.e. install pygments globally
 
 If you use sass or scss, the `sass` or `scss` commands must be available.
 
@@ -20,6 +19,7 @@ If you use sass or scss, the `sass` or `scss` commands must be available.
 
 The plugin architecture, based on the Symfony Event dispatcher, allows plugin authors to hook into various points in the site generation lifecycle to modify the output.
 
+Please check the [plugin documentation](plugins.md)
 
 ### Contributing
 
