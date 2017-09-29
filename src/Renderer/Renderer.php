@@ -39,9 +39,7 @@ class Renderer
 
     protected function render(Doc $doc)
     {
-        Liquid::set('INCLUDE_ALLOW_EXT', true);
-        Liquid::set('INCLUDE_PREFIX', './_includes/');
-        Liquid::set('HAS_PROPERTY_METHOD', 'get');
+
         $frontMatter = $doc->getFrontMatter();
         $content = $doc->getContent();
 
@@ -68,6 +66,9 @@ class Renderer
 
     protected function renderWithLayout($layoutFile, $config)
     {
+        Liquid::set('INCLUDE_ALLOW_EXT', true);
+        Liquid::set('INCLUDE_PREFIX', './_includes/');
+        Liquid::set('HAS_PROPERTY_METHOD', 'get');
         $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
         if (!$layout) {
             throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder');
@@ -76,7 +77,7 @@ class Renderer
         $layoutContent = ContentParser::parse($layout);
 
         if (isset($layoutFrontMatter['layout'])) {
-            $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
+            $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
             $template->registerTag('highlight', Highlight::class);
             $template->registerTag('post_url', PostUrl::class);
             $template->registerFilter(new SiteFilter());
@@ -85,7 +86,7 @@ class Renderer
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
-        $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
+        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->registerFilter(new SiteFilter());

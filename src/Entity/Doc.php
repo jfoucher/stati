@@ -155,7 +155,8 @@ class Doc
         if (is_file($cacheDir.md5($content))) {
             return file_get_contents($cacheDir.md5($content));
         }
-        $template = new Template('./_includes/'/*, new File(['cache_dir' => '/tmp/'])*/);
+
+        $template = new Template(/*'./_includes/'*//*, new File(['cache_dir' => '/tmp/'])*/);
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->registerFilter(new SiteFilter());
