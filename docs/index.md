@@ -24,7 +24,7 @@ If you use sass or scss, the `sass` or `scss` commands must be available.
 
 The plugin architecture, based on the Symfony Event dispatcher, allows plugin authors to hook into various points in the site generation lifecycle to modify the output.
 
-Please check the [plugin documentation](./plugins/)
+Please check the [plugin documentation](plugins.md)
 
 ### Contributing
 
