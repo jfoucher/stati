@@ -27,6 +27,12 @@ Download stati.zip from the [latest release](https://github.com/jfoucher/stati/r
 
 You can then change to your website directory and run `stati.phar generate` to generate your site, or run `stati.phar serve` to serve it locally.
 
+### Requirements
+
+If your highlight your code with `{% highlight %} {% endhighlight %}` blocks, you must have `pygmentize` in your path, i.e. install pygments globally
+
+If you use sass or scss, the `sass` or `scss` commands must be available.
+
 ### Contributing
 
 Try Stati with your site and let me know what fails by opening an issue here.
