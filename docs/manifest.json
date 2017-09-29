@@ -1,8 +1,8 @@
 [
   {
     "name": "stati.phar",
-    "sha1": "4285d0ea11533882e621fec373717542931f6a56",
-    "url": "https://github.com/jfoucher/stati/blob/0.1.2/build/stati.phar?raw=true",
+    "sha1": "60ff3018d082a29f0e3b83f9edabc9ec1fd2a611",
+    "url": "https://raw.githubusercontent.com/jfoucher/stati/0.1.2/build/stati.phar",
     "version": "0.1.2"
   }
 ]
