@@ -11,6 +11,8 @@ For install and usage documentation, please see [the documentation](https://stat
 
 ### Status
 
+[![Build Status](https://travis-ci.org/jfoucher/stati.svg?branch=master)](https://travis-ci.org/jfoucher/stati)
+
 - Generates all defined collections, including custom defined collections in _config.yml
 - Paginates posts and saves paginated post to the correct places
 - Plugin architecture based on Symfony events

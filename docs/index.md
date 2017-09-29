@@ -51,3 +51,5 @@ Please check the [plugin documentation](plugins.md)
 ## Contributing
 
 Try Stati with your site and let me know what fails by opening an issue here.
+
+[![Build Status](https://travis-ci.org/jfoucher/stati.svg?branch=master)](https://travis-ci.org/jfoucher/stati)
