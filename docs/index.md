@@ -6,7 +6,7 @@ An extensible static site generator in PHP that can work with any existing jekyl
 
 ### Install
 
-[Download the latest release]({{ site.github.assets[0].browser_download_url }}), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
+[Download the latest release]({{ site.github.latest_release.assets[0].browser_download_url }}), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
 
 You can then change to your website directory and run `stati.phar generate` to generate your site, or run `stati.phar serve` to serve it locally.
 
