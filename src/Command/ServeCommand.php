@@ -30,10 +30,8 @@ class ServeCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $port = $input->getArgument('port');
-        $application = new Application('Stati', '@package_version@');
-        $application->add(new GenerateCommand());
+        $command = $this->getApplication()->find('generate');
 
-        $command = $application->find('generate');
         $returnCode = $command->run(new ArrayInput([]), new ConsoleOutput($output->getVerbosity()));
         $style = new SymfonyStyle($input, $output);
         if ($returnCode === 0) {
