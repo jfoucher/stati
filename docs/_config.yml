@@ -1,2 +1,3 @@
 title: Stati documentation
 description: An extensible PHP static site generator that works on existing Jekyll sites
+theme: jekyll-theme-cayman
