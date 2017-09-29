@@ -137,11 +137,21 @@ namespace
         throw $e;
     }
 
+    echo "{$n}Installing plugins$n";
+    mkdir ('plugins', 0775);
+    foreach ($item->plugins as $plugin) {
+        echo "{$n}Downloading plugin {$plugin->name} ...$n";
+        file_put_contents('./plugins/'.$plugin->name, file_get_contents($plugin->url));
+    }
+
+    echo " - Plugins installed...$n";
     echo " - Making Stati executable...$n";
 
     @chmod($item->name, 0755);
 
     echo "{$n}Stati installed!$n";
+
+
 
     /**
      * Checks a condition, outputs a message, and exits if failed.
