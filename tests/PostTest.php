@@ -15,10 +15,12 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class PostTest extends TestCase
 {
-    public function setUp() {
+    public function setUp()
+    {
         chdir(dirname(__FILE__).'/postTest/');
     }
-    public function tearDown() {
+    public function tearDown()
+    {
         chdir(dirname(__FILE__));
     }
 

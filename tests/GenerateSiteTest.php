@@ -22,12 +22,14 @@ use FilesystemIterator;
 
 class GenerateSiteTest extends TestCase
 {
-    public function setUp() {
+    public function setUp()
+    {
         chdir(dirname(__FILE__).'/layoutTest/');
     }
 
-    public function tearDown() {
-        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./_site', FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path) {
+    public function tearDown()
+    {
+        foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./_site', FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $path) {
             $path->isDir() && !$path->isLink() ? rmdir($path->getPathname()) : unlink($path->getPathname());
         }
         rmdir('./_site');
