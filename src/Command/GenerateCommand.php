@@ -79,13 +79,13 @@ class GenerateCommand extends Command
 
         $finder = new Finder();
         if ($dir = Phar::running(false)) {
-            $finder->in(dirname($dir).'/plugins/')
+            $finder->in(dirname($dir).'/stati-plugins/')
                 ->name('*.phar')
                 ->depth(' == 0')
             ;
             foreach ($finder as $file) {
                 //Include plugin autoloader
-                include('phar://'.dirname($dir).'/plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
+                include('phar://'.dirname($dir).'/stati-plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
 
                 // Get plugin class and namespace
                 $pluginClass = ucfirst(str_replace('.phar', '', $file->getRelativePathname()));
@@ -101,13 +101,13 @@ class GenerateCommand extends Command
             }
         } else {
             $dir = __DIR__;
-            $finder->in($dir.'/../../plugins/')
+            $finder->in($dir.'/../../stati-plugins/')
                 ->directories()
                 ->depth(' == 0')
             ;
             foreach ($finder as $file) {
                 //Include plugin autoloader
-                include($dir.'/../../plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
+                include($dir.'/../../stati-plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
 
                 // Get plugin class and namespace
                 $pluginClass = ucfirst($file->getRelativePathname());
