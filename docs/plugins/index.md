@@ -30,4 +30,3 @@ The Plugin class itself is a [Symfony Event Subscriber](http://symfony.com/doc/c
         );
     }
 
-You can get a list of all events [here](/plugins/events.html) 
