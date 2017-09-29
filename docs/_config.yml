@@ -1,4 +1,4 @@
-title: Stati documentation
-description: An extensible PHP static site generator that works on existing Jekyll sites
+title: Stati
+description: the Jekyll-compatible extensible PHP static website generator
 theme: jekyll-theme-cayman
 google_analytics: "UA-8465441-2"
