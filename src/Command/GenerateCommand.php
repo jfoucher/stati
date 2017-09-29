@@ -93,37 +93,36 @@ class GenerateCommand extends Command
         $plugins = array_unique($plugins);
 
         $loadedPlugins = [];
-
+        $errors = [];
         foreach ($plugins as $requestedPlugin) {
-            $pluginExists = false;
             if ($dir = Phar::running(false)) {
-                if (is_file(dirname($dir).'/'.$requestedPlugin.'.phar')) {
-                    $pluginExists = true;
-                    include('phar://'.dirname($dir).'/'.$requestedPlugin.'.phar/vendor/autoload.php');
+                if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
+                    include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
                 }
             } else {
                 $dir = __DIR__;
-                if (is_file($dir.'/../../'.$requestedPlugin.'/vendor/autoload.php')) {
-                    $pluginExists = true;
-                    include($dir.'/../../'.$requestedPlugin.'/vendor/autoload.php');
+                if (is_file($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php')) {
+                    include($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php');
                 }
             }
 
-            if ($pluginExists) {
-                $pluginClass = ucfirst($requestedPlugin);
-                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
+            $pluginClass = ucfirst($requestedPlugin);
+            $pluginNamespace = '\\Stati\\Plugin\\' . $pluginClass . '\\';
 
-                // Create plugin class
-                $pluginFQN = $pluginNamespace.$pluginClass;
+            // Create plugin class
+            $pluginFQN = $pluginNamespace . $pluginClass;
+            if (class_exists($pluginFQN)) {
                 $loadedPlugin = new $pluginFQN();
-
                 // Register with event dispatcher
                 $this->site->getDispatcher()->addSubscriber($loadedPlugin);
                 $loadedPlugins[] = $loadedPlugin;
             } else {
-                $this->style->error('Sorry, the plugin '.$requestedPlugin.' is not available');
+                $errors[] = 'Sorry, the plugin ' . $requestedPlugin . ' is not available';
             }
+        }
 
+        if (count($errors)) {
+            $this->style->error($errors);
         }
 
         return $loadedPlugins;

@@ -18,6 +18,7 @@
         "psr-4": {"Stati\\": "src/", "Stati\\Tests\\": "tests/"}
     },
     "require": {
+        "php": "^5.6 || ^7.0",
         "symfony/console": "^3.3",
         "symfony/yaml": "^3.3",
         "symfony/finder": "^3.3",
@@ -27,6 +28,14 @@
         "ramsey/pygments": "^1.0",
         "yosymfony/resource-watcher": "^1.2",
         "symfony/filesystem": "^3.3",
-        "symfony/event-dispatcher": "^3.3"
-    }
+        "symfony/event-dispatcher": "^3.3",
+        "stati/stati-paginate-plugin": "dev-master",
+        "stati/stati-related-plugin": "dev-master"
+    },
+    "suggest": {
+        "stati/stati-profiler-plugin": "A profiler plugin for stati"
+    },
+    "bin": ["build/stati"],
+    "license": "MIT",
+    "homepage": "https://stati.jfoucher.com"
 }

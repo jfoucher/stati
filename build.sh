@@ -1,3 +1,3 @@
 #!/bin/bash
 
-box build && cd paginate/ && box build && cd ../ && cd profiler/ && box build && cd ../ && cd related/ && box build && cd ../ && cp ./paginate/build/paginate.phar ./build/ && cp ./related/build/related.phar ./build/ && cp profiler/build/profiler.phar build/ && cd ./build/ && zip stati.zip *.phar && cd ../
+box build && cp ./build/stati.phar ./build/stati && cd ../stati-paginate-plugin/ && box build && cd ../stati/ && cd ../stati-profiler-plugin/ && box build && cd ../stati/ && cd ../stati-related-plugin/ && box build && cd ../stati/ && cp ../stati-paginate-plugin/build/paginate.phar ./build/ && cp ../stati-related-plugin/build/related.phar ./build/ && cp ../stati-profiler-plugin/build/profiler.phar build/ && cd ./build/ && zip stati.zip *.phar && cd ../
