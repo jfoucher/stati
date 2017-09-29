@@ -5,9 +5,9 @@ A static site generator in PHP that can work with any existing jekyll site and g
 
 That is the end goal anyway.
 
-### Documentation
+### Install
 
-We now have a website for all [Stati documentation](https://stati.jfoucher.com) including [how to make plugins](https://stati.jfoucher.com/plugins.html)
+For install and usage documentation, please see [the documentation](https://stati.jfoucher.com)
 
 ### Status
 
@@ -24,18 +24,6 @@ We now have a website for all [Stati documentation](https://stati.jfoucher.com) 
   This is mostly due to using command line pygments for highlighting code blocks. If you don't use code highlighting, the slowdown will be much less noticeable
 - No automatic regeneration when a file changes as of yet
 - Not entirely completely compatible with jekyll, most notably with the lack of liquid filters (Work in progress)
-
-### Install
-
-Download stati.zip from the [latest release](https://github.com/jfoucher/stati/releases/latest), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
-
-You can then change to your website directory and run `stati.phar generate` to generate your site, or run `stati.phar serve` to serve it locally.
-
-### Requirements
-
-If your highlight your code with `{% highlight %} {% endhighlight %}` blocks, you must have `pygmentize` in your path, i.e. install pygments globally
-
-If you use sass or scss, the `sass` or `scss` commands must be available.
 
 ### Contributing
 
