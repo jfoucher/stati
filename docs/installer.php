@@ -67,15 +67,6 @@ namespace
         false
     );
 
-    // check phar readonly setting
-    check(
-        'The "phar.readonly" setting is off.',
-        'Notice: The "phar.readonly" setting needs to be off to create Phars.',
-        function () {
-            return (false == ini_get('phar.readonly'));
-        },
-        false
-    );
     // check allow url open setting
     check(
         'The "allow_url_fopen" setting is on.',
@@ -148,8 +139,14 @@ namespace
 
     @chmod($item->name, 0755);
 
-    echo "{$n}Stati installed!$n";
+    @symlink('/usr/local/bin/stati', $item->name);
 
+    if (is_link('/usr/local/bin/stati')) {
+        echo "{$n}Stati installed!$n";
+    } else {
+        echo "{$n}Stati is installed but I could not copy it to /usr/local/bin/$n";
+        echo "You might want to do that manually$n";
+    }
 
 
     /**
