@@ -7,7 +7,7 @@
  * Time: 21:46
  */
 
-namespace Stati\Plugin\Paginator\Entity;
+namespace Stati\Plugin\Paginate\Entity;
 
 use Stati\Entity\Post;
 

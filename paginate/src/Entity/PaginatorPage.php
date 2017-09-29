@@ -7,7 +7,7 @@
  * Time: 23:05
  */
 
-namespace Stati\Plugin\Paginator\Entity;
+namespace Stati\Plugin\Paginate\Entity;
 
 use Symfony\Component\Finder\SplFileInfo;
 use Stati\Parser\FrontMatterParser;

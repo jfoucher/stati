@@ -10,7 +10,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Finder\Finder;
 use Phar;
 
 class GenerateCommand extends Command
@@ -75,54 +74,48 @@ class GenerateCommand extends Command
 
     private function registerPlugins()
     {
-        $plugins = [];
+        $plugins = ['paginate', 'related'];
 
-        $finder = new Finder();
-        if ($dir = Phar::running(false)) {
-            $finder->in(dirname($dir).'/stati-plugins/')
-                ->name('*.phar')
-                ->depth(' == 0')
-            ;
-            foreach ($finder as $file) {
-                //Include plugin autoloader
-                include('phar://'.dirname($dir).'/stati-plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
-
-                // Get plugin class and namespace
-                $pluginClass = ucfirst(str_replace('.phar', '', $file->getRelativePathname()));
-                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
-
-                // Create plugin class
-                $pluginFQN = $pluginNamespace.$pluginClass;
-                $plugin = new $pluginFQN();
-
-                // Register with event dispatcher
-                $this->site->getDispatcher()->addSubscriber($plugin);
-                $plugins[] = $plugin;
-            }
-        } else {
-            $dir = __DIR__;
-            $finder->in($dir.'/../../stati-plugins/')
-                ->directories()
-                ->depth(' == 0')
-            ;
-            foreach ($finder as $file) {
-                //Include plugin autoloader
-                include($dir.'/../../stati-plugins/'.$file->getRelativePathname().'/vendor/autoload.php');
-
-                // Get plugin class and namespace
-                $pluginClass = ucfirst($file->getRelativePathname());
-                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
-
-                // Create plugin class
-                $pluginFQN = $pluginNamespace.$pluginClass;
-                $plugin = new $pluginFQN();
-
-                // Register with event dispatcher
-                $this->site->getDispatcher()->addSubscriber($plugin);
-                $plugins[] = $plugin;
-            }
+        foreach ($this->site->gems as $gem) {
+            $plugins[] = str_replace('jekyll-', '', $gem);
         }
 
-        return $plugins;
+        $plugins = array_unique($plugins);
+
+        $loadedPlugins = [];
+
+        foreach ($plugins as $requestedPlugin) {
+            $pluginExists = false;
+            if ($dir = Phar::running(false)) {
+                if (is_file(dirname($dir).'/'.$requestedPlugin.'/vendor/autoload.php')) {
+                    $pluginExists = true;
+                    include('phar://'.dirname($dir).'/'.$requestedPlugin.'/vendor/autoload.php');
+                }
+            } else {
+                $dir = __DIR__;
+                if (is_file($dir.'/../../'.$requestedPlugin.'/vendor/autoload.php')) {
+                    $pluginExists = true;
+                    include($dir.'/../../'.$requestedPlugin.'/vendor/autoload.php');
+                }
+            }
+
+            if ($pluginExists) {
+                $pluginClass = ucfirst($requestedPlugin);
+                $pluginNamespace = '\\Stati\\Plugin\\'.$pluginClass.'\\';
+
+                // Create plugin class
+                $pluginFQN = $pluginNamespace.$pluginClass;
+                $loadedPlugin = new $pluginFQN();
+
+                // Register with event dispatcher
+                $this->site->getDispatcher()->addSubscriber($loadedPlugin);
+                $loadedPlugins[] = $loadedPlugin;
+            } else {
+                $this->style->error('Sorry, the plugin '.$requestedPlugin.' is not available');
+            }
+
+        }
+
+        return $loadedPlugins;
     }
 }

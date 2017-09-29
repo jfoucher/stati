@@ -7,18 +7,18 @@
  * Time: 20:08
  */
 
-namespace Stati\Plugin\Paginator;
+namespace Stati\Plugin\Paginate;
 
 use Stati\Event\SiteEvent;
 use Stati\Event\SettingTemplateVarsEvent;
-use Stati\Plugin\Paginator\Renderer\PaginatorRenderer;
+use Stati\Plugin\Paginate\Renderer\PaginateRenderer;
 use Stati\Plugin\Plugin;
 use Stati\Site\Site;
 use Stati\Site\SiteEvents;
-use Stati\Plugin\Paginator\Entity\Paginator as PaginatorEntity;
+use Stati\Plugin\Paginate\Entity\Paginator as PaginatorEntity;
 use Stati\Liquid\TemplateEvents;
 
-class Paginator extends Plugin
+class Paginate extends Plugin
 {
     protected $name = 'paginator';
 
@@ -51,7 +51,7 @@ class Paginator extends Plugin
         if (!$site->paginate) {
             return;
         }
-        $paginatorRenderer = new PaginatorRenderer($site);
+        $paginatorRenderer = new PaginateRenderer($site);
         $renderedPages = $paginatorRenderer->renderAll();
 
         foreach ($renderedPages as $page) {

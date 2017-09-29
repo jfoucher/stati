@@ -7,10 +7,10 @@
  * Time: 22:17
  */
 
-namespace Stati\Plugin\Paginator\Renderer;
+namespace Stati\Plugin\Paginate\Renderer;
 
 use Stati\Entity\Doc;
-use Stati\Plugin\Paginator\Entity\PaginatorPage;
+use Stati\Plugin\Paginate\Entity\PaginatorPage;
 use Stati\Renderer\Renderer;
 use Symfony\Component\Finder\Finder;
 
@@ -19,12 +19,12 @@ use Symfony\Component\Finder\Finder;
  * Class FilesRenderer
  * @package Stati\Renderer
  */
-class PaginatorRenderer extends Renderer
+class PaginateRenderer extends Renderer
 {
     public function renderAll()
     {
         /**
-         * @var \Stati\Plugin\Paginator\Entity\Paginator $paginator
+         * @var \Stati\Plugin\Paginate\Entity\Paginator $paginator
          */
         $paginator = $this->site->paginator;
 

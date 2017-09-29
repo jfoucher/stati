@@ -1,5 +1,5 @@
 {
-    "name": "stati/paginator",
+    "name": "stati/paginate",
     "description": "A paginator plugin for Stati",
     "authors": [
         {
@@ -8,7 +8,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Stati\\Plugin\\Paginator\\": "src/", "Stati\\Plugin\\Paginator\\Tests\\": "tests/"}
+        "psr-4": {"Stati\\Plugin\\Paginate\\": "src/", "Stati\\Plugin\\Paginate\\Tests\\": "tests/"}
     },
     "require": {}
 }

@@ -13,6 +13,7 @@ use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputArgument;
 
 class ServeCommand extends Command
 {
@@ -22,11 +23,13 @@ class ServeCommand extends Command
             ->setName('serve')
             ->setAliases(['s'])
             ->setDescription('Serve static site from localhost')
+            ->addArgument('port', InputArgument::OPTIONAL, 'Port the server should run on', '4000')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $port = $input->getArgument('port');
         $application = new Application('Stati', '@package_version@');
         $application->add(new GenerateCommand());
 
@@ -36,10 +39,10 @@ class ServeCommand extends Command
         if ($returnCode === 0) {
             $style->success([
                 'Stati is now serving your website',
-                'Open http://localhost:4000 to view it',
+                'Open http://localhost:'.$port.' to view it',
                 'Press Ctrl-C to quit.'
             ]);
-            shell_exec('cd _site && php -S localhost:4000 &');
+            shell_exec('cd _site && php -S localhost:'.$port.' &');
         }
     }
 }

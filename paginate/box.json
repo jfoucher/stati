@@ -14,6 +14,6 @@
   ],
   "git-version": "package_version",
   "main": "vendor/autoload.php",
-  "output": "build/paginator.phar",
+  "output": "build/paginate.phar",
   "stub": true
 }
