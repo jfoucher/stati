@@ -14,6 +14,8 @@ If you already have composer installed, the easiest way to install stati is to j
 composer global require stati/stati
 {% endhighlight %}
 
+This will download and install Stati in the `~/.composer` folder. Make sure `~/.composer/vendor/bin/` is in your `$PATH` so that you can run stati from anywhere on your filesystem.
+
 ### Option 2
 
 The second easiest way to install Stati is to use our installer:
