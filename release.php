@@ -10,7 +10,7 @@ $tag = $argv[1];
 
 shell_exec('git tag '.$tag);
 shell_exec('./build.sh');
-shell_exec('git tag -d'.$tag);
+shell_exec('git tag -d '.$tag);
 
 
 //update manifest.json
@@ -35,5 +35,5 @@ $manifest[] = [
 
 file_put_contents('./docs/manifest.json', json_encode($manifest));
 
-shell_exec('git commit -m "Creating release with tag'.$tag.'" && git push');
+shell_exec('git commit -am "Creating release with tag '.$tag.'" && git push');
 shell_exec('git tag '.$tag.' && git push --tags');
