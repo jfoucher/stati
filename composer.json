@@ -33,7 +33,7 @@
         "stati/related": "dev-master"
     },
     "suggest": {
-        "stati/stati-profiler-plugin": "A profiler plugin for stati"
+        "stati/profiler": "A profiler plugin for stati"
     },
     "bin": ["build/stati"],
     "license": "MIT",
