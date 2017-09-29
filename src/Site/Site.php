@@ -62,11 +62,6 @@ class Site
     /**
      * @var array
      */
-    private $plugins = [];
-
-    /**
-     * @var array
-     */
     protected $collections;
 
     /**
@@ -352,16 +347,6 @@ class Site
     public function setCollections($collections)
     {
         $this->collections = $collections;
-    }
-
-    public function addPlugin($plugin)
-    {
-        $this->plugins[] = $plugin;
-    }
-
-    public function setPlugins($plugins)
-    {
-        $this->plugins = $plugins;
     }
 
     /**

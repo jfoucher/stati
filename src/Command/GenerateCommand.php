@@ -36,8 +36,8 @@ class GenerateCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->style = new SymfonyStyle($input, $output);
-        $this->style->title('Generating site...');
-        $timer = microtime(true);
+
+
         // Read config file
         $configFile = './_config.yml';
 
@@ -50,6 +50,8 @@ class GenerateCommand extends Command
 
         $this->site = new Site($config);
         $this->registerPlugins();
+        $timer = microtime(true);
+        $this->style->title('Generating site...');
 
         if ($this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
             $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
@@ -76,8 +78,16 @@ class GenerateCommand extends Command
     {
         $plugins = ['paginate', 'related'];
 
+        //Use gems for older jekyll config files
         foreach ($this->site->gems as $gem) {
             $plugins[] = str_replace('jekyll-', '', $gem);
+        }
+
+        //Use plugins for newer jekyll config files
+        if ($this->site->plugins) {
+            foreach ($this->site->plugins as $gem) {
+                $plugins[] = str_replace('jekyll-', '', $gem);
+            }
         }
 
         $plugins = array_unique($plugins);
@@ -87,9 +97,9 @@ class GenerateCommand extends Command
         foreach ($plugins as $requestedPlugin) {
             $pluginExists = false;
             if ($dir = Phar::running(false)) {
-                if (is_file(dirname($dir).'/'.$requestedPlugin.'/vendor/autoload.php')) {
+                if (is_file(dirname($dir).'/'.$requestedPlugin.'.phar')) {
                     $pluginExists = true;
-                    include('phar://'.dirname($dir).'/'.$requestedPlugin.'/vendor/autoload.php');
+                    include('phar://'.dirname($dir).'/'.$requestedPlugin.'.phar/vendor/autoload.php');
                 }
             } else {
                 $dir = __DIR__;
