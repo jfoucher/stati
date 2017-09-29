@@ -87,14 +87,12 @@ Simple post
 </pre></div>
 
 </div>
-
       </div>
    </div><!-- end .content -->
 
     
 </body>
 
-</html>
-', file_get_contents('./_site/2017/08/simple-post.html'));
+</html>', file_get_contents('./_site/2017/08/simple-post.html'));
     }
 }

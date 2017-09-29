@@ -4,7 +4,7 @@ layout: default
 <div class="post">
   
   <h1 class="postTitle"><a href="{{ post.url | prepend: site.baseurl }}">{{ page.title }}</a></h1>
-  <p class="meta">{{ page.date | date: '%B %d, %Y' }} | <span class="time">{{ page.content | number_of_words | divided_by:180 }}</span> Minute Read</p>
+  <p class="meta">{{ page.date | date: '%B %d, %Y' }} | <span class="time">{{ page.content | number_of_words | divided_by:180 | round }}</span> Minute Read</p>
   {% if page.image %}
   <!-- <div class="featuredImage">
       <img src="{{ page.image  | prepend: site.baseurl}}" alt="" />

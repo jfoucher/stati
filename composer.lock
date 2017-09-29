@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d7a7f0e7f41595972514a1a6ddac6a3",
+    "content-hash": "f356d2adeee8461e8aca99566b83e9c0",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -94,16 +94,16 @@
         },
         {
             "name": "liquid/liquid",
-            "version": "dev-master",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jfoucher/php-liquid.git",
-                "reference": "98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e"
+                "reference": "f779df5953bd27e6b6349015458bbd6b45566626"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jfoucher/php-liquid/zipball/98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e",
-                "reference": "98f8e0ca32e16d5fa01d23bb772ef0022f1cd28e",
+                "url": "https://api.github.com/repos/jfoucher/php-liquid/zipball/f779df5953bd27e6b6349015458bbd6b45566626",
+                "reference": "f779df5953bd27e6b6349015458bbd6b45566626",
                 "shasum": ""
             },
             "require": {
@@ -155,7 +155,7 @@
             "support": {
                 "source": "https://github.com/jfoucher/php-liquid/tree/master"
             },
-            "time": "2017-09-26 17:25:57"
+            "time": "2017-09-27T17:10:10+00:00"
         },
         {
             "name": "psr/log",
@@ -257,6 +257,94 @@
                 "syntax"
             ],
             "time": "2017-03-28T00:58:59+00:00"
+        },
+        {
+            "name": "stati/paginate",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfoucher/stati-paginate-plugin.git",
+                "reference": "de788a9475a9dcc71e2a62391fea9facc207edeb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-paginate-plugin/zipball/de788a9475a9dcc71e2a62391fea9facc207edeb",
+                "reference": "de788a9475a9dcc71e2a62391fea9facc207edeb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/paginate.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Paginate\\": "src/",
+                    "Stati\\Plugin\\Paginate\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "A paginator plugin for Stati",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-09-29T21:26:29+00:00"
+        },
+        {
+            "name": "stati/related",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfoucher/stati-related-plugin.git",
+                "reference": "97948f9b7e7d347966f8a0ea8f788420fb004169"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-related-plugin/zipball/97948f9b7e7d347966f8a0ea8f788420fb004169",
+                "reference": "97948f9b7e7d347966f8a0ea8f788420fb004169",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/related.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Related\\": "src/",
+                    "Stati\\Plugin\\Related\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "A related posts plugin for Stati",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-09-29T21:26:15+00:00"
         },
         {
             "name": "symfony/console",
@@ -762,11 +850,11 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "liquid/liquid": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^5.6 || ^7.0"
+    },
     "platform-dev": []
 }

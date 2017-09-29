@@ -9,6 +9,7 @@
 
 namespace Stati\Tests;
 
+use Stati\Site\Site;
 use Stati\Tests\TestCase;
 use Stati\Entity\Post;
 use Symfony\Component\Finder\SplFileInfo;
@@ -26,12 +27,13 @@ class PostTest extends TestCase
 
     public function testSimplePost()
     {
-        $file = new SplFileInfo('2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
-        $post = new Post($file, [
+        $site = new Site([
             'permalink' => '/:year/:month/:day/:title.html',
             'url' => 'https://test.com',
             'baseurl' => '',
         ]);
+        $file = new SplFileInfo('2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $post = new Post($file, $site);
 
         $this->assertEquals('Simple post', $post->title);
         $this->assertEquals('Post excerpt.', $post->excerpt);

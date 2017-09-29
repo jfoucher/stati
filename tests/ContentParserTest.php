@@ -23,9 +23,6 @@ This is the content
 
 ';
         $parsed = ContentParser::parse($text);
-        $this->assertEquals('
-This is the content
-
-', $parsed);
+        $this->assertEquals('This is the content', $parsed);
     }
 }
