@@ -37,6 +37,45 @@ namespace
     );
 
 
+    // check phar extension
+    check(
+        'You have the "phar" extension installed.',
+        'You need to have the "phar" extension installed.',
+        function () {
+            return extension_loaded('phar');
+        }
+    );
+
+    // check phar extension version
+    check(
+        'You have a supported version of the "phar" extension.',
+        'You need a newer version of the "phar" extension (>=2.0).',
+        function () {
+            $phar = new ReflectionExtension('phar');
+
+            return version_compare($phar->getVersion(), '2.0', '>=');
+        }
+    );
+
+    // check openssl extension
+    check(
+        'You have the "openssl" extension installed.',
+        'Notice: The "openssl" extension will be needed to sign with private keys.',
+        function () {
+            return extension_loaded('openssl');
+        },
+        false
+    );
+
+    // check phar readonly setting
+    check(
+        'The "phar.readonly" setting is off.',
+        'Notice: The "phar.readonly" setting needs to be off to create Phars.',
+        function () {
+            return (false == ini_get('phar.readonly'));
+        },
+        false
+    );
     // check allow url open setting
     check(
         'The "allow_url_fopen" setting is on.',
@@ -85,6 +124,7 @@ namespace
         unlink($item->name);
 
         echo " x The download was corrupted.$n";
+        exit(1);
     }
 
     echo " - Checking if valid Phar...$n";
