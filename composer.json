@@ -22,15 +22,15 @@
         "symfony/console": "^3.3",
         "symfony/yaml": "^3.3",
         "symfony/finder": "^3.3",
-        "liquid/liquid": "dev-master",
+        "liquid/liquid": "^1.4.1",
         "erusev/parsedown": "^1.6",
         "erusev/parsedown-extra": "^0.7.1",
         "ramsey/pygments": "^1.0",
         "yosymfony/resource-watcher": "^1.2",
         "symfony/filesystem": "^3.3",
         "symfony/event-dispatcher": "^3.3",
-        "stati/paginate": "dev-master",
-        "stati/related": "dev-master"
+        "stati/paginate": "^0.1.0",
+        "stati/related": "^0.1.0"
     },
     "suggest": {
         "stati/profiler": "A profiler plugin for stati"
