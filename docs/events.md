@@ -40,25 +40,25 @@ Here are all the events that plugins can subscribe to.
 
 - **Stati\Site\SiteEvents::WILL_READ_COLLECTIONS**
 
-  This event is triggered just before we start reading collections (posts and user-defined collections)
+  This event is triggered just before we start reading collections (posts and user-defined collections).
   
   Event dispatched is _Stati\Event\SiteEvent_
 
 - **Stati\Site\SiteEvents::DID_READ_COLLECTIONS**
 
-  This event is triggered when we are done reading all collections (including posts)
+  This event is triggered when we are done reading all collections (including posts).
   
   Event dispatched is _Stati\Event\SiteEvent_
 
 - **Stati\Site\SiteEvents::WILL_READ_PAGES**
 
-  This event is triggered just before we start reading pages (files that have frontmatter but are not part of a collection)
+  This event is triggered just before we start reading pages (files that have frontmatter but are not part of a collection).
   
   Event dispatched is _Stati\Event\SiteEvent_
 
 - **Stati\Site\SiteEvents::DID_READ_PAGES**
 
-  This event is triggered when we are done reading pages (files that have frontmatter but are not part of a collection)
+  This event is triggered when we are done reading pages (files that have frontmatter but are not part of a collection).
   
   Event dispatched is _Stati\Event\SiteEvent_
 
@@ -84,7 +84,7 @@ Here are all the events that plugins can subscribe to.
 
 - **Stati\Site\SiteEvents::WILL_RENDER_SITE**
 
-  This event is triggered just before we start rendering the site (converting markdown to html, liquid, etc..)
+  This event is triggered just before we start rendering the site (converting markdown to html, liquid, etc..).
   
   Event dispatched is _Stati\Event\SiteEvent_
 
