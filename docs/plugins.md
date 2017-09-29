@@ -46,3 +46,7 @@ It is an easy way to build phar archives.
 
 You can take a look at the [paginate plugin](https://github.com/jfoucher/stati-paginate-plugin) for an example of how plugins are structured.
 
+More examples : 
+
+- [related posts plugin](https://github.com/jfoucher/stati-related-plugin)
+- [profiler plugin](https://github.com/jfoucher/stati-profiler-plugin)
