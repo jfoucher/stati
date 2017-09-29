@@ -2,7 +2,7 @@
 
 # Stati plugins
 
-### Plugin structure
+## Plugin structure
 
 The plugins are based on composer and are automatically included by Stati at runtime.
 
@@ -31,3 +31,18 @@ The Plugin class itself is a [Symfony Event Subscriber](http://symfony.com/doc/c
         );
     }
 {% endhighlight %}
+
+## Available events
+
+Here is a [list of all the events](events.md) that your plugin can subscribe to, and their description
+
+## Building
+
+The phars for all plugins and [Stati](/) itself are built using [box](https://github.com/box-project/box2)
+
+It is an easy way to build phar archives.
+
+## Examples
+
+You can take a look at the [paginate plugin](https://github.com/jfoucher/stati-paginate-plugin) for an example of how plugins are structured.
+
