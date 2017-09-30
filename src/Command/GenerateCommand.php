@@ -37,7 +37,6 @@ class GenerateCommand extends Command
     {
         $this->style = new SymfonyStyle($input, $output);
 
-
         // Read config file
         $configFile = './_config.yml';
 
@@ -57,8 +56,6 @@ class GenerateCommand extends Command
             $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
         }
 
-        // TODO set allowed setters for each plugin
-
         $this->site->process();
 
         $elapsed = microtime(true) - $timer;
@@ -76,7 +73,11 @@ class GenerateCommand extends Command
 
     private function registerPlugins()
     {
-        $plugins = ['paginate', 'related'];
+        $plugins = [
+            'paginate',
+            'related',
+            'categories',
+        ];
 
         //Use gems for older jekyll config files
         foreach ($this->site->gems as $gem) {
@@ -94,30 +95,15 @@ class GenerateCommand extends Command
 
         $loadedPlugins = [];
         $errors = [];
+
         foreach ($plugins as $requestedPlugin) {
-            if ($dir = Phar::running(false)) {
-                if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
-                    include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
-                }
-            } else {
-                $dir = __DIR__;
-                if (is_file($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php')) {
-                    include($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php');
-                }
-            }
-
-            $pluginClass = ucfirst($requestedPlugin);
-            $pluginNamespace = '\\Stati\\Plugin\\' . $pluginClass . '\\';
-
-            // Create plugin class
-            $pluginFQN = $pluginNamespace . $pluginClass;
-            if (class_exists($pluginFQN)) {
-                $loadedPlugin = new $pluginFQN();
+            if ($loadedPlugin = $this->loadClass($requestedPlugin)) {
                 // Register with event dispatcher
                 $this->site->getDispatcher()->addSubscriber($loadedPlugin);
                 $loadedPlugins[] = $loadedPlugin;
             } else {
                 $errors[] = 'Sorry, the plugin ' . $requestedPlugin . ' is not available';
+                continue;
             }
         }
 
@@ -126,5 +112,45 @@ class GenerateCommand extends Command
         }
 
         return $loadedPlugins;
+    }
+
+    private function loadClass($requestedPlugin)
+    {
+        $pluginClass = ucfirst($requestedPlugin);
+        $pluginNamespace = '\\Stati\\Plugin\\' . $pluginClass . '\\';
+
+        // Create plugin class
+        $pluginFQN = $pluginNamespace . $pluginClass;
+
+        if (class_exists($pluginFQN)) {
+            $loadedPlugin = new $pluginFQN();
+            // Register with event dispatcher
+            $this->site->getDispatcher()->addSubscriber($loadedPlugin);
+            return $loadedPlugin;
+        }
+
+        $this->loadFile($requestedPlugin);
+        if (class_exists($pluginFQN)) {
+            $loadedPlugin = new $pluginFQN();
+            // Register with event dispatcher
+            $this->site->getDispatcher()->addSubscriber($loadedPlugin);
+            return $loadedPlugin;
+        }
+
+        return null;
+    }
+
+    private function loadFile($requestedPlugin)
+    {
+        if ($dir = Phar::running(false)) {
+            if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
+                include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
+            }
+        } else {
+            $dir = __DIR__;
+            if (is_file($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php')) {
+                include($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php');
+            }
+        }
     }
 }
