@@ -270,7 +270,7 @@ class Doc
             return $this->path;
         }
 
-        $link = $this->site->permalink;
+        $link = $this->getPermalink();
 
         if ($this->getDate() && preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
             foreach ($matches[1] as $token) {
@@ -383,7 +383,10 @@ class Doc
      */
     public function getPermalink()
     {
-        return $this->getUrl();
+        if (isset($this->getFrontMatter()['permalink'])) {
+            return $this->getFrontMatter()['permalink'];
+        }
+        return $this->site->permalink;
     }
 
     /**
