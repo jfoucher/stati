@@ -29,6 +29,10 @@ $manifest[] = [
         [
             "name" => "related",
             "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/related.phar"
+        ],
+        [
+            "name" => "categories",
+            "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/categories.phar"
         ]
     ]
 ];
