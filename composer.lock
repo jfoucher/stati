@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ce1f621839919e78a0a6441fdbca9e2",
+    "content-hash": "5b744b24aeb2c0d187244973a220f792",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -257,6 +257,50 @@
                 "syntax"
             ],
             "time": "2017-03-28T00:58:59+00:00"
+        },
+        {
+            "name": "stati/categories",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfoucher/stati-categories-plugin.git",
+                "reference": "f9c9b195be49f2182bc97c2bf3918ebd3b9098c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-categories-plugin/zipball/f9c9b195be49f2182bc97c2bf3918ebd3b9098c1",
+                "reference": "f9c9b195be49f2182bc97c2bf3918ebd3b9098c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/categories.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Categories\\": "src/",
+                    "Stati\\Plugin\\Categories\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "A Stati plugin to generate categories. Included by default",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-09-30T12:52:13+00:00"
         },
         {
             "name": "stati/paginate",
@@ -2304,7 +2348,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.6 || ^7.0"
+        "php": "^7.1"
     },
     "platform-dev": []
 }
