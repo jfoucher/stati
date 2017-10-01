@@ -16,6 +16,7 @@ class StaticFileReader extends Reader
 {
     public function read()
     {
+        $config = $this->site->getConfig();
         $finder = new Finder();
         $finder
             ->in('./')
@@ -24,11 +25,21 @@ class StaticFileReader extends Reader
             ->notPath('node_modules')
             ->notContains('/---\s+(.*)\s+---\s+/s')
             ->notName('/^_/');
-
+        foreach ($config['exclude'] as $exclude) {
+            $finder->notName($exclude);
+            $finder->notPath($exclude);
+        }
         $staticFiles = [];
 
         foreach ($finder as $file) {
-            $staticFiles[] = new StaticFile($file->getPathname(), $file->getRelativePath(), $file->getRelativePathname());
+//            $type = mime_content_type($file->getRelativePathname());
+//            var_dump($type);
+//            if (substr($type, 4) === 'text') {
+//                if (fgets(fopen($file, 'r')) === '---') {
+//                    continue;
+//                }
+//            }
+            $staticFiles[] = new StaticFile($file->getRelativePathname(), $file->getRelativePath(), $file->getRelativePathname());
         }
 
         return $staticFiles;

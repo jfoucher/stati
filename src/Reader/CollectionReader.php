@@ -22,19 +22,27 @@ class CollectionReader extends Reader
 {
     public function read()
     {
-        if (!isset($this->config['collections']) || !is_array($this->config['collections'])) {
+        $config = $this->site->getConfig();
+        if (!isset($config['collections']) || !is_array($config['collections'])) {
             return null;
         }
 
         $collections = [];
-        foreach ($this->config['collections'] as $collectionName => $collectionData) {
+        foreach ($config['collections'] as $collectionName => $collectionData) {
             $collection = new Collection($collectionName, $collectionData);
             $finder = new Finder();
             $finder
                 ->in('./')
                 ->path(sprintf('/^_%s/', $collectionName))
                 ->files()
-                ->contains('/---\s+(.*)\s+---\s+/s');
+                ->name('/(.md|.mkd|.markdown)$/')
+            ;
+
+            foreach ($config['exclude'] as $exclude) {
+                $finder->notName($exclude);
+                $finder->notPath($exclude);
+            }
+
             $posts = [];
 
             foreach ($finder as $file) {

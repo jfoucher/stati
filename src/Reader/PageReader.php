@@ -23,6 +23,7 @@ class PageReader extends Reader
 {
     public function read()
     {
+        $config = $this->site->getConfig();
         // Get top level files and parse
         $finder = new Finder();
         $finder
@@ -30,15 +31,20 @@ class PageReader extends Reader
             ->notPath('/^_/')
             ->files()
             ->notName('/^_/')
-            ->notPath('node_modules')
-            ->contains('/---\s+(.*)\s+---\s+/s');
+            ->contains('/---\s+(.*)\s+---\s+/s')
+        ;
+
+        foreach ($config['exclude'] as $exclude) {
+            $finder->notName($exclude);
+            $finder->notPath($exclude);
+        }
 
         $files = [];
         foreach ($finder as $file) {
             if ($file->getExtension() === "scss" || $file->getExtension() === "sass") {
-                $page = new Sass($file, $this->config);
+                $page = new Sass($file, $this->site);
             } else {
-                $page = new Page($file, $this->config);
+                $page = new Page($file, $this->site);
             }
             $files[] = $page;
         }
