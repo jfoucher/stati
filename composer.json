@@ -29,7 +29,7 @@
         "yosymfony/resource-watcher": "^1.2",
         "symfony/filesystem": "^3.3",
         "symfony/event-dispatcher": "^3.3",
-        "stati/paginate": "^0.1.0",
+        "stati/paginate": "^0.1.1",
         "stati/categories": "^0.1.1",
         "stati/related": "^0.1.0"
     },
