@@ -39,7 +39,6 @@ class Renderer
 
     protected function render(Doc $doc)
     {
-
         $frontMatter = $doc->getFrontMatter();
         $content = $doc->getContent();
 

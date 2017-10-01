@@ -48,5 +48,6 @@ You can take a look at the [paginate plugin](https://github.com/jfoucher/stati-p
 
 More examples : 
 
-- [related posts plugin](https://github.com/jfoucher/stati-related-plugin)
-- [profiler plugin](https://github.com/jfoucher/stati-profiler-plugin)
+- [Related posts plugin](https://github.com/jfoucher/stati-related-plugin)
+- [Profiler plugin](https://github.com/jfoucher/stati-profiler-plugin)
+- [Categories plugin](https://github.com/jfoucher/stati-categories-plugin)
