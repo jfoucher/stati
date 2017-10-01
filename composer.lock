@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b744b24aeb2c0d187244973a220f792",
+    "content-hash": "7c3e803fe5530be3cf3af9412e814996",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -304,16 +304,16 @@
         },
         {
             "name": "stati/paginate",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jfoucher/stati-paginate-plugin.git",
-                "reference": "de788a9475a9dcc71e2a62391fea9facc207edeb"
+                "reference": "650f7e73b1177b23223e4db5d351283a52601d00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jfoucher/stati-paginate-plugin/zipball/de788a9475a9dcc71e2a62391fea9facc207edeb",
-                "reference": "de788a9475a9dcc71e2a62391fea9facc207edeb",
+                "url": "https://api.github.com/repos/jfoucher/stati-paginate-plugin/zipball/650f7e73b1177b23223e4db5d351283a52601d00",
+                "reference": "650f7e73b1177b23223e4db5d351283a52601d00",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +344,7 @@
             ],
             "description": "A paginator plugin for Stati",
             "homepage": "https://stati.jfoucher.com",
-            "time": "2017-09-29T21:26:29+00:00"
+            "time": "2017-10-01T17:06:01+00:00"
         },
         {
             "name": "stati/related",
