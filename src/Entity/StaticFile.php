@@ -22,7 +22,7 @@ class StaticFile extends SplFileInfo
             return $this->getMTime();
         }
         if ($item === 'name') {
-            return $this->getBasename();
+            return $this->getFilename();
         }
         if ($item === 'basename') {
             return pathinfo($this->getRelativePathname(), PATHINFO_BASENAME);
@@ -31,6 +31,11 @@ class StaticFile extends SplFileInfo
             return '.'.pathinfo($this->getRelativePathname(), PATHINFO_EXTENSION);
         }
         return null;
+    }
+
+    public function field_exists($item)
+    {
+        return in_array($item, ['path', 'modified_time', 'name', 'basename', 'extname']);
     }
 
     public function __get($item)
