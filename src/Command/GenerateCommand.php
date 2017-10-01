@@ -79,15 +79,19 @@ class GenerateCommand extends Command
             'categories',
         ];
 
-        //Use gems for older jekyll config files
-        foreach ($this->site->gems as $gem) {
-            $plugins[] = str_replace('jekyll-', '', $gem);
+        if ($this->site->gems) {
+            //Use gems for older jekyll config files
+            foreach ($this->site->gems as $gem) {
+                $plugins[] = str_replace('jekyll-', '', $gem);
+            }
         }
 
-        //Use plugins for newer jekyll config files
         if ($this->site->plugins) {
-            foreach ($this->site->plugins as $gem) {
-                $plugins[] = str_replace('jekyll-', '', $gem);
+            //Use plugins for newer jekyll config files
+            if ($this->site->plugins) {
+                foreach ($this->site->plugins as $gem) {
+                    $plugins[] = str_replace('jekyll-', '', $gem);
+                }
             }
         }
 
