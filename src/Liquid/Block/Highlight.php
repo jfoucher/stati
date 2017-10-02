@@ -26,6 +26,14 @@ class Highlight extends AbstractBlock
             $options[trim($r[0])] = trim($r[1]);
         }
         $nodes = $this->getNodelist();
-        return $pygments->highlight(implode('', $nodes), $language, 'html', $options);
+
+        $texts = array_map(function($item) use ($context) {
+            if(is_string($item)) {
+                return $item;
+            }
+            return $item->render($context);
+        }, $nodes);
+
+        return $pygments->highlight(implode('', $texts), $language, 'html', $options);
     }
 }
