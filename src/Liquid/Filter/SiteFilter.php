@@ -45,4 +45,11 @@ class SiteFilter
     {
         return json_encode($input);
     }
+
+    public function array_to_sentence_string($input) {
+        if (is_array($input)) {
+            return implode(' ', $input);
+        }
+        return $input;
+    }
 }
