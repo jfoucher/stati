@@ -25,6 +25,10 @@ class DataReader extends Reader
     public function read()
     {
         $config = $this->site->getConfig();
+        $dataDir = $config['data_dir'];
+        if (!is_dir($dataDir)) {
+            return;
+        }
         // Get top level files and parse
         $finder = new Finder();
         $finder
