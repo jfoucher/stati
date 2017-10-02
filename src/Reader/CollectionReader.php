@@ -56,6 +56,7 @@ class CollectionReader extends Reader
                 if ($post->getDate() && $post->getDate()->getTimestamp() >= date_create()->getTimestamp() && $post->published === false) {
                     continue;
                 }
+                $post->setCollection($collection);
                 $posts[] = $post;
             }
 

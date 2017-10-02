@@ -36,6 +36,12 @@ class Post extends Doc
     protected $previous;
 
     /**
+     *  Collection this post belongs to
+     * @var Collection
+     */
+    protected $collection;
+
+    /**
      * @return \Stati\Entity\Doc
      */
     public function getNext()
@@ -66,4 +72,22 @@ class Post extends Doc
     {
         $this->previous = $previous;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getCollection()
+    {
+        return $this->collection;
+    }
+
+    /**
+     * @param Collection $collection
+     */
+    public function setCollection(Collection $collection)
+    {
+        $this->collection = $collection;
+    }
+
+
 }
