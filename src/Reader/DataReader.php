@@ -27,7 +27,7 @@ class DataReader extends Reader
         $config = $this->site->getConfig();
         $dataDir = $config['data_dir'];
         if (!is_dir($dataDir)) {
-            return;
+            return [];
         }
         // Get top level files and parse
         $finder = new Finder();
