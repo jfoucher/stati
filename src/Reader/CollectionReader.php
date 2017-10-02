@@ -9,6 +9,9 @@
 
 namespace Stati\Reader;
 
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Site\SiteEvents;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
 use Stati\Entity\Post;
 use Stati\Entity\Collection;
@@ -29,6 +32,8 @@ class CollectionReader extends Reader
 
         $collections = [];
         foreach ($config['collections'] as $collectionName => $collectionData) {
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('section', ['Reading collection '.$collectionName]));
+
             $collection = new Collection($collectionName, $collectionData);
             $finder = new Finder();
             $finder
@@ -46,11 +51,12 @@ class CollectionReader extends Reader
             $posts = [];
 
             foreach ($finder as $file) {
-                $post = new Post($file, $collectionData);
-                $post->setSite($this->site);
-                if ($post->getDate() && $post->getDate()->getTimestamp() <= date_create()->getTimestamp() && $post->published !== false) {
-                    $posts[] = $post;
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('text', ['Reading file '.$file->getRelativePathname()], OutputInterface::VERBOSITY_DEBUG));
+                $post = new Post($file, $this->site);
+                if ($post->getDate() && $post->getDate()->getTimestamp() >= date_create()->getTimestamp() && $post->published === false) {
+                    continue;
                 }
+                $posts[] = $post;
             }
 
             usort($posts, function ($a, $b) {
@@ -60,6 +66,7 @@ class CollectionReader extends Reader
                 return $a->getDate()->getTimestamp() > $b->getDate()->getTimestamp() ? -1 : 1;
             });
 
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('text', [$collection->getLabel().' has '.count($posts).' documents.'], OutputInterface::VERBOSITY_VERY_VERBOSE));
 
             $collection->setDocs($posts);
             $collections[$collectionName] = $collection;
