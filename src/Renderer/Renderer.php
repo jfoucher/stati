@@ -14,18 +14,13 @@ use Stati\Entity\Doc;
 use Stati\Event\ConsoleOutputEvent;
 use Stati\Event\WillParseTemplateEvent;
 use Stati\Site\Site;
-use Stati\Entity\Post;
 use Liquid\Liquid;
 use Stati\Exception\FileNotFoundException;
 use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
-use Liquid\Template;
-use Liquid\Cache\File;
-use Stati\Liquid\Block\Highlight;
-use Stati\Liquid\Tag\PostUrl;
+use Stati\Liquid\Template\Template;
 use Stati\Liquid\TemplateEvents;
 use Stati\Event\SettingTemplateVarsEvent;
-use Stati\Liquid\Filter\SiteFilter;
 use Stati\Site\SiteEvents;
 
 class Renderer
@@ -81,9 +76,6 @@ class Renderer
 
         if (isset($layoutFrontMatter['layout'])) {
             $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
-            $template->registerTag('highlight', Highlight::class);
-            $template->registerTag('post_url', PostUrl::class);
-            $template->registerFilter(new SiteFilter());
             $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
             try {
                 $template->parse($layoutContent);
@@ -98,9 +90,6 @@ class Renderer
         }
 
         $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
-        $template->registerTag('highlight', Highlight::class);
-        $template->registerTag('post_url', PostUrl::class);
-        $template->registerFilter(new SiteFilter());
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         try {
             $template->parse($layoutContent);

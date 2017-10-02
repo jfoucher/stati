@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3e803fe5530be3cf3af9412e814996",
+    "content-hash": "972e4f2a341b5c0035210e58217eb8e4",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -303,17 +303,61 @@
             "time": "2017-09-30T12:52:13+00:00"
         },
         {
-            "name": "stati/paginate",
+            "name": "stati/feed",
             "version": "0.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jfoucher/stati-paginate-plugin.git",
-                "reference": "650f7e73b1177b23223e4db5d351283a52601d00"
+                "url": "https://github.com/jfoucher/stati-feed-plugin.git",
+                "reference": "a35c021559ca66070329429fbb9a94ff5df1ea5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jfoucher/stati-paginate-plugin/zipball/650f7e73b1177b23223e4db5d351283a52601d00",
-                "reference": "650f7e73b1177b23223e4db5d351283a52601d00",
+                "url": "https://api.github.com/repos/jfoucher/stati-feed-plugin/zipball/a35c021559ca66070329429fbb9a94ff5df1ea5b",
+                "reference": "a35c021559ca66070329429fbb9a94ff5df1ea5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/feed.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Feed\\": "src/",
+                    "Stati\\Plugin\\Feed\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "A Atom feed plugin for Stati",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-10-02T13:01:04+00:00"
+        },
+        {
+            "name": "stati/paginate",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfoucher/stati-paginate-plugin.git",
+                "reference": "801351d3a8830be28b193fabda74939c5883ce8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-paginate-plugin/zipball/801351d3a8830be28b193fabda74939c5883ce8a",
+                "reference": "801351d3a8830be28b193fabda74939c5883ce8a",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +388,7 @@
             ],
             "description": "A paginator plugin for Stati",
             "homepage": "https://stati.jfoucher.com",
-            "time": "2017-10-01T17:06:01+00:00"
+            "time": "2017-10-02T17:51:50+00:00"
         },
         {
             "name": "stati/related",
@@ -389,6 +433,50 @@
             "description": "A related posts plugin for Stati",
             "homepage": "https://stati.jfoucher.com",
             "time": "2017-09-29T21:26:15+00:00"
+        },
+        {
+            "name": "stati/seo",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:jfoucher/stati-seo-plugin.git",
+                "reference": "d60a5e8bc936373f0c30d263cc45bd54c9d88c6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-seo-plugin/zipball/d60a5e8bc936373f0c30d263cc45bd54c9d88c6c",
+                "reference": "d60a5e8bc936373f0c30d263cc45bd54c9d88c6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/seo.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Seo\\": "src/",
+                    "Stati\\Plugin\\Feed\\Seo\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "An SEO plugin for Stati",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-10-02 15:08:27"
         },
         {
             "name": "symfony/console",
@@ -2344,7 +2432,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "stati/seo": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

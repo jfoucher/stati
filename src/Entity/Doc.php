@@ -19,7 +19,7 @@ use Symfony\Component\Finder\SplFileInfo;
 use Stati\Parser\FrontMatterParser;
 use Stati\Parser\ContentParser;
 use Stati\Parser\MarkdownParser;
-use Liquid\Template;
+use Stati\Liquid\Template\Template;
 use Liquid\Liquid;
 use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
@@ -165,10 +165,6 @@ class Doc
             $include = './_includes/';
         }
         $template = new Template($include/*, new File(['cache_dir' => '/tmp/'])*/);
-        $template->registerTag('highlight', Highlight::class);
-        $template->registerTag('link', Link::class);
-        $template->registerTag('post_url', PostUrl::class);
-        $template->registerFilter(new SiteFilter());
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         try{
