@@ -9,7 +9,10 @@
 
 namespace Stati\Entity;
 
+use Liquid\LiquidException;
 use Stati\Event\SettingTemplateVarsEvent;
+use Stati\Event\WillParseTemplateEvent;
+use Stati\Liquid\Tag\Link;
 use Stati\Liquid\TemplateEvents;
 use Stati\Site\Site;
 use Symfony\Component\Finder\SplFileInfo;
@@ -22,6 +25,8 @@ use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
 use Liquid\Cache\File;
 use Stati\Liquid\Filter\SiteFilter;
+use Stati\Site\SiteEvents;
+use Stati\Event\ConsoleOutputEvent;
 
 class Doc
 {
@@ -155,20 +160,33 @@ class Doc
         if (is_file($cacheDir.md5($content))) {
             return file_get_contents($cacheDir.md5($content));
         }
-
-        $template = new Template(/*'./_includes/'*//*, new File(['cache_dir' => '/tmp/'])*/);
+        $include = null;
+        if (is_dir('./_includes/')) {
+            $include = './_includes/';
+        }
+        $template = new Template($include/*, new File(['cache_dir' => '/tmp/'])*/);
         $template->registerTag('highlight', Highlight::class);
+        $template->registerTag('link', Link::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->registerFilter(new SiteFilter());
-        $template->parse($contentPart);
 
-        $vars = [
-            'site' => $this->site
-        ];
+        $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
+        try{
+            $template->parse($contentPart);
 
-        $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $this));
+            $vars = [
+                'site' => $this->site
+            ];
 
-        $liquidParsed = $template->render($vars);
+            $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $this));
+            $liquidParsed = $template->render($vars);
+        } catch (LiquidException $err) {
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+                ['Could not render the file '.$this->getFile()->getRelativePathname().' '.$err->getMessage()]
+            ));
+            $liquidParsed = '';
+        }
+
         if ($this->file->getExtension() === 'md' || $this->file->getExtension() === 'mkd' || $this->file->getExtension() === 'markdown') {
             $this->content = $markdownParser->text($liquidParsed);
         } else {

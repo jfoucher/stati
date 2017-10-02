@@ -94,16 +94,16 @@
         },
         {
             "name": "liquid/liquid",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jfoucher/php-liquid.git",
-                "reference": "f779df5953bd27e6b6349015458bbd6b45566626"
+                "reference": "6c71809d800345248f309e494494102ba5709a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jfoucher/php-liquid/zipball/f779df5953bd27e6b6349015458bbd6b45566626",
-                "reference": "f779df5953bd27e6b6349015458bbd6b45566626",
+                "url": "https://api.github.com/repos/jfoucher/php-liquid/zipball/6c71809d800345248f309e494494102ba5709a72",
+                "reference": "6c71809d800345248f309e494494102ba5709a72",
                 "shasum": ""
             },
             "require": {
@@ -155,7 +155,7 @@
             "support": {
                 "source": "https://github.com/jfoucher/php-liquid/tree/master"
             },
-            "time": "2017-09-27T17:10:10+00:00"
+            "time": "2017-10-02T02:54:53+00:00"
         },
         {
             "name": "psr/log",

@@ -9,7 +9,10 @@
 
 namespace Stati\Renderer;
 
+use Liquid\LiquidException;
 use Stati\Entity\Doc;
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Event\WillParseTemplateEvent;
 use Stati\Site\Site;
 use Stati\Entity\Post;
 use Liquid\Liquid;
@@ -23,6 +26,7 @@ use Stati\Liquid\Tag\PostUrl;
 use Stati\Liquid\TemplateEvents;
 use Stati\Event\SettingTemplateVarsEvent;
 use Stati\Liquid\Filter\SiteFilter;
+use Stati\Site\SiteEvents;
 
 class Renderer
 {
@@ -80,8 +84,16 @@ class Renderer
             $template->registerTag('highlight', Highlight::class);
             $template->registerTag('post_url', PostUrl::class);
             $template->registerFilter(new SiteFilter());
-            $template->parse($layoutContent);
-            $config['content'] = $template->render($config);
+            $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
+            try {
+                $template->parse($layoutContent);
+                $config['content'] = $template->render($config);
+            } catch (LiquidException $err) {
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+                    ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
+                ));
+            }
+
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
@@ -89,7 +101,16 @@ class Renderer
         $template->registerTag('highlight', Highlight::class);
         $template->registerTag('post_url', PostUrl::class);
         $template->registerFilter(new SiteFilter());
-        $template->parse($layoutContent);
-        return $template->render($config);
+        $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
+        try {
+            $template->parse($layoutContent);
+            return $template->render($config);
+        } catch (LiquidException $err) {
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+                ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
+            ));
+        }
+        return $config['content'];
+
     }
 }
