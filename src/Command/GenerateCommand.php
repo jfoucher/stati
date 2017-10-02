@@ -67,8 +67,11 @@ class GenerateCommand extends Command
     {
         $method = $event->getMethod();
         $args = $event->getArgs();
+        $minLevel = $event->getMinLevel();
 
-        call_user_func_array([$this->style, $method], $args);
+        if ($minLevel <= $this->style->getVerbosity()) {
+            call_user_func_array([$this->style, $method], $args);
+        }
     }
 
     private function registerPlugins()

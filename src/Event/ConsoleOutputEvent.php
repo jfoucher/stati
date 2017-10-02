@@ -9,6 +9,7 @@
 
 namespace Stati\Event;
 
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 class ConsoleOutputEvent extends Event
@@ -26,10 +27,17 @@ class ConsoleOutputEvent extends Event
      */
     protected $args;
 
-    public function __construct($method, $args)
+    /**
+     * Minimum verbosity level to display message
+     * @var int
+     */
+    protected $minLevel;
+
+    public function __construct($method, $args, $minLevel = OutputInterface::VERBOSITY_VERBOSE)
     {
         $this->method = $method;
         $this->args = $args;
+        $this->minLevel = $minLevel;
     }
 
     /**
@@ -46,5 +54,13 @@ class ConsoleOutputEvent extends Event
     public function getArgs()
     {
         return $this->args;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinLevel(): int
+    {
+        return $this->minLevel;
     }
 }
