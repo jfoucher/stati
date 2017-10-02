@@ -31,12 +31,13 @@
         "symfony/event-dispatcher": "^3.3",
         "stati/paginate": "^0.1",
         "stati/categories": "^0.1",
-        "stati/related": "^0.1",
-        "stati/feed": "^0.1",
-        "stati/seo": "dev-master"
+        "stati/related": "^0.1"
     },
     "suggest": {
-        "stati/profiler": "A profiler plugin for stati"
+        "stati/profiler": "A profiler plugin for stati",
+        "stati/feed": "A feed generation plugin for Stati",
+        "stati/seo": "An SEO tag generator for stati",
+        "stati/avatar": "An avatar generator for Stati"
     },
     "bin": ["build/stati"],
     "license": "MIT",

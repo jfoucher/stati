@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "972e4f2a341b5c0035210e58217eb8e4",
+    "content-hash": "dfcfe782ab8bd3ebb725a2462daef129",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -259,6 +259,50 @@
             "time": "2017-03-28T00:58:59+00:00"
         },
         {
+            "name": "stati/avatar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfoucher/stati-avatar-plugin.git",
+                "reference": "b1343b863e13864dd801dde4246df60cff10d8a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfoucher/stati-avatar-plugin/zipball/b1343b863e13864dd801dde4246df60cff10d8a1",
+                "reference": "b1343b863e13864dd801dde4246df60cff10d8a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "suggest": {
+                "stati/stati": "An extensible, jekyll-compatible PHP static site generator"
+            },
+            "bin": [
+                "build/avatar.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stati\\Plugin\\Avatar\\": "src/",
+                    "Stati\\Plugin\\Feed\\Avatar\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jfoucher",
+                    "email": "jfoucher@6px.eu"
+                }
+            ],
+            "description": "An Avatar plugin for Stati",
+            "homepage": "https://stati.jfoucher.com",
+            "time": "2017-10-02 19:22:35"
+        },
+        {
             "name": "stati/categories",
             "version": "0.1.1",
             "source": {
@@ -439,13 +483,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jfoucher/stati-seo-plugin.git",
-                "reference": "d60a5e8bc936373f0c30d263cc45bd54c9d88c6c"
+                "url": "https://github.com/jfoucher/stati-seo-plugin.git",
+                "reference": "684665094253ada1769d1e26b018bf7792b029af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jfoucher/stati-seo-plugin/zipball/d60a5e8bc936373f0c30d263cc45bd54c9d88c6c",
-                "reference": "d60a5e8bc936373f0c30d263cc45bd54c9d88c6c",
+                "url": "https://api.github.com/repos/jfoucher/stati-seo-plugin/zipball/684665094253ada1769d1e26b018bf7792b029af",
+                "reference": "684665094253ada1769d1e26b018bf7792b029af",
                 "shasum": ""
             },
             "require": {
@@ -476,7 +520,7 @@
             ],
             "description": "An SEO plugin for Stati",
             "homepage": "https://stati.jfoucher.com",
-            "time": "2017-10-02 15:08:27"
+            "time": "2017-10-02 18:16:31"
         },
         {
             "name": "symfony/console",
@@ -2433,7 +2477,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "stati/seo": 20
+        "stati/seo": 20,
+        "stati/avatar": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
