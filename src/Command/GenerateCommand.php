@@ -120,6 +120,9 @@ class GenerateCommand extends Command
 
     private function loadClass($requestedPlugin)
     {
+        if ($requestedPlugin === 'seo-tag') {
+            $requestedPlugin = 'seo';
+        }
         $pluginClass = ucfirst($requestedPlugin);
         $pluginNamespace = '\\Stati\\Plugin\\' . $pluginClass . '\\';
 
@@ -146,6 +149,7 @@ class GenerateCommand extends Command
 
     private function loadFile($requestedPlugin)
     {
+        //TODO also look in site '_plugins' directory
         if ($dir = Phar::running(false)) {
             if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
                 include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
