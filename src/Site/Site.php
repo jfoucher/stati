@@ -16,6 +16,7 @@ use Stati\Event\WillResetSiteEvent;
 use Stati\Reader\CollectionReader;
 use Stati\Reader\StaticFileReader;
 use Stati\Reader\PageReader;
+use Stati\Reader\DataReader;
 use Stati\Renderer\CollectionRenderer;
 use Stati\Renderer\PageRenderer;
 use Stati\Writer\CollectionWriter;
@@ -62,6 +63,11 @@ class Site
      * @var array
      */
     protected $collections;
+
+    /**
+     * @var array
+     */
+    protected $data;
 
     /**
      * @var EventDispatcherInterface
@@ -177,6 +183,11 @@ class Site
         $pageReader = new PageReader($this);
         $this->setPages($pageReader->read());
         $this->dispatcher->dispatch(SiteEvents::DID_READ_PAGES, new SiteEvent($this));
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_DATA, new SiteEvent($this));
+        //Read pages
+        $dataReader = new DataReader($this);
+        $this->setData($dataReader->read());
+        $this->dispatcher->dispatch(SiteEvents::DID_READ_DATA, new SiteEvent($this));
         $this->dispatcher->dispatch(SiteEvents::DID_READ_SITE, new SiteEvent($this));
     }
 
@@ -248,6 +259,11 @@ class Site
         //If the property exists, return it
         if (property_exists(self::class, $field)) {
             return $this->{$field};
+        }
+
+        // If this is a data item, return it;
+        if (isset($this->data[$item])) {
+            return $this->data[$item];
         }
 
         // If this is a config item, return it;
@@ -421,4 +437,21 @@ class Site
     {
         return $this->timer;
     }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data)
+    {
+        $this->data = $data;
+    }
+
 }

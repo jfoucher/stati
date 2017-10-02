@@ -82,6 +82,20 @@ class SiteEvents
     const DID_READ_PAGES = 'site.did_read_pages';
 
     /**
+     * This event is triggered just before we start reading data (yml files in _data)
+     *
+     * @Event("Stati\Event\SiteEvent")
+     */
+    const WILL_READ_DATA = 'site.will_read_data';
+
+    /**
+     * This event is triggered when we are done reading data
+     *
+     * @Event("Stati\Event\SiteEvent")
+     */
+    const DID_READ_DATA = 'site.did_read_data';
+
+    /**
      * This event is triggered when we are done reading files for the whole site
      *
      * @Event("Stati\Event\SiteEvent")
