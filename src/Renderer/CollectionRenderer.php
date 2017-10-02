@@ -10,11 +10,7 @@
 namespace Stati\Renderer;
 
 use Stati\Entity\Collection;
-use Stati\Entity\Page;
 use Stati\Entity\Post;
-use Stati\Entity\Sass;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Copies files and folders that do not start with _ and do not have frontmatter
