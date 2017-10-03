@@ -104,6 +104,9 @@ class GenerateCommand extends Command
         $errors = [];
 
         foreach ($plugins as $requestedPlugin) {
+            if ($requestedPlugin === 'seo-tag') {
+                $requestedPlugin = 'seo';
+            }
             if ($loadedPlugin = $this->loadClass($requestedPlugin)) {
                 // Register with event dispatcher
                 $this->site->getDispatcher()->addSubscriber($loadedPlugin);
@@ -123,9 +126,6 @@ class GenerateCommand extends Command
 
     private function loadClass($requestedPlugin)
     {
-        if ($requestedPlugin === 'seo-tag') {
-            $requestedPlugin = 'seo';
-        }
         $pluginClass = ucfirst($requestedPlugin);
         $pluginNamespace = '\\Stati\\Plugin\\' . $pluginClass . '\\';
 
@@ -152,7 +152,14 @@ class GenerateCommand extends Command
 
     private function loadFile($requestedPlugin)
     {
-        //TODO also look in site '_plugins' directory
+        // Look in site '_plugins' directory first
+
+        if (is_file(getcwd() . '/_plugins/' . $requestedPlugin . '.phar')) {
+            var_dump(getcwd());
+            include(getcwd() . '/_plugins/' . 'phar://' . $requestedPlugin . '.phar/vendor/autoload.php');
+            return;
+        }
+
         if ($dir = Phar::running(false)) {
             if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
                 include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');

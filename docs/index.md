@@ -44,12 +44,17 @@ If you use sass or scss, the `sass` or `scss` commands must be available.
 
 ## Plugins
 
-The plugin architecture, based on the Symfony Event dispatcher, allows plugin authors to hook into various points in the site generation lifecycle to modify the output.
+Stati uses plugins extensively, even for some core functionality. Required plugins are installed automatically by composer, but if you want to install a specific plugin, you just have to run `composer require stati/plugin-name` or `composer global require stati/plugin-name` depending on whether you installed Stati locally or globally.
 
-Please check the [plugin documentation](plugins.md)
+Alternatively, just copy the .phar file in the _plugins/ directory of your website, just like for jekyll
 
 ## Contributing
 
 Try Stati with your site and let me know what fails by [opening an issue on Github](https://github.com/jfoucher/stati/issues).
 
+The plugin architecture, based on the Symfony Event dispatcher, allows plugin authors to hook into various points in the site generation lifecycle to modify the output.
+
+Please check the [plugin documentation](plugins.md)
+
 [![Build Status](https://travis-ci.org/jfoucher/stati.svg?branch=master)](https://travis-ci.org/jfoucher/stati)
+
