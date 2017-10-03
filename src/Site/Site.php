@@ -74,6 +74,11 @@ class Site
      */
     protected $dispatcher;
 
+    /**
+     * @var string Site generation time
+     */
+    protected $time;
+
     public function __construct(array $config)
     {
         $defaultConfig = [
@@ -276,11 +281,6 @@ class Site
             return $this->config[$item];
         }
 
-
-        if ($item === 'time') {
-            return date_create()->format(DATE_RFC3339);
-        }
-
         return null;
     }
 
@@ -297,6 +297,15 @@ class Site
     public function field_exists($item)
     {
         return true;
+    }
+
+    public function getTime()
+    {
+        if ($this->time) {
+            return $this->time;
+        }
+        $this->time = date_create()->format(DATE_RFC3339);
+        return $this->time;
     }
 
     public function getDestination()
