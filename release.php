@@ -17,7 +17,7 @@ shell_exec('git tag -d '.$tag);
 
 $manifest = json_decode(file_get_contents('./docs/manifest.json'));
 $manifest[] = [
-    "name" => "stati.phar",
+    "name" => "stati",
     "sha1" => sha1(file_get_contents('./build/stati')),
     "url" => "https://raw.githubusercontent.com/jfoucher/stati/".$tag."/build/stati",
     "version" => $tag,
