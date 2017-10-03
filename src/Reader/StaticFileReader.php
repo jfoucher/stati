@@ -18,12 +18,12 @@ class StaticFileReader extends Reader
     {
         $config = $this->site->getConfig();
         $finder = new Finder();
+
         $finder
             ->in('./')
             ->files()
             ->notPath('/^_/')
-            ->notPath('node_modules')
-            ->notContains('/---\s+(.*)\s+---\s+/s')
+            ->notContains('/\A---\s*\r?\n/')
             ->notName('/^_/');
         foreach ($config['exclude'] as $exclude) {
             $finder->notName($exclude);

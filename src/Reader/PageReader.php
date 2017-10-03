@@ -31,7 +31,7 @@ class PageReader extends Reader
             ->notPath('/^_/')
             ->files()
             ->notName('/^_/')
-            ->contains('/---\s*(.+)\s*---\s+/s')
+            ->contains('/\A---\s*\r?\n/')
         ;
 
         foreach ($config['exclude'] as $exclude) {
