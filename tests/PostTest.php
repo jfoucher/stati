@@ -18,7 +18,7 @@ class PostTest extends TestCase
 {
     public function setUp()
     {
-        chdir(dirname(__FILE__).'/postTest/');
+        chdir(dirname(__FILE__).'/fixtures/postTest/');
     }
     public function tearDown()
     {

@@ -24,7 +24,7 @@ class GenerateSiteTest extends TestCase
 {
     public function setUp()
     {
-        chdir(dirname(__FILE__).'/layoutTest/');
+        chdir(dirname(__FILE__).'/fixtures/layoutTest/');
     }
 
     public function tearDown()
