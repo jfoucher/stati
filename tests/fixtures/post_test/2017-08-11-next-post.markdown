@@ -1,0 +1,7 @@
+---
+title: next
+excerpt: "next post"
+---
+
+next content
+
