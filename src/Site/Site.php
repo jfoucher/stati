@@ -261,6 +261,11 @@ class Site
             return $this->{$field};
         }
 
+        // If it's a collection, return the corresponding one
+        if (isset($this->collections[$item])) {
+            return $this->collections[$item]->getDocs();
+        }
+
         // If this is a data item, return it;
         if (isset($this->data[$item])) {
             return $this->data[$item];
@@ -271,10 +276,6 @@ class Site
             return $this->config[$item];
         }
 
-        // If it's a collection, return the corresponding one
-        if (isset($this->collections[$item])) {
-            return $this->collections[$item]->getDocs();
-        }
 
         if ($item === 'time') {
             return date_create()->format(DATE_RFC3339);
