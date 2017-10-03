@@ -52,4 +52,20 @@ class SiteFilter
         }
         return $input;
     }
+
+    public function where($input, $field, $value) {
+        if (!is_array($input)) {
+            return $input;
+        }
+
+        return array_filter($input, function($item) use ($field, $value) {
+            if (is_array($item) && isset($item[$field]) && $item[$field] === $value) {
+                return true;
+            }
+            if (is_object($item) && $item->{$field} === $value) {
+                return true;
+            }
+            return false;
+        });
+    }
 }
