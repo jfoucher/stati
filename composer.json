@@ -32,7 +32,7 @@
         "stati/paginate": "^0.1",
         "stati/categories": "^0.1",
         "stati/related": "^0.1",
-        "friendsofphp/php-cs-fixer": "^2.7",
+        "friendsofphp/php-cs-fixer": "^2.7"
     },
     "suggest": {
         "stati/profiler": "A profiler plugin for stati",
