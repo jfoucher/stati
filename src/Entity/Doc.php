@@ -253,11 +253,10 @@ class Doc
         }
 
         $path = $this->getPath();
-        $this->url = str_replace('//', '/', $path);
         if (substr($path, -10) === 'index.html') {
             $path = substr($path, 0, -10);
         }
-        $this->url = $path;
+        $this->url = str_replace('//', '/', $path);
         return $this->url;
     }
 
@@ -359,7 +358,20 @@ class Doc
         }
 
         $parser = new FrontMatterParser();
-        $this->setFrontMatter($parser::parse($this->file->getContents()));
+        $defaults = [];
+        // TODO GET defaults from site config if available, and merge with file frontmatter
+        $config = $this->getSite()->getConfig();
+        if (isset($config['defaults'])) {
+            foreach ($config['defaults'] as $def) {
+                if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
+                    $defaults = $def['values'];
+                }
+            }
+        }
+
+        $fileFrontMatter = $parser::parse($this->file->getContents());
+
+        $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
         return $this->frontMatter;
     }
 
