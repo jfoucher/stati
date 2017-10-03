@@ -9,10 +9,7 @@
 
 namespace Stati\Parser;
 
-use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Yaml\Exception\ParseException;
 
 class FrontMatterParser
 {
@@ -25,15 +22,10 @@ class FrontMatterParser
                 // Using symfony's YAML parser
                 // we can use trim here because we only remove white space
                 // at the beginning (first should not have any) and at the end (insignificant)
-                $val = trim($split[0]);
-                if (strlen($val) === 0) {
-                    return [];
-                }
-                return Yaml::parse($val);
-            } catch (InvalidArgumentException $e) {
+
+                return Yaml::parse($split[0]);
+            } catch (\Exception $err) {
                 // This is not YAML
-                return [];
-            } catch (ParseException $err) {
                 return [];
             }
         }
