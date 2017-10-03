@@ -36,8 +36,4 @@ social:
    facebook: jfoucher
    email: jfoucher@gmail.com
 
-collections:
-  projects:
-    permalink: /projects/:path
-
 google_analytics: "UA-8465441-2"
