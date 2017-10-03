@@ -40,16 +40,6 @@ EOL;
     private $templateName;
 
     /**
-     * @var bool True if the variable is a collection
-     */
-    private $collection;
-
-    /**
-     * @var mixed The value to pass to the child template as the template name
-     */
-    private $variable;
-
-    /**
      * @var Document The Document that represents the included template
      */
     private $document;
@@ -86,12 +76,12 @@ EOL;
             $this->templateName = str_replace(['"', "'"], '', $variableSyntax->matches['variable']);
             $this->params = $variableSyntax->matches['params'];
         } else {
-            $ex = $splitSyntax->split(trim($markup), 2);
-            if (count($ex)) {
-                $this->templateName = str_replace(['"', "'"], '', $ex[0]);
+            $parts = $splitSyntax->split(trim($markup), 2);
+            if (count($parts)) {
+                $this->templateName = str_replace(['"', "'"], '', $parts[0]);
             }
-            if (count($ex) > 1) {
-                $this->params = $ex[1];
+            if (count($parts) > 1) {
+                $this->params = $parts[1];
             }
         }
         if (!$this->templateName) {
@@ -112,14 +102,13 @@ EOL;
     protected function extractVariables()
     {
         $this->attributes = array();
-        $re = '%
+        $regex = '%
         ([\w-]+)\s*=\s*
         (?:"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|\'([^\'\\\\]*(?:\\\\.[^\'\\\\]*)*)\'|([\w\.-]+))
       %x';
 
-        preg_match_all($re, $this->params, $matches, PREG_SET_ORDER, 0);
+        preg_match_all($regex, $this->params, $matches, PREG_SET_ORDER, 0);
 
-        $includeVars = [];
         foreach ($matches as $match) {
             if (isset($match[1])) {
                 if (isset($match[2]) && strlen($match[2])) {
@@ -230,9 +219,9 @@ EOL;
         ([\w-]+)\s*=\s*
         (?:"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|\'([^\'\\\\]*(?:\\\\.[^\'\\\\]*)*)\'|([\w\.-]+))
       (?=\s|\z)\s*)*\z%x';
-        $r = preg_match($fullValidSyntax, $this->params, $matches, PREG_OFFSET_CAPTURE);
+        $valid = preg_match($fullValidSyntax, $this->params);
 
-        if (!$r) {
+        if (!$valid) {
             throw new LiquidException(
                 <<<EOL
 Invalid syntax for include tag: $this->params
