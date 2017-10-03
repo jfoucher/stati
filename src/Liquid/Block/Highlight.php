@@ -1,10 +1,12 @@
 <?php
-/**
- * Highlight.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 23/09/2017
- * Time: 00:02
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Liquid\Block;
@@ -27,8 +29,8 @@ class Highlight extends AbstractBlock
         }
         $nodes = $this->getNodelist();
 
-        $texts = array_map(function($item) use ($context) {
-            if(is_string($item)) {
+        $texts = array_map(function ($item) use ($context) {
+            if (is_string($item)) {
                 return $item;
             }
             return $item->render($context);

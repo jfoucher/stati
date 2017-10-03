@@ -1,10 +1,12 @@
 <?php
-/**
- * Post.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 24/09/2017
- * Time: 23:05
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Entity;
@@ -167,7 +169,7 @@ class Doc
         $template = new Template($include/*, new File(['cache_dir' => '/tmp/'])*/);
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
-        try{
+        try {
             $template->parse($contentPart);
 
             $vars = [
@@ -177,7 +179,8 @@ class Doc
             $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $this));
             $liquidParsed = $template->render($vars);
         } catch (LiquidException $err) {
-            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
+                'error',
                 ['Could not render the file '.$this->getFile()->getRelativePathname().' '.$err->getMessage()]
             ));
             $liquidParsed = '';

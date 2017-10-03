@@ -1,10 +1,12 @@
 <?php
-/**
- * Renderer.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 26/09/2017
- * Time: 23:08
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Renderer;
@@ -81,7 +83,8 @@ class Renderer
                 $template->parse($layoutContent);
                 $config['content'] = $template->render($config);
             } catch (LiquidException $err) {
-                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
+                    'error',
                     ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
                 ));
             }
@@ -95,11 +98,11 @@ class Renderer
             $template->parse($layoutContent);
             return $template->render($config);
         } catch (LiquidException $err) {
-            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error',
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
+                'error',
                 ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
             ));
         }
         return $config['content'];
-
     }
 }

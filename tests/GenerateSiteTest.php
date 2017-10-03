@@ -1,10 +1,12 @@
 <?php
-/**
- * PostTest.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 25/09/2017
- * Time: 12:33
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Tests;

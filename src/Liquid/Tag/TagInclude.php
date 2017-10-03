@@ -1,10 +1,12 @@
 <?php
-/**
- * Highlight.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 23/09/2017
- * Time: 00:02
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Liquid\Tag;
@@ -21,7 +23,6 @@ use Stati\Liquid\Template\Template;
 
 class TagInclude extends AbstractTag
 {
-
     const VALID_SYNTAX = <<<EOL
     ([\w-]+)\s*=\s*
     (?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w\.-]+))
@@ -81,7 +82,7 @@ EOL;
     {
         $variableSyntax = new Regexp(self::VARIABLE_SYNTAX);
         $splitSyntax = new Regexp('/\s+/');
-        if ($variableSyntax->match(trim($markup))){
+        if ($variableSyntax->match(trim($markup))) {
             $this->templateName = str_replace(['"', "'"], '', $variableSyntax->matches['variable']);
             $this->params = $variableSyntax->matches['params'];
         } else {
@@ -101,7 +102,6 @@ EOL;
         }
         $this->extractVariables();
         parent::__construct($markup, $tokens, $fileSystem);
-
     }
 
     protected function extractAttributes($markup)
@@ -233,7 +233,8 @@ EOL;
         $r = preg_match($fullValidSyntax, $this->params, $matches, PREG_OFFSET_CAPTURE);
 
         if (!$r) {
-            throw new LiquidException(<<<EOL
+            throw new LiquidException(
+                <<<EOL
 Invalid syntax for include tag: $this->params
 Valid syntax: {% include file.ext param='value' param2='value' %}
 EOL

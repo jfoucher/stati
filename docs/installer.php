@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Stati package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
+ */
+
 namespace
 
 {
@@ -501,10 +510,10 @@ namespace Herrera\Version
          *
          * @param string $version The string representation.
          *
-         * @return array The components of the version.
-         *
          * @throws InvalidStringRepresentationException If the string representation
          * is invalid.
+         * @return array The components of the version.
+         *
          */
         public static function toComponents($version)
         {

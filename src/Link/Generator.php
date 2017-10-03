@@ -1,10 +1,12 @@
 <?php
-/**
- * Generator.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 22/09/2017
- * Time: 23:02
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Link;

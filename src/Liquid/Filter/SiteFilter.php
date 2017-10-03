@@ -1,10 +1,12 @@
 <?php
-/**
- * SiteFilter.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 28/09/2017
- * Time: 13:33
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Liquid\Filter;
@@ -46,19 +48,21 @@ class SiteFilter
         return json_encode($input);
     }
 
-    public function array_to_sentence_string($input) {
+    public function array_to_sentence_string($input)
+    {
         if (is_array($input)) {
             return implode(' ', $input);
         }
         return $input;
     }
 
-    public function where($input, $field, $value) {
+    public function where($input, $field, $value)
+    {
         if (!is_array($input)) {
             return $input;
         }
 
-        return array_filter($input, function($item) use ($field, $value) {
+        return array_filter($input, function ($item) use ($field, $value) {
             if (is_array($item) && isset($item[$field]) && $item[$field] === $value) {
                 return true;
             }
