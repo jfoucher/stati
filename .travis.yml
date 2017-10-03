@@ -3,19 +3,17 @@ php:
   - '7.1'
 before_install:
   - sudo apt-get install python-pygments
-install: composer install
 
-env:
-  global:
-    - CC_TEST_REPORTER_ID=8eb350a8a47d4474948bb33a5d3b120effa4fa5d8c869258b572bb3e6d7368ce
-language: ruby
-rvm:
-  - 2.2.0
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - composer install --prefer-dist
+
 script:
-  - bundle exec rspec
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - vendor/bin/phpunit --verbose || travis_terminate 1
+  - vendor/bin/php-cs-fixer --diff --dry-run --stop-on-violation --verbose fix
+
+after_success:
+- travis_retry php vendor/bin/coveralls
