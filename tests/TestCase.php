@@ -12,7 +12,21 @@
 namespace Stati\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Stati\Site\Site;
 
 abstract class TestCase extends BaseTestCase
 {
+    /**
+     * @var Site
+     */
+    protected $site;
+
+    public function setUp()
+    {
+        $this->site = new Site([
+            'permalink' => '/:year/',
+            'includes_dir' => './',
+            'layouts_dir' => __DIR__ . '/fixtures/post_test'
+        ]);
+    }
 }

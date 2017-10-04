@@ -20,20 +20,6 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class CollectionRendererTest extends TestCase
 {
-    /**
-     * @var Site
-     */
-    private $site;
-
-    public function setUp()
-    {
-        $this->site = new Site([
-            'permalink' => '/:year/',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
-    }
-
     public function testNewCollectionRendererReturnsRenderer()
     {
         $renderer = new CollectionRenderer($this->site);

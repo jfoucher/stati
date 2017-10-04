@@ -11,26 +11,12 @@ namespace Stati\Tests\Renderer;
 
 use Stati\Entity\Page;
 use Stati\Renderer\PageRenderer;
-use PHPUnit\Framework\TestCase;
+use Stati\Tests\TestCase;
 use Stati\Site\Site;
 use Symfony\Component\Finder\SplFileInfo;
 
 class PageRendererTest extends TestCase
 {
-    /**
-     * @var Site
-     */
-    private $site;
-
-    public function setUp()
-    {
-        $this->site = new Site([
-            'permalink' => '/:year/',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
-    }
-
     public function testPageRender()
     {
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/page.md', './', 'page.md');

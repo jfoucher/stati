@@ -22,38 +22,25 @@ class RendererTest extends TestCase
 {
     public function testCreateRenderer()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-        ]);
-        $renderer = new Renderer($site);
-        $this->assertEquals($renderer->getSite()->permalink, $site->getConfig()['permalink']);
-        $this->assertEquals($renderer->getSite()->includes_dir, $site->getConfig()['includes_dir']);
+        $renderer = new Renderer($this->site);
+        $this->assertEquals($renderer->getSite()->permalink, $this->site->getConfig()['permalink']);
+        $this->assertEquals($renderer->getSite()->includes_dir, $this->site->getConfig()['includes_dir']);
     }
 
     public function testRenderDocWithoutLayout()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
-        $doc = new Doc($file, $site);
-        $renderer = new Renderer($site);
+        $doc = new Doc($file, $this->site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
         $this->assertEquals('<p>c</p>', $doc->getOutput());
     }
 
     public function testRenderDocWithLayout()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-layout.markdown', './', '2017-08-13-with-layout.markdown');
-        $doc = new Doc($file, $site);
-        $renderer = new Renderer($site);
+        $doc = new Doc($file, $this->site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
         $this->assertEquals('<html><body><p>c</p></body></html>', $doc->getOutput());
     }
@@ -63,32 +50,22 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithLayoutNotFound()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-layout.markdown', './', '2017-08-13-with-layout.markdown');
-        $doc = new Doc($file, $site);
+        $doc = new Doc($file, $this->site);
         $frontMatter = $doc->getFrontMatter();
         $frontMatter['layout'] = 'wrong-layout';
         $doc->setFrontMatter($frontMatter);
-        $renderer = new Renderer($site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
     }
 
 
     public function testRenderDocWithLayouts()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-2-layouts.markdown', './', '2017-08-13-with-2-layouts.markdown');
-        $doc = new Doc($file, $site);
+        $doc = new Doc($file, $this->site);
 
-        $renderer = new Renderer($site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
         $this->assertEquals('<html><body><article><p>c</p></article></body></html>', $doc->getOutput());
     }
@@ -98,18 +75,13 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithIncorrectSyntaxLayouts()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-incorrect-layout.markdown', './', '2017-08-13-with-incorrect-layout.markdown');
-        $doc = new Doc($file, $site);
+        $doc = new Doc($file, $this->site);
 
         $frontMatter = $doc->getFrontMatter();
         $frontMatter['layout'] = 'incorrect-syntax-layout-layout';
         $doc->setFrontMatter($frontMatter);
-        $renderer = new Renderer($site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
         $this->assertEquals(null, $doc->getOutput());
     }
@@ -119,15 +91,10 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithIncorrectSyntaxLayout()
     {
-        $site = new Site([
-            'permalink' => '/:categories/:slug.html',
-            'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/../fixtures/post_test'
-        ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-incorrect-layout.markdown', './', '2017-08-13-with-incorrect-layout.markdown');
-        $doc = new Doc($file, $site);
+        $doc = new Doc($file, $this->site);
 
-        $renderer = new Renderer($site);
+        $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
         $this->assertEquals(null, $doc->getOutput());
     }

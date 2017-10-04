@@ -21,8 +21,9 @@ class IncludeTagTest extends TestCase
 {
     private $fs;
 
-    protected function setUp()
+    public function setUp()
     {
+        parent::setUp();
         $this->fs = TestFileSystem::fromArray(array(
             'inner' => "Inner: {{ inner }}{{ other }}",
             'example' => "Example: {% include 'inner' %}",
