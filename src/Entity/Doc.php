@@ -156,8 +156,9 @@ class Doc
             $liquidParsed = '';
         }
 
-        //TODO get extensions from site config
-        if ($this->file->getExtension() === 'md' || $this->file->getExtension() === 'mkd' || $this->file->getExtension() === 'markdown') {
+        // Get extensions from site config
+        $markdownExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
+        if (in_array($this->file->getExtension(), $markdownExtensions)) {
             $this->content = $markdownParser->text($liquidParsed);
         } else {
             $this->content = $liquidParsed;
