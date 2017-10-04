@@ -23,7 +23,8 @@ class Page extends Doc
     public function getPath()
     {
         $extension = $this->file->getExtension();
-        if ($extension === 'md' || $extension === 'markdown' || $extension == 'mkd') {
+        $allowedExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
+        if (in_array($extension, $allowedExtensions)) {
             $extension = 'html';
         }
         $fname = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
