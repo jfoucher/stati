@@ -17,8 +17,8 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Copies files and folders that do not start with _ and do not have frontmatter
- * Class FilesRenderer
+ * Render Pages, i.e. documents with frontmatter but that are not part of a collection
+ * Class PageRenderer
  * @package Stati\Renderer
  */
 class PageRenderer extends Renderer

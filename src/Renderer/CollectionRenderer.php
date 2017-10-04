@@ -18,8 +18,8 @@ use Stati\Event\ConsoleOutputEvent;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Copies files and folders that do not start with _ and do not have frontmatter
- * Class FilesRenderer
+ * Renders documents that are part of a collection
+ * Class CollectionRenderer
  * @package Stati\Renderer
  */
 class CollectionRenderer extends Renderer
