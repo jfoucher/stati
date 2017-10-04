@@ -24,6 +24,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -39,6 +40,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/incorrect.md', './', 'incorrect.md');
@@ -50,6 +52,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/empty.md', './', 'empty.md');
@@ -61,6 +64,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/empty.md', './', 'empty.md');
@@ -76,6 +80,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/index.html', './', 'index.html');
@@ -93,6 +98,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -104,6 +110,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug/',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -116,6 +123,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug/',
+            'includes_dir' => './',
             'defaults' => [[
                 'scope' => [
                     'path' => 'post_test'
@@ -141,6 +149,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:year/:month/:day/',
+            'includes_dir' => './',
             'defaults' => [[
                 'scope' => [
                     'path' => 'post_test'
@@ -164,6 +173,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -175,6 +185,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
         ]);
 
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -187,6 +198,7 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
             'title' => 'test'
         ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
@@ -199,10 +211,24 @@ class DocTest extends TestCase
     {
         $site = new Site([
             'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
             'title' => 'test'
         ]);
         $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('simple-post', (string)$doc);
+    }
+
+    public function testGetSetOutput()
+    {
+        $site = new Site([
+            'permalink' => '/:categories/:slug.html',
+            'includes_dir' => './',
+            'title' => 'test'
+        ]);
+        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $doc = new Doc($file, $site);
+        $doc->setOutput('<head></head><body>'.$doc->getContent().'</body>');
+        $this->assertEquals('<head></head><body><p>c</p></body>', $doc->getOutput());
     }
 }

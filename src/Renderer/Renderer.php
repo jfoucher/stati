@@ -37,7 +37,6 @@ class Renderer
         $this->site = $site;
     }
 
-
     protected function render(Doc $doc)
     {
         $frontMatter = $doc->getFrontMatter();
@@ -67,7 +66,7 @@ class Renderer
     protected function renderWithLayout($layoutFile, $config)
     {
         Liquid::set('INCLUDE_ALLOW_EXT', true);
-        Liquid::set('INCLUDE_PREFIX', './_includes/');
+        Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
         Liquid::set('HAS_PROPERTY_METHOD', 'get');
         $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
         if (!$layout) {

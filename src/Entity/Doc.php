@@ -32,7 +32,6 @@ use Stati\Event\ConsoleOutputEvent;
 
 class Doc
 {
-
     /**
      * HTML content of this post without layout
      * @var string
@@ -126,16 +125,18 @@ class Doc
             return $this->content;
         }
 
+        Liquid::set('INCLUDE_ALLOW_EXT', true);
+        Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
+        Liquid::set('HAS_PROPERTY_METHOD', 'get');
+
         $parser = new ContentParser();
         $markdownParser = new MarkdownParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
 
         $include = null;
-        if (is_dir('./_includes/')) {
-            $include = './_includes/';
-        }
-        $template = new Template($include/*, new File(['cache_dir' => '/tmp/'])*/);
+
+        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         try {
