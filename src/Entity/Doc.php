@@ -240,47 +240,13 @@ class Doc
         }
 
         $link = $this->getPermalink();
-        if ($this->getDate() && preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
-            foreach ($matches[1] as $token) {
-                $format = '';
-                switch ($token) {
-                    case ':year':
-                        $format = 'Y';
-                        break;
-                    case ':month':
-                        $format = 'm';
-                        break;
-                    case ':day':
-                        $format = 'd';
-                        break;
-                    default:
-                }
-                $link = str_replace($token, $this->getDate()->format($format), $link);
-            }
+        if ($this->getDate()) {
+            $link = $this->getDateLinkPart($link);
         }
 
-        if (preg_match_all('/(:title|:categories|:slug)/', $link, $matches, PREG_PATTERN_ORDER)) {
-            foreach ($matches[1] as $token) {
-                $replace = '';
-                switch ($token) {
-                    case ':title':
-                        $replace = $this->getSlug();
-                        break;
-                    case ':categories':
-                        $replace = implode('/', $this->getFrontMatter()['categories']);
-                        break;
-                    case ':slug':
-                        $replace = $this->getSlug();
-                        break;
-                    default:
-                }
-
-                $link = str_replace($token, $replace, $link);
-            }
-        }
+        $link = $this->getTextLinkPart($link);
 
         // if link ends with / we should put an index.html file in that directory
-
         if (substr($link, -1) === '/') {
             $link .= 'index.html';
         }
@@ -423,5 +389,52 @@ class Doc
     public function __toString()
     {
         return $this->getSlug();
+    }
+
+    private function getDateLinkPart($link)
+    {
+        if (preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
+            foreach ($matches[1] as $token) {
+                $format = '';
+                switch ($token) {
+                    case ':year':
+                        $format = 'Y';
+                        break;
+                    case ':month':
+                        $format = 'm';
+                        break;
+                    case ':day':
+                        $format = 'd';
+                        break;
+                    default:
+                }
+                $link = str_replace($token, $this->getDate()->format($format), $link);
+            }
+        }
+        return $link;
+    }
+
+    private function getTextLinkPart($link)
+    {
+        if (preg_match_all('/(:title|:categories|:slug)/', $link, $matches, PREG_PATTERN_ORDER)) {
+            foreach ($matches[1] as $token) {
+                $replace = '';
+                switch ($token) {
+                    case ':title':
+                        $replace = $this->getSlug();
+                        break;
+                    case ':categories':
+                        $replace = implode('/', $this->getFrontMatter()['categories']);
+                        break;
+                    case ':slug':
+                        $replace = $this->getSlug();
+                        break;
+                    default:
+                }
+
+                $link = str_replace($token, $replace, $link);
+            }
+        }
+        return $link;
     }
 }
