@@ -52,6 +52,7 @@ class CollectionRenderer extends Renderer
                         $doc->setPrevious($collectionDocs[$k + 1]);
                     }
                 }
+                //TODO add try catch to catch LiquidException
                 $docs[] = $this->render($doc);
             }
 

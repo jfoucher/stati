@@ -37,7 +37,7 @@ class Renderer
         $this->site = $site;
     }
 
-    protected function render(Doc $doc)
+    public function render(Doc $doc)
     {
         $frontMatter = $doc->getFrontMatter();
         $content = $doc->getContent();
@@ -68,9 +68,12 @@ class Renderer
         Liquid::set('INCLUDE_ALLOW_EXT', true);
         Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
         Liquid::set('HAS_PROPERTY_METHOD', 'get');
-        $layout = @file_get_contents('./_layouts/'.$layoutFile.'.html');
+
+        $folder = str_replace('//', '/', $this->site->getConfig()['layouts_dir'] . '/');
+
+        $layout = @file_get_contents($folder.$layoutFile.'.html');
         if (!$layout) {
-            throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder');
+            throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder '.$folder);
         }
         $layoutFrontMatter = FrontMatterParser::parse($layout);
         $layoutContent = ContentParser::parse($layout);
@@ -78,30 +81,25 @@ class Renderer
         if (isset($layoutFrontMatter['layout'])) {
             $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
             $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
-            try {
-                $template->parse($layoutContent);
-                $config['content'] = $template->render($config);
-            } catch (LiquidException $err) {
-                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
-                    'error',
-                    ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
-                ));
-            }
+
+            $template->parse($layoutContent);
+            $config['content'] = $template->render($config);
 
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
         $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
-        try {
-            $template->parse($layoutContent);
-            return $template->render($config);
-        } catch (LiquidException $err) {
-            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
-                'error',
-                ['Could not render the file '.$layoutFile.' '.$err->getMessage()]
-            ));
-        }
-        return $config['content'];
+        $template->parse($layoutContent);
+
+        return $template->render($config);
+    }
+
+    /**
+     * @return Site
+     */
+    public function getSite()
+    {
+        return $this->site;
     }
 }
