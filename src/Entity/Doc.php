@@ -114,30 +114,6 @@ class Doc
 
     public function getDate()
     {
-        if ($this->date !== null) {
-            return $this->date;
-        }
-
-        //try to get date from frontMatter
-        $frontMatter = $this->getFrontMatter();
-        if (isset($frontMatter['date'])) {
-            $dateString = $frontMatter['date'];
-            try {
-                $this->date = new \DateTime($dateString);
-                return $this->date;
-            } catch (\Exception $err) {
-                // echo $err->getMessage()."\r\n";
-            }
-        }
-
-        // Try to get date from filename
-        try {
-            $this->date = new \DateTime(substr($this->file->getBasename(), 0, 10));
-            return $this->date;
-        } catch (\Exception $err) {
-            // echo $err->getMessage()."\r\n";
-        }
-
         return $this->date;
     }
 
