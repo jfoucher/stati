@@ -9,6 +9,7 @@ cache:
     - $HOME/.composer/cache
 
 install:
+  - gem install compass
   - composer install --prefer-dist
 
 script:

@@ -1,10 +1,12 @@
 <?php
-/**
- * PageRendererTest.php
+
+/*
+ * This file is part of the Stati package.
  *
- * Created By: jonathan
- * Date: 05/10/2017
- * Time: 01:21
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @package Stati
  */
 
 namespace Stati\Tests\Renderer;

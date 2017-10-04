@@ -25,11 +25,6 @@ class Sass extends Page
             return $this->content;
         }
 
-        $cacheDir = '/tmp/sass_cache/';
-        if (!is_dir($cacheDir)) {
-            mkdir($cacheDir);
-        }
-
         $sassDir = ($this->site->sass && isset($this->site->sass['sass_dir'])) ? $this->site->sass['sass_dir'] : './_sass/';
         $sassStyle = ($this->site->sass && isset($this->site->sass['style'])) ? $this->site->sass['style'] : 'nested';
 
