@@ -119,9 +119,9 @@ class Doc
         }
 
         //try to get date from frontMatter
-        $fr = $this->getFrontMatter();
-        if (isset($fr['date'])) {
-            $dateString = $fr['date'];
+        $frontMatter = $this->getFrontMatter();
+        if (isset($frontMatter['date'])) {
+            $dateString = $frontMatter['date'];
             try {
                 $this->date = new \DateTime($dateString);
                 return $this->date;
@@ -186,6 +186,7 @@ class Doc
             $liquidParsed = '';
         }
 
+        //TODO get extensions from site config
         if ($this->file->getExtension() === 'md' || $this->file->getExtension() === 'mkd' || $this->file->getExtension() === 'markdown') {
             $this->content = $markdownParser->text($liquidParsed);
         } else {

@@ -14,7 +14,6 @@ namespace Stati\Liquid\Tag;
 use Liquid\AbstractTag;
 use Liquid\Context;
 use Stati\Exception\FileNotFoundException;
-use Stati\Link\Generator;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Finder\Finder;
 use Stati\Entity\Page;
