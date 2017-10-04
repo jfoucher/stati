@@ -135,9 +135,7 @@ class Doc
         $markdownParser = new MarkdownParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
-        if (is_file($cacheDir.md5($content))) {
-            return file_get_contents($cacheDir.md5($content));
-        }
+
         $include = null;
         if (is_dir('./_includes/')) {
             $include = './_includes/';
@@ -169,7 +167,6 @@ class Doc
             $this->content = $liquidParsed;
         }
 
-        file_put_contents($cacheDir.md5($content), $this->content);
         return $this->content;
     }
 

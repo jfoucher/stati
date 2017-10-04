@@ -36,11 +36,8 @@ class Sass extends Page
         $parser = new ContentParser();
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
-        if (is_file($cacheDir.md5($content.$sassDir.$sassStyle))) {
-            return file_get_contents($cacheDir.md5($content.$sassDir.$sassStyle));
-        }
+
         $this->content = shell_exec('echo \''.$contentPart.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
-        file_put_contents($cacheDir.md5($content.$sassDir.$sassStyle), $this->content);
         return $this->content;
     }
 
