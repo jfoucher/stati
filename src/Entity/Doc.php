@@ -126,11 +126,6 @@ class Doc
             return $this->content;
         }
 
-        $cacheDir = '/tmp/post_cache/';
-        if (!is_dir($cacheDir)) {
-            mkdir($cacheDir);
-        }
-
         $parser = new ContentParser();
         $markdownParser = new MarkdownParser();
         $content = $this->file->getContents();
@@ -186,10 +181,13 @@ class Doc
      */
     public function getTitle()
     {
-        if (isset($this->getFrontMatter()['title'])) {
-            return $this->getFrontMatter()['title'];
+        if ($this->title) {
+            return $this->title;
         }
-        return '';
+        if (isset($this->getFrontMatter()['title'])) {
+            $this->title = $this->getFrontMatter()['title'];
+        }
+        return $this->title;
     }
 
     /**
@@ -211,16 +209,6 @@ class Doc
     }
 
     /**
-     * @param SplFileInfo $file
-     * @return Doc
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getUrl()
@@ -238,16 +226,6 @@ class Doc
     }
 
     /**
-     * @param string $url
-     * @return Doc
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getPath()
@@ -261,7 +239,6 @@ class Doc
         }
 
         $link = $this->getPermalink();
-
         if ($this->getDate() && preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
             foreach ($matches[1] as $token) {
                 $format = '';
@@ -276,9 +253,7 @@ class Doc
                         $format = 'd';
                         break;
                     default:
-                        continue;
                 }
-
                 $link = str_replace($token, $this->getDate()->format($format), $link);
             }
         }
@@ -297,7 +272,6 @@ class Doc
                         $replace = $this->getSlug();
                         break;
                     default:
-                        continue;
                 }
 
                 $link = str_replace($token, $replace, $link);
@@ -307,7 +281,7 @@ class Doc
         // if link ends with / we should put an index.html file in that directory
 
         if (substr($link, -1) === '/') {
-            $link .= '/index.html';
+            $link .= 'index.html';
         }
 
         $this->setPath($link);
