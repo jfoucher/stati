@@ -6,6 +6,16 @@
   "files": [
     "LICENSE"
   ],
+   "finder": [
+         {
+         "name": "{\\.[php]}",
+       "exclude": [
+         "tests",
+         "test"
+       ],
+       "in": "vendor"
+     }
+   ],
   "git-version": "package_version",
   "main": "bin/Stati.php",
   "output": "build/stati.phar",
