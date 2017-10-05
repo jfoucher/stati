@@ -11,7 +11,6 @@
 
 namespace Stati\Writer;
 
-use Symfony\Component\Filesystem\Filesystem;
 use Stati\Site\Site;
 
 class Writer

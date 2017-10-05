@@ -11,7 +11,6 @@
 
 namespace Stati\Writer;
 
-use Stati\Entity\Collection;
 use Symfony\Component\Filesystem\Filesystem;
 use Stati\Entity\Doc;
 

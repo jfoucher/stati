@@ -12,7 +12,6 @@
 namespace Stati\Writer;
 
 use Stati\Entity\StaticFile;
-use Stati\Writer\Writer;
 use Symfony\Component\Filesystem\Filesystem;
 
 class StaticFileWriter extends Writer
