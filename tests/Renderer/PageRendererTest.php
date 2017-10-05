@@ -21,7 +21,7 @@ class PageRendererTest extends TestCase
 {
     public function testPageRender()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/page.md', './', 'page.md');
+        $file = $this->getFile('page.md');
         $page = new Page($file, $this->site);
         $this->site->addPage($page);
         $renderer = new PageRenderer($this->site);

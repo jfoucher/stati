@@ -29,7 +29,7 @@ class RendererTest extends TestCase
 
     public function testRenderDocWithoutLayout()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $this->site);
         $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
@@ -38,7 +38,7 @@ class RendererTest extends TestCase
 
     public function testRenderDocWithLayout()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-layout.markdown', './', '2017-08-13-with-layout.markdown');
+        $file = $this->getFile('2017-08-13-with-layout.markdown');
         $doc = new Doc($file, $this->site);
         $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
@@ -50,7 +50,7 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithLayoutNotFound()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-layout.markdown', './', '2017-08-13-with-layout.markdown');
+        $file = $this->getFile('2017-08-13-with-layout.markdown');
         $doc = new Doc($file, $this->site);
         $frontMatter = $doc->getFrontMatter();
         $frontMatter['layout'] = 'wrong-layout';
@@ -62,7 +62,7 @@ class RendererTest extends TestCase
 
     public function testRenderDocWithLayouts()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-2-layouts.markdown', './', '2017-08-13-with-2-layouts.markdown');
+        $file = $this->getFile('2017-08-13-with-2-layouts.markdown');
         $doc = new Doc($file, $this->site);
 
         $renderer = new Renderer($this->site);
@@ -75,7 +75,7 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithIncorrectSyntaxLayouts()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-incorrect-layout.markdown', './', '2017-08-13-with-incorrect-layout.markdown');
+        $file = $this->getFile('2017-08-13-with-incorrect-layout.markdown');
         $doc = new Doc($file, $this->site);
 
         $frontMatter = $doc->getFrontMatter();
@@ -91,7 +91,7 @@ class RendererTest extends TestCase
      */
     public function testRenderDocWithIncorrectSyntaxLayout()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-13-with-incorrect-layout.markdown', './', '2017-08-13-with-incorrect-layout.markdown');
+        $file = $this->getFile('2017-08-13-with-incorrect-layout.markdown');
         $doc = new Doc($file, $this->site);
 
         $renderer = new Renderer($this->site);

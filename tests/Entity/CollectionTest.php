@@ -42,14 +42,8 @@ class CollectionTest extends TestCase
 
     public function testCollectionDocs()
     {
-        $site = new Site([
-            'permalink' => '/:year/:month/:day/:title.html',
-            'url' => 'https://test.com',
-            'includes_dir' => './',
-            'baseurl' => '',
-        ]);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
-        $post = new Post($file, $site);
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
+        $post = new Post($file, $this->site);
         $collection = new Collection('posts');
         $collection->addDoc($post);
 
@@ -59,14 +53,8 @@ class CollectionTest extends TestCase
 
     public function testSetDocs()
     {
-        $site = new Site([
-            'permalink' => '/:year/:month/:day/:title.html',
-            'url' => 'https://test.com',
-            'includes_dir' => './',
-            'baseurl' => '',
-        ]);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
-        $post = new Post($file, $site);
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
+        $post = new Post($file, $this->site);
 
         $collection = new Collection('posts');
         $collection->setDocs([$post]);

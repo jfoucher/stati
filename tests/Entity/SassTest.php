@@ -17,17 +17,34 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class SassTest extends TestCase
 {
+    protected $file;
+    public function setUp()
+    {
+        parent::setUp();
+        $this->file = $this->createFile(
+            '/sass/style.sass',
+            <<<EOL
+---
+---
+
+.head {
+    a {
+        color: #333;;
+    }
+}
+EOL
+);
+    }
+
     public function testPath()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/sass/style.scss', 'sass', 'style.scss');
-        $doc = new Sass($file, $this->site);
+        $doc = new Sass($this->file, $this->site);
         $this->assertEquals('/sass/style.css', $doc->getPath());
     }
 
     public function testContent()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/sass/style.scss', 'sass', 'style.scss');
-        $doc = new Sass($file, $this->site);
+        $doc = new Sass($this->file, $this->site);
         $this->assertEquals('.head a {
   color: #333; }
 ', $doc->getContent());

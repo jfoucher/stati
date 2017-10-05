@@ -28,7 +28,7 @@ class CollectionRendererTest extends TestCase
 
     public function testRenderAllOne()
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('/2017-08-10-simple-post.markdown');
         $post = new Post($file, $this->site);
 
         $collection = new Collection('posts');
@@ -71,11 +71,11 @@ class CollectionRendererTest extends TestCase
 
     private function collectionWithThreePosts($label = 'posts')
     {
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $post1 = new Post($file, $this->site);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-11-next-post.markdown', './', '2017-08-11-next-post.markdown');
+        $file = $this->getFile('2017-08-11-next-post.markdown');
         $post2 = new Post($file, $this->site);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-12-custom-permalink.markdown', './', '2017-08-12-custom-permalink.markdown');
+        $file = $this->getFile('2017-08-12-custom-permalink.markdown');
         $post3 = new Post($file, $this->site);
 
         $collection = new Collection($label);

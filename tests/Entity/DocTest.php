@@ -26,8 +26,7 @@ class DocTest extends TestCase
             'permalink' => '/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
 
         $this->assertEquals('<p>c</p>', $doc->getContent());
@@ -42,8 +41,7 @@ class DocTest extends TestCase
             'permalink' => '/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/incorrect.md', './', 'incorrect.md');
+        $file = $this->getFile('incorrect.md');
         $doc = new Doc($file, $site);
         $this->assertEquals('', $doc->getContent());
     }
@@ -54,8 +52,7 @@ class DocTest extends TestCase
             'permalink' => '/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/empty.md', './', 'empty.md');
+        $file = $this->getFile('empty.md');
         $doc = new Doc($file, $site);
         $this->assertEquals(null, $doc->getTitle());
     }
@@ -67,7 +64,7 @@ class DocTest extends TestCase
             'includes_dir' => './',
         ]);
 
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/empty.md', './', 'empty.md');
+        $file = $this->getFile('empty.md');
         $doc = new Doc($file, $site);
         $this->assertEquals('', $doc->getContent());
         $this->assertEquals(null, $doc->getPath());
@@ -82,8 +79,7 @@ class DocTest extends TestCase
             'permalink' => '/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/index.html', './', 'index.html');
+        $file = $this->getFile('index.html');
         $doc = new Doc($file, $site);
         $this->assertEquals('<p>b</p>', $doc->getContent());
         $this->assertEquals('a', $doc->getTitle());
@@ -100,8 +96,7 @@ class DocTest extends TestCase
             'permalink' => '/:categories/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('/one/two/simple-post.html', $doc->getUrl());
     }
@@ -112,8 +107,7 @@ class DocTest extends TestCase
             'permalink' => '/:categories/:slug/',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('/one/two/simple-post/', $doc->getUrl());
         $this->assertEquals('/one/two/simple-post/index.html', $doc->getPath());
@@ -126,7 +120,7 @@ class DocTest extends TestCase
             'includes_dir' => './',
             'defaults' => [[
                 'scope' => [
-                    'path' => 'post_test'
+                    'path' => '_posts'
                 ],
                 'values' => [
                     'description' => 'post desc',
@@ -136,8 +130,21 @@ class DocTest extends TestCase
             ]
         ]);
 
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './post_test', '2017-08-10-simple-post.markdown');
+        $file = $this->createFile(
+            './_posts/2017-08-10-simple-post.markdown',
+            <<<EOL
+---
+title: a
+excerpt: "b"
+categories:
+  - one
+  - two
+---
 
+c
+
+EOL
+);
         $doc = new Doc($file, $site);
 
         $this->assertEquals('post desc', $doc->description);
@@ -161,11 +168,9 @@ class DocTest extends TestCase
             ]
             ]
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-12-custom-permalink.markdown', './post_test', '2017-08-12-custom-permalink.markdown');
+        $file = $this->getFile('/2017-08-12-custom-permalink.markdown');
         $doc = new Doc($file, $site);
 
-        $this->assertEquals('/one/two/custom-permalink/', $doc->getUrl());
         $this->assertEquals('/one/two/custom-permalink/', $doc->getUrl());
     }
 
@@ -175,8 +180,7 @@ class DocTest extends TestCase
             'permalink' => '/:categories/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals(null, $doc->absent);
     }
@@ -187,8 +191,7 @@ class DocTest extends TestCase
             'permalink' => '/:categories/:slug.html',
             'includes_dir' => './',
         ]);
-
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('a', $doc->title);
         $this->assertEquals('a', $doc->get('title'));
@@ -201,7 +204,7 @@ class DocTest extends TestCase
             'includes_dir' => './',
             'title' => 'test'
         ]);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file);
         $doc->setSite($site);
         $this->assertEquals('test', $doc->getSite()->title);
@@ -214,7 +217,7 @@ class DocTest extends TestCase
             'includes_dir' => './',
             'title' => 'test'
         ]);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('simple-post', (string)$doc);
     }
@@ -226,7 +229,7 @@ class DocTest extends TestCase
             'includes_dir' => './',
             'title' => 'test'
         ]);
-        $file = new SplFileInfo(__DIR__ . '/../fixtures/post_test/2017-08-10-simple-post.markdown', './', '2017-08-10-simple-post.markdown');
+        $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $doc->setOutput('<head></head><body>'.$doc->getContent().'</body>');
         $this->assertEquals('<head></head><body><p>c</p></body>', $doc->getOutput());

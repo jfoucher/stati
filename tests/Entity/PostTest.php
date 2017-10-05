@@ -96,7 +96,9 @@ class PostTest extends TestCase
 
     public function testPostWithBadFrontMatterDateShouldReturnFileDate()
     {
-        $file = $this->createFile('2016-08-10-wrong-date.markdown', <<<EOL
+        $file = $this->createFile(
+            '2016-08-10-wrong-date.markdown',
+            <<<EOL
 ---
 title: a
 date: WRONG_DATE
@@ -111,7 +113,9 @@ EOL
 
     public function testPostWithBadDatesShouldReturnNull()
     {
-        $file = $this->createFile('201628-wrong-date.markdown', <<<EOL
+        $file = $this->createFile(
+            '201628-wrong-date.markdown',
+            <<<EOL
 ---
 title: a
 date: WRONG_DATE
@@ -126,7 +130,9 @@ EOL
 
     public function testPostWithFrontMatterDateShouldReturnDate()
     {
-        $file = $this->createFile('201628-wrong-date.markdown', <<<EOL
+        $file = $this->createFile(
+            '201628-wrong-date.markdown',
+            <<<EOL
 ---
 title: a
 date: Thu Sep 17 01:09:13 +0200 2011

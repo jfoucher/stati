@@ -35,10 +35,10 @@ abstract class TestCase extends BaseTestCase
         $this->site = new Site([
             'permalink' => '/:year/',
             'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/fixtures/post_test'
+            'layouts_dir' => __DIR__ . '/fixtures/'
         ]);
-        $this->root = vfsStream::setup('web');
-        vfsStream::copyFromFileSystem(__DIR__ . '/fixtures/post_test', $this->root);
+        $this->root = vfsStream::setup('/');
+        vfsStream::copyFromFileSystem(__DIR__ . '/fixtures/', $this->root);
     }
 
     /**
@@ -51,7 +51,7 @@ abstract class TestCase extends BaseTestCase
         $file = new vfsStreamFile(basename($path));
         $file->setContent($content);
         $this->createPath(dirname($path))->addChild($file);
-        return new SplFileInfo($file->url(), $file->path(), $file->getName());
+        return new SplFileInfo($file->url(), dirname($file->path()), $file->getName());
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class TestCase extends BaseTestCase
     public function getFile($path)
     {
         $file = $this->root->getChild($path);
-        return new SplFileInfo($file->url(), $file->path(), $file->getName());
+        return new SplFileInfo($file->url(), dirname($file->path()), $file->getName());
     }
 
 
