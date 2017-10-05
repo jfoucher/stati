@@ -13,6 +13,10 @@ namespace Stati\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Stati\Site\Site;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamFile;
+use org\bovigo\vfs\vfsStreamDirectory;
+use Symfony\Component\Finder\SplFileInfo;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -21,6 +25,11 @@ abstract class TestCase extends BaseTestCase
      */
     protected $site;
 
+    /**
+     * @var \org\bovigo\vfs\vfsStreamDirectory
+     */
+    protected $root;
+
     public function setUp()
     {
         $this->site = new Site([
@@ -28,5 +37,50 @@ abstract class TestCase extends BaseTestCase
             'includes_dir' => './',
             'layouts_dir' => __DIR__ . '/fixtures/post_test'
         ]);
+        $this->root = vfsStream::setup('web');
+        vfsStream::copyFromFileSystem(__DIR__ . '/fixtures/post_test', $this->root);
+    }
+
+    /**
+     * @param string $path
+     * @param string $content
+     * @return SplFileInfo
+     */
+    public function createFile($path, $content = null)
+    {
+        $file = new vfsStreamFile(basename($path));
+        $file->setContent($content);
+        $this->createPath(dirname($path))->addChild($file);
+        return new SplFileInfo($file->url(), $file->path(), $file->getName());
+    }
+
+    /**
+     * @param string $path
+     * @return SplFileInfo
+     */
+    public function getFile($path)
+    {
+        $file = $this->root->getChild($path);
+        return new SplFileInfo($file->url(), $file->path(), $file->getName());
+    }
+
+
+    /**
+     * @param $path
+     * @return vfsStreamDirectory
+     */
+    protected function createPath($path)
+    {
+        $parentDirectory = $this->root;
+        $dirnames = array_filter(explode(DIRECTORY_SEPARATOR, $path));
+        foreach ($dirnames as $dirname) {
+            if ($dirname == '.') {
+                continue;
+            }
+            $directory = new vfsStreamDirectory($dirname);
+            $parentDirectory->addChild($directory);
+            $parentDirectory = $directory;
+        }
+        return $parentDirectory;
     }
 }
