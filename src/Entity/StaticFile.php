@@ -21,13 +21,13 @@ class StaticFile extends SplFileInfo
             return $this->getRelativePathname();
         }
         if ($item === 'modified_time') {
-            return $this->getMTime();
+            return date_create_from_format('U', $this->getMTime())->format(DATE_RFC3339);
         }
         if ($item === 'name') {
             return $this->getFilename();
         }
         if ($item === 'basename') {
-            return pathinfo($this->getRelativePathname(), PATHINFO_BASENAME);
+            return pathinfo($this->getRelativePathname(), PATHINFO_FILENAME);
         }
         if ($item === 'extname') {
             return '.'.pathinfo($this->getRelativePathname(), PATHINFO_EXTENSION);
