@@ -28,7 +28,6 @@ class SassTest extends TestCase
     {
         $file = new SplFileInfo(__DIR__ . '/../fixtures/sass/style.scss', 'sass', 'style.scss');
         $doc = new Sass($file, $this->site);
-        echo $doc->getContent();
         $this->assertEquals('.head a {
   color: #333; }
 ', $doc->getContent());

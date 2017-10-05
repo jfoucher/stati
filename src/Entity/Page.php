@@ -49,7 +49,6 @@ class Page extends Doc
                 $this->date = new \DateTime($dateString);
                 return $this->date;
             } catch (\Exception $err) {
-                // echo $err->getMessage()."\r\n";
             }
         }
 

@@ -375,6 +375,9 @@ class Doc
     public function __get($item)
     {
         if ($item === 'date') {
+            if (!$this->getDate()) {
+                return null;
+            }
             return $this->getDate()->format(DATE_RFC3339);
         }
 
