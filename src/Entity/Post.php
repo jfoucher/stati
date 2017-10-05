@@ -115,7 +115,6 @@ class Post extends Doc
             $this->date = new \DateTime(substr($this->file->getBasename(), 0, 10));
             return $this->date;
         } catch (\Exception $err) {
-            // echo $err->getMessage()."\r\n";
         }
 
         return $this->date;
