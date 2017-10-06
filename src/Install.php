@@ -4,12 +4,18 @@
 namespace Stati;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOException;
 
 class Install
 {
-    public function postUpdate()
+    public static function postUpdate()
     {
         $fileSystem = new Filesystem();
-        $fileSystem->copy('./build/stati.phar', '../bin/');
+        try {
+            $fileSystem->copy('./build/stati.phar', '../bin/');
+        } catch(IOException $e) {
+            echo $e->getMessage();
+        }
+
     }
 }
