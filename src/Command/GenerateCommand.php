@@ -167,10 +167,11 @@ class GenerateCommand extends Command
             include(getcwd() . '/_plugins/' . 'phar://' . $requestedPlugin . '.phar/vendor/autoload.php');
             return;
         }
-        var_dump(Phar::running(false));
         if ($dir = Phar::running(false)) {
-            var_dump(dirname($dir) . '/' . $requestedPlugin . '.phar');
-            if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
+            var_dump(dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar');
+            if (is_file(dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar')) {
+                include('phar://' . dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar/vendor/autoload.php');
+            } else if (is_file(dirname($dir) . '//' . $requestedPlugin . '.phar')) {
                 include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
             }
         } else {
