@@ -21,7 +21,7 @@ class StaticFile extends SplFileInfo
             return $this->getRelativePathname();
         }
         if ($item === 'modified_time') {
-            return date_create_from_format('U', $this->getMTime())->format(DATE_RFC3339);
+            return date_create_from_format('U', (string)$this->getMTime())->format(DATE_RFC3339);
         }
         if ($item === 'name') {
             return $this->getFilename();

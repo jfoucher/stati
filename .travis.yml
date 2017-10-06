@@ -1,20 +1,25 @@
 language: php
 php:
+  - '5.6'
   - '7.1'
+  - 'hhvm'
 before_install:
   - sudo apt-get install python-pygments
 
-cache:
-  directories:
-    - $HOME/.composer/cache
+#cache:
+#  directories:
+#    - $HOME/.composer/cache
 
 install:
   - gem install compass
-  - composer install --prefer-dist
+  - composer install
+  - curl -L http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
+  - sudo chmod a+x php-cs-fixer
+  - sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
 script:
   - vendor/bin/phpunit --verbose || travis_terminate 1
-  - vendor/bin/php-cs-fixer --diff --dry-run --stop-on-violation --verbose fix
+  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php-cs-fixer --diff --dry-run --stop-on-violation --verbose fix -v; fi;'
 
 after_script:
   - vendor/bin/test-reporter --stdout > codeclimate.json

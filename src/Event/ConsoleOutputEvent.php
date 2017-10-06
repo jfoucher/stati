@@ -61,7 +61,7 @@ class ConsoleOutputEvent extends Event
     /**
      * @return int
      */
-    public function getMinLevel(): int
+    public function getMinLevel()
     {
         return $this->minLevel;
     }

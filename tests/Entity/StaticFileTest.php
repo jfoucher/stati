@@ -25,7 +25,7 @@ class StaticFileTest extends TestCase
         $this->assertEquals('static.txt', $file->name);
         $this->assertEquals('.txt', $file->extname);
         $this->assertEquals(null, $file->none);
-        $this->assertEquals(date_create_from_format('U', $file->getMTime())->format(DATE_RFC3339), $file->modified_time);
+        $this->assertEquals(date_create_from_format('U', (string)$file->getMTime())->format(DATE_RFC3339), $file->modified_time);
     }
 
     public function testFieldExists()

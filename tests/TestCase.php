@@ -11,14 +11,13 @@
 
 namespace Stati\Tests;
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
 use Stati\Site\Site;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
 use org\bovigo\vfs\vfsStreamDirectory;
 use Symfony\Component\Finder\SplFileInfo;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Site

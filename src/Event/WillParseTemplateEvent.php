@@ -45,7 +45,7 @@ class WillParseTemplateEvent extends Event
     /**
      * @return Template
      */
-    public function getTemplate(): Template
+    public function getTemplate()
     {
         return $this->template;
     }
