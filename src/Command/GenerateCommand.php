@@ -172,7 +172,7 @@ class GenerateCommand extends Command
             // if current file a far, look in parent vendor directory (this is in case the phar was installed as a symlink, which is what composer does)
             if (is_file(dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar')) {
                 require_once('phar://' . dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar/vendor/autoload.php');
-            } else if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
+            } elseif (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
                 // Or in the same directory as the phar
                 require_once('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
             }
