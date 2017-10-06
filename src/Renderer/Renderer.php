@@ -50,12 +50,14 @@ class Renderer
                 'post' => $doc,
                 'site' => $this->site,
             ];
-            //TODO PASS POST HERE
+
             $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $doc));
             try {
                 $content = $this->renderWithLayout($frontMatter['layout'], $vars);
             } catch (FileNotFoundException $err) {
                 throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
+            } catch (LiquidException $err) {
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$doc->getTitle() . 'because of the following error', $err->getMessage()]]));
             }
         }
 
