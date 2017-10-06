@@ -40,7 +40,9 @@
         "stati/seo": "An SEO tag generator for stati",
         "stati/avatar": "An avatar generator for Stati"
     },
-    "bin": ["build/stati"],
+    "scripts": {
+        "post-update-cmd": "Stati\\Install::postUpdate"
+    },
     "license": "MIT",
     "homepage": "https://stati.jfoucher.com",
     "require-dev": {

@@ -168,8 +168,9 @@ class GenerateCommand extends Command
             include(getcwd() . '/_plugins/' . 'phar://' . $requestedPlugin . '.phar/vendor/autoload.php');
             return;
         }
-
-        if ($dir = Phar::running(false)) {
+        var_dump(Phar::running(false));
+        if ($dir = __DIR__) {
+            var_dump(dirname($dir) . '/' . $requestedPlugin . '.phar');
             if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
                 include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
             }
