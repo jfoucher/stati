@@ -41,8 +41,7 @@
         "stati/avatar": "An avatar generator for Stati"
     },
     "scripts": {
-        "post-package-update": "Stati\\Install::postUpdate",
-        "post-package-uninstall": "Stati\\Install::postRemove"
+        "post-update-cmd": "Stati\\Install::postUpdate"
     },
     "license": "MIT",
     "homepage": "https://stati.jfoucher.com",
