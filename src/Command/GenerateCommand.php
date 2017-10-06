@@ -164,13 +164,10 @@ class GenerateCommand extends Command
         // Look in site '_plugins' directory first
 
         if (is_file(getcwd() . '/_plugins/' . $requestedPlugin . '.phar')) {
-            var_dump(getcwd());
             include(getcwd() . '/_plugins/' . 'phar://' . $requestedPlugin . '.phar/vendor/autoload.php');
             return;
         }
-        var_dump(Phar::running(false));
-        if ($dir = __DIR__) {
-            var_dump(dirname($dir) . '/' . $requestedPlugin . '.phar');
+        if ($dir = Phar::running(false)) {
             if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
                 include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
             }
