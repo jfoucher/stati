@@ -11,8 +11,11 @@
 
 namespace Stati\Renderer;
 
+use Liquid\LiquidException;
 use Stati\Entity\Page;
 use Stati\Entity\Sass;
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Site\SiteEvents;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -31,7 +34,11 @@ class PageRenderer extends Renderer
              * @var Page $page
              */
             $page->setSite($this->site);
-            $pages[] = $this->render($page);
+            try {
+                $pages[] = $this->render($page);
+            } catch (LiquidException $err) {
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$page->getTitle() . 'because of the following error', $err->getMessage()]]));
+            }
         }
         return $pages;
     }

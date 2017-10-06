@@ -56,8 +56,6 @@ class Renderer
                 $content = $this->renderWithLayout($frontMatter['layout'], $vars);
             } catch (FileNotFoundException $err) {
                 throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
-            } catch (LiquidException $err) {
-                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$doc->getTitle() . 'because of the following error', $err->getMessage()]]));
             }
         }
 

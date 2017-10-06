@@ -11,6 +11,7 @@
 
 namespace Stati\Renderer;
 
+use Liquid\LiquidException;
 use Stati\Entity\Collection;
 use Stati\Entity\Post;
 use Stati\Site\SiteEvents;
@@ -53,7 +54,11 @@ class CollectionRenderer extends Renderer
                     }
                 }
                 //TODO add try catch to catch LiquidException
-                $docs[] = $this->render($doc);
+                try {
+                    $docs[] = $this->render($doc);
+                } catch (LiquidException $err) {
+                    $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$doc->getTitle() . 'because of the following error', $err->getMessage()]]));
+                }
             }
 
             $collection->setDocs($docs);
