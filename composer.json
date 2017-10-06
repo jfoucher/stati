@@ -41,7 +41,7 @@
         "stati/avatar": "An avatar generator for Stati"
     },
     "scripts": {
-        "post-update-cmd": "Stati\\Install::postUpdate",
+        "post-package-update": "Stati\\Install::postUpdate",
         "post-package-uninstall": "Stati\\Install::postRemove"
     },
     "license": "MIT",
