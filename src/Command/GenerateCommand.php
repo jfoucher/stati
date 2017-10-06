@@ -162,22 +162,25 @@ class GenerateCommand extends Command
     private function loadFile($requestedPlugin)
     {
         // Look in site '_plugins' directory first
-
         if (is_file(getcwd() . '/_plugins/' . $requestedPlugin . '.phar')) {
-            include(getcwd() . '/_plugins/' . 'phar://' . $requestedPlugin . '.phar/vendor/autoload.php');
+            require_once('phar://' . getcwd() . '/_plugins/' . $requestedPlugin . '.phar/vendor/autoload.php');
             return;
         }
+
+
         if ($dir = Phar::running(false)) {
-            var_dump(dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar');
+            // if current file a far, look in parent vendor directory (this is in case the phar was installed as a symlink, which is what composer does)
             if (is_file(dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar')) {
-                include('phar://' . dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar/vendor/autoload.php');
+                require_once('phar://' . dirname($dir) . '/../../../bin/' . $requestedPlugin . '.phar/vendor/autoload.php');
             } else if (is_file(dirname($dir) . '/' . $requestedPlugin . '.phar')) {
-                include('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
+                // Or in the same directory as the phar
+                require_once('phar://' . dirname($dir) . '/' . $requestedPlugin . '.phar/vendor/autoload.php');
             }
         } else {
+            // We're not a phar, look in our own vendor directory
             $dir = __DIR__;
-            if (is_file($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php')) {
-                include($dir . '/../../' . $requestedPlugin . '/vendor/autoload.php');
+            if (is_file($dir . '/../../vendor/stati/' . $requestedPlugin . '/vendor/autoload.php')) {
+                require_once($dir . '/../../vendor/stati/' . $requestedPlugin . '/vendor/autoload.php');
             }
         }
     }
