@@ -33,4 +33,21 @@ class Install
             echo $e->getMessage();
         }
     }
+
+    public static function postRemove()
+    {
+        $fileSystem = new Filesystem();
+        // Remove bin from /usr/local/bin
+        try {
+            $fileSystem->remove('/usr/local/bin/stati');
+        } catch (IOException $e) {
+            echo $e->getMessage();
+        }
+        // remove bin from above vendor folder
+        try {
+            $fileSystem->remove(__DIR__ . '/../../../bin/stati');
+        } catch (IOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
