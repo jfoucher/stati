@@ -134,9 +134,13 @@ class Doc
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
 
+        if (is_file(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content))) {
+            return file_get_contents(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content));
+        }
+
         $include = null;
 
-        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
+        $template = new Template(Liquid::get('INCLUDE_PREFIX'), new File(['cache_dir' => sys_get_temp_dir()]));
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         try {
@@ -163,6 +167,8 @@ class Doc
         } else {
             $this->content = $liquidParsed;
         }
+
+        file_put_contents(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content), $this->content);
 
         return $this->content;
     }
