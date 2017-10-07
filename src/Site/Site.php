@@ -11,6 +11,7 @@
 
 namespace Stati\Site;
 
+use Liquid\Liquid;
 use Stati\Entity\Collection;
 use Stati\Entity\Doc;
 use Stati\Event\ConsoleOutputEvent;
@@ -69,7 +70,7 @@ class Site
     /**
      * @var array
      */
-    protected $data;
+    protected $data = [];
 
     /**
      * @var EventDispatcherInterface
@@ -81,9 +82,15 @@ class Site
      */
     protected $time;
 
+    /**
+     * @var string
+     */
+    protected $toString;
+
     public function __construct(array $config)
     {
         $defaultConfig = [
+            "name" => "default",
             "source" => ".",
             "destination" => "./_site",
             "collections_dir" => ".",
@@ -93,6 +100,7 @@ class Site
             "includes_dir" => "_includes",
             "collections" => [],
             "output" => "true",
+
 
             # Handling Reading,
             "safe" => "false",
@@ -135,7 +143,10 @@ class Site
             "verbose" => "false",
         ];
 
+
+
         $this->config = array_merge($defaultConfig, $config);
+        $this->config["cache_dir"] = sys_get_temp_dir() . '/' . $this->config['name'];
         $this->config['collections'] = array_merge($this->config['collections'], [
             'posts' => [
                 'permalink' => $this->config['permalink']
@@ -464,5 +475,30 @@ class Site
     public function setData(array $data)
     {
         $this->data = $data;
+    }
+
+    public function __toString()
+    {
+        if ($this->toString) {
+            return $this->toString;
+        }
+
+        $str = implode('', Liquid::arrayFlatten($this->config));
+        $str .= implode('', Liquid::arrayFlatten($this->data));
+        $cols = array_map(function ($col) {
+            /**
+             * @var Collection $col
+             */
+            return implode('', array_map(function ($doc) {
+                /**
+                 * @var Doc $doc
+                 */
+                return $doc->getCacheFilename();
+            }, $col->getDocs()));
+        }, array_values($this->collections));
+
+        $str .= implode('', $cols);
+        $this->toString = $str;
+        return $str;
     }
 }

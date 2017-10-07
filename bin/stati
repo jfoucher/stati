@@ -10,4 +10,5 @@ use Stati\Command\ServeCommand;
 $application = new Application('Stati', '@package_version@');
 $application->add(new GenerateCommand());
 $application->add(new ServeCommand());
+$application->add(new \Stati\Command\ClearCacheCommand());
 $application->run();

@@ -23,6 +23,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class ServeCommand extends Command
 {
@@ -33,6 +34,7 @@ class ServeCommand extends Command
             ->setAliases(['s'])
             ->setDescription('Serve static site from localhost')
             ->addArgument('port', InputArgument::OPTIONAL, 'Port the server should run on', '4000')
+            ->addOption('no-cache', 'nc', InputOption::VALUE_NONE)
         ;
     }
 
@@ -41,7 +43,7 @@ class ServeCommand extends Command
         $port = $input->getArgument('port');
         $command = $this->getApplication()->find('generate');
 
-        $returnCode = $command->run(new ArrayInput([]), new ConsoleOutput($output->getVerbosity()));
+        $returnCode = $command->run(new ArrayInput(['--no-cache' => $input->getOption('no-cache')]), new ConsoleOutput($output->getVerbosity()));
         $style = new SymfonyStyle($input, $output);
         if ($returnCode === 0) {
             $style->success([

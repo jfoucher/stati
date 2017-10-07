@@ -38,6 +38,8 @@ class Renderer
      */
     protected $layouts;
 
+    protected $cacheFileName;
+
     public function __construct(Site $site)
     {
         $this->site = $site;
@@ -47,6 +49,18 @@ class Renderer
     {
         $frontMatter = $doc->getFrontMatter();
         $content = $doc->getContent();
+
+        // If file content is the same, frontMatter is the same and site config is the same, read cache file
+        $cacheDir = $this->site->getConfig()['cache_dir'] . '/post_cache';
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir, 0755, true);
+        }
+
+        if ($this->cacheFileName && is_file($cacheDir . '/' . $this->cacheFileName)) {
+            $content = file_get_contents($cacheDir . '/' . $this->cacheFileName);
+            $doc->setOutput($content);
+            return $doc;
+        }
 
         //If we have a layout
         if (isset($frontMatter['layout'])) {
@@ -63,6 +77,9 @@ class Renderer
             } catch (FileNotFoundException $err) {
                 throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
             }
+        }
+        if ($this->cacheFileName) {
+            file_put_contents($cacheDir . '/' . $this->cacheFileName, $content);
         }
 
         $doc->setOutput($content);
@@ -95,7 +112,7 @@ class Renderer
         }
 
         if (isset($layoutFrontMatter['layout'])) {
-            $template = new Template(Liquid::get('INCLUDE_PREFIX'), new File(['cache_dir' => sys_get_temp_dir()]));
+            $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => sys_get_temp_dir()])*/);
             $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
 
             $template->parse($layoutContent);

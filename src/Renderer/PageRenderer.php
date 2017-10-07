@@ -18,6 +18,7 @@ use Stati\Event\ConsoleOutputEvent;
 use Stati\Site\SiteEvents;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Output\OutputInterface;
+use Liquid\Liquid;
 
 /**
  * Render Pages, i.e. documents with frontmatter but that are not part of a collection
@@ -29,10 +30,12 @@ class PageRenderer extends Renderer
     public function renderAll()
     {
         $pages = [];
+        $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('section', ['Rendering pages', OutputInterface::VERBOSITY_VERBOSE]));
         foreach ($this->site->getPages() as $page) {
             /**
              * @var Page $page
              */
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('text', ['Rendering page '.$page->getSlug(), OutputInterface::VERBOSITY_DEBUG]));
             $page->setSite($this->site);
             try {
                 $pages[] = $this->render($page);
@@ -40,6 +43,7 @@ class PageRenderer extends Renderer
                 $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render page'.$page->getTitle() . ' because of the following error', $err->getMessage()]]));
             }
         }
+        $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('text', ['Rendered ' . count($pages) . ' pages'], OutputInterface::VERBOSITY_DEBUG));
         return $pages;
     }
 }

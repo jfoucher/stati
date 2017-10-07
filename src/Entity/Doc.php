@@ -99,6 +99,8 @@ class Doc
     protected $site;
 
 
+    protected $cacheFileName;
+
     /**
      * Doc constructor.
      * @param SplFileInfo $file
@@ -130,17 +132,21 @@ class Doc
         Liquid::set('HAS_PROPERTY_METHOD', 'get');
 
         $parser = new ContentParser();
-        $markdownParser = new MarkdownParser();
+
         $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
-
-        if (is_file(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content))) {
-            return file_get_contents(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content));
+        $cacheDir = $this->site->getConfig()['cache_dir'] . '/post_cache';
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir, 0755, true);
+        }
+        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->getFrontMatter())));
+        if (is_file($cacheDir . '/' . $this->cacheFileName)) {
+            return file_get_contents($cacheDir . '/' . $this->cacheFileName);
         }
 
         $include = null;
 
-        $template = new Template(Liquid::get('INCLUDE_PREFIX'), new File(['cache_dir' => sys_get_temp_dir()]));
+        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => sys_get_temp_dir().'/'])*/);
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         try {
@@ -163,12 +169,13 @@ class Doc
         // Get extensions from site config
         $markdownExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
         if (in_array($this->file->getExtension(), $markdownExtensions)) {
+            $markdownParser = new MarkdownParser();
             $this->content = $markdownParser->text($liquidParsed);
         } else {
             $this->content = $liquidParsed;
         }
 
-        file_put_contents(sys_get_temp_dir() . $this->getSlug() . '-' . md5($content), $this->content);
+        file_put_contents($cacheDir . '/' . $this->cacheFileName, $this->content);
 
         return $this->content;
     }
@@ -446,5 +453,21 @@ class Doc
             }
         }
         return $link;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCacheFileName()
+    {
+        return $this->cacheFileName;
+    }
+
+    /**
+     * @param mixed $cacheFileName
+     */
+    public function setCacheFileName($cacheFileName)
+    {
+        $this->cacheFileName = $cacheFileName;
     }
 }

@@ -17,6 +17,7 @@ use Stati\Entity\Post;
 use Stati\Site\SiteEvents;
 use Stati\Event\ConsoleOutputEvent;
 use Symfony\Component\Console\Output\OutputInterface;
+use Liquid\Liquid;
 
 /**
  * Renders documents that are part of a collection
@@ -53,6 +54,7 @@ class CollectionRenderer extends Renderer
                         $doc->setPrevious($collectionDocs[$k + 1]);
                     }
                 }
+                $this->cacheFileName = 'rendered-' . $doc->getSlug() . '-' . sha1(implode('', Liquid::arrayFlatten($doc->getFrontMatter())) . $doc->getContent() . $this->site . implode('', Liquid::arrayFlatten($this->site->getConfig())));
                 //TODO add try catch to catch LiquidException
                 try {
                     $docs[] = $this->render($doc);

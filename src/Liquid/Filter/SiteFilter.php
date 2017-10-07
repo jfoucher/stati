@@ -97,5 +97,4 @@ class SiteFilter
         }
         return is_array($input) ? implode($glue, Liquid::arrayFlatten($input)) : $input;
     }
-
 }

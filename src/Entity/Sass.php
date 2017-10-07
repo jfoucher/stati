@@ -13,6 +13,7 @@ namespace Stati\Entity;
 
 use Stati\Entity\Page;
 use Stati\Parser\ContentParser;
+use Liquid\Liquid;
 
 class Sass extends Page
 {
@@ -25,14 +26,28 @@ class Sass extends Page
             return $this->content;
         }
 
+
+
+
+        $content = $this->file->getContents();
+        $cacheDir = $this->site->getConfig()['cache_dir'] . '/sass_cache';
+
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir, 0755, true);
+        }
+        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->getFrontMatter())));
+        if (is_file($cacheDir . '/' . $this->cacheFileName)) {
+            return file_get_contents($cacheDir . '/' . $this->cacheFileName);
+        }
+
         $sassDir = ($this->site->sass && isset($this->site->sass['sass_dir'])) ? $this->site->sass['sass_dir'] : './_sass/';
         $sassStyle = ($this->site->sass && isset($this->site->sass['style'])) ? $this->site->sass['style'] : 'nested';
 
         $parser = new ContentParser();
-        $content = $this->file->getContents();
         $contentPart = $parser::parse($content);
 
         $this->content = shell_exec('echo \''.$contentPart.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
+        file_put_contents($cacheDir . '/' . $this->cacheFileName, $this->content);
         return $this->content;
     }
 

@@ -16,10 +16,12 @@ use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 use Phar;
+use Symfony\Component\Filesystem\Filesystem;
 
 class GenerateCommand extends Command
 {
@@ -39,12 +41,16 @@ class GenerateCommand extends Command
             ->setName('generate')
             ->setAliases(['g'])
             ->setDescription('Generate static site')
+            ->addOption('no-cache', 'nc', InputOption::VALUE_NONE)
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->style = new SymfonyStyle($input, $output);
+
+
+
 
         // Read config file
         $configFile = './_config.yml';
@@ -57,6 +63,12 @@ class GenerateCommand extends Command
         }
 
         $this->site = new Site($config);
+
+        if ($input->getOption('no-cache')) {
+            // delete cache
+            $fs = new Filesystem();
+            $fs->remove($this->site->getConfig()['cache_dir']);
+        }
         $this->registerPlugins();
         $timer = microtime(true);
         $this->style->title('Generating site...');
