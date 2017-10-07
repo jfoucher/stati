@@ -11,6 +11,8 @@
 
 namespace Stati\Liquid\Filter;
 
+use Liquid\Liquid;
+
 class SiteFilter
 {
     /**
@@ -72,4 +74,28 @@ class SiteFilter
             return false;
         });
     }
+
+    /**
+     * Joins elements of an array with a given character between them
+     *
+     * @param array|\Traversable $input
+     * @param string $glue
+     *
+     * @return string
+     */
+    public static function join($input, $glue = ' ')
+    {
+        if ($input instanceof \Traversable) {
+            $str = '';
+            foreach ($input as $elem) {
+                if ($str) {
+                    $str .= $glue;
+                }
+                $str .= $elem;
+            }
+            return $str;
+        }
+        return is_array($input) ? implode($glue, Liquid::arrayFlatten($input)) : $input;
+    }
+
 }
