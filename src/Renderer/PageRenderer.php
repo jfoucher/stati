@@ -37,7 +37,7 @@ class PageRenderer extends Renderer
             try {
                 $pages[] = $this->render($page);
             } catch (LiquidException $err) {
-                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$page->getTitle() . 'because of the following error', $err->getMessage()]]));
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render page'.$page->getTitle() . ' because of the following error', $err->getMessage()]]));
             }
         }
         return $pages;

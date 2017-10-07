@@ -57,7 +57,7 @@ class CollectionRenderer extends Renderer
                 try {
                     $docs[] = $this->render($doc);
                 } catch (LiquidException $err) {
-                    $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render '.$doc->getTitle() . 'because of the following error', $err->getMessage()]]));
+                    $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render ' . $collection->getLabel() .' ' . $doc->getTitle() . ' because of the following error', $err->getMessage()]]));
                 }
             }
 
