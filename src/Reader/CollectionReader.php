@@ -39,7 +39,8 @@ class CollectionReader extends Reader
             $collection = new Collection($collectionName, $collectionData);
             $finder = new Finder();
             $finder
-                ->in(sprintf('./_%s', $collectionName))
+                ->in('./')
+                ->path(sprintf('/_%s/', $collectionName))
                 ->files()
                 ->name('/(.md|.mkd|.markdown)$/')
             ;
