@@ -24,6 +24,7 @@ use Stati\Liquid\Template\Template;
 use Stati\Liquid\TemplateEvents;
 use Stati\Event\SettingTemplateVarsEvent;
 use Stati\Site\SiteEvents;
+use Liquid\Cache\File;
 
 class Renderer
 {
@@ -31,6 +32,11 @@ class Renderer
      * @var Site
      */
     protected $site;
+
+    /**
+     * @var array Memo for layouts
+     */
+    protected $layouts;
 
     public function __construct(Site $site)
     {
@@ -71,15 +77,25 @@ class Renderer
 
         $folder = str_replace('//', '/', $this->site->getConfig()['layouts_dir'] . '/');
 
-        $layout = @file_get_contents($folder.$layoutFile.'.html');
-        if (!$layout) {
-            throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder '.$folder);
+        if (isset($this->layouts[$layoutFile])) {
+            $layoutFrontMatter = $this->layouts[$layoutFile]['frontMatter'];
+            $layoutContent = $this->layouts[$layoutFile]['content'];
+        } else {
+            $layout = @file_get_contents($folder.$layoutFile.'.html');
+            if (!$layout) {
+                throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder '.$folder);
+            }
+
+            $layoutFrontMatter = FrontMatterParser::parse($layout);
+            $layoutContent = ContentParser::parse($layout);
+            $this->layouts[$layoutFile] = [
+                'frontMatter' => $layoutFrontMatter,
+                'content' => $layoutContent,
+            ];
         }
-        $layoutFrontMatter = FrontMatterParser::parse($layout);
-        $layoutContent = ContentParser::parse($layout);
 
         if (isset($layoutFrontMatter['layout'])) {
-            $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
+            $template = new Template(Liquid::get('INCLUDE_PREFIX'), new File(['cache_dir' => sys_get_temp_dir()]));
             $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
 
             $template->parse($layoutContent);
@@ -88,7 +104,7 @@ class Renderer
             return $this->renderWithLayout($layoutFrontMatter['layout'], $config);
         }
 
-        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => '/tmp/'])*/);
+        $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => sys_get_temp_dir()])*/);
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
         $template->parse($layoutContent);
 
