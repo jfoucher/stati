@@ -21,15 +21,14 @@ For install and usage documentation, please see [the documentation](https://stat
 
 ### Downsides
 
-- Slow (about 5 times slower than jekyll on an empty cache, more or less the same once the cache is primed.)
-
-  This is mostly due to using command line pygments for highlighting code blocks. If you don't use code highlighting, the slowdown will be much less noticeable
 - No automatic regeneration when a file changes as of yet
 - Not entirely completely compatible with jekyll, most notably with the lack of liquid filters (Work in progress)
+- Slower than Jekyll on the first run, especially if you highlight your code with `{% highlight %}` blocks or have many scss/sass files.
 
 ### Contributing
 
-Try Stati with your site and let me know what fails by opening an issue here.
+- Try Stati with your site and let me know what fails by opening an issue here.
+- Create or port some [plugins](https://stati.jfoucher.com/plugins.html)
 
 ### Why that name?
 
