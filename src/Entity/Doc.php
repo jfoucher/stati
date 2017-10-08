@@ -14,7 +14,6 @@ namespace Stati\Entity;
 use Liquid\LiquidException;
 use Stati\Event\SettingTemplateVarsEvent;
 use Stati\Event\WillParseTemplateEvent;
-use Stati\Liquid\Tag\Link;
 use Stati\Liquid\TemplateEvents;
 use Stati\Site\Site;
 use Symfony\Component\Finder\SplFileInfo;
@@ -23,10 +22,6 @@ use Stati\Parser\ContentParser;
 use Stati\Parser\MarkdownParser;
 use Stati\Liquid\Template\Template;
 use Liquid\Liquid;
-use Stati\Liquid\Block\Highlight;
-use Stati\Liquid\Tag\PostUrl;
-use Liquid\Cache\File;
-use Stati\Liquid\Filter\SiteFilter;
 use Stati\Site\SiteEvents;
 use Stati\Event\ConsoleOutputEvent;
 
@@ -144,8 +139,6 @@ class Doc
             return file_get_contents($cacheDir . '/' . $this->cacheFileName);
         }
 
-        $include = null;
-
         $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => sys_get_temp_dir().'/'])*/);
 
         $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
@@ -168,11 +161,12 @@ class Doc
 
         // Get extensions from site config
         $markdownExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
+
+        $this->content = $liquidParsed;
+
         if (in_array($this->file->getExtension(), $markdownExtensions)) {
             $markdownParser = new MarkdownParser();
-            $this->content = $markdownParser->text($liquidParsed);
-        } else {
-            $this->content = $liquidParsed;
+            $this->content = $markdownParser->text($this->content);
         }
 
         file_put_contents($cacheDir . '/' . $this->cacheFileName, $this->content);
@@ -291,7 +285,7 @@ class Doc
 
         $parser = new FrontMatterParser();
         $defaults = [];
-        // TODO GET defaults from site config if available, and merge with file frontmatter
+        // Get defaults from site config if available, and merge with file frontmatter
         $config = $this->getSite()->getConfig();
         if (isset($config['defaults'])) {
             foreach ($config['defaults'] as $def) {
@@ -327,7 +321,7 @@ class Doc
         }
         $filename = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
         try {
-            $date = new \DateTime(substr($filename, 0, 10));
+            new \DateTime(substr($filename, 0, 10));
             $this->slug = substr($filename, 11);
         } catch (\Exception $err) {
 //            echo $err->getMessage();
@@ -461,13 +455,5 @@ class Doc
     public function getCacheFileName()
     {
         return $this->cacheFileName;
-    }
-
-    /**
-     * @param mixed $cacheFileName
-     */
-    public function setCacheFileName($cacheFileName)
-    {
-        $this->cacheFileName = $cacheFileName;
     }
 }
