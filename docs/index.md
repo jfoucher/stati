@@ -46,7 +46,7 @@ If you use sass or scss, the `sass` or `scss` commands must be available.
 
 Stati uses plugins extensively, even for some core functionality. Required plugins are installed automatically by composer, but if you want to install a specific plugin, you just have to run `composer require stati/plugin-name` or `composer global require stati/plugin-name` depending on whether you installed Stati locally or globally.
 
-Alternatively, just copy the .phar file in the _plugins/ directory of your website, just like for jekyll
+Alternatively, just copy the .phar file in the _plugins/ directory of your website, just like for Jekyll.
 
 ## Contributing
 
