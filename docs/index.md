@@ -11,7 +11,7 @@ An extensible static site generator in PHP that can work with any existing jekyl
 If you already have composer installed, the easiest way to install stati is to just run this command: 
 
 {% highlight bash %}
-composer global require stati/stati
+composer global require stati/stati>={{ site.github.latest_release.tag_name }}
 {% endhighlight %}
 
 This will download and install Stati in the `~/.composer` folder. Make sure `~/.composer/vendor/bin/` is in your `$PATH` so that you can run stati from anywhere on your filesystem.
