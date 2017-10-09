@@ -18,7 +18,18 @@ This will download and install Stati in the `~/.composer` folder. Make sure `~/.
 
 ### Option 2
 
-Alternatively, you can [download the latest release](https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.latest_release.tag_name }}/build/stati) and put it in your path (somewhere like `/usr/local/bin` for example).
+Alternatively, you can [download the latest release](https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.latest_release.tag_name }}/build/stati)
+
+Make the file executable with `chmod a+x ./stati` (on Linux and MacOS)
+
+If you want, you can then move it somewhere in your path (something like `/usr/local/bin` for example).
+
+You can try copy/pasting the command below to do all of this in one easy step:
+
+{% highlight shell %}
+curl -o stati https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.latest_release.tag_name }}/build/stati && chmod a+x stati && mv stati /usr/local/bin/stati
+{% endhighlight %}
+
 
 ## Running
 
