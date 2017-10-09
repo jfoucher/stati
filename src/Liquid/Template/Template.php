@@ -18,6 +18,7 @@ use Stati\Liquid\Tag\PostUrl;
 use Stati\Liquid\Filter\SiteFilter;
 use Stati\Liquid\Tag\Link;
 use Stati\Liquid\Tag\TagInclude;
+use Stati\Liquid\Filesystem\Local;
 
 class Template extends BaseTemplate
 {
@@ -37,5 +38,7 @@ class Template extends BaseTemplate
         $this->registerTag('link', Link::class);
         $this->registerTag('include', TagInclude::class);
         $this->registerFilter(new SiteFilter());
+        $filesystem = new Local($path);
+        $this->setFileSystem($filesystem);
     }
 }
