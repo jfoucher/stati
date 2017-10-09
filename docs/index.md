@@ -33,7 +33,22 @@ curl -o stati https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.la
 
 ## Running
 
-Once the install is complete, change to your website directory and run `stati generate` to generate your site, or run `stati serve` to serve it locally.
+Once the install is complete, change to your website directory and run `stati generate` to generate your site, or `stati serve` to serve it locally.
+
+### Options
+
+Both the `generate` and the `serve` command have the following options available:
+
+- `--watch` shortcut `-w`
+  This makes Stati watch your filesystem for changes. If it detects that one of your source files has changed, it will automatically regenerate your site.
+  
+- `--no-cache` shortcut `-nc`
+  Completely deletes the Stati cache before generating your site.
+  
+The serve command has this additional option:
+
+- `--port` shortcut `-p`
+  The port to use for serving your website. For example `stati serve --port=8080` will make your site available on `https://localhost:8080/`.
 
 ## Requirements
 
