@@ -7,13 +7,6 @@
             "email": "jfoucher@6px.eu"
         }
     ],
-    "repositories":
-    [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jfoucher/php-liquid"
-        }
-    ],
     "autoload": {
         "psr-4": {"Stati\\": "src/", "Stati\\Tests\\": "tests/"}
     },
