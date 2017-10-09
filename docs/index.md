@@ -18,19 +18,7 @@ This will download and install Stati in the `~/.composer` folder. Make sure `~/.
 
 ### Option 2
 
-The second easiest way to install Stati is to use our installer:
-
-{% highlight shell %}
-curl -LSs https://stati.jfoucher.com/installer.php | php
-{% endhighlight %}
-
-This will download and install Stati to your current directory.
-
-You can then move it (and the plugins) to a folder that is in your `$PATH` such as `/usr/local/bin/`
-
-### Option 3
-
-Alternatively, you can [download the latest release]({{ site.github.latest_release.assets[0].browser_download_url }}), extract it, and put it in your path (somewhere like `/usr/local/bin` for example)
+Alternatively, you can [download the latest release](https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.latest_release.tag_name }}/build/stati) and put it in your path (somewhere like `/usr/local/bin` for example).
 
 ## Running
 
