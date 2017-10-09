@@ -11,6 +11,9 @@
 
 namespace Stati\Command;
 
+use Illuminate\Filesystem\Filesystem;
+use JasonLewis\ResourceWatcher\Tracker;
+use JasonLewis\ResourceWatcher\Watcher;
 use Stati\Exception\FileNotFoundException;
 use Stati\Renderer\PageRenderer;
 use Stati\Renderer\PostRenderer;
@@ -33,25 +36,23 @@ class ServeCommand extends Command
             ->setName('serve')
             ->setAliases(['s'])
             ->setDescription('Serve static site from localhost')
-            ->addArgument('port', InputArgument::OPTIONAL, 'Port the server should run on', '4000')
+            ->addOption('port', 'p', InputOption::VALUE_OPTIONAL, 'Port the server should run on', '4000')
             ->addOption('no-cache', 'nc', InputOption::VALUE_NONE)
+            ->addOption('watch', 'w', InputOption::VALUE_NONE)
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $port = $input->getArgument('port');
+        $port = $input->getOption('port');
+
         $command = $this->getApplication()->find('generate');
 
-        $returnCode = $command->run(new ArrayInput(['--no-cache' => $input->getOption('no-cache')]), new ConsoleOutput($output->getVerbosity()));
-        $style = new SymfonyStyle($input, $output);
-        if ($returnCode === 0) {
-            $style->success([
-                'Stati is now serving your website',
-                'Open http://localhost:'.$port.' to view it',
-                'Press Ctrl-C to quit.'
-            ]);
-            shell_exec('cd _site && php -S localhost:'.$port.' &');
-        }
+        $command->run(new ArrayInput([
+            '--no-cache' => $input->getOption('no-cache'),
+            '--watch' => $input->getOption('watch'),
+            '--serve' => true,
+            '--port' => $port
+        ]), new ConsoleOutput($output->getVerbosity()));
     }
 }

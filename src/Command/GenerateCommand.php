@@ -11,14 +11,19 @@
 
 namespace Stati\Command;
 
+use JasonLewis\ResourceWatcher\Tracker;
+use JasonLewis\ResourceWatcher\Watcher;
 use Stati\Event\ConsoleOutputEvent;
 use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Yaml;
 use Phar;
 use Symfony\Component\Filesystem\Filesystem;
@@ -35,6 +40,11 @@ class GenerateCommand extends Command
      */
     protected $style;
 
+    /**
+     * @var Process
+     */
+    protected $server;
+
     protected function configure()
     {
         $this
@@ -42,6 +52,9 @@ class GenerateCommand extends Command
             ->setAliases(['g'])
             ->setDescription('Generate static site')
             ->addOption('no-cache', 'nc', InputOption::VALUE_NONE)
+            ->addOption('watch', 'w', InputOption::VALUE_NONE)
+            ->addOption('serve', 's', InputOption::VALUE_NONE)
+            ->addOption('port', 'p', InputOption::VALUE_OPTIONAL, 'Port the server should run on', '4000')
         ;
     }
 
@@ -49,8 +62,11 @@ class GenerateCommand extends Command
     {
         $this->style = new SymfonyStyle($input, $output);
 
-
-
+        if ($input->getOption('no-cache')) {
+            // delete cache
+            $fs = new Filesystem();
+            $fs->remove($this->site->getConfig()['cache_dir']);
+        }
 
         // Read config file
         $configFile = './_config.yml';
@@ -64,24 +80,77 @@ class GenerateCommand extends Command
 
         $this->site = new Site($config);
 
-        if ($input->getOption('no-cache')) {
-            // delete cache
-            $fs = new Filesystem();
-            $fs->remove($this->site->getConfig()['cache_dir']);
-        }
         $this->registerPlugins();
-        $timer = microtime(true);
-        $this->style->title('Generating site...');
 
         if ($this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
             $this->site->getDispatcher()->addListener(SiteEvents::CONSOLE_OUTPUT, array($this, 'consoleOutput'));
         }
 
+        $timer = microtime(true);
+        $this->style->title('Generating site...');
         $this->site->process();
-
         $elapsed = microtime(true) - $timer;
-        $this->style->title('Generated in '.number_format($elapsed, 2).'s');
+        $this->style->success('Generated in '.number_format($elapsed, 2).'s');
+
+        $dest = $this->site->getConfig()['destination'];
+        if (strpos($dest, './') === 0) {
+            $dest = substr($dest, 2);
+        }
+
+        if ($input->getOption('serve')) {
+            $this->serve($dest, $input->getOption('port'));
+        }
+
+        if ($input->getOption('watch')) {
+            $files = new \Illuminate\Filesystem\Filesystem();
+            $tracker = new Tracker();
+
+            $watcher = new Watcher($tracker, $files);
+
+            $finder = new Finder();
+            $finder->in('./')
+                ->depth('==0')
+                ->notPath('|^'.$dest.'$|')
+                ->notName('|^'.$dest.'$|')
+            ;
+
+            foreach ($finder as $file) {
+                $listener = $watcher->watch($file->getRelativePathname());
+
+                $listener->modify(function ($resource, $path) use ($input, $dest) {
+                    $this->style->text('File '.$path.' was modified');
+                    $timer = microtime(true);
+                    $this->style->text('Regenerating site...');
+                    $this->site->process();
+                    if ($input->getOption('serve')) {
+                        $this->serve($dest, $input->getOption('port'), true);
+                    }
+                    $elapsed = microtime(true) - $timer;
+                    $this->style->success('Site regenerated in '.number_format($elapsed, 2).'s');
+                });
+            }
+            $this->style->section('Watching files for changes...');
+            $watcher->start();
+        }
         return 0;
+    }
+
+    public function serve($dir, $port, $regen = false)
+    {
+        if ($this->server) {
+            $this->server->stop();
+        }
+
+        if (!$regen) {
+            $this->style->success([
+                'Stati is now serving your website',
+                'Open http://localhost:' . $port . ' to view it',
+                'Press Ctrl-C to quit.'
+            ]);
+        }
+
+        $this->server = new Process('php -S localhost:'.$port, $dir);
+        $this->server->start();
     }
 
     public function consoleOutput(ConsoleOutputEvent $event)
