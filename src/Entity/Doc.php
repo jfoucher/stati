@@ -442,7 +442,7 @@ class Doc
                         if (isset($frontMatter['categories'])) {
                             $replace = $frontMatter['categories'];
                         }
-                        if ( $replace && is_array($replace)) {
+                        if ($replace && is_array($replace)) {
                             $replace = implode('/', $replace);
                         }
 

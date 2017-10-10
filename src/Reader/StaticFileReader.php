@@ -28,8 +28,15 @@ class StaticFileReader extends Reader
             ->notContains('/\A---\s*\r?\n/')
             ->notName('/^_/');
         foreach ($config['exclude'] as $exclude) {
-            $finder->notName($exclude);
-            $finder->notPath($exclude);
+            if (strpos($exclude, '*') !== false) {
+                //If pattern is a glob, treat as such
+                $finder->notName($exclude);
+                $finder->notPath($exclude);
+            } else {
+                // Otherwise, match start and end of string
+                $finder->notName('/^'.$exclude.'$/');
+                $finder->notPath('/^'.$exclude.'$/');
+            }
         }
         $staticFiles = [];
 
