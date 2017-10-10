@@ -435,7 +435,17 @@ class Doc
                         $replace = $this->getSlug();
                         break;
                     case ':categories':
-                        $replace = implode('/', $this->getFrontMatter()['categories']);
+                        $frontMatter = $this->getFrontMatter();
+                        if (isset($frontMatter['category'])) {
+                            $replace = $frontMatter['category'];
+                        }
+                        if (isset($frontMatter['categories'])) {
+                            $replace = $frontMatter['categories'];
+                        }
+                        if ( $replace && is_array($replace)) {
+                            $replace = implode('/', $replace);
+                        }
+
                         break;
                     case ':slug':
                         $replace = $this->getSlug();
