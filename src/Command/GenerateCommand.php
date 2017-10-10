@@ -49,7 +49,7 @@ class GenerateCommand extends Command
     {
         $this
             ->setName('generate')
-            ->setAliases(['g'])
+            ->setAliases(['g', 'build', 'b'])
             ->setDescription('Generate static site')
             ->addOption('no-cache', 'nc', InputOption::VALUE_NONE)
             ->addOption('watch', 'w', InputOption::VALUE_NONE)
