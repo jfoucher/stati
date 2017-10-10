@@ -66,7 +66,7 @@ class MarkdownParser extends ParsedownExtra
             $lastLine = $this->getLastContentLine($lines);
             if (preg_match('/^\{\:\s*(.+)\}/', $lastLine, $matches)) {
                 $item = trim($matches[1]);
-                
+
                 if (strpos($item, '.') === 0) {
                     //Is a class
                     $Element['attributes'] = ['class' => substr($item, 1)];
@@ -93,9 +93,9 @@ class MarkdownParser extends ParsedownExtra
             $markup .= '>';
 
             if (isset($Element['handler'])) {
-                $markup .= $this->{$Element['handler']}($Element['text'])."\n";
+                $markup .= $this->{$Element['handler']}($Element['text']);
             } else {
-                $markup .= $Element['text']."\n";
+                $markup .= $Element['text'];
             }
 
             $markup .= '</'.$Element['name'].'>';
@@ -103,16 +103,13 @@ class MarkdownParser extends ParsedownExtra
             $markup .= ' />';
         }
 
+        if (isset($Element['append'])) {
+            $markup .= $Element['append'];
+        }
+
         return $markup;
     }
 
-
-    /**
-     * Updated this function so that is does not remove empty lines
-     *
-     * @param array $lines
-     * @return string
-     */
     protected function lines(array $lines)
     {
         $CurrentBlock = null;
@@ -123,10 +120,14 @@ class MarkdownParser extends ParsedownExtra
             {
                 if (isset($CurrentBlock))
                 {
-                    if (isset($CurrentBlock['element']['text']) && is_string($CurrentBlock['element']['text'])) {
-                        //Add empty line if block is not yet finished
-                        $CurrentBlock['element']['text'] .= "\n";
+
+                    if (isset($CurrentBlock['element']['append'])) {
+
+                        $CurrentBlock['element']['append'] .= "\n";
+                    } else {
+                        $CurrentBlock['element']['append'] = "\n";
                     }
+
                     $CurrentBlock['interrupted'] = true;
                 }
 
@@ -279,4 +280,5 @@ class MarkdownParser extends ParsedownExtra
 
         return $markup;
     }
+
 }
