@@ -70,6 +70,12 @@ class Doc
     protected $path;
 
     /**
+     * Excerpt for this document
+     * @var string
+     */
+    protected $excerpt;
+
+    /**
      * Date for this post
      * @var \DateTime
      */
@@ -298,6 +304,7 @@ class Doc
         $fileFrontMatter = $parser::parse($this->file->getContents());
 
         $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
+
         return $this->frontMatter;
     }
 
@@ -465,5 +472,43 @@ class Doc
     public function getCacheFileName()
     {
         return $this->cacheFileName;
+    }
+
+    /**
+     * Gets or generates the post excerpt
+     * @return string
+     */
+
+    public function getExcerpt()
+    {
+        if ($this->excerpt) {
+            return $this->excerpt;
+        }
+        $frontMatter = $this->getFrontMatter();
+        $content = $this->getContent();
+        $siteConfig = $this->site->getConfig();
+
+        echo "Getting excerpt for ".$this->getTitle().PHP_EOL;
+
+        if (isset($frontMatter['excerpt']) && $frontMatter['excerpt']) {
+            var_dump($frontMatter['excerpt']);
+            $this->excerpt = $frontMatter['excerpt'];
+            return $this->excerpt;
+        }
+
+        $separator = false;
+        if (isset($frontMatter['excerpt_separator'])) {
+            $separator = $frontMatter['excerpt_separator'];
+        }
+        if (!$separator && isset($siteConfig['excerpt_separator'])) {
+            $separator = $this->site->getConfig()['excerpt_separator'];
+        }
+        if ($separator && strlen($separator) > 0 && strpos($content, $separator) !== false) {
+            //We have a separator
+            $ex = explode($separator, $content);
+            $this->excerpt = $ex[0];
+        }
+        echo $this->excerpt.PHP_EOL;
+        return $this->excerpt;
     }
 }
