@@ -101,9 +101,12 @@ class Post extends Doc
         //try to get date from frontMatter
         $frontMatter = $this->getFrontMatter();
         if (isset($frontMatter['date'])) {
-            $dateString = $frontMatter['date'];
+            if (is_int($frontMatter['date'])) {
+                $this->date = date_create_from_format('U', $frontMatter['date']);
+                return $this->date;
+            }
             try {
-                $this->date = new \DateTime($dateString);
+                $this->date = new \DateTime($frontMatter['date']);
                 return $this->date;
             } catch (\Exception $err) {
                 // echo $err->getMessage()."\r\n";
