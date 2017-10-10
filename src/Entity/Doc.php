@@ -488,10 +488,7 @@ class Doc
         $content = $this->getContent();
         $siteConfig = $this->site->getConfig();
 
-        echo "Getting excerpt for ".$this->getTitle().PHP_EOL;
-
         if (isset($frontMatter['excerpt']) && $frontMatter['excerpt']) {
-            var_dump($frontMatter['excerpt']);
             $this->excerpt = $frontMatter['excerpt'];
             return $this->excerpt;
         }
@@ -508,7 +505,6 @@ class Doc
             $ex = explode($separator, $content);
             $this->excerpt = $ex[0];
         }
-        echo $this->excerpt.PHP_EOL;
         return $this->excerpt;
     }
 }

@@ -43,6 +43,15 @@ class MarkdownParser extends ParsedownExtra
         return $Block;
     }
 
+    private function getLastContentLine($lines)
+    {
+        $lastLine = array_pop($lines);
+        if (strlen($lastLine) === 0) {
+            return $this->getLastContentLine($lines);
+        }
+        return $lastLine;
+    }
+
     /**
      * This variant checks the last line of a paragraph to add class or id if necessary
      * @param array $Element
@@ -54,20 +63,19 @@ class MarkdownParser extends ParsedownExtra
 
         if ($Element['name'] === 'p' && isset($Element['text']) && strpos($Element['text'], '{') !== false) {
             $lines = explode("\n", $Element['text']);
-            $lastLine = array_pop($lines);
-            if (preg_match('/^\{\:(.+)\}/', $lastLine, $matches)) {
+            $lastLine = $this->getLastContentLine($lines);
+            if (preg_match('/^\{\:\s*(.+)\}/', $lastLine, $matches)) {
                 $item = trim($matches[1]);
                 
                 if (strpos($item, '.') === 0) {
                     //Is a class
                     $Element['attributes'] = ['class' => substr($item, 1)];
-                    $Element['text'] = implode("\n", $lines);
                 }
                 if (strpos($item, '#') === 0) {
                     //Is an id
                     $Element['attributes'] = ['id' => substr($item, 1)];
-                    $Element['text'] = implode("\n", $lines);
                 }
+                $Element['text'] = str_replace($lastLine, '', $Element['text']);
             }
         }
 
