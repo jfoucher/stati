@@ -54,57 +54,15 @@ class MarkdownParser extends ParsedownExtra
 
     /**
      * This variant checks the last line of a paragraph to add class or id if necessary
-     * @param array $Element
+     * @param array $element
      * @return string
      */
-    protected function element(array $Element)
+    protected function element(array $element)
     {
-        $markup = '<'.$Element['name'];
+        $markup = parent::element($element);
 
-        if ($Element['name'] === 'p' && isset($Element['text']) && strpos($Element['text'], '{') !== false) {
-            $lines = explode("\n", $Element['text']);
-            $lastLine = $this->getLastContentLine($lines);
-            if (preg_match('/^\{\:\s*(.+)\}/', $lastLine, $matches)) {
-                $item = trim($matches[1]);
-
-                if (strpos($item, '.') === 0) {
-                    //Is a class
-                    $Element['attributes'] = ['class' => substr($item, 1)];
-                }
-                if (strpos($item, '#') === 0) {
-                    //Is an id
-                    $Element['attributes'] = ['id' => substr($item, 1)];
-                }
-                $Element['text'] = str_replace($lastLine, '', $Element['text']);
-            }
-        }
-
-        if (isset($Element['attributes'])) {
-            foreach ($Element['attributes'] as $name => $value) {
-                if ($value === null) {
-                    continue;
-                }
-
-                $markup .= ' '.$name.'="'.$value.'"';
-            }
-        }
-
-        if (isset($Element['text'])) {
-            $markup .= '>';
-
-            if (isset($Element['handler'])) {
-                $markup .= $this->{$Element['handler']}($Element['text']);
-            } else {
-                $markup .= $Element['text'];
-            }
-
-            $markup .= '</'.$Element['name'].'>';
-        } else {
-            $markup .= ' />';
-        }
-
-        if (isset($Element['append'])) {
-            $markup .= $Element['append'];
+        if (isset($element['append'])) {
+            $markup .= $element['append'];
         }
 
         return $markup;
