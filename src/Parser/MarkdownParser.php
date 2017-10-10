@@ -72,15 +72,10 @@ class MarkdownParser extends ParsedownExtra
     {
         $CurrentBlock = null;
 
-        foreach ($lines as $line)
-        {
-            if (chop($line) === '')
-            {
-                if (isset($CurrentBlock))
-                {
-
+        foreach ($lines as $line) {
+            if (chop($line) === '') {
+                if (isset($CurrentBlock)) {
                     if (isset($CurrentBlock['element']['append'])) {
-
                         $CurrentBlock['element']['append'] .= "\n";
                     } else {
                         $CurrentBlock['element']['append'] = "\n";
@@ -92,16 +87,14 @@ class MarkdownParser extends ParsedownExtra
                 continue;
             }
 
-            if (strpos($line, "\t") !== false)
-            {
+            if (strpos($line, "\t") !== false) {
                 $parts = explode("\t", $line);
 
                 $line = $parts[0];
 
                 unset($parts[0]);
 
-                foreach ($parts as $part)
-                {
+                foreach ($parts as $part) {
                     $shortage = 4 - mb_strlen($line, 'utf-8') % 4;
 
                     $line .= str_repeat(' ', $shortage);
@@ -111,8 +104,7 @@ class MarkdownParser extends ParsedownExtra
 
             $indent = 0;
 
-            while (isset($line[$indent]) and $line[$indent] === ' ')
-            {
+            while (isset($line[$indent]) and $line[$indent] === ' ') {
                 $indent ++;
             }
 
@@ -124,22 +116,18 @@ class MarkdownParser extends ParsedownExtra
 
             # ~
 
-            if (isset($CurrentBlock['continuable']))
-            {
+            if (isset($CurrentBlock['continuable'])) {
                 $Block = $this->{'block'.$CurrentBlock['type'].'Continue'}($Line, $CurrentBlock);
 
-                if (isset($Block))
-                {
+                if (isset($Block)) {
                     $CurrentBlock = $Block;
 
                     continue;
                 }
-                else
-                {
-                    if ($this->isBlockCompletable($CurrentBlock['type']))
-                    {
-                        $CurrentBlock = $this->{'block'.$CurrentBlock['type'].'Complete'}($CurrentBlock);
-                    }
+                
+                
+                if ($this->isBlockCompletable($CurrentBlock['type'])) {
+                    $CurrentBlock = $this->{'block'.$CurrentBlock['type'].'Complete'}($CurrentBlock);
                 }
             }
 
@@ -151,10 +139,8 @@ class MarkdownParser extends ParsedownExtra
 
             $blockTypes = $this->unmarkedBlockTypes;
 
-            if (isset($this->BlockTypes[$marker]))
-            {
-                foreach ($this->BlockTypes[$marker] as $blockType)
-                {
+            if (isset($this->BlockTypes[$marker])) {
+                foreach ($this->BlockTypes[$marker] as $blockType) {
                     $blockTypes []= $blockType;
                 }
             }
@@ -162,23 +148,19 @@ class MarkdownParser extends ParsedownExtra
             #
             # ~
 
-            foreach ($blockTypes as $blockType)
-            {
+            foreach ($blockTypes as $blockType) {
                 $Block = $this->{'block'.$blockType}($Line, $CurrentBlock);
 
-                if (isset($Block))
-                {
+                if (isset($Block)) {
                     $Block['type'] = $blockType;
 
-                    if ( ! isset($Block['identified']))
-                    {
+                    if (! isset($Block['identified'])) {
                         $Blocks []= $CurrentBlock;
 
                         $Block['identified'] = true;
                     }
 
-                    if ($this->isBlockContinuable($blockType))
-                    {
+                    if ($this->isBlockContinuable($blockType)) {
                         $Block['continuable'] = true;
                     }
 
@@ -190,12 +172,9 @@ class MarkdownParser extends ParsedownExtra
 
             # ~
 
-            if (isset($CurrentBlock) and ! isset($CurrentBlock['type']) and ! isset($CurrentBlock['interrupted']))
-            {
+            if (isset($CurrentBlock) and ! isset($CurrentBlock['type']) and ! isset($CurrentBlock['interrupted'])) {
                 $CurrentBlock['element']['text'] .= "\n".$text;
-            }
-            else
-            {
+            } else {
                 $Blocks []= $CurrentBlock;
 
                 $CurrentBlock = $this->paragraph($Line);
@@ -206,8 +185,7 @@ class MarkdownParser extends ParsedownExtra
 
         # ~
 
-        if (isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))
-        {
+        if (isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type'])) {
             $CurrentBlock = $this->{'block'.$CurrentBlock['type'].'Complete'}($CurrentBlock);
         }
 
@@ -221,10 +199,8 @@ class MarkdownParser extends ParsedownExtra
 
         $markup = '';
 
-        foreach ($Blocks as $Block)
-        {
-            if (isset($Block['hidden']))
-            {
+        foreach ($Blocks as $Block) {
+            if (isset($Block['hidden'])) {
                 continue;
             }
 
@@ -238,5 +214,4 @@ class MarkdownParser extends ParsedownExtra
 
         return $markup;
     }
-
 }
