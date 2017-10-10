@@ -85,15 +85,189 @@ class MarkdownParser extends ParsedownExtra
             $markup .= '>';
 
             if (isset($Element['handler'])) {
-                $markup .= $this->{$Element['handler']}($Element['text']);
+                $markup .= $this->{$Element['handler']}($Element['text'])."\n";
             } else {
-                $markup .= $Element['text'];
+                $markup .= $Element['text']."\n";
             }
 
             $markup .= '</'.$Element['name'].'>';
         } else {
             $markup .= ' />';
         }
+
+        return $markup;
+    }
+
+
+    /**
+     * Updated this function so that is does not remove empty lines
+     *
+     * @param array $lines
+     * @return string
+     */
+    protected function lines(array $lines)
+    {
+        $CurrentBlock = null;
+
+        foreach ($lines as $line)
+        {
+            if (chop($line) === '')
+            {
+                if (isset($CurrentBlock))
+                {
+                    if (isset($CurrentBlock['element']['text']) && is_string($CurrentBlock['element']['text'])) {
+                        //Add empty line if block is not yet finished
+                        $CurrentBlock['element']['text'] .= "\n";
+                    }
+                    $CurrentBlock['interrupted'] = true;
+                }
+
+                continue;
+            }
+
+            if (strpos($line, "\t") !== false)
+            {
+                $parts = explode("\t", $line);
+
+                $line = $parts[0];
+
+                unset($parts[0]);
+
+                foreach ($parts as $part)
+                {
+                    $shortage = 4 - mb_strlen($line, 'utf-8') % 4;
+
+                    $line .= str_repeat(' ', $shortage);
+                    $line .= $part;
+                }
+            }
+
+            $indent = 0;
+
+            while (isset($line[$indent]) and $line[$indent] === ' ')
+            {
+                $indent ++;
+            }
+
+            $text = $indent > 0 ? substr($line, $indent) : $line;
+
+            # ~
+
+            $Line = array('body' => $line, 'indent' => $indent, 'text' => $text);
+
+            # ~
+
+            if (isset($CurrentBlock['continuable']))
+            {
+                $Block = $this->{'block'.$CurrentBlock['type'].'Continue'}($Line, $CurrentBlock);
+
+                if (isset($Block))
+                {
+                    $CurrentBlock = $Block;
+
+                    continue;
+                }
+                else
+                {
+                    if ($this->isBlockCompletable($CurrentBlock['type']))
+                    {
+                        $CurrentBlock = $this->{'block'.$CurrentBlock['type'].'Complete'}($CurrentBlock);
+                    }
+                }
+            }
+
+            # ~
+
+            $marker = $text[0];
+
+            # ~
+
+            $blockTypes = $this->unmarkedBlockTypes;
+
+            if (isset($this->BlockTypes[$marker]))
+            {
+                foreach ($this->BlockTypes[$marker] as $blockType)
+                {
+                    $blockTypes []= $blockType;
+                }
+            }
+
+            #
+            # ~
+
+            foreach ($blockTypes as $blockType)
+            {
+                $Block = $this->{'block'.$blockType}($Line, $CurrentBlock);
+
+                if (isset($Block))
+                {
+                    $Block['type'] = $blockType;
+
+                    if ( ! isset($Block['identified']))
+                    {
+                        $Blocks []= $CurrentBlock;
+
+                        $Block['identified'] = true;
+                    }
+
+                    if ($this->isBlockContinuable($blockType))
+                    {
+                        $Block['continuable'] = true;
+                    }
+
+                    $CurrentBlock = $Block;
+
+                    continue 2;
+                }
+            }
+
+            # ~
+
+            if (isset($CurrentBlock) and ! isset($CurrentBlock['type']) and ! isset($CurrentBlock['interrupted']))
+            {
+                $CurrentBlock['element']['text'] .= "\n".$text;
+            }
+            else
+            {
+                $Blocks []= $CurrentBlock;
+
+                $CurrentBlock = $this->paragraph($Line);
+
+                $CurrentBlock['identified'] = true;
+            }
+        }
+
+        # ~
+
+        if (isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))
+        {
+            $CurrentBlock = $this->{'block'.$CurrentBlock['type'].'Complete'}($CurrentBlock);
+        }
+
+        # ~
+
+        $Blocks []= $CurrentBlock;
+
+        unset($Blocks[0]);
+
+        # ~
+
+        $markup = '';
+
+        foreach ($Blocks as $Block)
+        {
+            if (isset($Block['hidden']))
+            {
+                continue;
+            }
+
+            $markup .= "\n";
+            $markup .= isset($Block['markup']) ? $Block['markup'] : $this->element($Block['element']);
+        }
+
+        $markup .= "\n";
+
+        # ~
 
         return $markup;
     }
