@@ -62,11 +62,6 @@ class GenerateCommand extends Command
     {
         $this->style = new SymfonyStyle($input, $output);
 
-        if ($input->getOption('no-cache')) {
-            // delete cache
-            $fs = new Filesystem();
-            $fs->remove($this->site->getConfig()['cache_dir']);
-        }
 
         // Read config file
         $configFile = './_config.yml';
@@ -80,6 +75,11 @@ class GenerateCommand extends Command
 
         $this->site = new Site($config);
 
+        if ($input->getOption('no-cache')) {
+            // delete cache
+            $fs = new Filesystem();
+            $fs->remove($this->site->getConfig()['cache_dir']);
+        }
         $this->registerPlugins();
 
         if ($this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
@@ -123,7 +123,7 @@ class GenerateCommand extends Command
                     $this->style->text('Regenerating site...');
                     $this->site->process();
                     if ($input->getOption('serve')) {
-                        $this->serve($dest, $input->getOption('port'), true);
+                        $this->serve($dest, $input->getOption('port'), true, true);
                     }
                     $elapsed = microtime(true) - $timer;
                     $this->style->success('Site regenerated in '.number_format($elapsed, 2).'s');
@@ -135,7 +135,7 @@ class GenerateCommand extends Command
         return 0;
     }
 
-    public function serve($dir, $port, $regen = false)
+    public function serve($dir, $port, $regen = false, $watch = false)
     {
         if ($this->server) {
             $this->server->stop();
@@ -149,8 +149,13 @@ class GenerateCommand extends Command
             ]);
         }
 
-        $this->server = new Process('php -S localhost:'.$port, $dir);
-        $this->server->start();
+        $this->server = new Process('php -S localhost:' . $port, $dir, null, null, null);
+
+        if ($watch) {
+            $this->server->start();
+        } else {
+            $this->server->run();
+        }
     }
 
     public function consoleOutput(ConsoleOutputEvent $event)
