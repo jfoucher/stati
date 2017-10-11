@@ -72,6 +72,7 @@ class Site
      */
     protected $data = [];
 
+
     /**
      * @var EventDispatcherInterface
      */
@@ -483,8 +484,8 @@ class Site
             return $this->toString;
         }
 
-        $str = implode('', Liquid::arrayFlatten($this->config));
-        $str .= implode('', Liquid::arrayFlatten($this->data));
+        $str = implode('', self::arrayFlattenToString($this->config));
+        $str .= implode('', self::arrayFlattenToString($this->data));
         $cols = array_map(function ($col) {
             /**
              * @var Collection $col
@@ -500,5 +501,23 @@ class Site
         $str .= implode('', $cols);
         $this->toString = $str;
         return $str;
+    }
+
+    public static function arrayFlattenToString($array)
+    {
+        $return = array();
+        if (is_iterable($array)) {
+            foreach ($array as $element) {
+                if (is_array($element)) {
+                    $return = array_merge($return, self::arrayFlattenToString($element));
+                } elseif (is_object($element)) {
+                    $return[] = (string)$element;
+                } else {
+                    $return[] = $element;
+                }
+            }
+        }
+
+        return $return;
     }
 }

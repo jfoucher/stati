@@ -28,6 +28,7 @@ class PageRendererTest extends TestCase
         $pages = $renderer->renderAll();
         $this->assertEquals(count($pages), 1);
         $this->assertEquals($pages[0]->title, 'test page');
-        $this->assertEquals($pages[0]->output, '<html><body><p>page</p></body></html>');
+        $this->assertEquals($pages[0]->output, '<html><body><p>page</p></body></html>
+');
     }
 }

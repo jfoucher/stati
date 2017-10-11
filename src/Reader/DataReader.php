@@ -34,28 +34,35 @@ class DataReader extends Reader
         // Get top level files and parse
         $finder = new Finder();
         $finder
-            ->in('./_data/')
+            ->in($dataDir)
             ->files()
             ->notName('/^_/')
-            ->name('/(.yml|.yaml)$/')
+            ->name('/(.yml|.yaml|.json)$/')
         ;
 
         foreach ($config['exclude'] as $exclude) {
+            if (strpos($exclude, '/') === 0) {
+                $exclude = substr($exclude, 1);
+            }
             if (strpos($exclude, '*') !== false) {
                 //If pattern is a glob, treat as such
                 $finder->notName($exclude);
                 $finder->notPath($exclude);
             } else {
                 // Otherwise, match start and end of string
-                $finder->notName('/^'.$exclude.'$/');
-                $finder->notPath('/^'.$exclude.'$/');
+                $finder->notName('|^'.$exclude.'$|');
+                $finder->notPath('|^'.$exclude.'$|');
             }
         }
 
         $data = [];
         foreach ($finder as $file) {
             $name = pathinfo($file->getFilename(), PATHINFO_FILENAME);
-            $data[$name] = Yaml::parse($file->getContents());
+            if ($file->getExtension() === 'json') {
+                $data[$name] = json_decode($file->getContents(), true);
+            } else {
+                $data[$name] = Yaml::parse($file->getContents());
+            }
         }
 
         return $data;

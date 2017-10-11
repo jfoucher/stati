@@ -67,7 +67,7 @@ class DocTest extends TestCase
         $file = $this->getFile('empty.md');
         $doc = new Doc($file, $site);
         $this->assertEquals('', $doc->getContent());
-        $this->assertEquals(null, $doc->getPath());
+        $this->assertEquals(null, $doc->getOutputPath());
         $this->assertEquals(null, $doc->getTitle());
         $this->assertEquals(null, $doc->getDate());
         $this->assertEquals(null, $doc->getUrl());
@@ -81,13 +81,14 @@ class DocTest extends TestCase
         ]);
         $file = $this->getFile('index.html');
         $doc = new Doc($file, $site);
-        $this->assertEquals('<p>b</p>', $doc->getContent());
+        $this->assertEquals('<p>b</p>
+', $doc->getContent());
         $this->assertEquals('a', $doc->getTitle());
         $doc->setTitle('b');
         $this->assertEquals('b', $doc->getTitle());
         $this->assertEquals(null, $doc->getDate());
         $this->assertEquals('/', $doc->getUrl());
-        $this->assertEquals('/index.html', $doc->getPath());
+        $this->assertEquals('/index.html', $doc->getOutputPath());
     }
 
     public function testCategoriesInUrl()
@@ -110,7 +111,7 @@ class DocTest extends TestCase
         $file = $this->getFile('2017-08-10-simple-post.markdown');
         $doc = new Doc($file, $site);
         $this->assertEquals('/one/two/simple-post/', $doc->getUrl());
-        $this->assertEquals('/one/two/simple-post/index.html', $doc->getPath());
+        $this->assertEquals('/one/two/simple-post/index.html', $doc->getOutputPath());
     }
 
     public function testConfigDefaults()

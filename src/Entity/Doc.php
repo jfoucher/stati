@@ -232,7 +232,7 @@ class Doc
             return $this->url;
         }
 
-        $path = $this->getPath();
+        $path = $this->getOutputPath();
         if (substr($path, -10) === 'index.html') {
             $path = substr($path, 0, -10);
         }
@@ -243,7 +243,7 @@ class Doc
     /**
      * @return string
      */
-    public function getPath()
+    public function getOutputPath()
     {
         if ($this->path !== null) {
             return $this->path;
@@ -265,7 +265,7 @@ class Doc
             $link .= 'index.html';
         }
 
-        $this->setPath($link);
+        $this->setOutputPath($link);
 
         return $this->path;
     }
@@ -274,7 +274,7 @@ class Doc
      * @param string $path
      * @return Doc
      */
-    public function setPath($path)
+    public function setOutputPath($path)
     {
         $this->path = $path;
         return $this;
@@ -302,7 +302,6 @@ class Doc
         }
 
         $fileFrontMatter = $parser::parse($this->file->getContents());
-
         $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
 
         return $this->frontMatter;
@@ -395,6 +394,14 @@ class Doc
             return $this->getDate()->format(DATE_RFC3339);
         }
 
+        if ($item === 'paginate') {
+            return $this->site->paginate;
+        }
+
+        if ($item === 'path') {
+            return $this->file->getRelativePathname();
+        }
+
         if (method_exists($this, 'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
@@ -460,7 +467,7 @@ class Doc
                     default:
                 }
 
-                $link = str_replace($token, $replace, $link);
+                $link = str_replace($token, strtolower($replace), $link);
             }
         }
         return $link;

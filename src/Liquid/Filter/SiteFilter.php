@@ -12,6 +12,7 @@
 namespace Stati\Liquid\Filter;
 
 use Liquid\Liquid;
+use Stati\Parser\MarkdownParser;
 
 class SiteFilter
 {
@@ -96,5 +97,17 @@ class SiteFilter
             return $str;
         }
         return is_array($input) ? implode($glue, Liquid::arrayFlatten($input)) : $input;
+    }
+
+    /**
+     * Parses markdown text and returns html
+     *
+     * @param string $text
+     * @return string
+     */
+    public static function markdownify($text)
+    {
+        $parser = new MarkdownParser();
+        return $parser->text($text);
     }
 }

@@ -39,7 +39,7 @@ EOL
     public function testPath()
     {
         $doc = new Sass($this->file, $this->site);
-        $this->assertEquals('/sass/style.css', $doc->getPath());
+        $this->assertEquals('/sass/style.css', $doc->getOutputPath());
     }
 
     public function testContent()

@@ -26,7 +26,9 @@ c
 
 ';
         $parsed = ContentParser::parse($text);
-        $this->assertEquals('c', $parsed);
+        $this->assertEquals('c
+
+', $parsed);
     }
 
     public function testParseContentWithoutFrontMatter()
@@ -36,7 +38,10 @@ c
 
 ';
         $parsed = ContentParser::parse($text);
-        $this->assertEquals('c', $parsed);
+        $this->assertEquals('
+c
+
+', $parsed);
     }
 
     public function testParseEmptyContent()

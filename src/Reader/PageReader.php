@@ -40,14 +40,17 @@ class PageReader extends Reader
         ;
 
         foreach ($config['exclude'] as $exclude) {
+            if (strpos($exclude, '/') === 0) {
+                $exclude = substr($exclude, 1);
+            }
             if (strpos($exclude, '*') !== false) {
                 //If pattern is a glob, treat as such
                 $finder->notName($exclude);
                 $finder->notPath($exclude);
             } else {
                 // Otherwise, match start and end of string
-                $finder->notName('/^'.$exclude.'$/');
-                $finder->notPath('/^'.$exclude.'$/');
+                $finder->notName('|^'.$exclude.'|');
+                $finder->notPath('|^'.$exclude.'|');
             }
         }
 

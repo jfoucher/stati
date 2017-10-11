@@ -46,6 +46,19 @@ class IncludeTagTest extends TestCase
         $this->assertEquals('3', $template->render());
     }
 
+    public function testIncludeWithLiquidTemplateName()
+    {
+        $template = new Template();
+        $template->setFileSystem(TestFileSystem::fromArray(array(
+            'icon-test.svg' => "<svg />",
+        )));
+
+        $template->parse("{% include {{ action.icon | prepend: 'icon-' | append: '.svg' }} %}");
+        $res = $template->render(['action' => ['icon' => 'test']]);
+
+        $this->assertEquals('<svg />', $res);
+    }
+
     public function testIncludeWithTwoVariables()
     {
         $template = new Template();

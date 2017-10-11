@@ -73,7 +73,12 @@ class Renderer
 
             $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $doc));
             try {
-                $content = $this->renderWithLayout($frontMatter['layout'], $vars);
+                if (in_array($doc->getFile()->getExtension(), explode(',', $this->site->getConfig()['markdown_ext']))) {
+                    $ext = 'html';
+                } else {
+                    $ext = $doc->getFile()->getExtension();
+                }
+                $content = $this->renderWithLayout($frontMatter['layout'], $vars, $ext);
             } catch (FileNotFoundException $err) {
                 throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
             }
@@ -86,7 +91,7 @@ class Renderer
         return $doc;
     }
 
-    protected function renderWithLayout($layoutFile, $config)
+    protected function renderWithLayout($layoutFile, $config, $extension = 'html')
     {
         Liquid::set('INCLUDE_ALLOW_EXT', true);
         Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
@@ -98,7 +103,7 @@ class Renderer
             $layoutFrontMatter = $this->layouts[$layoutFile]['frontMatter'];
             $layoutContent = $this->layouts[$layoutFile]['content'];
         } else {
-            $layout = @file_get_contents($folder.$layoutFile.'.html');
+            $layout = @file_get_contents($folder.$layoutFile.'.'.$extension);
             if (!$layout) {
                 throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder '.$folder);
             }

@@ -27,12 +27,7 @@ class TagInclude extends AbstractTag
     ([\w-]+)\s*=\s*
     (?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w\.-]+))
 EOL;
-    const VARIABLE_SYNTAX = <<<EOL
-    !
-    (?<variable>[^{]*(\{\{\s*[\w\-\.]+\s*(\|.*)?\}\}[^\s{}]*)+)
-    (?<params>.*)
-    !x
-EOL;
+    const VARIABLE_SYNTAX = '#(?<variable>[^{]*(\{\{\s*[\w\-\.]+\s*(\|.*)?\}\}[^\s{}]*)+)(?<params>.*)#x';
 
     /**
      * @var string The name of the template
@@ -72,9 +67,15 @@ EOL;
     {
         $variableSyntax = new Regexp(self::VARIABLE_SYNTAX);
         $splitSyntax = new Regexp('/\s+/');
-        if ($variableSyntax->match(trim($markup))) {
-            $this->templateName = str_replace(['"', "'"], '', $variableSyntax->matches['variable']);
-            $this->params = $variableSyntax->matches['params'];
+
+        $re = '!(?<variable>[^{]*(\{\{\s*[\w\-\.]+\s*(\|.*)?\}\}[^\s{}]*)+)(?<params>.*)!x';
+        $str = trim($markup);
+
+        if (preg_match($re, $str, $matches, PREG_OFFSET_CAPTURE, 0)) {
+            $toks = Template::tokenize($matches['variable'][0]);
+            $tmpl = new Document($toks);
+            $this->templateName = $tmpl;
+            $this->params = $matches['params'][0];
         } else {
             $parts = $splitSyntax->split(trim($markup), 2);
             if (count($parts)) {
@@ -139,9 +140,25 @@ EOL;
         if ($this->fileSystem === null) {
             throw new LiquidException("No file system");
         }
+    }
 
+    /**
+     * Renders the node
+     *
+     * @param Context $context
+     *
+     * @return string
+     */
+    public function render(Context $context)
+    {
+        $result = '';
+
+        if (!is_string($this->templateName) && get_class($this->templateName) === 'Liquid\Document') {
+            $this->templateName = $this->templateName->render($context);
+        }
 
         // read the source of the template and create a new sub document
+
         $source = $this->fileSystem->readTemplateFile($this->templateName);
         $this->hash = md5($source);
 
@@ -158,40 +175,7 @@ EOL;
             $templateTokens = Template::tokenize($source);
             $this->document = new Document($templateTokens, $this->fileSystem);
         }
-    }
 
-    /**
-     * check for cached includes
-     *
-     * @return boolean
-     */
-    public function checkIncludes()
-    {
-        $cache = Template::getCache();
-
-        if ($this->document->checkIncludes() == true) {
-            return true;
-        }
-
-        $source = $this->fileSystem->readTemplateFile($this->templateName);
-
-        if ($cache->exists(md5($source)) && $this->hash === md5($source)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Renders the node
-     *
-     * @param Context $context
-     *
-     * @return string
-     */
-    public function render(Context $context)
-    {
-        $result = '';
 //        $variable = $context->get($this->variable);
 //
         $context->push();

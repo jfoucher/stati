@@ -42,7 +42,8 @@ class RendererTest extends TestCase
         $doc = new Doc($file, $this->site);
         $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
-        $this->assertEquals('<html><body><p>c</p></body></html>', $doc->getOutput());
+        $this->assertEquals('<html><body><p>c</p></body></html>
+', $doc->getOutput());
     }
 
     /**
@@ -67,7 +68,8 @@ class RendererTest extends TestCase
 
         $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
-        $this->assertEquals('<html><body><article><p>c</p></article></body></html>', $doc->getOutput());
+        $this->assertEquals('<html><body><article><p>c</p></article></body></html>
+', $doc->getOutput());
     }
 
     /**

@@ -11,9 +11,17 @@
 
 namespace Stati\Entity;
 
+use Liquid\LiquidException;
 use Stati\Entity\Page;
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Event\SettingTemplateVarsEvent;
+use Stati\Event\SiteEvent;
+use Stati\Event\WillParseTemplateEvent;
+use Stati\Liquid\Template\Template;
+use Stati\Liquid\TemplateEvents;
 use Stati\Parser\ContentParser;
 use Liquid\Liquid;
+use Stati\Site\SiteEvents;
 
 class Sass extends Page
 {
@@ -46,12 +54,34 @@ class Sass extends Page
         $parser = new ContentParser();
         $contentPart = $parser::parse($content);
 
-        $this->content = shell_exec('echo \''.$contentPart.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
+        //Parse with Liquid
+
+        $template = new Template(Liquid::get('INCLUDE_PREFIX'));
+
+        $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
+        try {
+            $template->parse($contentPart);
+
+            $vars = [
+                'site' => $this->site
+            ];
+
+            $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $this));
+            $liquidParsed = $template->render($vars);
+        } catch (LiquidException $err) {
+            $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
+                'error',
+                ['Could not render the file '.$this->getFile()->getRelativePathname().' '.$err->getMessage()]
+            ));
+            $liquidParsed = '';
+        }
+
+        $this->content = shell_exec('echo \''.$liquidParsed.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
         file_put_contents($cacheDir . '/' . $this->cacheFileName, $this->content);
         return $this->content;
     }
 
-    public function getPath()
+    public function getOutputPath()
     {
         $extension = $this->file->getExtension();
         if ($extension === 'scss' || $extension === 'sass') {

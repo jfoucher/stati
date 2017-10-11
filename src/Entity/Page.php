@@ -20,8 +20,11 @@ use Liquid\Liquid;
 
 class Page extends Doc
 {
-    public function getPath()
+    public function getOutputPath()
     {
+        if ($this->path) {
+            return $this->path;
+        }
         $extension = $this->file->getExtension();
         $allowedExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
         if (in_array($extension, $allowedExtensions)) {
@@ -31,7 +34,9 @@ class Page extends Doc
         if (substr($fname, -5) === '.html') {
             $fname = pathinfo($fname, PATHINFO_FILENAME);
         }
-        return preg_replace('|/+|', '/', '/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
+
+        $this->path = preg_replace('|/+|', '/', '/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
+        return $this->path;
     }
 
 

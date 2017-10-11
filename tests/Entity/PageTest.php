@@ -21,14 +21,14 @@ class PageTest extends TestCase
     {
         $file = $this->getFile('page.md');
         $doc = new Page($file, $this->site);
-        $this->assertEquals('/page.html', $doc->getPath());
+        $this->assertEquals('/page.html', $doc->getOutputPath());
     }
 
     public function testPathForHtmlMdFile()
     {
         $file = $this->getFile('page.html.md');
         $doc = new Page($file, $this->site);
-        $this->assertEquals('/page.html', $doc->getPath());
+        $this->assertEquals('/page.html', $doc->getOutputPath());
     }
 
     public function testContentForHtmlMdFile()

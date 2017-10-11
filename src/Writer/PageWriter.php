@@ -12,7 +12,7 @@
 namespace Stati\Writer;
 
 use Symfony\Component\Filesystem\Filesystem;
-use Stati\Entity\Doc;
+use Stati\Entity\Page;
 
 class PageWriter extends Writer
 {
@@ -23,9 +23,10 @@ class PageWriter extends Writer
 
         foreach ($this->site->getPages() as $doc) {
             /**
-             * @var Doc $doc
+             * @var Page $doc
              */
-            $dest = str_replace('//', '/', $destDir.'/'.$doc->getPath());
+
+            $dest = str_replace('//', '/', $destDir.'/'.$doc->getOutputPath());
             $fs->dumpFile($dest, $doc->getOutput());
         }
     }

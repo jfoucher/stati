@@ -19,14 +19,13 @@ class ContentParser
 {
     public static function parse($text)
     {
-        $split = preg_split("/[\n]*[-]{3}/", $text, 2, PREG_SPLIT_NO_EMPTY);
-
-        if (is_array($split) && count($split) > 1) {
-            return trim($split[1]);
+        $regexp = '~\A\s*---\s*\n(.*?\n?)^((---|\.\.\.)\s*$\n?)(.*)~ms';
+        if (preg_match_all($regexp, $text, $matches, PREG_SET_ORDER, 0)) {
+            if (isset($matches[0]) && isset($matches[0][4])) {
+                return $matches[0][4];
+            }
+            return $text;
         }
-        if (is_array($split) && count($split)) {
-            return trim($split[0]);
-        }
-        return '';
+        return $text;
     }
 }

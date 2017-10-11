@@ -25,7 +25,11 @@ class Highlight extends AbstractBlock
         $options = [];
         foreach (array_slice($markup, 1) as $item) {
             $r = explode('=', $item);
-            $options[trim($r[0])] = trim($r[1]);
+            if (isset($r[1])) {
+                $options[trim($r[0])] = trim($r[1]);
+            } else {
+                $options[trim($r[0])] = true;
+            }
         }
         $nodes = $this->getNodelist();
 

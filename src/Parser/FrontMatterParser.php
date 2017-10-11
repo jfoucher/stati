@@ -17,19 +17,20 @@ class FrontMatterParser
 {
     public static function parse($text)
     {
-        $split = preg_split("/[\n]*[-]{3}/", $text, 2, PREG_SPLIT_NO_EMPTY);
+        if (strpos($text, "---") === false) {
+            return [];
+        }
 
-        if (count($split) > 1) {
-            try {
-                // Using symfony's YAML parser
-                // we can use trim here because we only remove white space
-                // at the beginning (first should not have any) and at the end (insignificant)
-
-                return Yaml::parse($split[0]);
-            } catch (\Exception $err) {
-                // This is not YAML
-                return [];
+        $regexp = '~\A\s*---\s*\n(.*?\n?)^((---|\.\.\.)\s*$\n?)(.*)~ms';
+        if (preg_match_all($regexp, $text, $matches, PREG_SET_ORDER, 0)) {
+            if (isset($matches[0]) && isset($matches[0][1])) {
+                $yaml = Yaml::parse($matches[0][1]);
+                if (!$yaml || !is_array($yaml)) {
+                    return [];
+                }
+                return $yaml;
             }
+            return [];
         }
         return [];
     }
