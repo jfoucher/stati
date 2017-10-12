@@ -506,7 +506,7 @@ class Site
     public static function arrayFlattenToString($array)
     {
         $return = array();
-        if (is_iterable($array)) {
+        if (is_array($array)) {
             foreach ($array as $element) {
                 if (is_array($element)) {
                     $return = array_merge($return, self::arrayFlattenToString($element));
