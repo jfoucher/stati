@@ -43,7 +43,7 @@ class Sass extends Page
         if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0755, true);
         }
-        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->getFrontMatter())));
+        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->getFrontMatter())) . $this->site->__toString());
         if (is_file($cacheDir . '/' . $this->cacheFileName)) {
             return file_get_contents($cacheDir . '/' . $this->cacheFileName);
         }
