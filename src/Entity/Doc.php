@@ -480,38 +480,4 @@ class Doc
     {
         return $this->cacheFileName;
     }
-
-    /**
-     * Gets or generates the post excerpt
-     * @return string
-     */
-
-    public function getExcerpt()
-    {
-        if ($this->excerpt) {
-            return $this->excerpt;
-        }
-        $frontMatter = $this->getFrontMatter();
-        $content = $this->getContent();
-        $siteConfig = $this->site->getConfig();
-
-        if (isset($frontMatter['excerpt']) && $frontMatter['excerpt']) {
-            $this->excerpt = $frontMatter['excerpt'];
-            return $this->excerpt;
-        }
-
-        $separator = false;
-        if (isset($frontMatter['excerpt_separator'])) {
-            $separator = $frontMatter['excerpt_separator'];
-        }
-        if (!$separator && isset($siteConfig['excerpt_separator'])) {
-            $separator = $this->site->getConfig()['excerpt_separator'];
-        }
-        if ($separator && strlen($separator) > 0 && strpos($content, $separator) !== false) {
-            //We have a separator
-            $ex = explode($separator, $content);
-            $this->excerpt = $ex[0];
-        }
-        return $this->excerpt;
-    }
 }
