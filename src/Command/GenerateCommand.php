@@ -97,10 +97,6 @@ class GenerateCommand extends Command
             $dest = substr($dest, 2);
         }
 
-        if ($input->getOption('serve')) {
-            $this->serve($dest, $input->getOption('port'));
-        }
-
         if ($input->getOption('watch')) {
             $files = new \Illuminate\Filesystem\Filesystem();
             $tracker = new Tracker();
@@ -129,9 +125,17 @@ class GenerateCommand extends Command
                     $this->style->success('Site regenerated in '.number_format($elapsed, 2).'s');
                 });
             }
+            if ($input->getOption('serve')) {
+                $this->serve($dest, $input->getOption('port'), false, true);
+            }
             $this->style->section('Watching files for changes...');
             $watcher->start();
         }
+
+        if ($input->getOption('serve')) {
+            $this->serve($dest, $input->getOption('port'));
+        }
+
         return 0;
     }
 
