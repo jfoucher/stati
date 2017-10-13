@@ -13,6 +13,7 @@ For install and usage documentation, please see [the documentation](https://stat
 
 [![Build Status](https://travis-ci.org/jfoucher/stati.svg?branch=master)](https://travis-ci.org/jfoucher/stati)
 
+- Works with the Jekyll Documentation site, and many Jekyll themes
 - Generates all defined collections, including custom defined collections in _config.yml
 - Paginates posts and saves paginated post to the correct places
 - Plugin architecture based on Symfony events
@@ -21,7 +22,6 @@ For install and usage documentation, please see [the documentation](https://stat
 
 ### Downsides
 
-- No automatic regeneration when a file changes as of yet
 - Not entirely completely compatible with jekyll, most notably with the lack of liquid filters (Work in progress)
 - Slower than Jekyll on the first run, especially if you highlight your code with `{% highlight %}` blocks or have many scss/sass files.
 
