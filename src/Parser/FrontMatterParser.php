@@ -11,7 +11,7 @@
 
 namespace Stati\Parser;
 
-use Symfony\Component\Yaml\Yaml;
+use Stati\Parser\Yaml;
 
 class FrontMatterParser
 {

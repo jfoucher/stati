@@ -17,14 +17,14 @@ use Stati\Event\ConsoleOutputEvent;
 use Stati\Site\Site;
 use Stati\Site\SiteEvents;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Exception\ParseException;
+use Stati\Parser\Yaml;
 use Phar;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -67,7 +67,13 @@ class GenerateCommand extends Command
         $configFile = './_config.yml';
 
         if (is_file($configFile)) {
-            $config = Yaml::parse(file_get_contents($configFile));
+            try {
+                $config = Yaml::parse(file_get_contents($configFile));
+            } catch (ParseException $err) {
+                $this->style->error(['Could not read your site configuration file', $err->getMessage()]);
+                return 1;
+            }
+
         } else {
             $this->style->error('No config file present. Are you in a jekyll directory ?');
             return 1;

@@ -24,13 +24,15 @@
         "stati/paginate": "^0.1",
         "stati/categories": "^0.1",
         "stati/related": "^0.1",
-        "jasonlewis/resource-watcher": "^1.2"
+        "jasonlewis/resource-watcher": "^1.2",
+
     },
     "suggest": {
         "stati/profiler": "A profiler plugin for stati",
         "stati/feed": "A feed generation plugin for Stati",
         "stati/seo": "An SEO tag generator for stati",
-        "stati/avatar": "An avatar generator for Stati"
+        "stati/avatar": "An avatar generator for Stati",
+        "ext-yaml": "*"
     },
     "bin": ["build/stati"],
     "license": "MIT",
