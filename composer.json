@@ -24,8 +24,7 @@
         "stati/paginate": "^0.1",
         "stati/categories": "^0.1",
         "stati/related": "^0.1",
-        "jasonlewis/resource-watcher": "^1.2",
-
+        "jasonlewis/resource-watcher": "^1.2"
     },
     "suggest": {
         "stati/profiler": "A profiler plugin for stati",

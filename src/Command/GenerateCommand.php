@@ -73,7 +73,6 @@ class GenerateCommand extends Command
                 $this->style->error(['Could not read your site configuration file', $err->getMessage()]);
                 return 1;
             }
-
         } else {
             $this->style->error('No config file present. Are you in a jekyll directory ?');
             return 1;
