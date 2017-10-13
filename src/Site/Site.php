@@ -90,63 +90,8 @@ class Site
 
     public function __construct(array $config)
     {
-        $defaultConfig = [
-            "name" => "default",
-            "source" => ".",
-            "destination" => "./_site",
-            "collections_dir" => ".",
-            "plugins_dir" => "_plugins",
-            "layouts_dir" => "_layouts",
-            "data_dir" => "_data",
-            "includes_dir" => "_includes",
-            "collections" => [],
-            "output" => "true",
+        $this->config = new Config($config);
 
-
-            # Handling Reading,
-            "safe" => "false",
-            "include" => [".htaccess"],
-            "exclude" => ["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"],
-            "keep_files" => [".git", ".svn"],
-            "encoding" => "utf-8",
-            "markdown_ext" => "markdown,mkdown,mkdn,mkd,md",
-            "strict_front_matter" => false,
-
-            # Filtering Content,
-            "show_drafts" => "null",
-            "limit_posts" => "0",
-            "future" => false,
-            "unpublished" => false,
-
-            # Plugins,
-            "whitelist" => [],
-            "plugins" => [],
-
-            # Conversion,
-            "markdown" => "kramdown",
-            "highlighter" => "rouge",
-            "lsi" => false,
-            "excerpt_separator" => "\n\n",
-            "incremental" => false,
-
-            # Serving,
-            "detach" => "false",
-            "port" => "4000",
-            "host" => "127.0.0.1",
-            "baseurl" => "", // does not include hostname,
-            "show_dir_listing" => "false",
-
-            # Outputting,
-            "permalink" => "date",
-            "paginate_path" => "/page:num",
-            "timezone" => "null",
-            "quiet" => "false",
-            "verbose" => "false",
-        ];
-
-
-
-        $this->config = array_merge($defaultConfig, $config);
         $this->config["cache_dir"] = sys_get_temp_dir() . '/' . $this->config['name'];
         $this->config['collections'] = array_merge($this->config['collections'], [
             'posts' => [
@@ -191,17 +136,19 @@ class Site
         $staticFileReader = new StaticFileReader($this);
         $this->setStaticFiles($staticFileReader->read());
         $this->dispatcher->dispatch(SiteEvents::DID_READ_STATIC_FILES, new SiteEvent($this));
-        $this->dispatcher->dispatch(SiteEvents::WILL_READ_COLLECTIONS, new SiteEvent($this));
 
+        $this->dispatcher->dispatch(SiteEvents::WILL_READ_COLLECTIONS, new SiteEvent($this));
         //Read collections
         $collectionReader = new CollectionReader($this);
         $this->setCollections($collectionReader->read());
         $this->dispatcher->dispatch(SiteEvents::DID_READ_COLLECTIONS, new SiteEvent($this));
+
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_PAGES, new SiteEvent($this));
         //Read pages
         $pageReader = new PageReader($this);
         $this->setPages($pageReader->read());
         $this->dispatcher->dispatch(SiteEvents::DID_READ_PAGES, new SiteEvent($this));
+
         $this->dispatcher->dispatch(SiteEvents::WILL_READ_DATA, new SiteEvent($this));
         //Read pages
         $dataReader = new DataReader($this);
@@ -452,14 +399,6 @@ class Site
     public function setDispatcher($dispatcher)
     {
         $this->dispatcher = $dispatcher;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTimer()
-    {
-        return $this->timer;
     }
 
     /**

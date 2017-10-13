@@ -102,6 +102,9 @@ class Doc
 
     protected $cacheFileName;
 
+    const DATELESS_FILENAME_MATCHER = '!^(?:.+/)*(.*)(\.[^.]+)$!';
+    const DATE_FILENAME_MATCHER = '!^(?:.+/)*(\d{2,4}-\d{1,2}-\d{1,2})-(.*)(\.[^.]+)$!';
+
     /**
      * Doc constructor.
      * @param SplFileInfo $file
@@ -112,6 +115,13 @@ class Doc
     {
         $this->file = $file;
         $this->site = $site;
+        if (preg_match(self::DATE_FILENAME_MATCHER, $this->file->getBasename(), $matches)) {
+            $this->date = new \DateTime($matches[1]);
+            $this->slug = $matches[2];
+        } elseif (preg_match(self::DATELESS_FILENAME_MATCHER, $this->file->getBasename(), $matches)) {
+            $this->slug = $matches[1];
+        }
+        $this->getFrontMatter();
     }
 
     public function getDate()
@@ -140,7 +150,7 @@ class Doc
         if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0755, true);
         }
-        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->getFrontMatter())));
+        $this->cacheFileName = $this->getSlug() . '-' . sha1($content . implode('', Liquid::arrayFlatten($this->frontMatter)));
         if (is_file($cacheDir . '/' . $this->cacheFileName)) {
             return file_get_contents($cacheDir . '/' . $this->cacheFileName);
         }
@@ -199,8 +209,8 @@ class Doc
         if ($this->title) {
             return $this->title;
         }
-        if (isset($this->getFrontMatter()['title'])) {
-            $this->title = $this->getFrontMatter()['title'];
+        if (isset($this->frontMatter['title'])) {
+            $this->title = $this->frontMatter['title'];
         }
         return $this->title;
     }
@@ -290,20 +300,23 @@ class Doc
         }
 
         $parser = new FrontMatterParser();
-        $defaults = [];
-        // Get defaults from site config if available, and merge with file frontmatter
-        $config = $this->getSite()->getConfig();
-        if (isset($config['defaults'])) {
-            foreach ($config['defaults'] as $def) {
-                if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
-                    $defaults = $def['values'];
+        $fileFrontMatter = $parser::parse($this->file->getContents());
+        if ($this->site) {
+            $defaults = [];
+            // Get defaults from site config if available, and merge with file frontmatter
+            $config = $this->site->getConfig();
+            if (isset($config['defaults'])) {
+                foreach ($config['defaults'] as $def) {
+                    if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
+                        $defaults = $def['values'];
+                    }
                 }
             }
+            $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
+            return $this->frontMatter;
         }
 
-        $fileFrontMatter = $parser::parse($this->file->getContents());
-        $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
-
+        $this->setFrontMatter($fileFrontMatter);
         return $this->frontMatter;
     }
 
@@ -322,17 +335,6 @@ class Doc
      */
     public function getSlug()
     {
-        if ($this->slug) {
-            return $this->slug;
-        }
-        $filename = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
-        try {
-            new \DateTime(substr($filename, 0, 10));
-            $this->slug = substr($filename, 11);
-        } catch (\Exception $err) {
-//            echo $err->getMessage();
-            $this->slug = $filename;
-        }
         return $this->slug;
     }
 
@@ -341,8 +343,8 @@ class Doc
      */
     public function getPermalink()
     {
-        if (isset($this->getFrontMatter()['permalink'])) {
-            return $this->getFrontMatter()['permalink'];
+        if (isset($this->frontMatter['permalink'])) {
+            return $this->frontMatter['permalink'];
         }
         return $this->site->permalink;
     }
@@ -377,6 +379,18 @@ class Doc
     public function setSite($site)
     {
         $this->site = $site;
+        $defaults = [];
+        // Get defaults from site config if available, and merge with file frontmatter
+        $config = $this->site->getConfig();
+        if (isset($config['defaults'])) {
+            foreach ($config['defaults'] as $def) {
+                if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
+                    $defaults = $def['values'];
+                }
+            }
+        }
+
+        $this->setFrontMatter(array_merge($defaults, $this->frontMatter));
     }
 
 
@@ -405,8 +419,8 @@ class Doc
         if (method_exists($this, 'get'.ucfirst($item))) {
             return $this->{'get'.ucfirst($item)}();
         }
-        if (isset($this->getFrontMatter()[$item])) {
-            return $this->getFrontMatter()[$item];
+        if (isset($this->frontMatter[$item])) {
+            return $this->frontMatter[$item];
         }
         return null;
     }
@@ -449,12 +463,11 @@ class Doc
                         $replace = $this->getSlug();
                         break;
                     case ':categories':
-                        $frontMatter = $this->getFrontMatter();
-                        if (isset($frontMatter['category'])) {
-                            $replace = $frontMatter['category'];
+                        if (isset($this->frontMatter['category'])) {
+                            $replace = $this->frontMatter['category'];
                         }
-                        if (isset($frontMatter['categories'])) {
-                            $replace = $frontMatter['categories'];
+                        if (isset($this->frontMatter['categories'])) {
+                            $replace = $this->frontMatter['categories'];
                         }
                         if ($replace && is_array($replace)) {
                             $replace = implode('/', $replace);
