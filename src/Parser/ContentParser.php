@@ -11,10 +11,6 @@
 
 namespace Stati\Parser;
 
-use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
-use Symfony\Component\Yaml\Yaml;
-
 class ContentParser
 {
     public static function parse($text)

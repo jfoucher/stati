@@ -11,8 +11,6 @@
 
 namespace Stati\Parser;
 
-use Stati\Parser\Yaml;
-
 class FrontMatterParser
 {
     public static function parse($text)
