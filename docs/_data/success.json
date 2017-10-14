@@ -88,21 +88,7 @@
         ]
     },
     "penibelst_jekyll-noita": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Stati\\Exception\\FileNotFoundException]",
-            "  Layout file post not found in layout folder _layouts/ for post Crack Seawater Into Fuel",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
+        "result": true
     },
     "tybenz_otter-pop": {
         "result": true
