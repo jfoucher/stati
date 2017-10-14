@@ -132,24 +132,6 @@
     "thephuse_strange_case": {
         "result": true
     },
-    "open-start_opentheme": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
-            "  Unable to parse at line 4 (near   about: An Embedded Tweet brings brings the best content created on Twitter into your article or w",
-            "  ebsite.).",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
     "yulijia_freshman21": {
         "result": true
     },
@@ -164,27 +146,6 @@
     },
     "gayanvirajith_gaya": {
         "result": true
-    },
-    "SalGnt_Travelogue": {
-        "result": false,
-        "error": [
-            "",
-            " [ERROR] Sorry, the plugin feed is not available",
-            "",
-            "         Sorry, the plugin sitemap is not available",
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\ParseException]",
-            "  Unknown tag feed_meta",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
     },
     "ellekasai_resumecards": {
         "result": true
@@ -207,27 +168,6 @@
     "clayh53_tufte-jekyll": {
         "result": true
     },
-    "Phlow_feeling-responsive": {
-        "result": false,
-        "error": [
-            "",
-            " [ERROR] Sorry, the plugin asciidoc is not available",
-            "",
-            "         Sorry, the plugin gist is not available",
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\RenderException]",
-            "  Implicit rendering of arrays not supported. Use index operator.",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
     "KingFelix_emerald": {
         "result": true
     },
@@ -242,23 +182,6 @@
     },
     "smallmuou_Jekyll-Pithy": {
         "result": true
-    },
-    "DigitalMindCH_twister": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\RenderException]",
-            "  Implicit rendering of arrays not supported. Use index operator.",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
     },
     "karloespiritu_BlackDoc": {
         "result": true
@@ -289,23 +212,6 @@
     },
     "gdg-managua_jekyll-mdl": {
         "result": true
-    },
-    "streetturtle_jekyll-clean-dark": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [RuntimeException]",
-            "  Error: no lexer for alias 'yml' found",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
     },
     "dubuyuye_blog": {
         "result": true
