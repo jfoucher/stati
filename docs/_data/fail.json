@@ -1141,5 +1141,66 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
+    },
+    "sharu725_vyaasa": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin seo is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag seo",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "sharu725_gatok": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin seo is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  Error: no lexer for alias 'markdown' found",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "nielsenramon_chalk": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin assets is not available",
+            "",
+            "         Sorry, the plugin sitemap is not available",
+            "",
+            "         Sorry, the plugin jemoji is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  Error: no lexer for alias 'yml' found",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     }
 }
