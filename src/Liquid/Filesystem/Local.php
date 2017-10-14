@@ -80,7 +80,7 @@ class Local implements FileSystem
         $templateDir = dirname($templatePath);
         $templateFile = basename($templatePath);
 
-        if(!pathinfo($templatePath, PATHINFO_EXTENSION)) {
+        if (!pathinfo($templatePath, PATHINFO_EXTENSION)) {
             $templateFile = $templateFile . '.html';
         }
 
