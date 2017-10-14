@@ -301,23 +301,29 @@ class Doc
 
         $parser = new FrontMatterParser();
         $fileFrontMatter = $parser::parse($this->file->getContents());
+
+        $defaults = $this->getDefaultConfig();
+        $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
+        $this->setFrontMatter($fileFrontMatter);
+        return $this->frontMatter;
+    }
+
+    private function getDefaultConfig()
+    {
+        $defaults = [];
         if ($this->site) {
             $defaults = [];
             // Get defaults from site config if available, and merge with file frontmatter
             $config = $this->site->getConfig();
             if (isset($config['defaults'])) {
                 foreach ($config['defaults'] as $def) {
-                    if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
+                    if (!isset($def['scope']) || (isset($def['scope']) && isset($def['scope']['path']) && str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath()))) {
                         $defaults = $def['values'];
                     }
                 }
             }
-            $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
-            return $this->frontMatter;
         }
-
-        $this->setFrontMatter($fileFrontMatter);
-        return $this->frontMatter;
+        return $defaults;
     }
 
     /**
@@ -379,16 +385,7 @@ class Doc
     public function setSite($site)
     {
         $this->site = $site;
-        $defaults = [];
-        // Get defaults from site config if available, and merge with file frontmatter
-        $config = $this->site->getConfig();
-        if (isset($config['defaults'])) {
-            foreach ($config['defaults'] as $def) {
-                if (str_replace('/', '', $def['scope']['path']) === str_replace(['/', '.'], '', $this->file->getRelativePath())) {
-                    $defaults = $def['values'];
-                }
-            }
-        }
+        $defaults = $this->getDefaultConfig();
 
         $this->setFrontMatter(array_merge($defaults, $this->frontMatter));
     }
