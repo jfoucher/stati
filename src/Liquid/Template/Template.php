@@ -38,7 +38,8 @@ class Template extends BaseTemplate
             $filesystem = new Local($path);
         } else {
             parent::__construct(null, $cache);
-            $filesystem = new Virtual(function(){});
+            $filesystem = new Virtual(function () {
+            });
         }
 
         $this->registerTag('highlight', Highlight::class);

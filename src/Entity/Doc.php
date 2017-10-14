@@ -304,7 +304,6 @@ class Doc
 
         $defaults = $this->getDefaultConfig();
         $this->setFrontMatter(array_merge($defaults, $fileFrontMatter));
-        $this->setFrontMatter($fileFrontMatter);
         return $this->frontMatter;
     }
 
