@@ -97,7 +97,7 @@
             "",
             "",
             "  [Stati\\Exception\\FileNotFoundException]",
-            "  Layout file post not found in layout folder _layouts\/ for post Crack Seawater Into Fuel",
+            "  Layout file post not found in layout folder _layouts/ for post Crack Seawater Into Fuel",
             "",
             "",
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
