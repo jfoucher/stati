@@ -60,7 +60,7 @@
         "",
         "",
         "  [Stati\\Exception\\FileNotFoundException]",
-        "  Layout file \"post\" not found in layout folder _layouts\/ for post \"Crack Seawater Into Fuel\"",
+        "  Layout file post not found in layout folder _layouts/ for post Crack Seawater Into Fuel",
         "",
         "",
         "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
@@ -70,5 +70,7 @@
     "anandubajith_block-log": true,
     "nadjetey_GridGallery": true,
     "vinitkumar_white-paper": true,
-    "jeromelachaud_freelancer-theme": true
+    "jeromelachaud_freelancer-theme": true,
+    "mattgraham_Leap-Day": true,
+    "mattgraham_midnight": true
 }
