@@ -33,7 +33,6 @@ class StaticFileWriter extends Writer
             } catch (\Exception $err) {
                 $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not write file '.$file->getPathname().' to disk.', $err->getMessage()]], OutputInterface::VERBOSITY_NORMAL));
             }
-
         }
     }
 }

@@ -103,4 +103,14 @@ class Collection
     {
         $this->label = $label;
     }
+
+    public function __get($item)
+    {
+        if ($this->{$item}) {
+            return $this->{$item};
+        }
+        if ($this->getConfigItem($item)) {
+            return $this->getConfigItem($item);
+        }
+    }
 }
