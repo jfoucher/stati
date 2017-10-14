@@ -63,7 +63,7 @@ class Renderer
         }
 
         //If we have a layout
-        if (isset($frontMatter['layout'])) {
+        if (isset($frontMatter['layout']) && $frontMatter['layout'] !== 'none' && $frontMatter['layout'] !== 'nil') {
             $vars = [
                 'content' => $content,
                 'page' => $doc,
@@ -116,7 +116,7 @@ class Renderer
             ];
         }
 
-        if (isset($layoutFrontMatter['layout'])) {
+        if (isset($layoutFrontMatter['layout']) && $layoutFrontMatter['layout'] !== 'none' && $layoutFrontMatter['layout'] !== 'nil') {
             $template = new Template(Liquid::get('INCLUDE_PREFIX')/*, new File(['cache_dir' => sys_get_temp_dir()])*/);
             $this->site->getDispatcher()->dispatch(TemplateEvents::WILL_PARSE_TEMPLATE, new WillParseTemplateEvent($this->site, $template));
 
