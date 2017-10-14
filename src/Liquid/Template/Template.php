@@ -11,6 +11,7 @@
 
 namespace Stati\Liquid\Template;
 
+use Liquid\FileSystem\Virtual;
 use Liquid\Template as BaseTemplate;
 use Liquid\Cache;
 use Stati\Liquid\Block\Highlight;
@@ -32,13 +33,20 @@ class Template extends BaseTemplate
      */
     public function __construct($path = null, $cache = null)
     {
-        parent::__construct($path, $cache);
+        if (is_dir($path)) {
+            parent::__construct($path, $cache);
+            $filesystem = new Local($path);
+        } else {
+            parent::__construct(null, $cache);
+            $filesystem = new Virtual(function(){});
+        }
+
         $this->registerTag('highlight', Highlight::class);
         $this->registerTag('post_url', PostUrl::class);
         $this->registerTag('link', Link::class);
         $this->registerTag('include', TagInclude::class);
         $this->registerFilter(new SiteFilter());
-        $filesystem = new Local($path);
+
         $this->setFileSystem($filesystem);
     }
 }
