@@ -31,8 +31,12 @@ class PageReader extends Reader
         $config = $this->site->getConfig();
         // Get top level files and parse
         $finder = new Finder();
+        $source = $config['source'];
+        if (strpos($source, './') === 0) {
+            $source = substr($source, 2);
+        }
         $finder
-            ->in('./')
+            ->in($source.'/')
             ->notPath('/^_/')
             ->files()
             ->notName('/^_/')

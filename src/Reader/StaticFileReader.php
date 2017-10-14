@@ -20,9 +20,12 @@ class StaticFileReader extends Reader
     {
         $config = $this->site->getConfig();
         $finder = new Finder();
-
+        $source = $config['source'];
+        if (strpos($source, './') === 0) {
+            $source = substr($source, 2);
+        }
         $finder
-            ->in('./')
+            ->in($source . '/')
             ->files()
             ->notPath('/^_/')
             ->notContains('/\A---\s*\r?\n/')
@@ -44,13 +47,6 @@ class StaticFileReader extends Reader
         $staticFiles = [];
 
         foreach ($finder as $file) {
-//            $type = mime_content_type($file->getRelativePathname());
-//            var_dump($type);
-//            if (substr($type, 4) === 'text') {
-//                if (fgets(fopen($file, 'r')) === '---') {
-//                    continue;
-//                }
-//            }
             $staticFiles[] = new StaticFile($file->getRelativePathname(), $file->getRelativePath(), $file->getRelativePathname());
         }
 

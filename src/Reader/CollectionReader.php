@@ -38,8 +38,12 @@ class CollectionReader extends Reader
 
             $collection = new Collection($collectionName, $collectionData);
             $finder = new Finder();
+            $source = $config['source'];
+            if (strpos($source, './') === 0) {
+                $source = substr($source, 2);
+            }
             $finder
-                ->in('./')
+                ->in($source . '/')
                 ->path(sprintf('/_%s/', $collectionName))
                 ->files()
                 ->name('/(.md|.mkd|.markdown)$/')

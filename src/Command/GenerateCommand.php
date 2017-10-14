@@ -102,6 +102,10 @@ class GenerateCommand extends Command
         if (strpos($dest, './') === 0) {
             $dest = substr($dest, 2);
         }
+        $source = $this->site->getConfig()['source'];
+        if (strpos($source, './') === 0) {
+            $source = substr($source, 2);
+        }
 
         if ($input->getOption('watch')) {
             $files = new \Illuminate\Filesystem\Filesystem();
@@ -110,7 +114,7 @@ class GenerateCommand extends Command
             $watcher = new Watcher($tracker, $files);
 
             $finder = new Finder();
-            $finder->in('./')
+            $finder->in($source.'/')
                 ->depth('==0')
                 ->notPath('|^'.$dest.'$|')
                 ->notName('|^'.$dest.'$|')
