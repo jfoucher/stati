@@ -1,4 +1,6 @@
 Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthemes.org/) successfully : 
-{%raw%}
+
+{% highlight json %}
 {{ site.data.success | jsonify }}
-{%endraw%}
+
+{% endhighlight %}
