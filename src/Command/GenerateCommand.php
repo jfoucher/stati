@@ -75,6 +75,10 @@ class GenerateCommand extends Command
             }
         }
 
+        if (!$config) {
+            $config = [];
+        }
+
         $this->site = new Site($config);
 
         if ($input->getOption('no-cache')) {
