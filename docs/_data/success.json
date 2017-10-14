@@ -40,21 +40,15 @@
     },
     "mondss_simplygrey-jekyll": {
         "result": false,
-        "error": [
-            ""
-        ]
+        "error": []
     },
-    "mondss_simplygrey-jekyll_error": [],
     "arnp_herring-cove": {
         "result": true
     },
     "hushaw_hushaw.github.com": {
         "result": false,
-        "error": [
-            ""
-        ]
+        "error": []
     },
-    "hushaw_hushaw.github.com_error": [],
     "nadjetey_redcup": {
         "result": true
     },
@@ -79,25 +73,37 @@
     "Simpleyyt_jekyll-simpleyyt": {
         "result": false,
         "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
             "  [Liquid\\Exception\\RenderException]",
             "  Implicit rendering of arrays not supported. Use index operator.",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
         ]
     },
-    "Simpleyyt_jekyll-simpleyyt_error": [
-        "  [Liquid\\Exception\\RenderException]",
-        "  Implicit rendering of arrays not supported. Use index operator.",
-    ],
     "penibelst_jekyll-noita": {
         "result": false,
         "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
             "  [Stati\\Exception\\FileNotFoundException]",
             "  Layout file post not found in layout folder _layouts\/ for post Crack Seawater Into Fuel",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
         ]
     },
-    "penibelst_jekyll-noita_error": [
-        "  [Stati\\Exception\\FileNotFoundException]",
-        "  Layout file post not found in layout folder _layouts\/ for post Crack Seawater Into Fuel",
-    ],
     "tybenz_otter-pop": {
         "result": true
     },
@@ -126,6 +132,12 @@
         "result": true
     },
     "rowanoulton_travelog-theme": {
+        "result": true
+    },
+    "y7kim_agency-jekyll-theme": {
+        "result": true
+    },
+    "st4ple_solid-jekyll": {
         "result": true
     }
 }
