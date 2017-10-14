@@ -210,8 +210,11 @@ class Site
      * @param $item
      * @return mixed
      */
-    public function __get($item)
+    public function __get($item = null)
     {
+        if (!$item) {
+            return null;
+        }
         $getter = implode('', array_map(function ($part) {
             return ucfirst($part);
         }, explode('_', $item)));
