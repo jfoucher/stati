@@ -7,9 +7,7 @@ Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthe
 {% for theme in site.data.success %}
 
 {% assign names = theme[0] | split:"_" %}
-{{ theme[0] | capitalize }}
-{% highlight json %}
-{{ names | jsonify }}
-{% endhighlight %}
+[{{ names[1] | capitalize }}](https://github.com/{{names[0]}}/{{names[1]}})
+
 
 {% endfor %}
