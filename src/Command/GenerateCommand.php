@@ -62,7 +62,7 @@ class GenerateCommand extends Command
     {
         $this->style = new SymfonyStyle($input, $output);
 
-
+        $config = [];
         // Read config file
         $configFile = './_config.yml';
 
@@ -73,9 +73,6 @@ class GenerateCommand extends Command
                 $this->style->error(['Could not read your site configuration file', $err->getMessage()]);
                 return 1;
             }
-        } else {
-            $this->style->error('No config file present. Are you in a jekyll directory ?');
-            return 1;
         }
 
         $this->site = new Site($config);
