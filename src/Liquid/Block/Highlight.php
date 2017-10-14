@@ -14,7 +14,6 @@ namespace Stati\Liquid\Block;
 use Liquid\AbstractBlock;
 use Liquid\Context;
 use Ramsey\Pygments\Pygments;
-use Symfony\Component\Console\Exception\RuntimeException;
 
 class Highlight extends AbstractBlock
 {
@@ -43,7 +42,7 @@ class Highlight extends AbstractBlock
 
         try {
             return $pygments->highlight(implode('', $texts), $language, 'html', $options);
-        } catch (RuntimeException $err) {
+        } catch (\Exception $err) {
             return $pygments->highlight(implode('', $texts), null, 'html', $options);
         }
     }
