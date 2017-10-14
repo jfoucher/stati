@@ -35,6 +35,24 @@
     </footer>
 </section>
 
+<script type="text/javascript">
+    var links = document.getElementsByClassName("view-errors");
+    for(var i = 0; i < links.length; i++)
+    {
+        var el = links.item(i);
+        el.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            var block = ev.target.parentElement.nextElementSibling;
+            var display = block.style.display;
+            if (display === 'none') {
+                block.style.display = "block";
+            } else {
+                block.style.display = "none";
+            }
+
+        });
+    }
+</script>
 {% if site.google_analytics %}
 <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

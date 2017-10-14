@@ -486,23 +486,6 @@
     "alidcastano_Utterson": {
         "result": true
     },
-    "itisbenjamin_Nice_Blog": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [RuntimeException]",
-            "  Error: no lexer for alias 'md' found",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
     "siawyoung_immaculate": {
         "result": true
     },
@@ -513,6 +496,114 @@
         "result": true
     },
     "pietromenna_jekyll-cayman-theme": {
+        "result": true
+    },
+    "liungkejin_liungkejin.github.io": {
+        "result": true
+    },
+    "altcointrading_trading": {
+        "result": true
+    },
+    "neizod_lemma-theme": {
+        "result": true
+    },
+    "TaylanTatli_Moon": {
+        "result": true
+    },
+    "mmistakes_minimal-mistakes": {
+        "result": true
+    },
+    "agusmakmun_agusmakmun.github.io": {
+        "result": true
+    },
+    "Clark-Zhao_bohu-jekyll-theme": {
+        "result": true
+    },
+    "Simpleyyt_jekyll-jacman": {
+        "result": true
+    },
+    "gjuniioor_darcli": {
+        "result": true
+    },
+    "willianjusten_cards-jekyll-template": {
+        "result": true
+    },
+    "hemangsk_DevJournal": {
+        "result": true
+    },
+    "DONGChuan_Yummy-Jekyll": {
+        "result": true
+    },
+    "ozgrozer_dasper": {
+        "result": true
+    },
+    "vfalanis_taken": {
+        "result": true
+    },
+    "grrinchas_aliquam": {
+        "result": true
+    },
+    "hemangsk_safarnama": {
+        "result": true
+    },
+    "tyler-abbot_DrJekyll": {
+        "result": true
+    },
+    "TaylanTatli_Halve": {
+        "result": true
+    },
+    "jwillmer_jekyllDecent": {
+        "result": true
+    },
+    "codeasashu_hcz-jekyll-blog": {
+        "result": true
+    },
+    "pranavrajs_limpid": {
+        "result": true
+    },
+    "mattcouchman_jekyll-resume": {
+        "result": true
+    },
+    "thinker3197_ink": {
+        "result": true
+    },
+    "billyfish152_Renge": {
+        "result": true
+    },
+    "Jack614_Jalpc-A": {
+        "result": true
+    },
+    "sharu725_slides": {
+        "result": true
+    },
+    "sergiokopplin_violet": {
+        "result": true
+    },
+    "nikrich_jekyll-wing-template": {
+        "result": true
+    },
+    "AkshayAgarwal007_Jekyll-Mono": {
+        "result": true
+    },
+    "bk2dcradle_researcher": {
+        "result": true
+    },
+    "ferrolho_jekyll-theme-libretto": {
+        "result": true
+    },
+    "newbiettn_zebra": {
+        "result": true
+    },
+    "ExchangeRate-API_rlstevenson-jekyll-theme": {
+        "result": true
+    },
+    "luminousrubyist_airspace-jekyll": {
+        "result": true
+    },
+    "victorvoid_space-jekyll-template": {
+        "result": true
+    },
+    "jarrekk_Jalpc": {
         "result": true
     }
 }
