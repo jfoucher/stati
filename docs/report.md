@@ -4,7 +4,11 @@ title: Theme building report
 
 # Theme build report
 
-##Successes 😁
+{% assign total_themes = site.data.success.size | plus: site.data.fail.size %}
+
+Stati successfully generated **{{site.data.success | size}}** themes out of **{{total_themes}}** total different themes.
+
+## Successes 😁
 
 Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthemes.org/) successfully: 
 
@@ -13,7 +17,7 @@ Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthe
 
 {% endif %}{% endfor %}
 
-##Failures 😭
+## Failures 😭
 
 But Stati failed to generate the following sites:
 {% for theme in site.data.fail %}{% assign names = theme[0] | split:"_" %}
