@@ -139,5 +139,142 @@
     },
     "st4ple_solid-jekyll": {
         "result": true
+    },
+    "dirkfabisch_mediator": {
+        "result": true
+    },
+    "mmistakes_skinny-bones-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin sitemap is not available",
+            "",
+            "         Sorry, the plugin gist is not available",
+            "",
+            "         Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
+            "  Reference DEFAULT_EN     # use English translation for en_US does not exist at line 14 (near <<: *DEFAULT_EN     # use English tr",
+            "  anslation for en_US).",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "ellekasai_shiori": {
+        "result": true
+    },
+    "gayanvirajith_harmony": {
+        "result": true
+    },
+    "niklasbuschmann_contrast": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag feed_meta",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "t413_SinglePaged": {
+        "result": true
+    },
+    "IronSummitMedia_startbootstrap-clean-blog-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag feed_meta",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "swcool_landing-page-theme": {
+        "result": true
+    },
+    "railsr_autm-rb": {
+        "result": true
+    },
+    "sparanoid_almace-scaffolding": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin last-modified-at is not available",
+            "",
+            "         Sorry, the plugin match_regex is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file post not found in layout folder _layouts/ for post Upgrading Guide: v1.1.0",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "pasindud_jekyll-masonry": {
+        "result": true
+    },
+    "thephuse_strange_case": {
+        "result": true
+    },
+    "open-start_opentheme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
+            "  Unable to parse at line 4 (near   about: An Embedded Tweet brings brings the best content created on Twitter into your article or w",
+            "  ebsite.).",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "yulijia_freshman21": {
+        "result": true
+    },
+    "meliodus_uno-dbyll": {
+        "result": true
+    },
+    "drvy_minimal-block": {
+        "result": true
+    },
+    "excentris_compass": {
+        "result": true
     }
 }
