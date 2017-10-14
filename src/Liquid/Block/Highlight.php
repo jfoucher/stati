@@ -46,6 +46,5 @@ class Highlight extends AbstractBlock
         } catch (RuntimeException $err) {
             return $pygments->highlight(implode('', $texts), null, 'html', $options);
         }
-
     }
 }

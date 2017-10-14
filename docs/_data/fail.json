@@ -1,136 +1,82 @@
 {
-    "muan_scribble": {
-        "result": true
-    },
-    "mattvh_solar-theme-jekyll": {
-        "result": true
-    },
-    "holman_left": {
-        "result": true
-    },
-    "jasoncostello_slate": {
-        "result": true
-    },
-    "mmistakes_so-simple-theme": {
-        "result": true
-    },
-    "coletownsend_balzac-for-jekyll": {
-        "result": true
-    },
-    "swanson_lagom": {
-        "result": true
-    },
-    "mmistakes_hpstr-jekyll-theme": {
-        "result": true
-    },
-    "dbtek_dbyll": {
-        "result": true
-    },
-    "tybenz_exemplar": {
-        "result": true
-    },
-    "rosario_kasper": {
-        "result": true
-    },
-    "pranavrajs_swift": {
-        "result": true
-    },
-    "the-development_flex": {
-        "result": true
-    },
-    "mondss_simplygrey-jekyll": {
+    "Simpleyyt_jekyll-simpleyyt": {
         "result": false,
-        "error": []
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\NotFoundException]",
+            "  File not found: /Users/jonathan/Sites/stati/stati/scripts/Simpleyyt_jekyll-simpleyyt/_includes/JB/setup.html",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     },
-    "arnp_herring-cove": {
-        "result": true
+    "mmistakes_skinny-bones-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin sitemap is not available",
+            "",
+            "         Sorry, the plugin gist is not available",
+            "",
+            "         Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
+            "  Reference DEFAULT_EN     # use English translation for en_US does not exist at line 14 (near <<: *DEFAULT_EN     # use English tr",
+            "  anslation for en_US).",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     },
-    "nadjetey_redcup": {
-        "result": true
+    "niklasbuschmann_contrast": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag feed_meta",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     },
-    "camporez_Thinny": {
-        "result": true
-    },
-    "mx3m_hikari-for-Jekyll": {
-        "result": true
-    },
-    "aigarsdz_brume": {
-        "result": true
-    },
-    "nadjetey_wangana": {
-        "result": true
-    },
-    "berkoz_gereksiz": {
-        "result": true
-    },
-    "pietromenna_jekyll-architect-theme": {
-        "result": true
-    },
-    "penibelst_jekyll-noita": {
-        "result": true
-    },
-    "tybenz_otter-pop": {
-        "result": true
-    },
-    "anandubajith_block-log": {
-        "result": true
-    },
-    "nadjetey_GridGallery": {
-        "result": true
-    },
-    "vinitkumar_white-paper": {
-        "result": true
-    },
-    "jeromelachaud_freelancer-theme": {
-        "result": true
-    },
-    "mattgraham_Leap-Day": {
-        "result": true
-    },
-    "mattgraham_midnight": {
-        "result": true
-    },
-    "olakara_JekyllMetro": {
-        "result": true
-    },
-    "johnotander_pixyll": {
-        "result": true
-    },
-    "rowanoulton_travelog-theme": {
-        "result": true
-    },
-    "y7kim_agency-jekyll-theme": {
-        "result": true
-    },
-    "st4ple_solid-jekyll": {
-        "result": true
-    },
-    "dirkfabisch_mediator": {
-        "result": true
-    },
-    "ellekasai_shiori": {
-        "result": true
-    },
-    "gayanvirajith_harmony": {
-        "result": true
-    },
-    "t413_SinglePaged": {
-        "result": true
-    },
-    "swcool_landing-page-theme": {
-        "result": true
-    },
-    "railsr_autm-rb": {
-        "result": true
-    },
-    "sparanoid_almace-scaffolding": {
-        "result": true
-    },
-    "pasindud_jekyll-masonry": {
-        "result": true
-    },
-    "thephuse_strange_case": {
-        "result": true
+    "IronSummitMedia_startbootstrap-clean-blog-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin feed is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag feed_meta",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     },
     "open-start_opentheme": {
         "result": false,
@@ -149,21 +95,6 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
-    },
-    "yulijia_freshman21": {
-        "result": true
-    },
-    "meliodus_uno-dbyll": {
-        "result": true
-    },
-    "drvy_minimal-block": {
-        "result": true
-    },
-    "excentris_compass": {
-        "result": true
-    },
-    "gayanvirajith_gaya": {
-        "result": true
     },
     "SalGnt_Travelogue": {
         "result": false,
@@ -186,27 +117,6 @@
             ""
         ]
     },
-    "ellekasai_resumecards": {
-        "result": true
-    },
-    "brianmaierjr_long-haul": {
-        "result": true
-    },
-    "itsrifat_rifyll": {
-        "result": true
-    },
-    "jeromelachaud_grayscale-theme": {
-        "result": true
-    },
-    "prio101_metaphor-jekyll": {
-        "result": true
-    },
-    "ariestiyansyah_naringu": {
-        "result": true
-    },
-    "clayh53_tufte-jekyll": {
-        "result": true
-    },
     "Phlow_feeling-responsive": {
         "result": false,
         "error": [
@@ -228,21 +138,6 @@
             ""
         ]
     },
-    "KingFelix_emerald": {
-        "result": true
-    },
-    "kevit_devaid-jekyll-theme": {
-        "result": true
-    },
-    "mushishi78_one-page-wonder-jekyll": {
-        "result": true
-    },
-    "jacobtomlinson_carte-noire": {
-        "result": true
-    },
-    "smallmuou_Jekyll-Pithy": {
-        "result": true
-    },
     "DigitalMindCH_twister": {
         "result": false,
         "error": [
@@ -260,36 +155,6 @@
             ""
         ]
     },
-    "karloespiritu_BlackDoc": {
-        "result": true
-    },
-    "diezcami_polar-bear-theme": {
-        "result": true
-    },
-    "Gaohaoyang_gaohaoyang.github.io": {
-        "result": true
-    },
-    "minhhuy150894_minhhuy150894.github.io": {
-        "result": true
-    },
-    "nickbalestra_kactus": {
-        "result": true
-    },
-    "diezcami_arctic-fox-theme": {
-        "result": true
-    },
-    "enterthecrucible_materialized_jekyll_theme": {
-        "result": true
-    },
-    "DigitalMindCH_docster-jekyll-theme": {
-        "result": true
-    },
-    "bogoli_-folio": {
-        "result": true
-    },
-    "gdg-managua_jekyll-mdl": {
-        "result": true
-    },
     "streetturtle_jekyll-clean-dark": {
         "result": false,
         "error": [
@@ -306,30 +171,6 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
-    },
-    "dubuyuye_blog": {
-        "result": true
-    },
-    "steinvc_holo-alfa": {
-        "result": true
-    },
-    "bencentra_centrarium": {
-        "result": true
-    },
-    "vincentchan_mickey": {
-        "result": true
-    },
-    "willianjusten_will-jekyll-template": {
-        "result": true
-    },
-    "CloudCannon_Alpha-Jekyll-Theme": {
-        "result": true
-    },
-    "CloudCannon_Arcana-Jekyll-Theme": {
-        "result": true
-    },
-    "CloudCannon_Aviator-Jekyll-Theme": {
-        "result": true
     },
     "daattali_beautiful-jekyll": {
         "result": false,
@@ -378,40 +219,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.3673    3732136  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.3694    3754784  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.3701    3762704  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.3716    3801696  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.3717    3806024  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.3717    3806024  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.3972    3957072  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4007    3983048  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4007    3983048  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4014    3983792  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4068    4012104  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.4068    4012144  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4070    4014576  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.4070    4014632  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4097    4018752  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4097    4018752  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4097    4018752  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4097    4018752  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.4097    4018752  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4097    4018752  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4098    4019160  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.4099    4019160  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.4099    4019936  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4099    4020344  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4099    4020344  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.1257    2798144  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.1265    2802376  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.1312    3065832  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.1331    3104824  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.1332    3109152  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.1332    3109152  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1635    3260376  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1693    3286352  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.1693    3286352  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1706    3287096  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1781    3380944  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.1781    3380984  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1783    3383416  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.1784    3383472  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1824    3387592  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.1824    3387592  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1824    3387592  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1824    3387592  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.1824    3387592  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1824    3387592  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1826    3388000  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.1826    3388000  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.1826    3388776  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.1826    3389184  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.1826    3389184  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -453,40 +294,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.3673    3732136  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.3694    3754784  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.3701    3762704  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.3716    3801696  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.3717    3806024  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.3717    3806024  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.3972    3957072  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4007    3983048  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4007    3983048  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4014    3983792  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4068    4012104  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.4068    4012144  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4070    4014576  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.4070    4014632  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4097    4018752  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4097    4018752  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4103    4018848  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4103    4018848  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.4103    4018848  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4103    4018848  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4105    4019256  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.4105    4019256  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.4105    4020032  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4105    4020440  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4105    4020440  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.1257    2798144  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.1265    2802376  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.1312    3065832  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.1331    3104824  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.1332    3109152  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.1332    3109152  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1635    3260376  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1693    3286352  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.1693    3286352  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1706    3287096  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1781    3380944  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.1781    3380984  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1783    3383416  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.1784    3383472  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1824    3387592  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.1824    3387592  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1837    3387688  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1837    3387688  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.1837    3387688  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.1837    3387688  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.1839    3388096  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.1839    3388096  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.1840    3388872  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.1840    3389280  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.1840    3389280  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -528,40 +369,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.4124    4035248  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.4151    4041120  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.4264    4100472  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.4274    4103904  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.4275    4108232  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.4275    4108232  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4513    4189168  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4547    4215144  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4547    4215144  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4554    4215888  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4602    4233680  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.4602    4233720  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4604    4236152  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.4604    4236208  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4634    4240328  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4634    4240328  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4634    4240328  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4634    4240328  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.4634    4240328  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4634    4240328  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4636    4240736  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.4636    4240736  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.4636    4241512  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4636    4241920  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4636    4241920  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.1859    3404088  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.1867    3405104  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.2005    3464456  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.2016    3467888  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.2017    3472216  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.2017    3472216  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2258    3553152  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2301    3579128  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2302    3579128  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2310    3579872  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2359    3597664  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.2359    3597704  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2361    3600136  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.2361    3600192  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2387    3604312  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2387    3604312  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2387    3604312  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2387    3604312  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.2387    3604312  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2387    3604312  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2388    3604720  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.2388    3604720  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.2388    3605496  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2388    3605904  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2388    3605904  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -603,40 +444,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.4124    4035248  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.4151    4041120  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.4264    4100472  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.4274    4103904  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.4275    4108232  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.4275    4108232  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4513    4189168  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4547    4215144  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4547    4215144  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4554    4215888  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4602    4233680  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.4602    4233720  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4604    4236152  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.4604    4236208  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4634    4240328  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.4634    4240328  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4639    4240392  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4639    4240392  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.4639    4240392  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.4640    4240392  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.4641    4240800  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.4641    4240800  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.4641    4241576  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4641    4241984  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.4641    4241984  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.1859    3404088  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.1867    3405104  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.2005    3464456  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.2016    3467888  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.2017    3472216  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.2017    3472216  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2258    3553152  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2301    3579128  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2302    3579128  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2310    3579872  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2359    3597664  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.2359    3597704  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2361    3600136  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.2361    3600192  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2387    3604312  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2387    3604312  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2393    3604376  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2393    3604376  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.2393    3604376  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2393    3604376  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2394    3604784  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.2394    3604784  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.2394    3605560  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2394    3605968  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2394    3605968  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -678,40 +519,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.4889    4092264  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.4947    4098056  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.5083    4155376  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.5095    4158808  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.5096    4163136  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.5096    4163136  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5346    4244104  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5378    4270080  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.5378    4270080  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5385    4270824  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5432    4288616  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.5432    4288656  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5434    4291088  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.5434    4291144  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5462    4295264  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.5462    4295264  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5462    4295264  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5462    4295264  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.5462    4295264  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5462    4295264  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5464    4295672  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.5464    4295672  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.5464    4296448  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.5464    4296856  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.5464    4296856  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.2425    3445104  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.2432    3445752  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.2546    3503072  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.2559    3506504  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.2560    3510832  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.2560    3510832  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2843    3591800  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2875    3617776  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2876    3617776  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2882    3618520  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2929    3636312  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.2929    3636352  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2931    3638784  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.2931    3638840  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2965    3642960  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2965    3642960  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2965    3642960  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2965    3642960  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.2965    3642960  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2965    3642960  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2967    3643368  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.2967    3643368  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.2967    3644144  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2967    3644552  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2967    3644552  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -753,40 +594,40 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.3672    3732136   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
-            "    0.4889    4092264  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
-            "    0.4947    4098056  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.5083    4155376  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.5095    4158808  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.5096    4163136  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.5096    4163136  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5346    4244104  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5378    4270080  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.5378    4270080  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5385    4270824  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5432    4288616  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.5432    4288656  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5434    4291088  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.5434    4291144  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5462    4295264  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.5462    4295264  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5468    4295328  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5468    4295328  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.5468    4295328  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.5468    4295328  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.5469    4295736  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.5469    4295736  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.5469    4296512  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.5470    4296920  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.5470    4296920  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.1256    2798144   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    0.2425    3445104  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    0.2432    3445752  11. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.2546    3503072  12. Stati\\Renderer\\PageRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.2559    3506504  13. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.2560    3510832  14. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.2560    3510832  15. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2843    3591800  16. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2875    3617776  17. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2876    3617776  18. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2882    3618520  19. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2929    3636312  20. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.2929    3636352  21. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2931    3638784  22. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.2931    3638840  23. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2965    3642960  24. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.2965    3642960  25. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2973    3643024  26. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2973    3643024  27. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.2973    3643024  28. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.2973    3643024  29. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.2975    3643432  30. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.2975    3643432  31. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.2975    3644208  32. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2975    3644616  33. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.2975    3644616  34. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -832,44 +673,44 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.5485    3962832   9. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch(???, ???) /Users/jonathan/Sites/stati/stati/src/Site/Site.php:182",
-            "    0.5486    3963208  10. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:44",
-            "    0.5486    3963208  11. call_user_func:{/Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212}(???, ???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
-            "    0.5486    3963208  12. Stati\\Plugin\\Paginate\\Paginate->onAfterSiteRender(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
-            "    0.5489    3978328  13. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderAll() /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Paginate.php:56",
-            "    0.5552    4092184  14. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->render(???) /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Renderer/PaginateRenderer.php:48",
-            "    0.5775    4102960  15. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.5884    4169600  16. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.5895    4177168  17. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.5896    4181496  18. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.5896    4181496  19. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6123    4262424  20. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6158    4288400  21. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.6158    4288400  22. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6165    4289144  23. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6215    4306936  24. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.6215    4306976  25. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6217    4309408  26. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.6217    4309464  27. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6245    4313584  28. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.6245    4313584  29. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6245    4313584  30. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6245    4313584  31. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.6245    4313584  32. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6245    4313584  33. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6246    4313992  34. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.6246    4313992  35. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.6246    4314768  36. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.6246    4315176  37. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.6246    4315176  38. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.2993    3310528   9. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch(???, ???) /Users/jonathan/Sites/stati/stati/src/Site/Site.php:182",
+            "    0.2993    3310904  10. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:44",
+            "    0.2993    3310904  11. call_user_func:{/Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212}(???, ???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
+            "    0.2993    3310904  12. Stati\\Plugin\\Paginate\\Paginate->onAfterSiteRender(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
+            "    0.2997    3317832  13. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderAll() /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Paginate.php:56",
+            "    0.3061    3366184  14. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->render(???) /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Renderer/PaginateRenderer.php:48",
+            "    0.3346    3377560  15. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.3467    3444200  16. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.3482    3451768  17. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.3483    3456096  18. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.3483    3456096  19. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3733    3537024  20. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3770    3563000  21. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.3770    3563000  22. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3780    3563744  23. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3829    3581536  24. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.3829    3581576  25. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3831    3584008  26. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.3831    3584064  27. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3859    3588184  28. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.3859    3588184  29. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3859    3588184  30. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3859    3588184  31. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.3859    3588184  32. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3859    3588184  33. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3860    3588592  34. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.3860    3588592  35. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.3860    3589368  36. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.3860    3589776  37. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.3860    3589776  38. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "PHP Warning:  explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "PHP Stack trace:",
@@ -915,44 +756,44 @@
             "Warning: explode() expects parameter 2 to be string, array given in /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php on line 548",
             "",
             "Call Stack:",
-            "    0.0016     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
-            "    0.0126    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
-            "    0.0280    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
-            "    0.0283    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
-            "    0.0283    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
-            "    0.0294    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
-            "    0.0360    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
-            "    0.1285    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
-            "    0.5485    3962832   9. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch(???, ???) /Users/jonathan/Sites/stati/stati/src/Site/Site.php:182",
-            "    0.5486    3963208  10. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:44",
-            "    0.5486    3963208  11. call_user_func:{/Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212}(???, ???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
-            "    0.5486    3963208  12. Stati\\Plugin\\Paginate\\Paginate->onAfterSiteRender(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
-            "    0.5489    3978328  13. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderAll() /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Paginate.php:56",
-            "    0.5552    4092184  14. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->render(???) /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Renderer/PaginateRenderer.php:48",
-            "    0.5775    4102960  15. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
-            "    0.5884    4169600  16. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
-            "    0.5895    4177168  17. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
-            "    0.5896    4181496  18. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
-            "    0.5896    4181496  19. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6123    4262424  20. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6158    4288400  21. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.6158    4288400  22. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6165    4289144  23. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6215    4306936  24. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
-            "    0.6215    4306976  25. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6217    4309408  26. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
-            "    0.6217    4309464  27. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6245    4313584  28. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
-            "    0.6245    4313584  29. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6251    4313648  30. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6251    4313648  31. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
-            "    0.6251    4313648  32. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
-            "    0.6251    4313648  33. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
-            "    0.6252    4314056  34. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
-            "    0.6252    4314056  35. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
-            "    0.6252    4314832  36. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.6252    4315240  37. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
-            "    0.6252    4315240  38. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
+            "    0.0011     358328   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0122    1411440   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0245    1722512   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0248    1722512   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0248    1722512   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0259    1728048   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0347    2035064   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1182    2716280   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.2993    3310528   9. Symfony\\Component\\EventDispatcher\\EventDispatcher->dispatch(???, ???) /Users/jonathan/Sites/stati/stati/src/Site/Site.php:182",
+            "    0.2993    3310904  10. Symfony\\Component\\EventDispatcher\\EventDispatcher->doDispatch(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:44",
+            "    0.2993    3310904  11. call_user_func:{/Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212}(???, ???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
+            "    0.2993    3310904  12. Stati\\Plugin\\Paginate\\Paginate->onAfterSiteRender(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/event-dispatcher/EventDispatcher.php:212",
+            "    0.2997    3317832  13. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderAll() /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Paginate.php:56",
+            "    0.3061    3366184  14. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->render(???) /Users/jonathan/Sites/stati/stati/vendor/stati/paginate/src/Renderer/PaginateRenderer.php:48",
+            "    0.3346    3377560  15. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:86",
+            "    0.3467    3444200  16. Stati\\Plugin\\Paginate\\Renderer\\PaginateRenderer->renderWithLayout(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:133",
+            "    0.3482    3451768  17. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:140",
+            "    0.3483    3456096  18. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    0.3483    3456096  19. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3733    3537024  20. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3770    3563000  21. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.3770    3563000  22. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3780    3563744  23. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3829    3581536  24. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    0.3829    3581576  25. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3831    3584008  26. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    0.3831    3584064  27. Stati\\Liquid\\Tag\\TagInclude->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3859    3588184  28. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Tag/TagInclude.php:192",
+            "    0.3859    3588184  29. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3866    3588248  30. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3866    3588248  31. Liquid\\Tag\\TagCapture->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagCapture.php:66",
+            "    0.3866    3588248  32. Liquid\\Tag\\TagCapture->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    0.3866    3588248  33. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    0.3868    3588656  34. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    0.3868    3588656  35. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    0.3868    3589432  36. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.3868    3589840  37. Liquid\\StandardFilters::split(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    0.3868    3589840  38. explode(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/StandardFilters.php:548",
             "",
             "",
             "",
@@ -963,93 +804,6 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
-    },
-    "brijeshb42_bitwiser-material": {
-        "result": true
-    },
-    "Wiredcraft_carte": {
-        "result": true
-    },
-    "CloudCannon_DopeTrope-Jekyll-Theme": {
-        "result": true
-    },
-    "drjekyllthemes_jekyll-bootstrap-theme": {
-        "result": true
-    },
-    "drjekyllthemes_jekyll-book-theme": {
-        "result": true
-    },
-    "drjekyllthemes_jekyll-minimal-theme": {
-        "result": true
-    },
-    "fffabs_estivo": {
-        "result": true
-    },
-    "CloudCannon_Horizons-Jekyll-Theme": {
-        "result": true
-    },
-    "poole_hyde": {
-        "result": true
-    },
-    "CloudCannon_Ion-Jekyll-Theme": {
-        "result": true
-    },
-    "barryclark_jekyll-now": {
-        "result": true
-    },
-    "poole_lanyon": {
-        "result": true
-    },
-    "CloudCannon_Linear-Jekyll-Theme": {
-        "result": true
-    },
-    "orderedlist_minimal": {
-        "result": true
-    },
-    "orderedlist_modernist": {
-        "result": true
-    },
-    "planetjekyll_jekyll-starter-theme": {
-        "result": true
-    },
-    "poole_poole": {
-        "result": true
-    },
-    "CloudCannon_Read-Only-Jekyll-Theme": {
-        "result": true
-    },
-    "jglovier_resume-template": {
-        "result": true
-    },
-    "CloudCannon_Strata-Jekyll-Theme": {
-        "result": true
-    },
-    "CloudCannon_Twenty-Jekyll-Theme": {
-        "result": true
-    },
-    "mushishi78_jekyll-video": {
-        "result": true
-    },
-    "kkninjae_book": {
-        "result": true
-    },
-    "renyuanz_leonids": {
-        "result": true
-    },
-    "guovz_pithy": {
-        "result": true
-    },
-    "volny_stylish-portfolio-jekyll": {
-        "result": true
-    },
-    "heiswayi_the-plain": {
-        "result": true
-    },
-    "kronik3r_daktilo": {
-        "result": true
-    },
-    "gfjaru_Kiko": {
-        "result": true
     },
     "dbtek_paper": {
         "result": false,
@@ -1070,15 +824,6 @@
             ""
         ]
     },
-    "volny_creative-theme-jekyll": {
-        "result": true
-    },
-    "inded_Jekyll_modern-blog": {
-        "result": true
-    },
-    "DigitalMindCH_gridster-jekyll-theme": {
-        "result": true
-    },
     "UniFreak_unifreak.github.io": {
         "result": false,
         "error": [
@@ -1096,27 +841,6 @@
             ""
         ]
     },
-    "knaman2609_clean": {
-        "result": true
-    },
-    "biomadeira_jasper": {
-        "result": true
-    },
-    "biomadeira_vitae": {
-        "result": true
-    },
-    "biomadeira_sustain": {
-        "result": true
-    },
-    "obaez_dentistsmile": {
-        "result": true
-    },
-    "chalatz_yellowblue": {
-        "result": true
-    },
-    "vormwald_joon": {
-        "result": true
-    },
     "nandomoreirame_nandomoreira-jekyll-theme": {
         "result": false,
         "error": [
@@ -1133,258 +857,5 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
-    },
-    "nandomoreirame_zetsu": {
-        "result": true
-    },
-    "nandomoreirame_lora": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\ParseException]",
-            "  Unknown tag strip",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "KazumaSATO_Siera": {
-        "result": true
-    },
-    "yonojoy_YAX-Coming-soon-Jekyll-Template": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
-            "  Reference DEFAULT_EN     # use English translation for en_US does not exist at line 14 (near <<: *DEFAULT_EN     # use English tr",
-            "  anslation for en_US).",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "nandomoreirame_mug": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\ParseException]",
-            "  Unknown tag strip",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "laixintao_Princess-Diaries": {
-        "result": true
-    },
-    "madforjekyll_madforjekyll.github.io": {
-        "result": true
-    },
-    "alexcarpenter_butane-jekyll-theme": {
-        "result": true
-    },
-    "limingyang2012_limingyang2012.github.io": {
-        "result": true
-    },
-    "rowanoulton_galileo-theme": {
-        "result": true
-    },
-    "nandomoreirame_end2end": {
-        "result": true
-    },
-    "nandomoreirame_dotX": {
-        "result": true
-    },
-    "lixizhi_lixizhi.github.io": {
-        "result": true
-    },
-    "tigefa4u_jekmdl": {
-        "result": true
-    },
-    "nandomoreirame_simplest": {
-        "result": true
-    },
-    "fareez-ahamed_millikyl": {
-        "result": true
-    },
-    "bawn92_sleek_blog": {
-        "result": true
-    },
-    "ninapetrop_Little-Big-Blue": {
-        "result": true
-    },
-    "bk2dcradle_Chaplin": {
-        "result": true
-    },
-    "alexcarpenter_material-jekyll-theme": {
-        "result": true
-    },
-    "joshgerdes_jekyll-uno": {
-        "result": true
-    },
-    "adueck_good-clean-read": {
-        "result": true
-    },
-    "svmiller_steve-ngvb-jekyll-template": {
-        "result": true
-    },
-    "sergiokopplin_indigo": {
-        "result": true
-    },
-    "elotroalex_ed": {
-        "result": true
-    },
-    "alexcarpenter_library-jekyll-theme": {
-        "result": true
-    },
-    "ddbullfrog_resumecard": {
-        "result": true
-    },
-    "muhajirframe_busterni-jekyll-theme": {
-        "result": true
-    },
-    "adueck_cayman-blog": {
-        "result": true
-    },
-    "boyney123_evento": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [RuntimeException]",
-            "  Error: no lexer for alias 'markdown' found",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "laobubu_jekyll-theme-EasyBook": {
-        "result": true
-    },
-    "hoffli_saigon-jekyll-theme": {
-        "result": true
-    },
-    "bk2dcradle_accent": {
-        "result": true
-    },
-    "gchauras_much-worse-jekyll-theme": {
-        "result": true
-    },
-    "arkadianriver_spectral": {
-        "result": true
-    },
-    "dashingcode_front-cover": {
-        "result": true
-    },
-    "jamigibbs_phantom": {
-        "result": true
-    },
-    "kuntoaji_dekyll": {
-        "result": false,
-        "error": [
-            "",
-            " [ERROR] Sorry, the plugin sitemap is not available",
-            "",
-            "         Sorry, the plugin redirect-from is not available",
-            "",
-            "         Sorry, the plugin seo is not available",
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [Liquid\\Exception\\ParseException]",
-            "  Unknown tag seo",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "dikiaap_mangan": {
-        "result": true
-    },
-    "ninapetrop_Artist-Theme": {
-        "result": true
-    },
-    "dyndna_lanyon-plus": {
-        "result": true
-    },
-    "midzer_urban-theme": {
-        "result": true
-    },
-    "qwtel_hydejack": {
-        "result": true
-    },
-    "airrayagroupwebdesign_sciblog": {
-        "result": true
-    },
-    "TaylanTatli_Ramme": {
-        "result": true
-    },
-    "SpaceG_glas": {
-        "result": true
-    },
-    "SpaceG_library": {
-        "result": true
-    },
-    "tnguyen_blueface": {
-        "result": true
-    },
-    "alidcastano_Utterson": {
-        "result": true
-    },
-    "itisbenjamin_Nice_Blog": {
-        "result": false,
-        "error": [
-            "",
-            "Generating site...",
-            "==================",
-            "",
-            "",
-            "",
-            "  [RuntimeException]",
-            "  Error: no lexer for alias 'md' found",
-            "",
-            "",
-            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
-            ""
-        ]
-    },
-    "siawyoung_immaculate": {
-        "result": true
-    },
-    "nikrich_jekyll-slender-template": {
-        "result": true
-    },
-    "hemangsk_Gravity": {
-        "result": true
-    },
-    "pietromenna_jekyll-cayman-theme": {
-        "result": true
     }
 }
