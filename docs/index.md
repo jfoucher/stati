@@ -70,5 +70,8 @@ The plugin architecture, based on the Symfony Event dispatcher, allows plugin au
 
 Please check the [plugin documentation](plugins.md)
 
+## Status
+
 [![Build Status](https://travis-ci.org/jfoucher/stati.svg?branch=master)](https://travis-ci.org/jfoucher/stati)
 
+I run Stati on themes I can find, mostly from [jekyllthemes.org](https://jekyllthemes.org) you can view the results on the [Report]({% link report.md %}) page
