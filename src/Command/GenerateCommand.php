@@ -221,7 +221,7 @@ class GenerateCommand extends Command
                 $this->site->getDispatcher()->addSubscriber($loadedPlugin);
                 $loadedPlugins[] = $loadedPlugin;
             } else {
-                $errors[] = 'Sorry, the plugin ' . $requestedPlugin . ' is not available';
+                $errors[] = 'Sorry, the plugin ' . $requestedPlugin . ' could not be loaded';
                 continue;
             }
         }
