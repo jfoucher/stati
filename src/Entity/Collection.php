@@ -69,6 +69,18 @@ class Collection
     }
 
     /**
+     * @param string
+     * @param mixed $item
+     * @return mixed
+     */
+    public function getConfigItem($item)
+    {
+        if (isset($this->config[$item])) {
+            return $this->config[$item];
+        };
+    }
+
+    /**
      * @param array $config
      */
     public function setConfig($config)

@@ -34,7 +34,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         $this->site = new Site([
             'permalink' => '/:year/',
             'includes_dir' => './',
-            'layouts_dir' => __DIR__ . '/fixtures/'
+            'layouts_dir' => 'tests/fixtures'
         ]);
         $this->root = vfsStream::setup('/');
         vfsStream::copyFromFileSystem(__DIR__ . '/fixtures/', $this->root);

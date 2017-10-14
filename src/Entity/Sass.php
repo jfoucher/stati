@@ -34,9 +34,6 @@ class Sass extends Page
             return $this->content;
         }
 
-
-
-
         $content = $this->file->getContents();
         $cacheDir = $this->site->getConfig()['cache_dir'] . '/sass_cache';
 
@@ -50,6 +47,10 @@ class Sass extends Page
 
         $sassDir = ($this->site->sass && isset($this->site->sass['sass_dir'])) ? $this->site->sass['sass_dir'] : './_sass/';
         $sassStyle = ($this->site->sass && isset($this->site->sass['style'])) ? $this->site->sass['style'] : 'nested';
+
+        if (strpos('compressed', $sassStyle) !== false) {
+            $sassStyle = 'compressed';
+        }
 
         $parser = new ContentParser();
         $contentPart = $parser::parse($content);

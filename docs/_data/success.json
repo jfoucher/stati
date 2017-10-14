@@ -422,5 +422,828 @@
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
             ""
         ]
+    },
+    "bogoli_-folio": {
+        "result": true
+    },
+    "gdg-managua_jekyll-mdl": {
+        "result": true
+    },
+    "streetturtle_jekyll-clean-dark": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  Error: no lexer for alias 'yml' found",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "dubuyuye_blog": {
+        "result": true
+    },
+    "steinvc_holo-alfa": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Warning:  htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "PHP Stack trace:",
+            "PHP   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "PHP   2. Symfony\\Component\\Console\\Application->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "PHP   3. Symfony\\Component\\Console\\Application->doRun($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "PHP   4. Symfony\\Component\\Console\\Application->doRunCommand($command = *uninitialized*, $input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "PHP   5. Stati\\Command\\GenerateCommand->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "PHP   6. Stati\\Command\\GenerateCommand->execute($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "PHP   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "PHP   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "PHP   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "PHP  10. Stati\\Renderer\\PageRenderer->render($doc = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "PHP  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "PHP  12. Stati\\Liquid\\Template\\Template->render($assigns = *uninitialized*, $filters = *uninitialized*, $registers = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "PHP  13. Liquid\\Document->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "PHP  14. Liquid\\Document->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "PHP  15. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  16. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "PHP  17. Liquid\\Variable->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  18. Liquid\\Context->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "PHP  19. Liquid\\Filterbank->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "PHP  20. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(*uninitialized*, *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  21. Stati\\Liquid\\Filter\\SiteFilter::xml_escape($input = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  22. htmlentities(*uninitialized*) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "Warning: htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "",
+            "Call Stack:",
+            "    0.0012     358312   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0219    1411424   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0391    1722496   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0395    1722496   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0396    1722496   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0412    1728032   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0534    2026424   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1077    2707448   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.9838    3723032   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    1.1184    3918696  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    1.1184    3918696  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "    1.1225    3945200  12. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "    1.1226    3949528  13. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    1.1226    3949528  14. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    1.1229    3949752  15. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1231    3952208  16. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "    1.1231    3952208  17. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1233    3952208  18. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    1.1233    3952208  19. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    1.1233    3952984  20. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1233    3953376  21. Stati\\Liquid\\Filter\\SiteFilter::xml_escape(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1233    3953376  22. htmlentities(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "PHP Warning:  htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "PHP Stack trace:",
+            "PHP   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "PHP   2. Symfony\\Component\\Console\\Application->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "PHP   3. Symfony\\Component\\Console\\Application->doRun($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "PHP   4. Symfony\\Component\\Console\\Application->doRunCommand($command = *uninitialized*, $input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "PHP   5. Stati\\Command\\GenerateCommand->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "PHP   6. Stati\\Command\\GenerateCommand->execute($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "PHP   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "PHP   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "PHP   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "PHP  10. Stati\\Renderer\\PageRenderer->render($doc = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "PHP  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "PHP  12. Stati\\Liquid\\Template\\Template->render($assigns = *uninitialized*, $filters = *uninitialized*, $registers = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "PHP  13. Liquid\\Document->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "PHP  14. Liquid\\Document->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "PHP  15. Liquid\\Tag\\TagFor->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  16. Liquid\\Tag\\TagFor->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "PHP  17. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  18. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "PHP  19. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  20. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "PHP  21. Liquid\\Variable->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  22. Liquid\\Context->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "PHP  23. Liquid\\Filterbank->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "PHP  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(*uninitialized*, *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape($input = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  26. htmlentities(*uninitialized*) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "Warning: htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "",
+            "Call Stack:",
+            "    0.0012     358312   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0219    1411424   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0391    1722496   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0395    1722496   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0396    1722496   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0412    1728032   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0534    2026424   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1077    2707448   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.9838    3723032   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    1.1184    3918696  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    1.1184    3918696  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "    1.1225    3945200  12. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "    1.1226    3949528  13. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    1.1226    3949528  14. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    1.1241    3949920  15. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1244    3952232  16. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    1.1246    3952288  17. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1248    3954720  18. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    1.1248    3954752  19. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1251    3957184  20. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "    1.1251    3957232  21. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1252    3957232  22. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    1.1252    3957232  23. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    1.1253    3958008  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1253    3958400  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1253    3958400  26. htmlentities(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "PHP Warning:  htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "PHP Stack trace:",
+            "PHP   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "PHP   2. Symfony\\Component\\Console\\Application->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "PHP   3. Symfony\\Component\\Console\\Application->doRun($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "PHP   4. Symfony\\Component\\Console\\Application->doRunCommand($command = *uninitialized*, $input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "PHP   5. Stati\\Command\\GenerateCommand->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "PHP   6. Stati\\Command\\GenerateCommand->execute($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "PHP   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "PHP   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "PHP   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "PHP  10. Stati\\Renderer\\PageRenderer->render($doc = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "PHP  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "PHP  12. Stati\\Liquid\\Template\\Template->render($assigns = *uninitialized*, $filters = *uninitialized*, $registers = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "PHP  13. Liquid\\Document->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "PHP  14. Liquid\\Document->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "PHP  15. Liquid\\Tag\\TagFor->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  16. Liquid\\Tag\\TagFor->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "PHP  17. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  18. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "PHP  19. Liquid\\Variable->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  20. Liquid\\Context->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "PHP  21. Liquid\\Filterbank->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "PHP  22. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(*uninitialized*, *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  23. Stati\\Liquid\\Filter\\SiteFilter::xml_escape($input = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  24. htmlentities(*uninitialized*) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "Warning: htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "",
+            "Call Stack:",
+            "    0.0012     358312   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0219    1411424   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0391    1722496   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0395    1722496   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0396    1722496   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0412    1728032   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0534    2026424   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1077    2707448   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.9838    3723032   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    1.1184    3918696  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    1.1184    3918696  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "    1.1225    3945200  12. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "    1.1226    3949528  13. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    1.1226    3949528  14. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    1.1241    3949920  15. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1275    3952936  16. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    1.1277    3953016  17. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1279    3955472  18. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "    1.1279    3955520  19. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1281    3955520  20. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    1.1281    3955520  21. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    1.1281    3956296  22. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1281    3956688  23. Stati\\Liquid\\Filter\\SiteFilter::xml_escape(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1281    3956688  24. htmlentities(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "PHP Warning:  htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "PHP Stack trace:",
+            "PHP   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "PHP   2. Symfony\\Component\\Console\\Application->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "PHP   3. Symfony\\Component\\Console\\Application->doRun($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "PHP   4. Symfony\\Component\\Console\\Application->doRunCommand($command = *uninitialized*, $input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "PHP   5. Stati\\Command\\GenerateCommand->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "PHP   6. Stati\\Command\\GenerateCommand->execute($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "PHP   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "PHP   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "PHP   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "PHP  10. Stati\\Renderer\\PageRenderer->render($doc = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "PHP  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "PHP  12. Stati\\Liquid\\Template\\Template->render($assigns = *uninitialized*, $filters = *uninitialized*, $registers = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "PHP  13. Liquid\\Document->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "PHP  14. Liquid\\Document->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "PHP  15. Liquid\\Tag\\TagFor->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  16. Liquid\\Tag\\TagFor->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "PHP  17. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  18. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "PHP  19. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  20. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "PHP  21. Liquid\\Variable->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  22. Liquid\\Context->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "PHP  23. Liquid\\Filterbank->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "PHP  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(*uninitialized*, *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape($input = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  26. htmlentities(*uninitialized*) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "Warning: htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "",
+            "Call Stack:",
+            "    0.0012     358312   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0219    1411424   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0391    1722496   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0395    1722496   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0396    1722496   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0412    1728032   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0534    2026424   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1077    2707448   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.9838    3723032   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    1.1184    3918696  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    1.1184    3918696  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "    1.1225    3945200  12. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "    1.1226    3949528  13. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    1.1226    3949528  14. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    1.1241    3949920  15. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1303    3953960  16. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    1.1305    3954040  17. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1307    3956496  18. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    1.1307    3956528  19. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1310    3958984  20. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "    1.1310    3959032  21. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1312    3959032  22. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    1.1312    3959032  23. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    1.1312    3959808  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1312    3960200  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1312    3960200  26. htmlentities(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "PHP Warning:  htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "PHP Stack trace:",
+            "PHP   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "PHP   2. Symfony\\Component\\Console\\Application->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "PHP   3. Symfony\\Component\\Console\\Application->doRun($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "PHP   4. Symfony\\Component\\Console\\Application->doRunCommand($command = *uninitialized*, $input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "PHP   5. Stati\\Command\\GenerateCommand->run($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "PHP   6. Stati\\Command\\GenerateCommand->execute($input = *uninitialized*, $output = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "PHP   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "PHP   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "PHP   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "PHP  10. Stati\\Renderer\\PageRenderer->render($doc = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "PHP  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "PHP  12. Stati\\Liquid\\Template\\Template->render($assigns = *uninitialized*, $filters = *uninitialized*, $registers = *uninitialized*) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "PHP  13. Liquid\\Document->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "PHP  14. Liquid\\Document->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "PHP  15. Liquid\\Tag\\TagFor->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  16. Liquid\\Tag\\TagFor->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "PHP  17. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  18. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "PHP  19. Liquid\\Tag\\TagIf->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  20. Liquid\\Tag\\TagIf->renderAll($list = *uninitialized*, $context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "PHP  21. Liquid\\Variable->render($context = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "PHP  22. Liquid\\Context->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "PHP  23. Liquid\\Filterbank->invoke($name = *uninitialized*, $value = *uninitialized*, $args = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "PHP  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(*uninitialized*, *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape($input = *uninitialized*) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "PHP  26. htmlentities(*uninitialized*) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "Warning: htmlentities() expects parameter 1 to be string, array given in /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php on line 28",
+            "",
+            "Call Stack:",
+            "    0.0012     358312   1. {main}() /Users/jonathan/Sites/stati/stati/bin/stati:0",
+            "    0.0219    1411424   2. Symfony\\Component\\Console\\Application->run(???, ???) /Users/jonathan/Sites/stati/stati/bin/stati:14",
+            "    0.0391    1722496   3. Symfony\\Component\\Console\\Application->doRun(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:125",
+            "    0.0395    1722496   4. Symfony\\Component\\Console\\Application->doRunCommand(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:223",
+            "    0.0396    1722496   5. Stati\\Command\\GenerateCommand->run(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Application.php:887",
+            "    0.0412    1728032   6. Stati\\Command\\GenerateCommand->execute(???, ???) /Users/jonathan/Sites/stati/stati/vendor/symfony/console/Command/Command.php:262",
+            "    0.0534    2026424   7. Stati\\Site\\Site->process() /Users/jonathan/Sites/stati/stati/src/Command/GenerateCommand.php:97",
+            "    0.1077    2707448   8. Stati\\Site\\Site->render() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:115",
+            "    0.9838    3723032   9. Stati\\Renderer\\PageRenderer->renderAll() /Users/jonathan/Sites/stati/stati/src/Site/Site.php:179",
+            "    1.1184    3918696  10. Stati\\Renderer\\PageRenderer->render(???) /Users/jonathan/Sites/stati/stati/src/Renderer/PageRenderer.php:41",
+            "    1.1184    3918696  11. Stati\\Entity\\Page->getContent() /Users/jonathan/Sites/stati/stati/src/Renderer/Renderer.php:53",
+            "    1.1225    3945200  12. Stati\\Liquid\\Template\\Template->render(???, ???, ???) /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php:169",
+            "    1.1226    3949528  13. Liquid\\Document->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Template.php:243",
+            "    1.1226    3949528  14. Liquid\\Document->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:102",
+            "    1.1241    3949920  15. Liquid\\Tag\\TagFor->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1333    3954632  16. Liquid\\Tag\\TagFor->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagFor.php:160",
+            "    1.1336    3954728  17. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1338    3957184  18. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:101",
+            "    1.1338    3957216  19. Liquid\\Tag\\TagIf->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1341    3959672  20. Liquid\\Tag\\TagIf->renderAll(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Tag/TagIf.php:148",
+            "    1.1341    3959720  21. Liquid\\Variable->render(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/AbstractBlock.php:119",
+            "    1.1343    3959720  22. Liquid\\Context->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Variable.php:134",
+            "    1.1343    3959720  23. Liquid\\Filterbank->invoke(???, ???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Context.php:83",
+            "    1.1343    3960496  24. call_user_func_array:{/Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130}(???, ???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1343    3960888  25. Stati\\Liquid\\Filter\\SiteFilter::xml_escape(???) /Users/jonathan/Sites/stati/stati/vendor/liquid/liquid/src/Liquid/Filterbank.php:130",
+            "    1.1343    3960888  26. htmlentities(???) /Users/jonathan/Sites/stati/stati/src/Liquid/Filter/SiteFilter.php:28",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file post.xml not found in layout folder ./_layouts/ for post ",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "bencentra_centrarium": {
+        "result": true
+    },
+    "vincentchan_mickey": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "willianjusten_will-jekyll-template": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_Alpha-Jekyll-Theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_Arcana-Jekyll-Theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_Aviator-Jekyll-Theme": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin sitemap is not available",
+            "",
+            "         Sorry, the plugin seo is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "daattali_beautiful-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "brijeshb42_bitwiser-material": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "Wiredcraft_carte": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_DopeTrope-Jekyll-Theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "drjekyllthemes_jekyll-bootstrap-theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "drjekyllthemes_jekyll-book-theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "drjekyllthemes_jekyll-minimal-theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "fffabs_estivo": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_Horizons-Jekyll-Theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "poole_hyde": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "PHP Parse error:  syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            "",
+            "Parse error: syntax error, unexpected ')' in /Users/jonathan/Sites/stati/stati/src/Entity/Doc.php on line 313",
+            ""
+        ]
+    },
+    "CloudCannon_Ion-Jekyll-Theme": {
+        "result": true
+    },
+    "barryclark_jekyll-now": {
+        "result": true
+    },
+    "poole_lanyon": {
+        "result": true
+    },
+    "CloudCannon_Linear-Jekyll-Theme": {
+        "result": true
+    },
+    "orderedlist_minimal": {
+        "result": true
+    },
+    "orderedlist_modernist": {
+        "result": true
+    },
+    "planetjekyll_jekyll-starter-theme": {
+        "result": true
+    },
+    "poole_poole": {
+        "result": true
+    },
+    "CloudCannon_Read-Only-Jekyll-Theme": {
+        "result": true
+    },
+    "jglovier_resume-template": {
+        "result": true
+    },
+    "CloudCannon_Strata-Jekyll-Theme": {
+        "result": true
+    },
+    "CloudCannon_Twenty-Jekyll-Theme": {
+        "result": true
+    },
+    "mushishi78_jekyll-video": {
+        "result": true
+    },
+    "kkninjae_book": {
+        "result": true
+    },
+    "renyuanz_leonids": {
+        "result": true
+    },
+    "guovz_pithy": {
+        "result": true
+    },
+    "volny_stylish-portfolio-jekyll": {
+        "result": true
+    },
+    "heiswayi_the-plain": {
+        "result": true
+    },
+    "kronik3r_daktilo": {
+        "result": true
+    },
+    "gfjaru_Kiko": {
+        "result": true
+    },
+    "dbtek_paper": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin coffeescript is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\RenderException]",
+            "  Implicit rendering of arrays not supported. Use index operator.",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "volny_creative-theme-jekyll": {
+        "result": true
+    },
+    "inded_Jekyll_modern-blog": {
+        "result": true
+    },
+    "DigitalMindCH_gridster-jekyll-theme": {
+        "result": true
+    },
+    "UniFreak_unifreak.github.io": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\RenderException]",
+            "  Value of type Stati\\Plugin\\Paginate\\Entity\\Paginator has no `toLiquid` nor `__toString` methods",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "knaman2609_clean": {
+        "result": true
+    },
+    "biomadeira_jasper": {
+        "result": true
+    },
+    "biomadeira_vitae": {
+        "result": true
+    },
+    "biomadeira_sustain": {
+        "result": true
+    },
+    "obaez_dentistsmile": {
+        "result": true
+    },
+    "chalatz_yellowblue": {
+        "result": true
+    },
+    "vormwald_joon": {
+        "result": true
+    },
+    "nandomoreirame_nandomoreira-jekyll-theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag strip",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "nandomoreirame_zetsu": {
+        "result": true
+    },
+    "nandomoreirame_lora": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag strip",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "KazumaSATO_Siera": {
+        "result": true
+    },
+    "yonojoy_YAX-Coming-soon-Jekyll-Template": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Symfony\\Component\\Yaml\\Exception\\ParseException]",
+            "  Reference DEFAULT_EN     # use English translation for en_US does not exist at line 14 (near <<: *DEFAULT_EN     # use English tr",
+            "  anslation for en_US).",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "nandomoreirame_mug": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag strip",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "laixintao_Princess-Diaries": {
+        "result": true
+    },
+    "madforjekyll_madforjekyll.github.io": {
+        "result": true
+    },
+    "alexcarpenter_butane-jekyll-theme": {
+        "result": true
+    },
+    "limingyang2012_limingyang2012.github.io": {
+        "result": true
+    },
+    "rowanoulton_galileo-theme": {
+        "result": true
+    },
+    "nandomoreirame_end2end": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "/Users/jonathan/Sites/stati/stati/src/Entity/Sass.php:82:",
+            "string(132) \u001b[31mCould not find proper version of sass (3.5.1) in any of the sources\u001b[0m",
+            "\u001b[33mRun `bundle install` to install missing gems.\u001b[0m",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  file_get_contents(fonts/end2end.svg): failed to open stream: No such file or directory",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "nandomoreirame_dotX": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "Error: File to import not found or unreadable: main.",
+            "       Load paths:",
+            "         /Users/jonathan/Sites/stati/stati/scripts/nandomoreirame_dotX/_sass",
+            "         /Users/jonathan/.rvm/gems/ruby-2.4.1/gems/compass-core-1.0.3/stylesheets",
+            "         Compass::SpriteImporter",
+            "         /Users/jonathan/Sites/stati/stati/scripts/nandomoreirame_dotX (DEPRECATED)",
+            "        on line 2 of standard input",
+            "  Use --trace for backtrace.",
+            "/Users/jonathan/Sites/stati/stati/src/Entity/Sass.php:82:",
+            "NULL",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  file_get_contents(assets/fonts/dotx-icons.eot): failed to open stream: No such file or directory",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "lixizhi_lixizhi.github.io": {
+        "result": true
+    },
+    "tigefa4u_jekmdl": {
+        "result": true
+    },
+    "nandomoreirame_simplest": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin bourbon is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  file_get_contents(assets/images/author.jpg): failed to open stream: No such file or directory",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "fareez-ahamed_millikyl": {
+        "result": true
+    },
+    "bawn92_sleek_blog": {
+        "result": true
     }
 }

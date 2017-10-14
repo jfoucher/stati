@@ -12,6 +12,8 @@
 namespace Stati\Writer;
 
 use Stati\Entity\Collection;
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Site\SiteEvents;
 use Symfony\Component\Filesystem\Filesystem;
 use Stati\Entity\Doc;
 
@@ -25,12 +27,19 @@ class CollectionWriter extends Writer
             /**
              * @var Collection $collection
              */
+            if (!$collection->getConfigItem('output')) {
+                continue;
+            }
             foreach ($collection->getDocs() as $doc) {
                 /**
                  * @var Doc $doc
                  */
                 if ($doc->getOutputPath()) {
                     $dest = str_replace('//', '/', $destDir.'/'.$doc->getOutputPath());
+                    $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent(
+                        'text',
+                        ['Writing the file ' . $doc->getFile()->getRelativePathname() . ' to ' . $dest]
+                    ));
                     $fs->dumpFile($dest, $doc->getOutput());
                 }
             }

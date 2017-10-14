@@ -34,6 +34,11 @@ class CollectionReader extends Reader
 
         $collections = [];
         foreach ($config['collections'] as $collectionName => $collectionData) {
+            if (is_int($collectionName) && is_string($collectionData)) {
+                $collectionName = $collectionData;
+                $collectionData = [];
+            }
+
             $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('section', ['Reading collection '.$collectionName]));
 
             $collection = new Collection($collectionName, $collectionData);

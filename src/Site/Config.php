@@ -78,6 +78,10 @@ class Config implements \ArrayAccess
         if (strpos('./', $this->values['layouts_dir']) === 0) {
             $this->values['layouts_dir'] = substr($this->values['layouts_dir'], 2);
         }
+
+        if ($this->values['permalink'] === 'date') {
+            $this->values['permalink'] = '/:year/:month/:day/';
+        }
     }
 
     public function offsetGet($offset)

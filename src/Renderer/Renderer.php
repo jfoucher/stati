@@ -11,6 +11,7 @@
 
 namespace Stati\Renderer;
 
+use Liquid\Exception\NotFoundException;
 use Liquid\LiquidException;
 use Stati\Entity\Doc;
 use Stati\Event\ConsoleOutputEvent;
@@ -63,7 +64,7 @@ class Renderer
             $doc->setOutput($content);
             return $doc;
         }
-
+        $this->layoutsDir = str_replace('//', '/', $this->site->getConfig()['source'] . '/' . $this->site->getConfig()['layouts_dir'] . '/');
         //If we have a layout
         if (isset($frontMatter['layout']) && $frontMatter['layout'] !== 'none' && $frontMatter['layout'] !== 'nil') {
             $vars = [
@@ -73,7 +74,7 @@ class Renderer
                 'site' => $this->site,
             ];
 
-            $this->layoutsDir = str_replace('//', '/', $this->site->getConfig()['source'] . '/' . $this->site->getConfig()['layouts_dir'] . '/');
+
 
             $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $doc));
             try {
@@ -83,8 +84,10 @@ class Renderer
                     $ext = $doc->getFile()->getExtension();
                 }
                 $content = $this->renderWithLayout($frontMatter['layout'], $vars, $ext);
-            } catch (FileNotFoundException $err) {
-                throw new FileNotFoundException($err->getMessage(). ' for post "'.$doc->getTitle().'"');
+            } catch (NotFoundException $err) {
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render page'.$doc->getTitle() . ' because of the following error', $err->getMessage(). ' for post "'.$doc->getTitle().'"']]));
+                $doc->setOutput($content);
+                return $doc;
             }
         }
         if ($this->cacheFileName) {
@@ -109,7 +112,7 @@ class Renderer
         } else {
             $layout = @file_get_contents($this->layoutsDir.$layoutFile.'.'.$extension);
             if (!$layout) {
-                throw new FileNotFoundException('Layout file "'.$layoutFile.'.'.$extension.'" not found in layout folder '.$this->layoutsDir);
+                throw new NotFoundException('Layout file "'.$layoutFile.'.'.$extension.'" not found in layout folder '.$this->layoutsDir);
             }
 
             $layoutFrontMatter = FrontMatterParser::parse($layout);

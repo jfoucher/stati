@@ -46,9 +46,6 @@ class RendererTest extends TestCase
 ', $doc->getOutput());
     }
 
-    /**
-     * @expectedException \Stati\Exception\FileNotFoundException
-     */
     public function testRenderDocWithLayoutNotFound()
     {
         $file = $this->getFile('2017-08-13-with-layout.markdown');
@@ -58,6 +55,7 @@ class RendererTest extends TestCase
         $doc->setFrontMatter($frontMatter);
         $renderer = new Renderer($this->site);
         $doc = $renderer->render($doc);
+        $this->assertEquals('<p>c</p>', $doc->getOutput());
     }
 
 

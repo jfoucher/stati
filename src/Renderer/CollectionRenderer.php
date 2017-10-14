@@ -33,6 +33,7 @@ class CollectionRenderer extends Renderer
             /**
              * @var Collection $collection
              */
+
             $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('section', ['Rendering collection '.$collection->getLabel()]));
 
             $docs = [];
@@ -55,9 +56,14 @@ class CollectionRenderer extends Renderer
                     }
                 }
                 $this->cacheFileName = 'rendered-' . $doc->getSlug() . '-' . sha1(implode('', Liquid::arrayFlatten($doc->getFrontMatter())) . $doc->getContent() . $this->site . implode('', Liquid::arrayFlatten($this->site->getConfig())));
-                //TODO add try catch to catch LiquidException
+
                 try {
-                    $docs[] = $this->render($doc);
+                    if ($collection->getConfigItem('output')) {
+                        $docs[] = $this->render($doc);
+                    } else {
+                        $doc->setOutput($doc->getContent());
+                        $docs[] = $doc;
+                    }
                 } catch (LiquidException $err) {
                     $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render ' . $collection->getLabel() .' ' . $doc->getTitle() . ' because of the following error', $err->getMessage()]]));
                 }

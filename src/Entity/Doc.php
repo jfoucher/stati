@@ -428,7 +428,7 @@ class Doc
 
     private function getDateLinkPart($link)
     {
-        if (preg_match_all('/(:year|:month|:day|:hour)/', $link, $matches, PREG_PATTERN_ORDER)) {
+        if (preg_match_all('#(:year|:month|:day|:hour)#', $link, $matches, PREG_PATTERN_ORDER)) {
             foreach ($matches[1] as $token) {
                 $format = '';
                 switch ($token) {
@@ -451,7 +451,7 @@ class Doc
 
     private function getTextLinkPart($link)
     {
-        if (preg_match_all('/(:title|:categories|:slug)/', $link, $matches, PREG_PATTERN_ORDER)) {
+        if (preg_match_all('#(:title|:categories|:slug)#', $link, $matches, PREG_PATTERN_ORDER)) {
             foreach ($matches[1] as $token) {
                 $replace = '';
                 switch ($token) {
