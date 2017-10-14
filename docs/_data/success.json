@@ -215,8 +215,8 @@
             "",
             "",
             "",
-            "  [Stati\\Exception\\FileNotFoundException]",
-            "  Layout file post not found in layout folder _layouts/ for post Upgrading Guide: v1.1.0",
+            "  [RuntimeException]",
+            "  file_get_contents(apple-touch-icon.png): failed to open stream: No such file or directory",
             "",
             "",
             "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
@@ -303,5 +303,124 @@
     },
     "clayh53_tufte-jekyll": {
         "result": true
+    },
+    "Phlow_feeling-responsive": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin asciidoc is not available",
+            "",
+            "         Sorry, the plugin gist is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file xml-style not found in layout folder ./_layouts/ for post Atom Feed (Styled)",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "KingFelix_emerald": {
+        "result": true
+    },
+    "kevit_devaid-jekyll-theme": {
+        "result": true
+    },
+    "mushishi78_one-page-wonder-jekyll": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file compress not found in layout folder ./_layouts/ for post ",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "jacobtomlinson_carte-noire": {
+        "result": true
+    },
+    "smallmuou_Jekyll-Pithy": {
+        "result": true
+    },
+    "DigitalMindCH_twister": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file post not found in layout folder ./_layouts/ for post ",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "karloespiritu_BlackDoc": {
+        "result": true
+    },
+    "diezcami_polar-bear-theme": {
+        "result": true
+    },
+    "Gaohaoyang_gaohaoyang.github.io": {
+        "result": true
+    },
+    "minhhuy150894_minhhuy150894.github.io": {
+        "result": true
+    },
+    "nickbalestra_kactus": {
+        "result": true
+    },
+    "diezcami_arctic-fox-theme": {
+        "result": true
+    },
+    "enterthecrucible_materialized_jekyll_theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file post not found in layout folder ./_layouts/ for post Welcome to Jekyll!",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "DigitalMindCH_docster-jekyll-theme": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Stati\\Exception\\FileNotFoundException]",
+            "  Layout file index not found in layout folder ./_layouts/ for post ",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
     }
 }

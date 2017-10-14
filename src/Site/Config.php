@@ -73,7 +73,11 @@ class Config implements \ArrayAccess
             $config['layouts_dir'] = $config['layouts'];
             unset($config['layouts']);
         }
+
         $this->values = array_merge($this->values, $config);
+        if (strpos('./', $this->values['layouts_dir']) === 0) {
+            $this->values['layouts_dir'] = substr($this->values['layouts_dir'], 2);
+        }
     }
 
     public function offsetGet($offset)

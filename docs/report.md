@@ -1,5 +1,8 @@
 ---
+title: theme building report
 ---
+
+# Theme build report
 
 Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthemes.org/) successfully 😁: 
 

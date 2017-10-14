@@ -38,6 +38,8 @@ class Renderer
      */
     protected $layouts;
 
+    protected $layoutsDir;
+
     protected $cacheFileName;
 
     public function __construct(Site $site)
@@ -71,6 +73,8 @@ class Renderer
                 'site' => $this->site,
             ];
 
+            $this->layoutsDir = str_replace('//', '/', $this->site->getConfig()['source'] . '/' . $this->site->getConfig()['layouts_dir'] . '/');
+
             $this->site->getDispatcher()->dispatch(TemplateEvents::SETTING_LAYOUT_TEMPLATE_VARS, new SettingTemplateVarsEvent($this->site, $vars, $doc));
             try {
                 if (in_array($doc->getFile()->getExtension(), explode(',', $this->site->getConfig()['markdown_ext']))) {
@@ -97,15 +101,15 @@ class Renderer
         Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
         Liquid::set('HAS_PROPERTY_METHOD', 'get');
 
-        $folder = str_replace('//', '/', $this->site->getConfig()['layouts_dir'] . '/');
+
 
         if (isset($this->layouts[$layoutFile])) {
             $layoutFrontMatter = $this->layouts[$layoutFile]['frontMatter'];
             $layoutContent = $this->layouts[$layoutFile]['content'];
         } else {
-            $layout = @file_get_contents($folder.$layoutFile.'.'.$extension);
+            $layout = @file_get_contents($this->layoutsDir.$layoutFile.'.'.$extension);
             if (!$layout) {
-                throw new FileNotFoundException('Layout file "'.$layoutFile.'" not found in layout folder '.$folder);
+                throw new FileNotFoundException('Layout file "'.$layoutFile.'.'.$extension.'" not found in layout folder '.$this->layoutsDir);
             }
 
             $layoutFrontMatter = FrontMatterParser::parse($layout);
