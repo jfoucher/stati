@@ -47,7 +47,7 @@ class StaticFileReader extends Reader
         $staticFiles = [];
 
         foreach ($finder as $file) {
-            $staticFiles[] = new StaticFile($file->getRelativePathname(), $file->getRelativePath(), $file->getRelativePathname());
+            $staticFiles[] = new StaticFile($file->getPathname(), $file->getRelativePath(), $file->getRelativePathname());
         }
 
         return $staticFiles;
