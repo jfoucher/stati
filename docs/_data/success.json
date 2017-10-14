@@ -276,5 +276,47 @@
     },
     "excentris_compass": {
         "result": true
+    },
+    "gayanvirajith_gaya": {
+        "result": true
+    },
+    "SalGnt_Travelogue": {
+        "result": false,
+        "error": [
+            "",
+            " [ERROR] Sorry, the plugin feed is not available",
+            "",
+            "         Sorry, the plugin sitemap is not available",
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [Liquid\\Exception\\ParseException]",
+            "  Unknown tag feed_meta",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "ellekasai_resumecards": {
+        "result": true
+    },
+    "brianmaierjr_long-haul": {
+        "result": true
+    },
+    "itsrifat_rifyll": {
+        "result": true
+    },
+    "jeromelachaud_grayscale-theme": {
+        "result": true
+    },
+    "prio101_metaphor-jekyll": {
+        "result": true
+    },
+    "ariestiyansyah_naringu": {
+        "result": true
     }
 }
