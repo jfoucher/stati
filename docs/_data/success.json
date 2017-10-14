@@ -1448,5 +1448,34 @@
     },
     "alidcastano_Utterson": {
         "result": true
+    },
+    "itisbenjamin_Nice_Blog": {
+        "result": false,
+        "error": [
+            "",
+            "Generating site...",
+            "==================",
+            "",
+            "",
+            "",
+            "  [RuntimeException]",
+            "  Error: no lexer for alias 'md' found",
+            "",
+            "",
+            "generate [-nc|--no-cache] [-w|--watch] [-s|--serve] [-p|--port [PORT]]",
+            ""
+        ]
+    },
+    "siawyoung_immaculate": {
+        "result": true
+    },
+    "nikrich_jekyll-slender-template": {
+        "result": true
+    },
+    "hemangsk_Gravity": {
+        "result": true
+    },
+    "pietromenna_jekyll-cayman-theme": {
+        "result": true
     }
 }
