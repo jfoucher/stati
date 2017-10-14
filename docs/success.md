@@ -5,7 +5,11 @@ Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthe
 {% endhighlight %}
 
 {% for theme in site.data.success %}
+
+{% assign names = theme[0] | split "_" %}
+{{ theme[0] | capitalize }}
 {% highlight json %}
-{{ theme | jsonify }}
+{{ names | jsonify }}
 {% endhighlight %}
+
 {% endfor %}
