@@ -11,9 +11,9 @@ But Stati failed to generate the following sites :
 {% for theme in site.data.success %}
 {% assign names = theme[0] | split:"_" %}
 {% if theme[1] == false %}
-{% assign err = theme[0] | append:"_error"}
-{{err}}
+{% assign error_key = theme[0] | append:"_error"}
+{{ error_key }}
 - [{{ names[1] | capitalize }}](https://github.com/{{names[0]}}/{{names[1]}})
 
-  
-{% endif %}{% endfor %}
+{% endif %}
+{% endfor %}
