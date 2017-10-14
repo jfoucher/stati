@@ -1,3 +1,6 @@
+---
+title: Stati Plugins
+---
 
 
 # Stati plugins

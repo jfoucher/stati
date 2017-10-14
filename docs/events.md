@@ -1,3 +1,7 @@
+---
+title : Plugin events
+---
+
 # Plugin events.
 
 Here are all the events that plugins can subscribe to.

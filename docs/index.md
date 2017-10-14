@@ -1,3 +1,6 @@
+---
+title: Stati, the Jekyll-compatible, extensible, PHP static site generator
+---
 
 # Stati
 
