@@ -1,5 +1,6 @@
 Stati generated the following Jekyll themes from [JekyllThemes](http://jekyllthemes.org/) successfully : 
 
+{{ site.success | jsonify }}
 {% for theme in site.success %}
 {% if theme[1] == true %}
 {% assign names = theme[0] | split "_" %}
