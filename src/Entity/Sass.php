@@ -76,8 +76,8 @@ class Sass extends Page
             ));
             $liquidParsed = '';
         }
-
-        $this->content = shell_exec('echo \''.$liquidParsed.'\''.' | scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass');
+        file_put_contents($cacheDir . '/' . $this->cacheFileName . '_liquid', $liquidParsed);
+        $this->content = shell_exec('scss --load-path='.$sassDir.' --style='.$sassStyle.' --compass < ' .$cacheDir . '/' . $this->cacheFileName . '_liquid');
         file_put_contents($cacheDir . '/' . $this->cacheFileName, $this->content);
         return $this->content;
     }
