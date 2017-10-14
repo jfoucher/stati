@@ -69,6 +69,10 @@ class Config implements \ArrayAccess
 
     public function __construct($config)
     {
+        if (isset($config['layouts'])) {
+            $config['layouts_dir'] = $config['layouts'];
+            unset($config['layouts']);
+        }
         $this->values = array_merge($this->values, $config);
     }
 
