@@ -12,6 +12,9 @@
 namespace Stati\Writer;
 
 use Stati\Entity\StaticFile;
+use Stati\Event\ConsoleOutputEvent;
+use Stati\Site\SiteEvents;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 class StaticFileWriter extends Writer
@@ -25,7 +28,12 @@ class StaticFileWriter extends Writer
              * @var StaticFile $file
              */
             $dest = str_replace('//', '/', $destDir.'/'.$file->getRelativePathname());
-            $fs->dumpFile($dest, $file->getContents());
+            try {
+                $fs->dumpFile($dest, $file->getContents());
+            } catch (\Exception $err) {
+                $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not write file '.$file->getPathname().' to disk.', $err->getMessage()]], OutputInterface::VERBOSITY_NORMAL));
+            }
+
         }
     }
 }
