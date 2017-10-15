@@ -5,8 +5,8 @@ title: Theme building report
 # Theme build report
 
 {% assign total_themes = site.data.success.size | plus: site.data.fail.size %}
-
-{% assign percentage = site.data.success.size | divided_by: total_themes %}
+{% assign success_themes = site.data.success.size | times: 1.0 %}
+{% assign percentage = success_themes | divided_by: total_themes %}
 
 Stati successfully generated **{{site.data.success | size}}** themes out of **{{total_themes}}** total different themes, which is **{{ percentage }}%** success.
 
