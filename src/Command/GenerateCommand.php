@@ -86,6 +86,12 @@ class GenerateCommand extends Command
             $fs = new Filesystem();
             $fs->remove($this->site->getConfig()['cache_dir']);
         }
+
+        if ($input->getOption('serve')) {
+            //Set baseurl to empty string when serving locally
+            $this->site->getConfig()['baseurl'] = '';
+        }
+
         $this->registerPlugins();
 
         if ($this->style->getVerbosity() > OutputInterface::VERBOSITY_NORMAL) {
@@ -121,7 +127,7 @@ class GenerateCommand extends Command
             ;
 
             foreach ($finder as $file) {
-                $listener = $watcher->watch($file->getRelativePathname());
+                $listener = $watcher->watch($file->getPathname());
 
                 $listener->modify(function ($resource, $path) use ($input, $dest) {
                     $this->style->text('File '.$path.' was modified');
