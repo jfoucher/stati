@@ -139,7 +139,7 @@ class Doc
         }
 
         Liquid::set('INCLUDE_ALLOW_EXT', true);
-        Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['includes_dir']);
+        Liquid::set('INCLUDE_PREFIX', $this->site->getConfig()['source'] . '/' . $this->site->getConfig()['includes_dir']);
         Liquid::set('HAS_PROPERTY_METHOD', 'get');
 
         $parser = new ContentParser();
