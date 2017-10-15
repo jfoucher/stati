@@ -18,6 +18,7 @@ use Stati\Liquid\Block\Highlight;
 use Stati\Liquid\Tag\PostUrl;
 use Stati\Liquid\Filter\SiteFilter;
 use Stati\Liquid\Tag\Link;
+use Stati\Liquid\Tag\Strip;
 use Stati\Liquid\Tag\TagInclude;
 use Stati\Liquid\Filesystem\Local;
 
@@ -45,6 +46,7 @@ class Template extends BaseTemplate
         $this->registerTag('highlight', Highlight::class);
         $this->registerTag('post_url', PostUrl::class);
         $this->registerTag('link', Link::class);
+        $this->registerTag('strip', Strip::class);
         $this->registerTag('include', TagInclude::class);
         $this->registerFilter(new SiteFilter());
 
