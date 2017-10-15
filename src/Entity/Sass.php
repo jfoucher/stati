@@ -82,6 +82,10 @@ class Sass extends Page
         return $this->content;
     }
 
+    private function getLiquidParsed()
+    {
+    }
+
     public function getOutputPath()
     {
         $extension = $this->file->getExtension();
