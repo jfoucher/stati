@@ -110,4 +110,38 @@ class SiteFilter
         $parser = new MarkdownParser();
         return $parser->text($text);
     }
+
+
+
+    /**
+     * Split input string into an array of substrings separated by given pattern.
+     *
+     * @param string $input
+     * @param string $pattern
+     *
+     * @return array
+     */
+    public static function split($input, $pattern)
+    {
+        if ($pattern) {
+            return explode($pattern, $input);
+        }
+        return str_split($input);
+    }
+
+
+    /**
+     * Default
+     *
+     * @param string $input
+     * @param string $default_value
+     *
+     * @return string
+     */
+    public static function _default($input, $default_value = null)
+    {
+        $isBlank = $input == '' || $input === false || $input === null;
+        return $isBlank ? $default_value : $input;
+    }
+
 }
