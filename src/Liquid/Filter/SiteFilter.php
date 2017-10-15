@@ -143,5 +143,4 @@ class SiteFilter
         $isBlank = $input == '' || $input === false || $input === null;
         return $isBlank ? $default_value : $input;
     }
-
 }
