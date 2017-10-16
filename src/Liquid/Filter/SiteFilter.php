@@ -11,6 +11,7 @@
 
 namespace Stati\Liquid\Filter;
 
+use Liquid\Exception\ParseException;
 use Liquid\Liquid;
 use Stati\Parser\MarkdownParser;
 
@@ -119,10 +120,14 @@ class SiteFilter
      * @param string $input
      * @param string $pattern
      *
+     * @throws ParseException
      * @return array
      */
     public static function split($input, $pattern)
     {
+        if (!is_string($input)) {
+            throw new ParseException('The split filter can only operate on strings, ' . get_class($input) . ' given');
+        }
         if ($pattern) {
             return explode($pattern, $input);
         }
