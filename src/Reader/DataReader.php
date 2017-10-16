@@ -15,7 +15,7 @@ use Stati\Entity\Page;
 use Stati\Entity\Sass;
 use Symfony\Component\Finder\Finder;
 use Stati\Reader\Reader;
-use Symfony\Component\Yaml\Yaml;
+use Stati\Parser\Yaml;
 
 /**
  * Copies files and folders that do not start with _ and do not have frontmatter
