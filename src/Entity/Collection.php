@@ -112,5 +112,11 @@ class Collection
         if ($this->getConfigItem($item)) {
             return $this->getConfigItem($item);
         }
+        return null;
+    }
+
+    public function __toString()
+    {
+        return $this->getLabel();
     }
 }
