@@ -39,8 +39,8 @@ class SiteFilter
      *
      * @param string $input
      *
-     * @return string
      * @throws ParseException
+     * @return string
      */
 
     public static function number_of_words($input)
