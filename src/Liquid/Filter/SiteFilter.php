@@ -40,10 +40,17 @@ class SiteFilter
      * @param string $input
      *
      * @return string
+     * @throws ParseException
      */
 
     public static function number_of_words($input)
     {
+        if (!$input) {
+            return '0';
+        }
+        if (is_array($input)) {
+            throw new ParseException('number_of_words filter requires a string');
+        }
         return str_word_count(strip_tags($input), 0);
     }
 
