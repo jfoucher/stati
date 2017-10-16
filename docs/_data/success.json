@@ -354,9 +354,6 @@
     "vormwald_joon": {
         "result": true
     },
-    "nandomoreirame_zetsu": {
-        "result": true
-    },
     "KazumaSATO_Siera": {
         "result": true
     },
@@ -385,9 +382,6 @@
         "result": true
     },
     "tigefa4u_jekmdl": {
-        "result": true
-    },
-    "nandomoreirame_simplest": {
         "result": true
     },
     "fareez-ahamed_millikyl": {
@@ -859,6 +853,21 @@
         "result": true
     },
     "yizeng_jekyll-theme-simple-texture": {
+        "result": true
+    },
+    "open-start_opentheme": {
+        "result": true
+    },
+    "nandomoreirame_zetsu": {
+        "result": true
+    },
+    "nandomoreirame_simplest": {
+        "result": true
+    },
+    "daviddarnes_alembic": {
+        "result": true
+    },
+    "daviddarnes_garth": {
         "result": true
     }
 }
