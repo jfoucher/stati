@@ -80,10 +80,6 @@ class Local implements FileSystem
         $templateDir = dirname($templatePath);
         $templateFile = basename($templatePath);
 
-        if (!pathinfo($templatePath, PATHINFO_EXTENSION)) {
-            $templateFile = $templateFile . '.html';
-        }
-
         if (!Liquid::get('INCLUDE_ALLOW_EXT')) {
             $templateFile = Liquid::get('INCLUDE_PREFIX') . $templateFile . '.' . Liquid::get('INCLUDE_SUFFIX');
         }
