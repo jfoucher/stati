@@ -30,14 +30,22 @@ class Page extends Doc
         if ($this->path) {
             return $this->path;
         }
+        $frontMatter = $this->getFrontMatter();
+
         $extension = $this->file->getExtension();
         $allowedExtensions = explode(',', $this->site->getConfig()['markdown_ext']);
         if (in_array($extension, $allowedExtensions)) {
             $extension = 'html';
         }
         $fname = pathinfo($this->file->getBasename(), PATHINFO_FILENAME);
+        if (isset($frontMatter['permalink'])) {
+            $fname = $frontMatter['permalink'];
+        }
         if (substr($fname, -5) === '.html') {
             $fname = pathinfo($fname, PATHINFO_FILENAME);
+        }
+        if (substr($fname, -1) === '/') {
+            $fname .= 'index';
         }
 
         $this->path = preg_replace('|/+|', '/', '/'.$this->file->getRelativePath().'/'.$fname.'.'.$extension);
