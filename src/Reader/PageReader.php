@@ -63,12 +63,11 @@ class PageReader extends Reader
             }
         }
 
-            foreach ($config['include'] as $include) {
+        foreach ($config['include'] as $include) {
             if (strpos($include, '/') === 0) {
                 $exclude = substr($include, 1);
             }
             $finder->in($include);
-
         }
 
         $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('section', ['Reading pages', OutputInterface::VERBOSITY_VERBOSE]));

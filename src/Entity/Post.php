@@ -103,7 +103,7 @@ class Post extends Doc
     {
         if (isset($this->frontMatter['permalink'])) {
             return $this->frontMatter['permalink'];
-        } else if ($this->getCollection() && $this->getCollection()->getConfigItem('permalink')) {
+        } elseif ($this->getCollection() && $this->getCollection()->getConfigItem('permalink')) {
             return $this->getCollection()->getConfigItem('permalink');
         }
         return $this->site->permalink;
