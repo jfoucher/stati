@@ -362,6 +362,17 @@ class Doc
     /**
      * @return string
      */
+    public function getLayout()
+    {
+        if (isset($this->frontMatter['layout'])) {
+            return $this->frontMatter['layout'];
+        }
+        return null;
+    }
+
+    /**
+     * @return string
+     */
     public function getOutput()
     {
         return $this->output;

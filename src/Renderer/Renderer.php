@@ -71,7 +71,7 @@ class Renderer
         }
         $this->layoutsDir = str_replace('//', '/', $this->site->getConfig()['source'] . '/' . $this->site->getConfig()['layouts_dir'] . '/');
         //If we have a layout
-        if (isset($frontMatter['layout']) && $frontMatter['layout'] !== 'none' && $frontMatter['layout'] !== 'nil') {
+        if ($doc->getLayout() && $doc->getLayout() !== 'none' && $doc->getLayout() !== 'nil') {
             $vars = [
                 'content' => $content,
                 'page' => $doc,
@@ -88,7 +88,7 @@ class Renderer
                 } else {
                     $ext = $doc->getFile()->getExtension();
                 }
-                $content = $this->renderWithLayout($frontMatter['layout'], $vars, $ext);
+                $content = $this->renderWithLayout($doc->getLayout(), $vars, $ext);
             } catch (NotFoundException $err) {
                 $this->site->getDispatcher()->dispatch(SiteEvents::CONSOLE_OUTPUT, new ConsoleOutputEvent('error', [['Could not render page'.$doc->getTitle() . ' because of the following error', $err->getMessage(). ' for post "'.$doc->getTitle().'"']]));
                 $doc->setOutput($content);

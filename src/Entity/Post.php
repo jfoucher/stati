@@ -96,6 +96,19 @@ class Post extends Doc
         $this->collection = $collection;
     }
 
+    /**
+     * @return string
+     */
+    public function getPermalink()
+    {
+        if (isset($this->frontMatter['permalink'])) {
+            return $this->frontMatter['permalink'];
+        } else if ($this->getCollection() && $this->getCollection()->getConfigItem('permalink')) {
+            return $this->getCollection()->getConfigItem('permalink');
+        }
+        return $this->site->permalink;
+    }
+
 
     public function getDate()
     {
@@ -161,5 +174,18 @@ class Post extends Doc
             $this->excerpt = $ex[0];
         }
         return $this->excerpt;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getLayout()
+    {
+        $layout = parent::getLayout();
+        if ($layout === null) {
+            return isset($this->frontMatter['layout']) ? $this->frontMatter['layout'] : 'post';
+        }
+        return $layout;
     }
 }
