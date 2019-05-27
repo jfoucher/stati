@@ -63,7 +63,7 @@ class CollectionRenderer extends Renderer
                 $this->cacheFileName = 'rendered-' . $doc->getSlug() . '-' . sha1(implode('', Liquid::arrayFlatten($doc->getFrontMatter())) . $doc->getContent() . $this->site . implode('', Liquid::arrayFlatten($this->site->getConfig())));
 
                 try {
-                    if ($collection->getConfigItem('output')) {
+                    if ($collection->getConfigItem('output') !== false) {
                         $docs[] = $this->render($doc);
                     } else {
                         $doc->setOutput($doc->getContent());
