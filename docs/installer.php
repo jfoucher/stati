@@ -43,10 +43,10 @@ namespace
 
     // check version
     check(
-        'You have a supported version of PHP (>= 5.6).',
-        'You need PHP 5.6 or greater.',
+        'You have a supported version of PHP (>= 7.1).',
+        'You need PHP 7.1 or greater.',
         function () {
-            return version_compare(PHP_VERSION, '5.6', '>=');
+            return version_compare(PHP_VERSION, '7.1', '>=');
         }
     );
 

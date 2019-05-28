@@ -6,7 +6,6 @@ title: Stati, the Jekyll-compatible, extensible, PHP static site generator
 
 An extensible static site generator in PHP that can work with any existing jekyll site and get the same results.
 
-
 ## Install
 
 ### Option 1
@@ -36,7 +35,7 @@ curl -o stati https://raw.githubusercontent.com/jfoucher/stati/{{ site.github.la
 
 ## Running
 
-Once the install is complete, change to your website directory and run `stati generate` to generate your site, or `stati serve` to serve it locally.
+Once the install is complete, change to your website directory and run `stati build` to generate your site, or `stati serve` to serve it locally. You can also use `stati s` or `stati b` as shortcuts
 
 ### Options
 
