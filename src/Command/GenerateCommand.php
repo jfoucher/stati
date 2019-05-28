@@ -228,8 +228,6 @@ class GenerateCommand extends Command
                 $requestedPlugin = 'seo';
             }
             if ($loadedPlugin = $this->loadClass($requestedPlugin)) {
-                // Register with event dispatcher
-                $this->site->getDispatcher()->addSubscriber($loadedPlugin);
                 $loadedPlugins[] = $loadedPlugin;
             } else {
                 $errors[] = 'Sorry, the plugin ' . $requestedPlugin . ' could not be loaded';
