@@ -290,7 +290,7 @@ class GenerateCommand extends Command
             $dir = __DIR__;
             if (is_file($dir . '/../../vendor/stati/' . $requestedPlugin . '/vendor/autoload.php')) {
                 require_once($dir . '/../../vendor/stati/' . $requestedPlugin . '/vendor/autoload.php');
-            }else if (is_file($dir . '/../../../stati-' . $requestedPlugin . '-plugin/vendor/autoload.php')) {
+            } elseif (is_file($dir . '/../../../stati-' . $requestedPlugin . '-plugin/vendor/autoload.php')) {
                 require_once($dir . '/../../../stati-' . $requestedPlugin . '-plugin/vendor/autoload.php');
             }
         }

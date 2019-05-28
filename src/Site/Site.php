@@ -99,7 +99,7 @@ class Site
 
         $this->config["cache_dir"] = sys_get_temp_dir() . '/' . $this->config['name'];
 
-        if(!is_dir($this->config["cache_dir"])) {
+        if (!is_dir($this->config["cache_dir"])) {
             mkdir($this->config["cache_dir"], 0777, true);
         }
 
