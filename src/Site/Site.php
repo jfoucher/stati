@@ -98,12 +98,16 @@ class Site
         $this->config = new Config($config);
 
         $this->config["cache_dir"] = sys_get_temp_dir() . '/' . $this->config['name'];
+
         if(!is_dir($this->config["cache_dir"])) {
             mkdir($this->config["cache_dir"], 0777, true);
         }
+
+
         $this->config['collections'] = array_merge($this->config['collections'], [
             'posts' => [
-                'permalink' => $this->config['permalink']
+                'permalink' => $this->config['permalink'],
+                'output' => true,
             ]
         ]);
 
